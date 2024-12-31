@@ -1,0 +1,55 @@
+name: Firmware
+
+on:
+  workflow_dispatch:
+
+env:
+  CMAKE_PREFIX_PATH: /opt/toolchains
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    container: ghcr.io/zephyrproject-rtos/ci:v0.27.4
+    strategy:
+      matrix:
+        built_type: [debug, release]
+        board: [beelight@1/nrf54l15/cpuapp]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: BeeLight
+          submodules: recursive
+
+      - name: Initialize
+        working-directory: BeeLight/firmware/app
+        run: |
+          west init -l .
+          west config manifest.group-filter +bsec
+          west update
+
+          mkdir -p fw_images
+      
+      - name: Define build directory name
+        working-directory: BeeLight/firmware/app
+        run: |
+          # Since board name contains slashes, we need to replace them with underscores
+          # as the board name is used as part of the build directory name.
+          # It's output to GITHUB_ENV so it can be used in the next steps
+          # and only needs to be calculated once.
+          BUILD_DIR=${{ matrix.board }}_${{ matrix.built_type }}
+          echo "BUILD_DIR=${BUILD_DIR}" | sed 's/\//_/g' >> $GITHUB_ENV
+
+      - name: Build firmware
+        working-directory: BeeLight/firmware/app
+        run: |
+          west build --build-dir ${{ env.BUILD_DIR }} --pristine --board ${{ matrix.board }} -- -DNCS_TOOLCHAIN_VERSION=NONE -DCONF_FILE=config/${{ matrix.built_type }}.conf -DBOARD_ROOT=.
+          mv ${{ env.BUILD_DIR }}/merged.hex fw_images/${{ matrix.built_type }}.hex
+
+      - name : Upload Firmware
+        uses: actions/upload-artifact@v4.3.3
+        with:
+          name: ${{ env.BUILD_DIR }}
+          path: |
+            BeeLight/firmware/app/fw_images
+          if-no-files-found: ignore

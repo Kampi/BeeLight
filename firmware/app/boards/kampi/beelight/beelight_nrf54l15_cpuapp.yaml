@@ -1,0 +1,23 @@
+identifier: beelight/nrf54l15/cpuapp
+name: BeeLight-nRF54l15-application-MCU
+type: mcu
+arch: arm
+toolchain:
+  - gnuarmemb
+  - xtools
+  - zephyr
+ram: 188
+flash: 324
+supported:
+  - adc
+  - counter
+  - dmic
+  - gpio
+  - i2c
+  - pwm
+  - retained_mem
+  - spi
+  - watchdog
+  - i2s
+vendor: kampi
+sysbuild: true

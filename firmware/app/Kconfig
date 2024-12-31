@@ -1,0 +1,10 @@
+menu "Zephyr Kernel"
+    source "Kconfig.zephyr"
+endmenu
+
+menu "BeeLight"
+    menu "Logging"
+        rsource "src/events/Kconfig"
+        rsource "src/sensors/Kconfig"
+    endmenu
+endmenu
