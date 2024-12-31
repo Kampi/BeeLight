@@ -1,0 +1,24 @@
+homeassistant:
+  enabled: true
+frontend:
+  enabled: true
+  port: ...
+mqtt:
+  base_topic: zigbee2mqtt
+  server: ...
+  keepalive: 60
+  reject_unauthorized: true
+  version: 4
+serial:
+  port: /dev/ttyUSB0
+advanced:
+  homeassistant_legacy_entity_attributes: false
+  homeassistant_legacy_triggers: false
+  legacy_api: false
+  legacy_availability_payload: false
+  log_level: debug
+  channel: 11.16
+devices:
+version: 4
+device_options:
+  legacy: false

@@ -1,0 +1,14 @@
+CONFIG_SENSOR=y
+
+CONFIG_ADC=y
+
+# Use bitbanging I2C because the hardware I2C pins doesn´t work in this version
+CONFIG_I2C_GPIO=y
+
+# Light sensor configuration
+CONFIG_APDS9306=y
+
+# BME688 configuration
+CONFIG_BME680=n
+CONFIG_BME68X_IAQ=y
+CONFIG_BME68X_IAQ_SAMPLE_RATE_QUICK_ULTRA_LOW_POWER=y

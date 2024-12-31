@@ -1,0 +1,44 @@
+From 2174ea0ac0c7ca2aef57fbdf6f2a903dcf9ed441 Mon Sep 17 00:00:00 2001
+From: Jilay Pandya <jilay.pandya@outlook.com>
+Date: Fri, 6 Dec 2024 19:02:11 +0100
+Subject: [PATCH] drivers: sensor: apds9306 fix unchecked return value coverity
+ issue
+
+check the return valeus of i2c_reg_write_byte_dt function and return
+appropriate error code
+
+Signed-off-by: Jilay Pandya <jilay.pandya@outlook.com>
+---
+ drivers/sensor/apds9306/apds9306.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/sensor/apds9306/apds9306.c b/drivers/sensor/apds9306/apds9306.c
+index fab461d983a..87723b21624 100644
+--- a/drivers/sensor/apds9306/apds9306.c
++++ b/drivers/sensor/apds9306/apds9306.c
+@@ -271,7 +271,10 @@ static int apds9306_sensor_setup(const struct device *dev)
+ 	/* Wait for the device to become ready after a possible power cycle. */
+ 	now = k_uptime_get_32();
+ 	do {
+-		i2c_reg_read_byte_dt(&config->i2c, APDS9306_REGISTER_MAIN_STATUS, &temp);
++		if (i2c_reg_read_byte_dt(&config->i2c, APDS9306_REGISTER_MAIN_STATUS, &temp)) {
++			LOG_ERR("Failed reading sensor status!");
++			return -EFAULT;
++		}
+ 
+ 		/* We wait 100 ms maximum for the device to become ready. */
+ 		if ((k_uptime_get_32() - now) > 100) {
+@@ -308,7 +311,10 @@ static int apds9306_sensor_setup(const struct device *dev)
+ 
+ 	/* Perform a dummy read to avoid bus errors after the reset. See */
+ 	/* https://lore.kernel.org/lkml/ab1d9746-4d23-efcc-0ee1-d2b8c634becd@tweaklogic.com/ */
+-	i2c_reg_read_byte_dt(&config->i2c, APDS9306_REGISTER_PART_ID, &temp);
++	if (i2c_reg_read_byte_dt(&config->i2c, APDS9306_REGISTER_PART_ID, &temp)) {
++		LOG_ERR("Failed reading chip id!");
++		return -EFAULT;
++	}
+ 
+ 	return 0;
+ }
+-- 
+2.48.1.windows.1
