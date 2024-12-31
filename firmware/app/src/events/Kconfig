@@ -1,0 +1,3 @@
+module = BEELIGHT_EVENTS
+module-str = BEELIGHT_EVENTS
+source "subsys/logging/Kconfig.template.log_config"

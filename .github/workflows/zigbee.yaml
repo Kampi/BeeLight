@@ -1,0 +1,42 @@
+name: Zigbee-Config
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    container: debian:latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: BeeLight
+
+      - name: Dependencies
+        working-directory: BeeLight/firmware/app
+        run: |
+          apt-get update && apt-get install -y curl
+          curl https://files.nordicsemi.com/artifactory/swtools/external/nrfutil/executables/x86_64-unknown-linux-gnu/nrfutil -o nrfutil
+
+      - name: Setup
+        working-directory: BeeLight/firmware/app
+        run: |
+          mkdir -p zigbee
+          chmod +x nrfutil
+          ./nrfutil self-upgrade
+          ./nrfutil install nrf5sdk-tools
+
+      - name: Generate
+        working-directory: BeeLight/firmware/app
+        run: |
+          ./nrfutil nrf5sdk-tools zigbee production_config zigbee_config.yml zigbee/zigbee_config.hex --offset 0x17a000
+
+      - name : Upload config
+        uses: actions/upload-artifact@v4.3.3
+        with:
+          name: zigbee-config
+          path: |
+            BeeLight/firmware/app/zigbee
+          if-no-files-found: ignore
