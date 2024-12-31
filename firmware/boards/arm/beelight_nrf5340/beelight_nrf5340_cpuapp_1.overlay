@@ -1,0 +1,47 @@
+/*
+ * Copyright (c) 2025 Daniel Kampert
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/ {
+    leds {
+        status = "okay";
+
+        identify: led_identify {
+            gpios = <&gpio0 30 GPIO_ACTIVE_LOW>;
+            label = "Identify LED";
+        };
+    };
+
+    buttons {
+        status = "okay";
+        compatible = "gpio-keys";
+
+        join: button_join {
+            gpios = <&gpio0 10 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+            label = "Join button";
+            zephyr,code = <INPUT_KEY_3>;
+        };
+    };
+
+    vbatt {
+        status = "okay";
+        compatible = "voltage-divider";
+        io-channels = <&adc 0>;
+        output-ohms = <2200>;
+        full-ohms = <(8200 + 2200)>;
+        power-gpios = <&gpio1 6 0>;
+    };
+};
+
+&i2c1 {
+    apds9306: apds9306@52 {
+        status = "okay";
+        compatible = "avago,apds9306";
+        reg = <0x52>;
+        gain = <0>;
+        resolution = <0>;
+        frequency = <0>;
+    };
+};

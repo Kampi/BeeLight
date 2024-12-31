@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "zboss_api_addons.h": "c",
+        "soc.h": "c",
+        "settings.h": "c",
+        "log.h": "c",
+        "zb_mem_config_med.h": "c",
+        "zboss_api.h": "c",
+        "random": "c",
+        "array": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "zb_light_sensor.h": "c",
+        "events.h": "c"
+    }
+}

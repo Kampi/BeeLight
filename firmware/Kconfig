@@ -1,0 +1,9 @@
+menu "Zephyr Kernel"
+    source "Kconfig.zephyr"
+endmenu
+
+menu "Light Sensor"
+    menu "Custom drivers"
+        rsource "drivers/Kconfig"
+    endmenu
+endmenu

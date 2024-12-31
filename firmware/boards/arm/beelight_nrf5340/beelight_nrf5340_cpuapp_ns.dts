@@ -1,0 +1,18 @@
+/*
+ * Copyright (c) 2023 Jakob Krantz
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include <nordic/nrf5340_cpuapp_qkaa.dtsi>
+
+#include "beelight_cpuapp_common.dtsi"
+
+/ {
+    chosen {
+        zephyr,sram = &sram0_ns_app;
+        zephyr,flash = &flash0;
+        zephyr,code-partition = &slot0_ns_partition;
+    };
+};
