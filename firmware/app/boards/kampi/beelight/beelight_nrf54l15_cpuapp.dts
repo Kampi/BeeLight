@@ -1,0 +1,17 @@
+/*
+ * Copyright (c) 2025 Daniel Kampert
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include <nordic/nrf54l15_cpuapp.dtsi>
+#include "nrf54l15_cpuapp_common.dtsi"
+
+/ {
+    model = "BeeLight nRF54L15 Application";
+    compatible = "nordic,beelight-nRF54L15-cpuapp";
+
+    chosen {
+    };
+};

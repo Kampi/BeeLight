@@ -1,0 +1,19 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "BeeLight remote debugging",
+			"type": "cortex-debug",
+			"request": "launch",
+			"runToEntryPoint": "main",
+			"executable": "${workspaceFolder}/build/app/zephyr/zephyr.elf",
+			"cwd": "${workspaceFolder}",
+			"servertype": "external",
+			"interface": "swd",
+			"gdbTarget": "172.25.80.1:2331",
+			"gdbPath": "arm-none-eabi-gdb",
+			"rtos": "GDBServer/RTOSPlugin_Zephyr",
+			"device": "nRF54L15_M33",
+		},
+	]
+}

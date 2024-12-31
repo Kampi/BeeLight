@@ -1,0 +1,14 @@
+# Enable channel 11 and 16
+channel_mask: 0x10800
+
+# You can add an installation code here
+# NOTE: This code must be added to the Zigbee network too!
+#install_code: 83FED3407A939723A5C639B26916D505
+
+# The Zigbee device address
+extended_address: 86D79AC5BAE41F11
+
+tx_power: 0
+
+# Use this to pass specific data to the application
+#app_data: 01ABCD

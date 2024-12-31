@@ -1,0 +1,153 @@
+/*
+ * Copyright (c) 2025 Daniel Kampert
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+#include "nrf54l15_cpuapp_common-pinctrl.dtsi"
+
+/ {
+    chosen {
+        zephyr,console = &uart20;
+        zephyr,shell-uart = &uart20;
+        zephyr,uart-mcumgr = &uart20;
+        zephyr,bt-mon-uart = &uart20;
+        zephyr,bt-c2h-uart = &uart20;
+        zephyr,flash-controller = &rram_controller;
+        zephyr,flash = &cpuapp_rram;
+        zephyr,ieee802154 = &ieee802154;
+        ncs,zigbee-timer = &timer20;
+    };
+};
+
+&cpuapp_sram {
+    status = "okay";
+    reg = <0x20000000 DT_SIZE_K(256)>;
+    ranges = <0x0 0x20000000  0x40000>;
+};
+
+&cpuapp_rram {
+    reg = <0x0 DT_SIZE_K(1524)>;
+};
+
+&lfxo {
+    load-capacitors = "internal";
+    load-capacitance-femtofarad = <15500>;
+};
+
+&hfxo {
+    load-capacitors = "internal";
+    load-capacitance-femtofarad = <15000>;
+};
+
+&regulators {
+    status = "okay";
+};
+
+&vregmain {
+    status = "okay";
+    regulator-initial-mode = <NRF5X_REG_MODE_DCDC>;
+};
+
+&grtc {
+    owned-channels = <0 1 2 3 4 5 6 7 8 9 10 11>;
+    /* Channels 7-11 reserved for Zero Latency IRQs, 3-4 for FLPR */
+    child-owned-channels = <3 4 7 8 9 10 11>;
+    status = "okay";
+};
+
+&gpio0 {
+    status = "okay";
+};
+
+&gpio1 {
+    status = "okay";
+};
+
+&gpio2 {
+    status = "okay";
+};
+
+&gpiote20 {
+    status = "okay";
+};
+
+&gpiote30 {
+    status = "okay";
+};
+
+&temp {
+    status = "okay";
+};
+
+&clock {
+    status = "okay";
+};
+
+&radio {
+    status = "okay";
+};
+
+&ieee802154 {
+    status = "okay";
+};
+
+&i2c20 {
+    status = "disabled";
+    clock-frequency = <I2C_BITRATE_FAST>;
+    pinctrl-0 = <&i2c_default>;
+    pinctrl-1 = <&i2c_sleep>;
+    pinctrl-names = "default", "sleep";
+};
+
+&adc {
+    status = "okay";
+    #address-cells = <1>;
+    #size-cells = <0>;
+
+    channel@0 {
+        reg = <0>;
+        zephyr,gain = "ADC_GAIN_1_4";
+        zephyr,reference = "ADC_REF_INTERNAL";
+        zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+        zephyr,input-positive = <NRF_SAADC_AIN0>;
+        zephyr,resolution = <10>;
+    };
+};
+
+&timer20 {
+    status = "okay";
+};
+
+&cpuapp_rram {
+    partitions {
+        compatible = "fixed-partitions";
+        #address-cells = <1>;
+        #size-cells = <1>;
+        boot_partition: partition@0 {
+            label = "mcuboot";
+            reg = <0x0 DT_SIZE_K(64)>;
+        };
+        slot0_partition: partition@10000 {
+            label = "image-0";
+            reg = <0x10000 DT_SIZE_K(324)>;
+        };
+        slot0_ns_partition: partition@61000 {
+            label = "image-0-nonsecure";
+            reg = <0x61000 DT_SIZE_K(324)>;
+        };
+        slot1_partition: partition@b2000 {
+            label = "image-1";
+            reg = <0xb2000 DT_SIZE_K(324)>;
+        };
+        slot1_ns_partition: partition@103000 {
+            label = "image-1-nonsecure";
+            reg = <0x103000 DT_SIZE_K(324)>;
+        };
+        /* 32k from 0x154000 to 0x15bfff reserved for TF-M partitions */
+        storage_partition: partition@15c000 {
+            label = "storage";
+            reg = <0x15c000 DT_SIZE_K(36)>;
+        };
+    };
+};

@@ -1,0 +1,41 @@
+manifest:
+  self:
+    west-commands: scripts/west-commands.yml
+
+  remotes:
+    - name: ncs
+      url-base: http://github.com/nrfconnect
+
+  projects:
+    - name: ncs-zigbee
+      remote: ncs
+      revision: main
+
+    - name: nrf
+      remote: ncs
+      repo-path: sdk-nrf
+      revision: v2.9.2
+      import:
+        name-blocklist:
+          - ci-tools
+          - hal_st
+          - hal_nxp
+          - hal_ambiq
+          - hal_ethos_u
+          - hal_rpi_pico
+          - hal_gigadevice
+          - hal_altera
+          - hal_cypress
+          - hal_infineon
+          - hal_microchip
+          - hal_cirrus-logic
+          - hal_nxp
+          - hal_openisa
+          - hal_silabs
+          - hal_xtensa
+          - hal_ti
+          - loramac-node
+          - net-tools
+          - edtt
+          - trusted-firmware-m
+          - sof
