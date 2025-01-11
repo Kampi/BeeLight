@@ -279,6 +279,7 @@ The device can now be connected to your Zigbee network and with this to your Hom
 - [Zigbee Cluster Library Specification](https://zigbeealliance.org/wp-content/uploads/2019/12/07-5123-06-zigbee-cluster-library-specification.pdf)
 - [Generating HEX files for Zigbee production configuration](https://docs.nordicsemi.com/bundle/nrfutil/page/nrfutil-nrf5sdk-tools/guides/generating_zigbee_hex.html)
 - [Zigbee Converters](https://github.com/Koenkk/zigbee-herdsman-converters)
+- [KiCad Template](https://github.com/nguyen-v/KDT_Hierarchical_KiBot)
 
 ## Maintainer
 
