@@ -1,0 +1,3 @@
+module = BEELIGHT_SENSORS
+module-str = BEELIGHT_SENSORS
+source "subsys/logging/Kconfig.template.log_config"

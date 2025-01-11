@@ -1,10 +1,8 @@
-#ifndef ZB_LIGHT_SENSOR_H_
-#define ZB_LIGHT_SENSOR_H_
+#pragma once
 
 #include <zb_ha_device_config.h>
 
-/**
- *  @defgroup ZB_DEFINE_DEVICE_HUMIDITY_SENSOR Humidity Sensor
+/** @defgroup ZB_DEFINE_DEVICE_HUMIDITY_SENSOR Humidity Sensor
  *  @brief See https://zigbeealliance.org/wp-content/uploads/2021/10/07-5123-08-Zigbee-Cluster-Library.pdf for additional informations
  *  @{
  *  @details
@@ -13,12 +11,12 @@
  *          - @ref ZB_ZCL_IDENTIFY \n
  *          - @ref ZB_ZCL_CLUSTER_ID_POWER_CONFIG \n
  *          - @ref ZB_ZCL_CLUSTER_ID_ILLUMINANCE_MEASUREMENT \n
- *      
+ *
  *          Client
  *          - @ref ZB_ZCL_IDENTIFY \n
  */
 
-/* @brief Device endpoint, used to receive light sensor results.
+/** @brief Device endpoint, used to receive light sensor results.
  */
 #define LIGHT_SENSOR_ENDPOINT                   10
 
@@ -199,5 +197,3 @@ typedef struct {
         0,                                                                      \
         NULL                                                                    \
     )
-
-#endif /* ZB_LIGHT_SENSOR_H_ */

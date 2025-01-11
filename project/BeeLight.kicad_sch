@@ -3578,7 +3578,7 @@
 		(uuid "01cf1657-19eb-47b8-b2ef-4cf6124f6ff1")
 	)
 	(junction
-		(at 261.62 106.68)
+		(at 236.22 106.68)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "01d131ad-c2b5-4d03-aaee-0b2f2126ca6c")
@@ -3626,13 +3626,13 @@
 		(uuid "6715a153-ace0-4534-bb3b-b4ccb2fdca34")
 	)
 	(junction
-		(at 269.24 72.39)
+		(at 243.84 72.39)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9b6d6a73-2ee0-49da-9710-cd8c631d720c")
 	)
 	(junction
-		(at 269.24 106.68)
+		(at 243.84 106.68)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9c7e76e6-1091-40e2-aef7-321cc01d3575")
@@ -3644,7 +3644,7 @@
 		(uuid "9df02b80-7797-4dcb-a727-8861d8fb7be8")
 	)
 	(junction
-		(at 254 82.55)
+		(at 228.6 82.55)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ae652fe5-f16f-4bf2-9b73-6ccdaee14771")
@@ -3871,7 +3871,7 @@
 	)
 	(wire
 		(pts
-			(xy 261.62 116.84) (xy 261.62 121.92)
+			(xy 236.22 116.84) (xy 236.22 121.92)
 		)
 		(stroke
 			(width 0)
@@ -3921,7 +3921,7 @@
 	)
 	(wire
 		(pts
-			(xy 269.24 71.12) (xy 269.24 72.39)
+			(xy 243.84 71.12) (xy 243.84 72.39)
 		)
 		(stroke
 			(width 0)
@@ -3971,7 +3971,7 @@
 	)
 	(wire
 		(pts
-			(xy 261.62 106.68) (xy 261.62 109.22)
+			(xy 236.22 106.68) (xy 236.22 109.22)
 		)
 		(stroke
 			(width 0)
@@ -4021,7 +4021,7 @@
 	)
 	(wire
 		(pts
-			(xy 269.24 72.39) (xy 269.24 77.47)
+			(xy 243.84 72.39) (xy 243.84 77.47)
 		)
 		(stroke
 			(width 0)
@@ -4031,7 +4031,7 @@
 	)
 	(polyline
 		(pts
-			(xy 231.14 128.27) (xy 284.48 128.27)
+			(xy 205.74 128.27) (xy 284.48 128.27)
 		)
 		(stroke
 			(width 0)
@@ -4061,7 +4061,7 @@
 	)
 	(wire
 		(pts
-			(xy 269.24 99.06) (xy 269.24 106.68)
+			(xy 243.84 99.06) (xy 243.84 106.68)
 		)
 		(stroke
 			(width 0)
@@ -4071,7 +4071,7 @@
 	)
 	(wire
 		(pts
-			(xy 254 82.55) (xy 261.62 82.55)
+			(xy 228.6 82.55) (xy 236.22 82.55)
 		)
 		(stroke
 			(width 0)
@@ -4091,7 +4091,7 @@
 	)
 	(wire
 		(pts
-			(xy 261.62 106.68) (xy 269.24 106.68)
+			(xy 236.22 106.68) (xy 243.84 106.68)
 		)
 		(stroke
 			(width 0)
@@ -4101,7 +4101,7 @@
 	)
 	(wire
 		(pts
-			(xy 269.24 106.68) (xy 269.24 109.22)
+			(xy 243.84 106.68) (xy 243.84 109.22)
 		)
 		(stroke
 			(width 0)
@@ -4131,7 +4131,7 @@
 	)
 	(wire
 		(pts
-			(xy 254 73.66) (xy 254 72.39)
+			(xy 228.6 73.66) (xy 228.6 72.39)
 		)
 		(stroke
 			(width 0)
@@ -4241,7 +4241,7 @@
 	)
 	(wire
 		(pts
-			(xy 269.24 91.44) (xy 269.24 87.63)
+			(xy 243.84 91.44) (xy 243.84 87.63)
 		)
 		(stroke
 			(width 0)
@@ -4411,7 +4411,7 @@
 	)
 	(polyline
 		(pts
-			(xy 231.14 63.5) (xy 284.48 63.5)
+			(xy 205.74 63.5) (xy 284.48 63.5)
 		)
 		(stroke
 			(width 0)
@@ -4551,7 +4551,7 @@
 	)
 	(wire
 		(pts
-			(xy 241.3 106.68) (xy 261.62 106.68)
+			(xy 215.9 106.68) (xy 236.22 106.68)
 		)
 		(stroke
 			(width 0)
@@ -4571,7 +4571,7 @@
 	)
 	(polyline
 		(pts
-			(xy 231.14 128.27) (xy 231.14 63.5)
+			(xy 205.74 128.27) (xy 205.74 63.5)
 		)
 		(stroke
 			(width 0)
@@ -4591,7 +4591,7 @@
 	)
 	(wire
 		(pts
-			(xy 254 81.28) (xy 254 82.55)
+			(xy 228.6 81.28) (xy 228.6 82.55)
 		)
 		(stroke
 			(width 0)
@@ -4611,7 +4611,7 @@
 	)
 	(polyline
 		(pts
-			(xy 231.14 63.5) (xy 231.14 63.5)
+			(xy 205.74 63.5) (xy 231.14 63.5)
 		)
 		(stroke
 			(width 0)
@@ -4711,7 +4711,7 @@
 	)
 	(wire
 		(pts
-			(xy 241.3 82.55) (xy 254 82.55)
+			(xy 215.9 82.55) (xy 228.6 82.55)
 		)
 		(stroke
 			(width 0)
@@ -4841,7 +4841,7 @@
 	)
 	(wire
 		(pts
-			(xy 254 72.39) (xy 269.24 72.39)
+			(xy 228.6 72.39) (xy 243.84 72.39)
 		)
 		(stroke
 			(width 0)
@@ -4921,7 +4921,7 @@
 	)
 	(wire
 		(pts
-			(xy 269.24 121.92) (xy 269.24 116.84)
+			(xy 243.84 121.92) (xy 243.84 116.84)
 		)
 		(stroke
 			(width 0)
@@ -5001,6 +5001,17 @@
 		)
 		(uuid "2d06a90b-929d-4686-a2a8-78b7e4348dff")
 	)
+	(text "NOTE: The nRF53 has an\ninternal reference of ±0.6 V."
+		(exclude_from_sim no)
+		(at 255.016 125.222 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "3d4a7ac8-ae70-48a7-bbd9-5b9f1f87465d")
+	)
 	(text "Light sensor"
 		(exclude_from_sim no)
 		(at 254 60.96 0)
@@ -5014,7 +5025,7 @@
 	)
 	(text "Battery measurement"
 		(exclude_from_sim no)
-		(at 232.918 127 0)
+		(at 207.518 127 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5278,7 +5289,7 @@
 	)
 	(global_label "V_{BAT}"
 		(shape output)
-		(at 241.3 106.68 180)
+		(at 215.9 106.68 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5288,7 +5299,7 @@
 		)
 		(uuid "a0bb7883-358f-4548-acf6-55256d6dc80b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 234.5144 106.68 0)
+			(at 209.1144 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5366,7 +5377,7 @@
 	)
 	(global_label "BAT_E"
 		(shape input)
-		(at 241.3 82.55 180)
+		(at 215.9 82.55 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5376,7 +5387,7 @@
 		)
 		(uuid "d12ed1af-fb00-48fe-bc42-d2a781e53fd8")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 232.872 82.55 0)
+			(at 207.472 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6470,7 +6481,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 254 77.47 0)
+		(at 228.6 77.47 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6479,7 +6490,7 @@
 		(fields_autoplaced yes)
 		(uuid "26e26747-0926-4a88-be3e-3cccf912fe95")
 		(property "Reference" "R107"
-			(at 256.54 76.2 0)
+			(at 231.14 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6488,7 +6499,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 256.54 78.74 0)
+			(at 231.14 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6497,7 +6508,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
-			(at 252.222 77.47 90)
+			(at 226.822 77.47 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6506,7 +6517,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf"
-			(at 254 77.47 0)
+			(at 228.6 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6515,7 +6526,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 254 77.47 0)
+			(at 228.6 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6524,7 +6535,7 @@
 			)
 		)
 		(property "manf" "YAGEO"
-			(at 254 77.47 0)
+			(at 228.6 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6533,7 +6544,7 @@
 			)
 		)
 		(property "manf#" "RC0402FR-07100KL"
-			(at 254 77.47 0)
+			(at 228.6 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6542,7 +6553,7 @@
 			)
 		)
 		(property "mouser#" "603-RC0402FR-07100KL"
-			(at 254 77.47 0)
+			(at 228.6 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6698,7 +6709,7 @@
 	)
 	(symbol
 		(lib_id "Transistor_FET:BSS84")
-		(at 266.7 82.55 0)
+		(at 241.3 82.55 0)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6708,7 +6719,7 @@
 		(fields_autoplaced yes)
 		(uuid "42d0b01b-8176-4263-be8f-c28b2c774a8c")
 		(property "Reference" "Q101"
-			(at 273.05 81.28 0)
+			(at 247.65 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6717,7 +6728,7 @@
 			)
 		)
 		(property "Value" "BSS84"
-			(at 273.05 83.82 0)
+			(at 247.65 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6725,8 +6736,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 271.78 80.645 0)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-3"
+			(at 246.38 80.645 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6737,7 +6748,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.de/datasheet/2/308/1/BSS84_D-2310226.pdf"
-			(at 266.7 82.55 0)
+			(at 241.3 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6747,7 +6758,7 @@
 			)
 		)
 		(property "Description" "-0.13A Id, -50V Vds, P-Channel MOSFET, SOT-23"
-			(at 266.7 82.55 0)
+			(at 241.3 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6756,7 +6767,7 @@
 			)
 		)
 		(property "manf" "onsemi / Fairchild"
-			(at 266.7 82.55 0)
+			(at 241.3 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6765,7 +6776,7 @@
 			)
 		)
 		(property "manf#" "BSS84"
-			(at 266.7 82.55 0)
+			(at 241.3 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6774,7 +6785,7 @@
 			)
 		)
 		(property "mouser#" "512-BSS84"
-			(at 266.7 82.55 0)
+			(at 241.3 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6783,7 +6794,7 @@
 			)
 		)
 		(property "CONFIG" ""
-			(at 266.7 82.55 0)
+			(at 241.3 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6811,7 +6822,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 261.62 113.03 0)
+		(at 236.22 113.03 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6821,7 +6832,7 @@
 		(fields_autoplaced yes)
 		(uuid "441bcb3c-4743-45ff-a9f1-40f02893a2b3")
 		(property "Reference" "C103"
-			(at 257.81 111.76 0)
+			(at 232.41 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6830,7 +6841,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 257.81 114.3 0)
+			(at 232.41 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6839,7 +6850,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
-			(at 260.6548 116.84 0)
+			(at 235.2548 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6848,7 +6859,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf"
-			(at 261.62 113.03 0)
+			(at 236.22 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6857,7 +6868,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 261.62 113.03 0)
+			(at 236.22 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6866,7 +6877,7 @@
 			)
 		)
 		(property "manf" "KYOCERA AVX"
-			(at 261.62 113.03 0)
+			(at 236.22 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6875,7 +6886,7 @@
 			)
 		)
 		(property "manf#" "04025C104KAT4A"
-			(at 261.62 113.03 0)
+			(at 236.22 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6884,7 +6895,7 @@
 			)
 		)
 		(property "mouser#" "581-04025C104KAT4A"
-			(at 261.62 113.03 0)
+			(at 236.22 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6974,7 +6985,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 269.24 95.25 0)
+		(at 243.84 95.25 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6983,7 +6994,7 @@
 		(fields_autoplaced yes)
 		(uuid "4adf7266-b730-41f7-87eb-6d4889836a1a")
 		(property "Reference" "R108"
-			(at 271.78 93.98 0)
+			(at 246.38 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6992,7 +7003,7 @@
 			)
 		)
 		(property "Value" "8k2 / 0.1%"
-			(at 271.78 96.52 0)
+			(at 246.38 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7001,7 +7012,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
-			(at 267.462 95.25 90)
+			(at 242.062 95.25 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7010,7 +7021,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.de/datasheet/2/447/PYu_RT_1_to_0_01_RoHS_L_15-3461507.pdf"
-			(at 269.24 95.25 0)
+			(at 243.84 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7019,7 +7030,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 269.24 95.25 0)
+			(at 243.84 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7028,7 +7039,7 @@
 			)
 		)
 		(property "manf" "Yageo"
-			(at 269.24 95.25 0)
+			(at 243.84 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7037,7 +7048,7 @@
 			)
 		)
 		(property "manf#" "RT0402BRD078K2L"
-			(at 269.24 95.25 0)
+			(at 243.84 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7046,7 +7057,7 @@
 			)
 		)
 		(property "mouser#" "603-RT0402BRD078K2L"
-			(at 269.24 95.25 0)
+			(at 243.84 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7055,7 +7066,7 @@
 			)
 		)
 		(property "CONFIG" ""
-			(at 269.24 95.25 0)
+			(at 243.84 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7277,7 +7288,7 @@
 	)
 	(symbol
 		(lib_id "power:+BATT")
-		(at 269.24 71.12 0)
+		(at 243.84 71.12 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7286,7 +7297,7 @@
 		(fields_autoplaced yes)
 		(uuid "5d01e050-f829-4694-aedf-b7a448ec5631")
 		(property "Reference" "#PWR0115"
-			(at 269.24 74.93 0)
+			(at 243.84 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7295,7 +7306,7 @@
 			)
 		)
 		(property "Value" "+BATT"
-			(at 269.24 66.04 0)
+			(at 243.84 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7303,7 +7314,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 269.24 71.12 0)
+			(at 243.84 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7312,7 +7323,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 269.24 71.12 0)
+			(at 243.84 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7321,7 +7332,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+BATT\""
-			(at 269.24 71.12 0)
+			(at 243.84 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7850,7 +7861,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 269.24 121.92 0)
+		(at 243.84 121.92 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7858,7 +7869,7 @@
 		(dnp no)
 		(uuid "9aca4a57-7ecc-4173-96c7-ef9901cc4171")
 		(property "Reference" "#PWR0116"
-			(at 269.24 128.27 0)
+			(at 243.84 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7867,7 +7878,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 269.367 126.3142 0)
+			(at 243.967 126.3142 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7875,7 +7886,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 269.24 121.92 0)
+			(at 243.84 121.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7884,7 +7895,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 269.24 121.92 0)
+			(at 243.84 121.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7893,7 +7904,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 269.24 121.92 0)
+			(at 243.84 121.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7980,7 +7991,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 269.24 113.03 0)
+		(at 243.84 113.03 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7989,7 +8000,7 @@
 		(fields_autoplaced yes)
 		(uuid "a560d111-6c6a-45fc-9cc5-4451c7568eda")
 		(property "Reference" "R109"
-			(at 271.78 111.76 0)
+			(at 246.38 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7998,7 +8009,7 @@
 			)
 		)
 		(property "Value" "2k2 / 0.1%"
-			(at 271.78 114.3 0)
+			(at 246.38 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8007,7 +8018,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
-			(at 267.462 113.03 90)
+			(at 242.062 113.03 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8016,7 +8027,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.de/datasheet/2/447/PYu_RT_1_to_0_01_RoHS_L_15-3461507.pdf"
-			(at 269.24 113.03 0)
+			(at 243.84 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8025,7 +8036,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 269.24 113.03 0)
+			(at 243.84 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8034,7 +8045,7 @@
 			)
 		)
 		(property "manf" "YAGEO"
-			(at 269.24 113.03 0)
+			(at 243.84 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8043,7 +8054,7 @@
 			)
 		)
 		(property "manf#" "RT0402BRD072K2L"
-			(at 269.24 113.03 0)
+			(at 243.84 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8052,7 +8063,7 @@
 			)
 		)
 		(property "mouser#" "603-RT0402BRD072K2L"
-			(at 269.24 113.03 0)
+			(at 243.84 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8579,7 +8590,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 261.62 121.92 0)
+		(at 236.22 121.92 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8587,7 +8598,7 @@
 		(dnp no)
 		(uuid "b8c01d46-375c-44b2-92e2-09faa56f8047")
 		(property "Reference" "#PWR0112"
-			(at 261.62 128.27 0)
+			(at 236.22 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8596,7 +8607,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 261.747 126.3142 0)
+			(at 236.347 126.3142 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8604,7 +8615,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 261.62 121.92 0)
+			(at 236.22 121.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8613,7 +8624,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 261.62 121.92 0)
+			(at 236.22 121.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8622,7 +8633,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 261.62 121.92 0)
+			(at 236.22 121.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)

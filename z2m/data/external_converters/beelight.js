@@ -13,7 +13,7 @@ const definition = {
     zigbeeModel: ["BeeLight_v1.0"],
     model: "BeeLight_v1.0",
     vendor: "Kampi",
-    description: "Light Sensor (https://github.com/Kampi/BeeLight)",
+    description: "ZigBee based Light Sensor (https://github.com/Kampi/BeeLight)",
     fromZigbee: [fz.identify, fz.battery, fz.illuminance],
     toZigbee: [],
     configure: async (device, coordinatorEndpoint, logger) => {

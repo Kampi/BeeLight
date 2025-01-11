@@ -29,5 +29,13 @@ struct periodic_event {
 /** @brief
  */
 struct light_event {
-    uint16_t light;
+    uint16_t min;               /**< */
+    uint16_t max;               /**< */
+    uint16_t value;             /**< */
+};
+
+/** @brief
+ */
+struct battery_event {
+
 };

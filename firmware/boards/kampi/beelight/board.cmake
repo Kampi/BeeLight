@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: Apache-2.0
-
 if(CONFIG_BOARD_BEELIGHT_NRF5340_CPUAPP_NS)
     set(TFM_PUBLIC_KEY_FORMAT "full")
 endif()

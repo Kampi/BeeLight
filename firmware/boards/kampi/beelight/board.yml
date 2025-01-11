@@ -1,0 +1,13 @@
+board:
+  name: beelight
+  vendor: kampi
+  revision:
+    format: number
+    default: "1"
+    revisions:
+    - name: "1"
+  socs:
+  - name: "nrf5340"
+    variants:
+    - name: "ns"
+      cpucluster: "cpuapp"

@@ -8,14 +8,18 @@
 #include <nordic/nrf5340_cpunet_qkaa.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 
-#include "beelight_common.dtsi"
-#include "beelight_common-pinctrl.dtsi"
+#include "beelight_nrf5340_cpunet-pinctrl.dtsi"
 
 / {
-    model = "Nordic NRF5340 BeeLight Network";
+    model = "BeeLight NRF5340 Network";
     compatible = "nordic,beelight-nrf5340-cpunet";
 
     chosen {
+        zephyr,console = &uart0;
+        zephyr,shell-uart = &uart0;
+        zephyr,uart-mcumgr = &uart0;
+        zephyr,bt-mon-uart = &uart0;
+        zephyr,bt-c2h-uart = &uart0;
         zephyr,bt-hci-ipc = &ipc0;
         nordic,802154-spinel-ipc = &ipc0;
         zephyr,sram = &sram1;
@@ -39,10 +43,6 @@
 
 &gpio1 {
     status = "okay";
-};
-
-&uart0 {
-    status = "disabled";
 };
 
 &flash1 {

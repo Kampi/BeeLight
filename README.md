@@ -13,7 +13,9 @@
 
 ZigBee based light sensor with [ZigBee2MQTT](https://www.zigbee2mqtt.io/]´) support for Home Assistant etc.
 
-## Install custom device to ZigBee2MQTT
+![PCB Top side](/docs/images/Image_Complete.png)
+
+## Install the device to ZigBee2MQTT
 
 Enable the external converter by adding the following to your Zigbee2MQTT `configuration.yaml`:
 

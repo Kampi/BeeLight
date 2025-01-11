@@ -158,11 +158,11 @@ static void apds9306_worker(struct k_work *p_work)
     LOG_DBG("Last measurement: %u", data->light);
 }
 
-/** @brief              
+/** @brief
  *  @param p_dev        Pointer to sensor device
- *  @param channel      
- *  @param attribute    
- *  @param p_value      
+ *  @param channel
+ *  @param attribute
+ *  @param p_value
  *  @return             0 when successful
 */
 static int apds9306_attr_set(const struct device *p_dev, enum sensor_channel channel, enum sensor_attribute attribute,
@@ -203,11 +203,11 @@ static int apds9306_attr_set(const struct device *p_dev, enum sensor_channel cha
     return 0;
 }
 
-/** @brief              
+/** @brief
  *  @param p_dev        Pointer to sensor device
- *  @param channel      
- *  @param attribute    
- *  @param p_value      
+ *  @param channel
+ *  @param attribute
+ *  @param p_value
  *  @return             0 when successful
 */
 static int apds9306_attr_get(const struct device *p_dev, enum sensor_channel channel, enum sensor_attribute attribute,
@@ -248,9 +248,9 @@ static int apds9306_attr_get(const struct device *p_dev, enum sensor_channel cha
     return 0;
 }
 
-/** @brief          
+/** @brief
  *  @param p_dev    Pointer to sensor device
- *  @param channel  
+ *  @param channel
  *  @return         0 when successful
 */
 static int apds9306_sample_fetch(const struct device *p_dev, enum sensor_channel channel)
@@ -303,10 +303,10 @@ static int apds9306_sample_fetch(const struct device *p_dev, enum sensor_channel
     return 0;
 }
 
-/** @brief          
+/** @brief
  *  @param p_dev    Pointer to sensor device
- *  @param channel  
- *  @param p_value  
+ *  @param channel
+ *  @param p_value
  *  @return         0 when successful
 */
 static int apds9306_channel_get(const struct device *p_dev, enum sensor_channel channel, struct sensor_value *p_value)
@@ -327,7 +327,7 @@ static int apds9306_channel_get(const struct device *p_dev, enum sensor_channel 
     return 0;
 }
 
-/** @brief          
+/** @brief
  *  @param p_dev    Pointer to sensor device
  *  @return         0 when successful
 */
@@ -362,11 +362,12 @@ static int apds9306_sensor_setup(const struct device *p_dev)
     }
 
     // Reset the sensor.
+    /*
     if (i2c_reg_write_byte_dt(&config->i2c, APDS9306_REGISTER_MAIN_CTRL, APDS9306_BIT_SW_RESET)) {
         LOG_ERR("Can not reset the sensor!");
         return -EFAULT;
     }
-    k_msleep(10);
+    k_msleep(10);*/
 
     return 0;
 }
@@ -378,7 +379,7 @@ static const struct sensor_driver_api apds9306_driver_api = {
     .channel_get = apds9306_channel_get,
 };
 
-/** @brief          
+/** @brief
  *  @param p_dev    Pointer to sensor device
  *  @return         0 when successful
 */
@@ -417,7 +418,7 @@ static int apds9306_init(const struct device *p_dev)
 }
 
 #ifdef CONFIG_PM_DEVICE
-/** @brief          
+/** @brief
  *  @param p_dev    Pointer to sensor device
  *  @param action   action
  *  @return         0 when successful

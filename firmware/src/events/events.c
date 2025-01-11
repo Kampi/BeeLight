@@ -17,7 +17,6 @@
 
 #include <zephyr/init.h>
 #include <zephyr/kernel.h>
-#include <zephyr/zbus/zbus.h>
 #include <zephyr/logging/log.h>
 
 #include "events/events.h"
@@ -40,7 +39,15 @@ ZBUS_CHAN_DEFINE(light_data_chan,
                  ZBUS_MSG_INIT()
                 );
 
-LOG_MODULE_REGISTER(events, LOG_LEVEL_DBG);
+ZBUS_CHAN_DEFINE(battery_data_chan,
+                 struct battery_event,
+                 NULL,
+                 NULL,
+                 ZBUS_OBSERVERS_EMPTY,
+                 ZBUS_MSG_INIT()
+                );
+
+LOG_MODULE_REGISTER(events, CONFIG_BEELIGHT_EVENTS_LOG_LEVEL);
 
 static void handle_10s_timeout(struct k_work *item)
 {

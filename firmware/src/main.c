@@ -19,7 +19,6 @@
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
 #include <zephyr/logging/log.h>
-#include <zephyr/drivers/sensor.h>
 #include <zephyr/settings/settings.h>
 
 #include <soc.h>
@@ -32,10 +31,11 @@
 #include <zigbee/zigbee_app_utils.h>
 #include <zigbee/zigbee_error_handler.h>
 
-#include "zb_light_sensor.h"
+#include "events.h"
+#include "beelight.h"
 
 /* LED indicating that light switch successfully joind Zigbee network. */
-#define ZIGBEE_NETWORK_STATE_LED        DK_LED3
+#define ZIGBEE_NETWORK_STATE_LED        DK_LED1
 
 /* Version of the application software (1 byte). */
 #define INIT_BASIC_APP_VERSION          01
@@ -44,7 +44,7 @@
 #define INIT_BASIC_STACK_VERSION        10
 
 /* Version of the hardware of the device (1 byte). */
-#define INIT_BASIC_HW_VERSION           10
+#define INIT_BASIC_HW_VERSION           01
 
 /* Manufacturer name (32 bytes). */
 #define INIT_BASIC_MANUF_NAME           "Kampi"
@@ -62,11 +62,11 @@
  */
 #define INIT_BASIC_LOCATION_DESC        "Office desk"
 
-/* Button used to enter the Bulb into the Identify mode. */
-#define IDENTIFY_MODE_BUTTON            DK_BTN4_MSK
+/* Button used to enter the Identify mode. */
+#define IDENTIFY_MODE_BUTTON            DK_BTN1_MSK
 
 /* Button to start Factory Reset. */
-#define FACTORY_RESET_BUTTON IDENTIFY_MODE_BUTTON
+#define FACTORY_RESET_BUTTON            IDENTIFY_MODE_BUTTON
 
 /* Define 'bat_num' as empty in order to declare default battery set attributes. */
 /* According to Table 3-17 of ZCL specification, defining 'bat_num' as 2 or 3 allows */
@@ -78,7 +78,14 @@ LOG_MODULE_REGISTER(app, LOG_LEVEL_DBG);
 /** @brief Zigbee device application context storage.
  */
 static device_ctx_t dev_ctx;
-const struct device *const bh1750 = DEVICE_DT_GET_OR_NULL(DT_NODELABEL(bh1750));
+
+/** @brief
+ */
+static void zbus_on_light_callback(const struct zbus_channel *chan);
+
+/** @brief
+ */
+static void zbus_on_battery_callback(const struct zbus_channel *chan);
 
 /** @brief Declare attribute list for Identify cluster (client).
  */
@@ -151,6 +158,12 @@ ZBOSS_DECLARE_DEVICE_CTX_1_EP(
     light_sensor_ctx,
     light_sensor_ep);
 
+ZBUS_CHAN_DECLARE(light_data_chan);
+ZBUS_LISTENER_DEFINE(light_data_lis, zbus_on_light_callback);
+
+ZBUS_CHAN_DECLARE(battery_data_chan);
+ZBUS_LISTENER_DEFINE(battery_data_lis, zbus_on_battery_callback);
+
 /** @brief          Starts identifying the device.
  *  @param bufid    Unused parameter, required by ZBOSS scheduler API
  */
@@ -198,6 +211,7 @@ static void button_changed(uint32_t button_state, uint32_t has_changed)
             }
             /* Button released before Factory Reset */
             else {
+                LOG_DBG("Start identifying");
 
                 /* Start identification mode */
                 ZB_SCHEDULE_APP_CALLBACK(start_identifying, 0);
@@ -206,23 +220,6 @@ static void button_changed(uint32_t button_state, uint32_t has_changed)
     }
 
     check_factory_reset_button(button_state, has_changed);
-}
-
-/** @brief Function for initializing LEDs and Buttons.
- */
-static void configure_gpio(void)
-{
-	int err;
-
-	err = dk_buttons_init(button_changed);
-	if (err) {
-		LOG_ERR("Cannot init buttons (err: %d)", err);
-	}
-
-	err = dk_leds_init();
-	if (err) {
-		LOG_ERR("Cannot init LEDs (err: %d)", err);
-	}
 }
 
 /** @brief          Function to toggle the identify LED.
@@ -241,8 +238,6 @@ static void toggle_identify_led(zb_bufid_t bufid)
  */
 static void identify_cb(zb_bufid_t bufid)
 {
-    LOG_INF("A");
-
     if (bufid) {
         /* Schedule a self-scheduling function that will toggle the LED. */
         ZB_SCHEDULE_APP_CALLBACK(toggle_identify_led, bufid);
@@ -309,8 +304,8 @@ static void clusters_attr_init(void)
 
     /* Initialize the values for the Battery cluster attributes */
     dev_ctx.power_attr.size = ZB_ZCL_POWER_CONFIG_BATTERY_SIZE_CR2;
-    dev_ctx.power_attr.voltage = 25;
-    dev_ctx.power_attr.percent_remaining = 50;
+    dev_ctx.power_attr.voltage = 30;
+    dev_ctx.power_attr.percent_remaining = 200;
     dev_ctx.power_attr.quantity = 1;
     dev_ctx.power_attr.rated_voltage = 30;
 
@@ -398,9 +393,48 @@ void zboss_signal_handler(zb_bufid_t bufid)
     }
 }
 
+void zbus_on_light_callback(const struct zbus_channel *chan)
+{
+    const struct light_event *evt = zbus_chan_const_msg(chan);
+
+    LOG_DBG("Value from light sensor: %u", evt->value);
+
+    dev_ctx.illuminance_attr.measurement_attr = evt->value;
+    ZB_ZCL_SET_ATTRIBUTE(
+        LIGHT_SENSOR_ENDPOINT,
+        ZB_ZCL_CLUSTER_ID_ILLUMINANCE_MEASUREMENT,
+        ZB_ZCL_CLUSTER_SERVER_ROLE,
+        ZB_ZCL_ATTR_ILLUMINANCE_MEASUREMENT_MEASURED_VALUE_ID,
+        (zb_uint8_t *)&dev_ctx.illuminance_attr.measurement_attr,
+        ZB_FALSE
+    );
+}
+
+static void zbus_on_battery_callback(const struct zbus_channel *chan)
+{
+    const struct battery_event *evt = zbus_chan_const_msg(chan);
+
+    LOG_DBG("Value from battery sensor: %u", evt->value);
+
+    /* Initialize the values for the Battery cluster attributes */
+    dev_ctx.power_attr.voltage = 30;
+    dev_ctx.power_attr.percent_remaining = 200;
+    dev_ctx.power_attr.rated_voltage = 30;
+
+    ZB_ZCL_SET_ATTRIBUTE(
+        LIGHT_SENSOR_ENDPOINT,
+        ZB_ZCL_CLUSTER_ID_POWER_CONFIG,
+        ZB_ZCL_CLUSTER_SERVER_ROLE,
+        ZB_ZCL_ATTR_POWER_CONFIG_BATTERY_PERCENTAGE_REMAINING_ID,
+        (zb_uint8_t *)&dev_ctx.power_attr.percent_remaining,
+        ZB_FALSE
+    );
+}
+
 int main(void)
 {
-    configure_gpio();
+    dk_buttons_init(button_changed);
+    dk_leds_init();
 
     register_factory_reset_button(FACTORY_RESET_BUTTON);
 
@@ -418,9 +452,10 @@ int main(void)
     /* Start Zigbee default thread. */
     zigbee_enable();
 
-    beelight_sensor_init();
+    zbus_chan_add_obs(&light_data_chan, &light_data_lis, K_MSEC(100));
+    zbus_chan_add_obs(&battery_data_chan, &battery_data_lis, K_MSEC(100));
 
-    LOG_INF("Light sensor application started");
+    LOG_INF("BeeLight application started");
 
     return 0;
 }

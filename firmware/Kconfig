@@ -2,7 +2,20 @@ menu "Zephyr Kernel"
     source "Kconfig.zephyr"
 endmenu
 
-menu "Light Sensor"
+menu "BeeLight"
+    menu "Configuration"
+        config CONFIG_BATTERY_SAMPLE_TIME_MIN
+            int
+        range 1 3600
+        prompt "Battery sample time in minutes"
+        default 5
+    endmenu
+
+    menu "Logging"
+        rsource "src/events/Kconfig"
+        rsource "src/sensors/Kconfig"
+    endmenu
+
     menu "Custom drivers"
         rsource "drivers/Kconfig"
     endmenu
