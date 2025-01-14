@@ -1,29 +1,27 @@
-# BeeLight
+# BeeLight - ZigBee based light & environment sensor for Home Automation
 
 ## Table of Contents
 
-- [ZigBee light sensor](#zigbee-light-sensor)
+- [BeeLight - ZigBee based light \& environment sensor for Home Automation](#beelight---zigbee-based-light--environment-sensor-for-home-automation)
   - [Table of Contents](#table-of-contents)
   - [About](#about)
+  - [Install the device to ZigBee2MQTT](#install-the-device-to-zigbee2mqtt)
   - [Directory structure](#directory-structure)
   - [Purchasing](#purchasing)
+  - [Ressources](#ressources)
   - [Maintainer](#maintainer)
 
 ## About
 
-ZigBee based light sensor with [ZigBee2MQTT](https://www.zigbee2mqtt.io/]´) support for Home Assistant etc.
+Open-Source ZigBee-based light and environmental sensor with [ZigBee2MQTT](https://www.zigbee2mqtt.io/]) support for your Home Automation with I. e. Home Assistant.
 
 ![PCB Top side](/docs/images/Image_Complete.png)
 
+![Block diagram](/docs/images/Block%20diagram.png)
+
 ## Install the device to ZigBee2MQTT
 
-Enable the external converter by adding the following to your Zigbee2MQTT `configuration.yaml`:
-
-```yaml
-external_converters:
-  - lightSensor.js
-```
-More info: https://www.zigbee2mqtt.io/advanced/support-new-devices/01_support_new_devices.html
+Enable the external converter by copying the external converter to your `ZigBee2MQTT` `data` directory.
 
 ## Directory structure
 
@@ -34,6 +32,10 @@ More info: https://www.zigbee2mqtt.io/advanced/support-new-devices/01_support_ne
 - `project`: KiCad project for the PCB
 
 ## Purchasing
+
+## Ressources
+
+- [Adding new ZigBee2MQTT devices](https://www.zigbee2mqtt.io/advanced/support-new-devices/01_support_new_devices.html)
 
 ## Maintainer
 

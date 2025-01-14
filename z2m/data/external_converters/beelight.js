@@ -11,16 +11,16 @@ const ea = exposes.access;
 
 const definition = {
     zigbeeModel: ["BeeLight_v1.0"],
-    model: "BeeLight_v1.0",
+    model: "BeeLight_v2.0",
     vendor: "Kampi",
     description: "ZigBee based Light Sensor (https://github.com/Kampi/BeeLight)",
-    fromZigbee: [fz.identify, fz.battery, fz.illuminance],
+    fromZigbee: [fz.identify, fz.battery, fz.illuminance, fz.temperature, fz.pressure, fz.humidity],
     toZigbee: [],
     configure: async (device, coordinatorEndpoint, logger) => {
         const endpoint10 = device.getEndpoint(10);
 
 		// Bind an endpoint to specific clusters
-        await reporting.bind(endpoint10, coordinatorEndpoint, ["genPowerCfg", "msIlluminanceMeasurement"]);
+        await reporting.bind(endpoint10, coordinatorEndpoint, ["genPowerCfg", "msIlluminanceMeasurement", "msTemperatureMeasurement", "msPressureMeasurement", "msRelativeHumidity"]);
 
 		// Fetch the values from the device
 		await reporting.batteryVoltage(endpoint10);
@@ -29,7 +29,7 @@ const definition = {
     },
 
 	// Expose the following informations via MQTT
-    exposes: [e.identify(), e.battery(), e.illuminance()],
+    exposes: [e.identify(), e.battery(), e.illuminance(), e.temperature(), e.pressure(), e.humidity()],
 };
 
 module.exports = definition;
