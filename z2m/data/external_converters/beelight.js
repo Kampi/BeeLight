@@ -19,16 +19,15 @@ const definition = {
     configure: async (device, coordinatorEndpoint, logger) => {
         const endpoint10 = device.getEndpoint(10);
 
-		// Bind an endpoint to specific clusters
+        // Bind an endpoint to specific clusters
         await reporting.bind(endpoint10, coordinatorEndpoint, ["genPowerCfg", "msIlluminanceMeasurement", "msTemperatureMeasurement", "msPressureMeasurement", "msRelativeHumidity"]);
 
-		// Fetch the values from the device
 		await reporting.batteryVoltage(endpoint10);
 		await reporting.illuminance(endpoint10, {min: 1, max: constants.repInterval.MINUTES_1, change: 10});
 		await reporting.batteryPercentageRemaining(endpoint10);
     },
 
-	// Expose the following informations via MQTT
+    // Expose the following informations via MQTT
     exposes: [e.identify(), e.battery(), e.illuminance(), e.temperature(), e.pressure(), e.humidity()],
 };
 
