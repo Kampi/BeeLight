@@ -41,8 +41,19 @@
         status = "okay";
         compatible = "avago,apds9306";
         reg = <0x52>;
-        gain = <0>;
-        resolution = <0>;
-        frequency = <0>;
+        gain = <1>;
+        resolution = <2>;
+        frequency = <2>;
+    };
+};
+
+&adc {
+    channel@0 {
+        reg = <0>;
+        zephyr,gain = "ADC_GAIN_1";
+        zephyr,reference = "ADC_REF_INTERNAL";
+        zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+        zephyr,input-positive = <NRF_SAADC_AIN0>;
+        zephyr,resolution = <12>;
     };
 };

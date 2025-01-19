@@ -37,5 +37,6 @@ struct light_event {
 /** @brief
  */
 struct battery_event {
-
+    int mV;
+    int percent;
 };

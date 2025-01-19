@@ -11,6 +11,8 @@
         "string_view": "cpp",
         "initializer_list": "cpp",
         "zb_light_sensor.h": "c",
-        "events.h": "c"
+        "events.h": "c",
+        "adc.h": "c",
+        "zbus.h": "c"
     }
 }

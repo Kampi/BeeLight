@@ -17,7 +17,7 @@
 
 #include <zephyr/types.h>
 #include <zephyr/kernel.h>
-#include <zephyr/device.h>
+#include <zephyr/zbus/zbus.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/settings/settings.h>
 
@@ -35,7 +35,7 @@
 #include "beelight.h"
 
 /* LED indicating that light switch successfully joind Zigbee network. */
-#define ZIGBEE_NETWORK_STATE_LED        DK_LED1
+#define ZIGBEE_NETWORK_STATE_LED        DK_LED3
 
 /* Version of the application software (1 byte). */
 #define INIT_BASIC_APP_VERSION          01
@@ -44,7 +44,7 @@
 #define INIT_BASIC_STACK_VERSION        10
 
 /* Version of the hardware of the device (1 byte). */
-#define INIT_BASIC_HW_VERSION           01
+#define INIT_BASIC_HW_VERSION           10
 
 /* Manufacturer name (32 bytes). */
 #define INIT_BASIC_MANUF_NAME           "Kampi"
@@ -62,11 +62,11 @@
  */
 #define INIT_BASIC_LOCATION_DESC        "Office desk"
 
-/* Button used to enter the Identify mode. */
-#define IDENTIFY_MODE_BUTTON            DK_BTN1_MSK
+/* Button used to enter the Bulb into the Identify mode. */
+#define IDENTIFY_MODE_BUTTON            DK_BTN4_MSK
 
 /* Button to start Factory Reset. */
-#define FACTORY_RESET_BUTTON            IDENTIFY_MODE_BUTTON
+#define FACTORY_RESET_BUTTON IDENTIFY_MODE_BUTTON
 
 /* Define 'bat_num' as empty in order to declare default battery set attributes. */
 /* According to Table 3-17 of ZCL specification, defining 'bat_num' as 2 or 3 allows */
@@ -211,7 +211,6 @@ static void button_changed(uint32_t button_state, uint32_t has_changed)
             }
             /* Button released before Factory Reset */
             else {
-                LOG_DBG("Start identifying");
 
                 /* Start identification mode */
                 ZB_SCHEDULE_APP_CALLBACK(start_identifying, 0);
@@ -238,6 +237,8 @@ static void toggle_identify_led(zb_bufid_t bufid)
  */
 static void identify_cb(zb_bufid_t bufid)
 {
+    LOG_INF("A");
+
     if (bufid) {
         /* Schedule a self-scheduling function that will toggle the LED. */
         ZB_SCHEDULE_APP_CALLBACK(toggle_identify_led, bufid);
@@ -304,8 +305,8 @@ static void clusters_attr_init(void)
 
     /* Initialize the values for the Battery cluster attributes */
     dev_ctx.power_attr.size = ZB_ZCL_POWER_CONFIG_BATTERY_SIZE_CR2;
-    dev_ctx.power_attr.voltage = 30;
-    dev_ctx.power_attr.percent_remaining = 200;
+    dev_ctx.power_attr.voltage = 25;
+    dev_ctx.power_attr.percent_remaining = 50;
     dev_ctx.power_attr.quantity = 1;
     dev_ctx.power_attr.rated_voltage = 30;
 
@@ -414,7 +415,7 @@ static void zbus_on_battery_callback(const struct zbus_channel *chan)
 {
     const struct battery_event *evt = zbus_chan_const_msg(chan);
 
-    LOG_DBG("Value from battery sensor: %u", evt->value);
+    LOG_DBG("Value from battery sensor: %u", evt->mV);
 
     /* Initialize the values for the Battery cluster attributes */
     dev_ctx.power_attr.voltage = 30;
