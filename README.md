@@ -33,6 +33,9 @@ Enable the external converter by copying the external converter to your `ZigBee2
 
 ## Purchasing
 
+> NOTE  
+> You have to provide a Mouser API key with a variable called `MOUSER_KEY` to your CI/CD pipeline to make use of the KiCost feature in the pipeline.
+
 ## Ressources
 
 - [Adding new ZigBee2MQTT devices](https://www.zigbee2mqtt.io/advanced/support-new-devices/01_support_new_devices.html)
