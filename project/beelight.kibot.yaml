@@ -89,7 +89,7 @@ outputs:
       use_aux_axis_as_origin: false
       subtract_mask_from_silk: true
       use_protel_extensions: false
-      gerber_precision: 4.5
+      gerber_precision: 4.6
       create_gerber_job_file: true
       use_gerber_x2_attributes: true
       use_gerber_net_attributes: false
