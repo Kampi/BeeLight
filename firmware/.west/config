@@ -1,0 +1,6 @@
+[manifest]
+path = beelight
+file = west.yml
+
+[zephyr]
+base = zephyr

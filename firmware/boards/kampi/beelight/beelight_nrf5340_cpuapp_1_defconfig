@@ -1,3 +1,0 @@
-# Light sensor configuration
-CONFIG_APDS9306=y
-CONFIG_APDS9306_IS_APDS9306_065=y

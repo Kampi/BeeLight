@@ -1,3 +1,0 @@
-if SENSOR
-    rsource "apds9306/Kconfig"
-endif
