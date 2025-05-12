@@ -1,0 +1,21 @@
+identifier: beelight/nrf54l15/cpuapp/ns
+name: BeeLight-nrf54l15-application-MCU-Non-Secure
+type: mcu
+arch: arm
+toolchain:
+  - gnuarmemb
+  - xtools
+  - zephyr
+ram: 192
+flash: 192
+supported:
+  - adc
+  - gpio
+  - i2c
+  - spi
+  - counter
+  - watchdog
+  - adc
+  - i2s
+vendor: kampi
+sysbuild: true

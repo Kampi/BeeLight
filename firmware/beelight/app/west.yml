@@ -1,0 +1,17 @@
+manifest:
+  remotes:
+    - name: ncs
+      url-base: https://github.com/nrfconnect
+
+  projects:
+    - name: nrf
+      remote: ncs
+      repo-path: sdk-nrf
+      revision: v3.0.0
+      import: true
+
+    - name: ncs-zigbee
+      remote: ncs
+      repo-path: ncs-zigbee
+      revision: main
+      import: true
