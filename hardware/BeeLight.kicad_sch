@@ -6023,9 +6023,9 @@
 		(at 228.6 77.47 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "26e26747-0926-4a88-be3e-3cccf912fe95")
 		(property "Reference" "R107"
@@ -6092,6 +6092,15 @@
 			)
 		)
 		(property "mouser#" "603-RC0402FR-07100KL"
+			(at 228.6 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CONFIG" ""
 			(at 228.6 77.47 0)
 			(effects
 				(font

@@ -1,0 +1,68 @@
+/*
+ * Copyright (c) 2025 Daniel Kampert
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/ {
+    leds {
+        status = "okay";
+        compatible = "gpio-leds";
+
+        led0: led_0 {
+            gpios = <&gpio1 1 GPIO_ACTIVE_LOW>;
+            label = "Identify LED";
+        };
+    };
+
+    buttons {
+        status = "okay";
+        compatible = "gpio-keys";
+
+        button0: button_0 {
+            gpios = <&gpio1 0 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+            label = "Join button";
+            zephyr,code = <INPUT_KEY_0>;
+        };
+    };
+
+    vbatt: vbatt {
+        status = "okay";
+        compatible = "voltage-divider";
+        io-channels = <&adc 0>;
+        output-ohms = <2200>;
+        full-ohms = <(8200 + 2200)>;
+        power-gpios = <&gpio2 4 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+    };
+
+    gpio_i2c0: gpio_i2c {
+        status = "okay";
+        compatible = "gpio-i2c";
+        clock-frequency = <I2C_BITRATE_FAST>;
+        sda-gpios = <&gpio2 6 GPIO_OPEN_DRAIN>;
+        scl-gpios = <&gpio0 3 GPIO_OPEN_DRAIN>;
+        #address-cells = <1>;
+        #size-cells = <0>;
+    };
+};
+
+&i2c20 {
+    status = "disabled";
+};
+
+&gpio_i2c0 {
+    apds9306: apds9306@52 {
+        status = "okay";
+        compatible = "avago,apds9306";
+        reg = <0x52>;
+        gain = <1>;
+        resolution = <13>;
+        frequency = <2000>;
+    };
+
+    bme688: bme688@76 {
+        status = "okay";
+        compatible = "bosch,bme680";
+        reg = <0x76>;
+    };
+};
