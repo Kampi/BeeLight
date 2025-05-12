@@ -10,7 +10,7 @@ jobs:
   generate:
     name: Generate production data
     runs-on: ubuntu-latest
-    container: ghcr.io/inti-cmnb/kicad8_auto_full:latest
+    container: ghcr.io/inti-cmnb/kicad9_auto_full:latest
 
     env:
       MOUSER_KEY: ${{ secrets.MOUSER_KEY }}
@@ -56,7 +56,7 @@ jobs:
 
       - name: Generate files
         run: |
-          cd project
+          cd hardware
           kibot -vvvv -g variant=${{ matrix.device_type }} -d ../production/${{ matrix.device_type }} 2> ../log/kibot.log
           mkdir ../production/${{ matrix.device_type }}/ordering
 
