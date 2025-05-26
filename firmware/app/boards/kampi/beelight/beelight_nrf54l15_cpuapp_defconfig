@@ -1,0 +1,69 @@
+CONFIG_FPU=y
+
+CONFIG_NEWLIB_LIBC=y
+
+# Disable UART driver
+CONFIG_SERIAL=n
+
+# Disable console
+CONFIG_CONSOLE=n
+
+# Enable GPIO
+CONFIG_GPIO=y
+
+# Enable MPU
+CONFIG_ARM_MPU=y
+
+# Enable hardware stack protection
+CONFIG_HW_STACK_PROTECTION=y
+
+# MPU-based null-pointer dereferencing detection cannot
+# be applied as the (0x0 - 0x400) is unmapped for this target.
+CONFIG_NULL_POINTER_EXCEPTION_DETECTION_NONE=y
+
+# Enable Cache
+CONFIG_CACHE_MANAGEMENT=y
+CONFIG_EXTERNAL_CACHE=y
+
+# Start SYSCOUNTER on driver init
+CONFIG_NRF_GRTC_START_SYSCOUNTER=y
+
+# ZBUS configuration
+CONFIG_ZBUS=y
+CONFIG_ZBUS_RUNTIME_OBSERVERS=y
+CONFIG_ZBUS_CHANNEL_NAME=y
+CONFIG_ZBUS_OBSERVER_NAME=y
+CONFIG_ZBUS_CHANNELS_SYS_INIT_PRIORITY=1
+
+CONFIG_HEAP_MEM_POOL_SIZE=1024
+
+# Settings - Used to store real-time device configuration to flash
+CONFIG_SETTINGS=y
+CONFIG_SETTINGS_FCB=y
+CONFIG_FCB=y
+CONFIG_FLASH=y
+CONFIG_FLASH_PAGE_LAYOUT=y
+CONFIG_FLASH_MAP=y
+CONFIG_STREAM_FLASH=y
+CONFIG_MPU_ALLOW_FLASH_WRITE=y
+
+# Enable DK LED and Buttons library (used by Zigbee utils)
+CONFIG_DK_LIBRARY=y
+
+# Enable the Power Management API
+CONFIG_PM_DEVICE=y
+
+# Networking
+CONFIG_NET_IPV6=n
+CONFIG_NET_IP_ADDR_CHECK=n
+CONFIG_NET_UDP=n
+
+# Configure Zigbee
+CONFIG_ZIGBEE_ADD_ON=y
+CONFIG_ZIGBEE_APP_UTILS=y
+CONFIG_ZIGBEE_ROLE_END_DEVICE=y
+CONFIG_ZIGBEE_CHANNEL_SELECTION_MODE_SINGLE=y
+CONFIG_ZIGBEE_CHANNEL=16
+
+# Must be set to "y" because no external 32 kHz crystal is used here
+CONFIG_CLOCK_CONTROL_NRF_K32SRC_RC=y
