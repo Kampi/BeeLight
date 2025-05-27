@@ -1,0 +1,6 @@
+west-commands:
+  - file: scripts/upload-config.py
+    commands:
+      - name: config
+        class: UploadConfigWestCommand
+        help: Upload a production config to the sensor

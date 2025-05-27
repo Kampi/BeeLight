@@ -10,4 +10,5 @@ extended_address: 86D79AC5BAE41FA3
 
 tx_power: 9
 
-app_data: 01ABCD
+# Use this to pass specific data to the application
+#app_data: 01ABCD

@@ -1,4 +1,4 @@
-const {} = require('zigbee-herdsman-converters/lib/modernExtend');
+const m = require('zigbee-herdsman-converters/lib/modernExtend');
 const fz = require('zigbee-herdsman-converters/converters/fromZigbee');
 const tz = require('zigbee-herdsman-converters/converters/toZigbee');
 const exposes = require('zigbee-herdsman-converters/lib/exposes');
@@ -13,22 +13,12 @@ const definition = {
     zigbeeModel: ["BeeLight_v2.0"],
     model: "BeeLight_v2.0",
     vendor: "Kampi",
-    description: "ZigBee based Light Sensor (https://github.com/Kampi/BeeLight)",
-    fromZigbee: [fz.identify, fz.battery, fz.illuminance, fz.temperature, fz.pressure, fz.humidity],
+    description: "Zigbee based Light and Environment Sensor (https://github.com/Kampi/BeeLight)",
+    fromZigbee: [fz.battery, fz.illuminance, fz.temperature, fz.pressure, fz.humidity],
     toZigbee: [],
-    configure: async (device, coordinatorEndpoint, logger) => {
-        const endpoint10 = device.getEndpoint(10);
-
-        // Bind an endpoint to specific clusters
-        await reporting.bind(endpoint10, coordinatorEndpoint, ["genPowerCfg", "msIlluminanceMeasurement", "msTemperatureMeasurement", "msPressureMeasurement", "msRelativeHumidity"]);
-
-		await reporting.batteryVoltage(endpoint10);
-		await reporting.illuminance(endpoint10, {min: 1, max: constants.repInterval.MINUTES_1, change: 10});
-		await reporting.batteryPercentageRemaining(endpoint10);
-    },
 
     // Expose the following informations via MQTT
-    exposes: [e.identify(), e.battery(), e.illuminance(), e.temperature(), e.pressure(), e.humidity()],
+    exposes: [e.battery(), e.illuminance(), e.temperature(), e.pressure(), e.humidity()],
 };
 
 module.exports = definition;

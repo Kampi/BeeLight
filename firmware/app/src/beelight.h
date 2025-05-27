@@ -24,7 +24,7 @@
 #define INIT_BASIC_STACK_VERSION                10
 
 /* Version of the hardware of the device (1 byte). */
-#define INIT_BASIC_HW_VERSION                   01
+#define INIT_BASIC_HW_VERSION                   02
 
 /* Manufacturer name (32 bytes). */
 #define INIT_BASIC_MANUF_NAME                   "Kampi"
@@ -59,6 +59,10 @@
 /** @brief Device endpoint, used to receive environment sensor results.
  */
 #define SENSOR_ENDPOINT                         10
+
+/** @brief The ratet battery voltage in 10th of millivolts.
+ */
+#define SENSOR_RATET_VOLTAGE                    3000UL
 
 /** @brief
 */
@@ -261,6 +265,9 @@ typedef struct {
             ZB_ZCL_CLUSTER_ID_IDENTIFY,                                                         \
             ZB_ZCL_CLUSTER_ID_POWER_CONFIG,                                                     \
             ZB_ZCL_CLUSTER_ID_ILLUMINANCE_MEASUREMENT,                                          \
+            ZB_ZCL_CLUSTER_ID_TEMP_MEASUREMENT,                                                 \
+            ZB_ZCL_CLUSTER_ID_PRESSURE_MEASUREMENT,                                             \
+            ZB_ZCL_CLUSTER_ID_REL_HUMIDITY_MEASUREMENT,                                         \
             ZB_ZCL_CLUSTER_ID_IDENTIFY,                                                         \
         }                                                                                       \
     }

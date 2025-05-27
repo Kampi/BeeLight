@@ -20,9 +20,9 @@
         compatible = "gpio-keys";
 
         button0: button_0 {
-            gpios = <&gpio0 0 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+            gpios = <&gpio1 0 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
             label = "Join button";
-            zephyr,code = <INPUT_KEY_3>;
+            zephyr,code = <INPUT_KEY_0>;
         };
     };
 

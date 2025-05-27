@@ -196,6 +196,8 @@ static void start_identifying(zb_bufid_t bufid)
  */
 static void button_changed(uint32_t button_state, uint32_t has_changed)
 {
+    LOG_DBG("Button pressed");
+
     if (IDENTIFY_MODE_BUTTON & has_changed) {
         if (IDENTIFY_MODE_BUTTON & button_state) {
         }
@@ -300,10 +302,17 @@ static void clusters_attr_init(void)
 
     /* Initialize the values for the Battery cluster attributes */
     dev_ctx.power_attr.size = ZB_ZCL_POWER_CONFIG_BATTERY_SIZE_CR2;
-    dev_ctx.power_attr.voltage = 30;
-    dev_ctx.power_attr.percent_remaining = 200;
     dev_ctx.power_attr.quantity = 1;
-    dev_ctx.power_attr.rated_voltage = 30;
+    dev_ctx.power_attr.rated_voltage = SENSOR_RATET_VOLTAGE / 100;
+
+    ZB_ZCL_SET_ATTRIBUTE(
+        SENSOR_ENDPOINT,
+        ZB_ZCL_CLUSTER_ID_POWER_CONFIG,
+        ZB_ZCL_CLUSTER_SERVER_ROLE,
+        ZB_ZCL_ATTR_POWER_CONFIG_BATTERY_VOLTAGE_ID,
+        (zb_uint8_t *)&dev_ctx.power_attr.voltage,
+        ZB_FALSE
+    );
 
     ZB_ZCL_SET_ATTRIBUTE(
         SENSOR_ENDPOINT,
@@ -313,29 +322,6 @@ static void clusters_attr_init(void)
         (zb_uint8_t *)&dev_ctx.power_attr.percent_remaining,
         ZB_FALSE
     );
-
-    /* Initialize the values for the Illuminance measurement cluster attributes */
-/*
-    dev_ctx.illuminance_min_attr = 11;
-    ZB_ZCL_SET_ATTRIBUTE(
-        SENSOR_ENDPOINT,
-        ZB_ZCL_CLUSTER_ID_ILLUMINANCE_MEASUREMENT,
-        ZB_ZCL_CLUSTER_SERVER_ROLE,
-        ZB_ZCL_ATTR_ILLUMINANCE_MEASUREMENT_MIN_MEASURED_VALUE_ID,
-        (zb_uint8_t *)&dev_ctx.illuminance_min_attr,
-        ZB_FALSE
-    );
-
-    dev_ctx.illuminance_max_attr = 200;
-    ZB_ZCL_SET_ATTRIBUTE(
-        SENSOR_ENDPOINT,
-        ZB_ZCL_CLUSTER_ID_ILLUMINANCE_MEASUREMENT,
-        ZB_ZCL_CLUSTER_SERVER_ROLE,
-        ZB_ZCL_ATTR_ILLUMINANCE_MEASUREMENT_MAX_MEASURED_VALUE_ID,
-        (zb_uint8_t *)&dev_ctx.illuminance_max_attr,
-        ZB_FALSE
-    );
-*/
 }
 
 /** @brief          Callback function for handling ZCL commands.
@@ -376,8 +362,37 @@ static void zcl_device_cb(zb_bufid_t bufid)
  */
 void zboss_signal_handler(zb_bufid_t bufid)
 {
+    zb_zdo_app_signal_hdr_t *p_sg_p = NULL;
+    zb_zdo_app_signal_type_t sig = zb_get_app_signal(bufid, &p_sg_p);
+    zb_ret_t status = ZB_GET_APP_SIGNAL_STATUS(bufid);
+
     /* Update network status LED. */
-    zigbee_led_status_update(bufid, ZIGBEE_NETWORK_STATE_LED);
+    switch (sig) {
+        case ZB_SIGNAL_JOIN_DONE:
+            dk_set_led_off(ZIGBEE_NETWORK_STATE_LED);
+            if (status == RET_OK) {
+                for(uint8_t i = 0; i < 4; i++) {
+                    dk_set_led_on(ZIGBEE_NETWORK_STATE_LED);
+                    k_msleep(100);
+                    dk_set_led_off(ZIGBEE_NETWORK_STATE_LED);
+                    k_msleep(100);
+                }
+            }
+
+            break;
+
+        case ZB_ZDO_SIGNAL_LEAVE:
+            for(uint8_t i = 0; i < 2; i++) {
+                dk_set_led_on(ZIGBEE_NETWORK_STATE_LED);
+                k_msleep(100);
+                dk_set_led_off(ZIGBEE_NETWORK_STATE_LED);
+                k_msleep(100);
+            }
+            break;
+
+        default:
+            break;
+    }
 
     /* No application-specific behavior is required. Call default signal handler. */
     ZB_ERROR_CHECK(zigbee_default_signal_handler(bufid));
@@ -393,9 +408,20 @@ void zbus_on_light_callback(const struct zbus_channel *chan)
 {
     const struct light_event *evt = zbus_chan_const_msg(chan);
 
-    LOG_DBG("New light value: %u", evt->value);
-
     dev_ctx.illuminance_attr.measurement_attr = evt->value;
+
+    if(evt->value > dev_ctx.illuminance_attr.max_attr) {
+        dev_ctx.illuminance_attr.max_attr = evt->value;
+    }
+
+    if(evt->value < dev_ctx.illuminance_attr.min_attr) {
+        dev_ctx.illuminance_attr.min_attr = evt->value;
+    }
+
+    LOG_DBG("Light value: %u", dev_ctx.illuminance_attr.measurement_attr);
+    LOG_DBG("Light min: %u", dev_ctx.illuminance_attr.min_attr);
+    LOG_DBG("Light max: %u", dev_ctx.illuminance_attr.max_attr);
+
     ZB_ZCL_SET_ATTRIBUTE(
         SENSOR_ENDPOINT,
         ZB_ZCL_CLUSTER_ID_ILLUMINANCE_MEASUREMENT,
@@ -404,25 +430,86 @@ void zbus_on_light_callback(const struct zbus_channel *chan)
         (zb_uint8_t *)&dev_ctx.illuminance_attr.measurement_attr,
         ZB_FALSE
     );
+
+    ZB_ZCL_SET_ATTRIBUTE(
+        SENSOR_ENDPOINT,
+        ZB_ZCL_CLUSTER_ID_ILLUMINANCE_MEASUREMENT,
+        ZB_ZCL_CLUSTER_SERVER_ROLE,
+        ZB_ZCL_ATTR_ILLUMINANCE_MEASUREMENT_MIN_MEASURED_VALUE_ID,
+        (zb_uint8_t *)&dev_ctx.illuminance_attr.min_attr,
+        ZB_FALSE
+    );
+
+    ZB_ZCL_SET_ATTRIBUTE(
+        SENSOR_ENDPOINT,
+        ZB_ZCL_CLUSTER_ID_ILLUMINANCE_MEASUREMENT,
+        ZB_ZCL_CLUSTER_SERVER_ROLE,
+        ZB_ZCL_ATTR_ILLUMINANCE_MEASUREMENT_MAX_MEASURED_VALUE_ID,
+        (zb_uint8_t *)&dev_ctx.illuminance_attr.max_attr,
+        ZB_FALSE
+    );
 }
 
 static void zbus_on_env_callback(const struct zbus_channel *chan)
 {
     const struct env_event *evt = zbus_chan_const_msg(chan);
 
-    LOG_DBG("New temperature: %u degree", evt->temperature);
+    dev_ctx.temperature_attr.measurement_attr = (zb_uint16_t)(evt->temperature * 100);
+
+    dev_ctx.pressure_attr.measurement_attr = (zb_uint16_t)(evt->pressure / 100);
+
+    dev_ctx.humidity_attr.measurement_attr = (zb_uint16_t)(evt->humidity * 100);
+
+    LOG_DBG("Temperature: %u", dev_ctx.temperature_attr.measurement_attr);
+    LOG_DBG("Pressure: %u", dev_ctx.pressure_attr.measurement_attr);
+    LOG_DBG("Humidity: %u", dev_ctx.humidity_attr.measurement_attr);
+
+    ZB_ZCL_SET_ATTRIBUTE(
+        SENSOR_ENDPOINT,
+        ZB_ZCL_CLUSTER_ID_TEMP_MEASUREMENT,
+        ZB_ZCL_CLUSTER_SERVER_ROLE,
+        ZB_ZCL_ATTR_TEMP_MEASUREMENT_VALUE_ID,
+        (zb_uint8_t *)&dev_ctx.temperature_attr.measurement_attr,
+        ZB_FALSE
+    );
+
+    ZB_ZCL_SET_ATTRIBUTE(
+        SENSOR_ENDPOINT,
+        ZB_ZCL_CLUSTER_ID_PRESSURE_MEASUREMENT,
+        ZB_ZCL_CLUSTER_SERVER_ROLE,
+        ZB_ZCL_ATTR_PRESSURE_MEASUREMENT_VALUE_ID,
+        (zb_uint8_t *)&dev_ctx.pressure_attr.measurement_attr,
+        ZB_FALSE
+    );
+
+    ZB_ZCL_SET_ATTRIBUTE(
+        SENSOR_ENDPOINT,
+        ZB_ZCL_CLUSTER_ID_REL_HUMIDITY_MEASUREMENT,
+        ZB_ZCL_CLUSTER_SERVER_ROLE,
+        ZB_ZCL_ATTR_REL_HUMIDITY_MEASUREMENT_VALUE_ID,
+        (zb_uint8_t *)&dev_ctx.humidity_attr.measurement_attr,
+        ZB_FALSE
+    );
 }
 
 static void zbus_on_battery_callback(const struct zbus_channel *chan)
 {
     const struct battery_event *evt = zbus_chan_const_msg(chan);
 
-    LOG_DBG("New battery voltage: %u", evt->mV);
+    dev_ctx.power_attr.percent_remaining = (zb_uint8_t)((((float)evt->mV) / SENSOR_RATET_VOLTAGE) * 100 * 2);
+    dev_ctx.power_attr.voltage = evt->mV / 100;
 
-    /* Initialize the values for the Battery cluster attributes */
-    dev_ctx.power_attr.voltage = 30;
-    dev_ctx.power_attr.percent_remaining = 200;
-    dev_ctx.power_attr.rated_voltage = 30;
+    LOG_DBG("Battery voltage: %u", dev_ctx.power_attr.voltage);
+    LOG_DBG("Battery remaining: %u", dev_ctx.power_attr.percent_remaining);
+
+    ZB_ZCL_SET_ATTRIBUTE(
+        SENSOR_ENDPOINT,
+        ZB_ZCL_CLUSTER_ID_POWER_CONFIG,
+        ZB_ZCL_CLUSTER_SERVER_ROLE,
+        ZB_ZCL_ATTR_POWER_CONFIG_BATTERY_VOLTAGE_ID,
+        (zb_uint8_t *)&dev_ctx.power_attr.voltage,
+        ZB_FALSE
+    );
 
     ZB_ZCL_SET_ATTRIBUTE(
         SENSOR_ENDPOINT,
@@ -444,7 +531,7 @@ int main(void)
     /* Register callback for handling ZCL commands. */
     ZB_ZCL_REGISTER_DEVICE_CB(zcl_device_cb);
 
-    /* Register dimmer switch device context (endpoints). */
+    /* Register device context (endpoints). */
     ZB_AF_REGISTER_DEVICE_CTX(&env_sensor_ctx);
 
     clusters_attr_init();

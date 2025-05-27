@@ -44,14 +44,6 @@ static void zbus_10s_callback(const struct zbus_channel *chan)
 
             evt.value = sensor_val.val1;
 
-            if(sensor_val.val1 > evt.max) {
-                evt.max = sensor_val.val1;
-            }
-
-            if(sensor_val.val1 < evt.min) {
-                evt.min = sensor_val.val1;
-            }
-
             zbus_chan_pub(&light_data_chan, &evt, K_NO_WAIT);
             LOG_DBG("Publish new data...");
         }

@@ -29,20 +29,18 @@ struct periodic_event {
 /** @brief
  */
 struct light_event {
-    uint16_t min;               /**< */
-    uint16_t max;               /**< */
     uint16_t value;             /**< */
 };
 
 /** @brief
  */
 struct env_event {
-    uint8_t temperature;        /**< */
-    uint8_t pressure;           /**< */
-    uint8_t humidity;           /**< */
-    uint8_t iaq;                /**< */
-    uint8_t voc;                /**< */
-    uint8_t co2;                /**< */
+    float temperature;          /**< */
+    float pressure;             /**< */
+    float humidity;             /**< */
+    float iaq;                  /**< */
+    float voc;                  /**< */
+    float co2;                  /**< */
 };
 
 /** @brief
