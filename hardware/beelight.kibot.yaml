@@ -159,6 +159,7 @@ outputs:
       - layers:
         - layer: Edge.Cuts
         - layer: User.1
+        - layer: User.Drawings
         sheet: "PCB Specifications"
         monochrome: true
 
