@@ -11,10 +11,10 @@ global:
   date_format: "%Y-%m-%d"
 
 outputs:
-  - name: "Naviagation results"
+  - name: "Navigation results"
     comment: "Create navigation results page"
     type: navigate_results
-    dir: "overview"
+    dir: overview
 
   - name: "Download datasheets"
     comment: "Download component datasheets"
@@ -194,6 +194,17 @@ outputs:
         monochrome: true
         mirror: true
 
+  - name: "Copy Other"
+    comment: "Copy all other files for assembly"
+    type: copy_files
+    category: "purchasing"
+    options:
+      files:
+        - source: ../production/Export-%D/docs/Ref_Bot.pdf
+          dest: other
+        - source: ../production/Export-%D/docs/Ref_Top.pdf
+          dest: other
+
   - name: "BOM for PCBWay"
     comment: "BOM for PCBWay"
     type: bom
@@ -290,6 +301,17 @@ outputs:
       files:
         - source: centroid/**
       output: "Centroid_%D.%x"
+
+  - name: "ZIP Other"
+    comment: "ZIP Other"
+    type: compress
+    dir: .
+    category: "purchasing"
+    options:
+      format: ZIP
+      files:
+        - source: other/**
+      output: "Other_%D.%x"
 
   - name: "Step file"
     comment: "STEP file generation"
