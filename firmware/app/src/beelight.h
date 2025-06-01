@@ -149,6 +149,31 @@ typedef struct {
     zb_uint16_t tolerance;              /**< Attribute 4.7.2.2.4 */
 } zb_zcl_humidity_attrs_t;
 
+/** @brief 4.13  Concentration Measurement
+*/
+typedef struct {
+    zb_uint16_t measurement_attr;       /**< Attribute 4.13.2.1.1.1 */
+    zb_uint16_t min_attr;               /**< Attribute 4.13.2.1.1.2 */
+    zb_uint16_t max_attr;               /**< Attribute 4.13.2.1.1.3 */
+    zb_uint16_t tolerance;              /**< Attribute 4.13.2.1.1.4 */
+} zb_zcl_co2_attrs_t;
+
+/** @brief IAQ Measurement
+*/
+typedef struct {
+    zb_uint16_t measurement_attr;       /**< */
+    zb_uint16_t min_attr;               /**< */
+    zb_uint16_t max_attr;               /**< */
+} zb_zcl_iaq_attrs_t;
+
+/** @brief VOC Measurement
+*/
+typedef struct {
+    zb_uint16_t measurement_attr;       /**< */
+    zb_uint16_t min_attr;               /**< */
+    zb_uint16_t max_attr;               /**< */
+} zb_zcl_voc_attrs_t;
+
 /** @brief Main application customizable context. Stores all settings and static values.
  */
 typedef struct {
@@ -160,6 +185,9 @@ typedef struct {
     zb_zcl_temperature_attrs_t temperature_attr;
     zb_zcl_pressure_attrs_t pressure_attr;
     zb_zcl_humidity_attrs_t humidity_attr;
+    zb_zcl_co2_attrs_t co2_attr;
+    zb_zcl_iaq_attrs_t iaq_attr;
+    zb_zcl_voc_attrs_t voc_attr;
 } device_ctx_t;
 
 /** @brief                              Declare the cluster list for the Environment Sensor device.

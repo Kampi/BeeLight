@@ -4,11 +4,11 @@ endmenu
 
 menu "BeeLight"
     menu "Configuration"
-        config CONFIG_BATTERY_SAMPLE_TIME_MIN
+        config BEELIGHT_CONFIG_SENSOR_SAMPLE_RATE_SECONDS
             int
         range 1 3600
-        prompt "Battery sample time in minutes"
-        default 5
+        prompt "Sensor sample time in seconds"
+        default 10
     endmenu
 
     menu "Logging"

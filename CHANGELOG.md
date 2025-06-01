@@ -10,4 +10,4 @@
 
 ## [1.0] - 12.01.2024
 
-Initial release
+- Initial release

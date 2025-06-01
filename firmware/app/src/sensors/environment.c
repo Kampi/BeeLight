@@ -27,8 +27,8 @@ static void zbus_10s_callback(const struct zbus_channel *chan);
 const struct device *const bme688 = DEVICE_DT_GET_OR_NULL(DT_NODELABEL(bme688));
 
 ZBUS_CHAN_DECLARE(env_data_chan);
-ZBUS_CHAN_DECLARE(periodic_event_10s_chan);
-ZBUS_LISTENER_DEFINE(env_periodic_event_10s_lis, zbus_10s_callback);
+ZBUS_CHAN_DECLARE(periodic_sample_event_chan);
+ZBUS_LISTENER_DEFINE(env_periodic_sample_event_lis, zbus_10s_callback);
 
 LOG_MODULE_REGISTER(env, CONFIG_BEELIGHT_SENSORS_LOG_LEVEL);
 
@@ -81,7 +81,7 @@ static int beelight_env_sensor_init(void)
 
     pm_device_runtime_auto_enable(bme688);
 
-    err = zbus_chan_add_obs(&periodic_event_10s_chan, &env_periodic_event_10s_lis, K_NO_WAIT);
+    err = zbus_chan_add_obs(&periodic_sample_event_chan, &env_periodic_sample_event_lis, K_NO_WAIT);
     if (err != 0) {
         return err;
     }

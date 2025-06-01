@@ -21,12 +21,12 @@
 
 #include "events/events.h"
 
-static struct k_work_delayable periodic_10s_work;
+static struct k_work_delayable periodic_sample_work;
 
-ZBUS_CHAN_DEFINE(periodic_event_10s_chan,
+ZBUS_CHAN_DEFINE(periodic_sample_event_chan,
                  struct periodic_event,
                  NULL,
-                 &periodic_10s_work,
+                 &periodic_sample_work,
                  ZBUS_OBSERVERS_EMPTY,
                  ZBUS_MSG_INIT()
                 );
@@ -57,26 +57,26 @@ ZBUS_CHAN_DEFINE(battery_data_chan,
 
 LOG_MODULE_REGISTER(events, CONFIG_BEELIGHT_EVENTS_LOG_LEVEL);
 
-static void handle_10s_timeout(struct k_work *item)
+static void handle_sample_timeout(struct k_work *item)
 {
     struct periodic_event evt = {
     };
     struct k_work_delayable *work = NULL;
 
-    zbus_chan_claim(&periodic_event_10s_chan, K_FOREVER);
-    work = (struct k_work_delayable *)zbus_chan_user_data(&periodic_event_10s_chan);
-    k_work_reschedule(work, K_MSEC(10000));
-    zbus_chan_finish(&periodic_event_10s_chan);
+    zbus_chan_claim(&periodic_sample_event_chan, K_FOREVER);
+    work = (struct k_work_delayable *)zbus_chan_user_data(&periodic_sample_event_chan);
+    k_work_reschedule(work, K_MSEC(CONFIG_BEELIGHT_CONFIG_SENSOR_SAMPLE_RATE_SECONDS * 1000));
+    zbus_chan_finish(&periodic_sample_event_chan);
 
-    zbus_chan_pub(&periodic_event_10s_chan, &evt, K_MSEC(250));
+    zbus_chan_pub(&periodic_sample_event_chan, &evt, K_MSEC(250));
 }
 
 static int beelight_events_init(void)
 {
     struct k_work_delayable *work = NULL;
 
-    work = (struct k_work_delayable *)zbus_chan_user_data(&periodic_event_10s_chan);
-    k_work_init_delayable(work, handle_10s_timeout);
+    work = (struct k_work_delayable *)zbus_chan_user_data(&periodic_sample_event_chan);
+    k_work_init_delayable(work, handle_sample_timeout);
 
     return k_work_reschedule(work, K_MSEC(10000));
 }

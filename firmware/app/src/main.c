@@ -226,8 +226,6 @@ static void button_changed(uint32_t button_state, uint32_t has_changed)
  */
 static void toggle_identify_led(zb_bufid_t bufid)
 {
-    static int blink_status;
-
     ZB_SCHEDULE_APP_ALARM(toggle_identify_led, bufid, ZB_MILLISECONDS_TO_BEACON_INTERVAL(100));
 }
 
@@ -460,9 +458,12 @@ static void zbus_on_env_callback(const struct zbus_channel *chan)
 
     dev_ctx.humidity_attr.measurement_attr = (zb_uint16_t)(evt->humidity * 100);
 
+    dev_ctx.co2_attr.measurement_attr = (zb_uint16_t)evt->co2;
+
     LOG_DBG("Temperature: %u", dev_ctx.temperature_attr.measurement_attr);
     LOG_DBG("Pressure: %u", dev_ctx.pressure_attr.measurement_attr);
     LOG_DBG("Humidity: %u", dev_ctx.humidity_attr.measurement_attr);
+    LOG_DBG("CO2: %u", dev_ctx.co2_attr.measurement_attr);
 
     ZB_ZCL_SET_ATTRIBUTE(
         SENSOR_ENDPOINT,
