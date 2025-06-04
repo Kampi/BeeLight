@@ -6,7 +6,7 @@
   - [Table of Contents](#table-of-contents)
   - [About](#about)
   - [Start developing](#start-developing)
-    - [Install the BSEC2 library](#install-the-bsec2-library)
+    - [Compile the code](#compile-the-code)
     - [Generate the production config for the device](#generate-the-production-config-for-the-device)
   - [Use the device](#use-the-device)
     - [Zigbee Dongle](#zigbee-dongle)
@@ -29,10 +29,18 @@ Open-Source Zigbee-based light and environmental sensor with [Zigbee2MQTT](https
 You must install NCS with ZigBee addon before you can start developing firmware for the device.
 
 ```sh
-git clone ...
+git clone https://github.com/Kampi/BeeLight
 cd BeeLight
-cd app
+git submodule update --init --recursive
+cd firmware/app
 west init -l .
+west update
+```
+
+Run the following commands to install the BSEC2 library:
+
+```sh
+west config manifest.group-filter +bsec
 west update
 ```
 
@@ -42,13 +50,11 @@ You also need the `nrf5sdk-tools` to flash the production configuration to the s
 nrfutil install nrf5sdk-tools
 ```
 
-### Install the BSEC2 library
-
-Run
+### Compile the code
 
 ```sh
-west config manifest.group-filter +bsec
-west update
+cd firmware/app
+west build --build-dir /home/daniel/Projects/BeeLight/firmware/app/build_1 /home/daniel/Projects/BeeLight/firmware/app --pristine --board beelight/nrf54l15/cpuapp -- -DNCS_TOOLCHAIN_VERSION=NONE -DCONF_FILE=config/debug.conf -DBOARD_ROOT=/home/daniel/Projects/BeeLight/firmware/app
 ```
 
 ### Generate the production config for the device
