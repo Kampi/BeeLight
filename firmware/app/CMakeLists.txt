@@ -5,7 +5,7 @@ file(GLOB_RECURSE files RELATIVE ${CMAKE_SOURCE_DIR} "patches/zephyr/*.patch")
 foreach(file ${files})
     message("Execute patch ${file}")
     execute_process(COMMAND 
-                    git apply --directory=$ENV{ZEPHYR_BASE} ${CMAKE_CURRENT_SOURCE_DIR}/${file} --unsafe-paths)
+                    patch -p1 -d $ENV{ZEPHYR_BASE} -i ${CMAKE_CURRENT_SOURCE_DIR}/${file} -r - --no-backup-if-mismatch)
 endforeach()
 
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
