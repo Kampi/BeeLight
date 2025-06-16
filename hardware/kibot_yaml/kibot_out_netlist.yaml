@@ -8,8 +8,10 @@ outputs:
 - name: @NAME@
   comment: '@COMMENT@'
   type: netlist
+  category: '@DIR@'
+  dir: '@DIR@'
 
-...
 definitions:
   NAME: netlist
   COMMENT: Schematic netlist in KiCad format
+  DIR: Netlist

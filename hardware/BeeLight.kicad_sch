@@ -5,7 +5,6 @@
 	(uuid "d5742f03-3b1a-42e5-a384-018bd4b919aa")
 	(paper "A3")
 	(title_block
-		(title "BeeLight v2")
 		(date "2025-06-05")
 		(rev "${REVISION}")
 		(company "${COMPANY}")

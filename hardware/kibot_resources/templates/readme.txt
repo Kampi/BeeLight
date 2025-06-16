@@ -5,8 +5,8 @@
 <h1 align="center">${BOARD_NAME}</h1>
 
 <p align="center" width="100%">
-  <a href="${GIT_URL}/actions/workflows/ci.yaml">
-    <img alt="CI Badge" src="${GIT_URL}/actions/workflows/ci.yaml/badge.svg?branch=">
+  <a href="${GIT_URL}/actions/workflows/pcb.yaml">
+    <img alt="CI Badge" src="${GIT_URL}/actions/workflows/pcb.yaml/badge.svg?branch=">
   </a>
 </p>
 
@@ -26,7 +26,7 @@
 
 ## SPECIFICATIONS
 
-| Parameter | Value | 
+| Parameter | Value |
 | --- | --- |
 | Dimensions | ${bb_w_mm} × ${bb_h_mm} mm |
 
@@ -66,6 +66,6 @@
     ├─ Schematic          # PDF of schematic
     ├─ Templates          # Title block templates
     ├─ Testing
-    │  └─ Testpoints      # Testpoints tables      
+    │  └─ Testpoints      # Testpoints tables
     │
     └─ Variants           # Outputs for assembly variants
