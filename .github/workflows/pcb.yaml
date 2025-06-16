@@ -12,18 +12,21 @@ on:
       - '*.md'
 
 env:
+  kicad_board: BeeLight
   kibot_config: kibot_yaml/kibot_main.yaml
+
+  # Output directory for the run results from KiBot
+  kibot_output_dir: ../production
+
   # Used variant. We assume:
   # DRAFT: only schematic in progress, will only generate schematic PDF, netlist and BoM
   # PRELIMINARY: will generate both schematic and PCB documents, but no ERC/DRC
   # CHECKED: will generate both schematic and PCB documents, with ERC/DRC
   # RELEASED: similar to CHECKED, automatically selected when pushing a tag to main
-  kibot_variant: DRAFT
+  kibot_variant: PRELIMINARY
 
   MOUSER_KEY: ${{ secrets.MOUSER_KEY }}
- 
-  KICAD_LIBRARY: /home/runner/work/BeeLight/BeeLight/library
- 
+
 permissions:
   contents: write
 
@@ -31,6 +34,8 @@ jobs:
   release:
     needs: generate_outputs
     runs-on: ubuntu-latest
+    container: ghcr.io/inti-cmnb/kicad9_auto_full:latest
+
     if: github.ref_type == 'tag'
     steps:
       - name: Checkout
@@ -42,6 +47,7 @@ jobs:
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "GitHub Actions"
+          git config pull.rebase true
           git fetch
           git pull origin main
 
@@ -61,20 +67,19 @@ jobs:
 
   generate_outputs:
     runs-on: ubuntu-latest
+    container: ghcr.io/inti-cmnb/kicad9_auto_full:latest
+
     if: "!contains(github.event.head_commit.message, 'Merge pull request') || github.ref_type == 'tag'"
     steps:
-      - name: Dependencies
-        run: |
-          git clone https://github.com/Kampi/KiCad.git library
-
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Change to hardware directory
+      - name: Getting the dependencies
         run: |
-          cd hardware
+          git clone https://github.com/Kampi/KiCad.git library
+          echo "KICAD_LIBRARY=$(pwd)/library" >> $GITHUB_ENV
 
       # Run these changelog update steps only on tag pushes
       - name: Pull latest changes for changelog update
@@ -150,30 +155,21 @@ jobs:
       # Generate notes (skipped for DRAFT variant)
       - name: Generate notes
         if: ${{ env.kibot_variant != 'DRAFT' }}
-        uses: INTI-CMNB/KiBot@v2_dk9
-        with:
-          targets: notes
-          skip: all
-          variant: ${{ env.kibot_variant }}
-          config: ${{ env.kibot_config }}
+        run: |
+          cd hardware
+          kibot -c ${{ env.kibot_config }} -d ${{ env.kibot_output_dir }} -b ${{ env.kicad_board }}.kicad_pcb -s all -g variant=${{ env.kibot_variant }} notes
 
       - name: Generate README only
         if: ${{ env.kibot_variant == 'DRAFT' }}
-        uses: INTI-CMNB/KiBot@v2_dk9
-        with:
-          targets: md_readme
-          skip: draw_fancy_stackup,set_text_variables,erc,drc
-          variant: ${{ env.kibot_variant }}
-          config: ${{ env.kibot_config }}
+        run: |
+          cd hardware
+          kibot -c ${{ env.kibot_config }} -d ${{ env.kibot_output_dir }} -b ${{ env.kicad_board }}.kicad_pcb -s draw_fancy_stackup,set_text_variables,erc,drc -g variant=${{ env.kibot_variant }} md_readme
 
       # Generate outputs
       - name: Generate outputs
-        uses: INTI-CMNB/KiBot@v2_dk9
-        with:
-          additional_args: ${{ env.additional_args }}
-          variant: ${{ env.kibot_variant }}
-          config: ${{ env.kibot_config }}
-          cache3D: YES
+        run: |
+          cd hardware
+          kibot -c ${{ env.kibot_config }} -d ${{ env.kibot_output_dir }} -b ${{ env.kicad_board }}.kicad_pcb -g variant=${{ env.kibot_variant }} ${{ env.additional_args }}
 
       - name: Pull latest changes
         run: |
@@ -200,7 +196,7 @@ jobs:
           fi
 
       - name: Discard changes to .kicad_pcb files and remove temp files
-        run: | 
+        run: |
           git checkout HEAD -- $(git ls-files "*.kicad_pcb")
           git clean -f "*.kicad_pcb"
           git clean -f "*.kicad_pro"
