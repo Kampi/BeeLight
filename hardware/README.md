@@ -5,8 +5,8 @@
 <h1 align="center">BeeLight</h1>
 
 <p align="center" width="100%">
-  <a href="https://github.com/Kampi/BeeLight/actions/workflows/ci.yaml">
-    <img alt="CI Badge" src="https://github.com/Kampi/BeeLight/actions/workflows/ci.yaml/badge.svg?branch=">
+  <a href="https://github.com/Kampi/BeeLight/actions/workflows/pcb.yaml">
+    <img alt="CI Badge" src="https://github.com/Kampi/BeeLight/actions/workflows/pcb.yaml/badge.svg?branch=">
   </a>
 </p>
 

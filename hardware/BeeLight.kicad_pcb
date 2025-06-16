@@ -8,9 +8,7 @@
 	)
 	(paper "A4")
 	(title_block
-		(title "BeeLight v2")
 		(date "2025-05-12")
-		(comment 1 "https://github.com/Kampi/BeeLight")
 	)
 	(layers
 		(0 "F.Cu" signal)

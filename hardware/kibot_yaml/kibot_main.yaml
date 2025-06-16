@@ -22,7 +22,7 @@ variants:
     type: kibom
     variant: CHECKED
     exclude_filter: '_null'
-    
+
   - name: 'RELEASED'
     comment: "A board with this schematic has been sent to production."
     type: kibom
@@ -57,7 +57,7 @@ groups:
       - @PDF_SCHEMATIC_OUTPUT@
       - @MD_README_OUTPUT@
       # - @HTML_KICANVAS_OUTPUT@ # Very experimental, we exclude it for now
-      # - @HTML_KIRI_OUTPUT@
+      - @HTML_KIRI_OUTPUT@
       - @HTML_NAV_RES_OUTPUT@
 
   - name: all_group_k9
@@ -70,7 +70,7 @@ groups:
       - @PDF_SCHEMATIC_OUTPUT@
       - @MD_README_OUTPUT@
       # - @HTML_KICANVAS_OUTPUT@ # Very experimental, we exclude it for now
-      # - @HTML_KIRI_OUTPUT@
+      - @HTML_KIRI_OUTPUT@
       - @HTML_NAV_RES_OUTPUT@
 
   - name: draft_group
@@ -148,7 +148,7 @@ groups:
 import:
 
   # Global parameters ==========================================================
-  
+
   - file: kibot_globals.yaml
     definitions:
       OUTPUT_DIR: @OUTPUT_DIR@
@@ -156,7 +156,7 @@ import:
       LAYER_DNP_BOTTOM: @LAYER_DNP_BOTTOM@
 
   # Filters ====================================================================
-  
+
   - file: kibot_filt_field_rename.yaml
     definitions:
       NAME: @FILT_FIELD_RENAME@
@@ -173,7 +173,7 @@ import:
     definitions:
       NAME: @FILT_TP_EXCLUDE@
       COMMENT: Exclude only testpoints
-    
+
   - file: kibot_filt_testpoints.yaml
     definitions:
       NAME: @FILT_TP_TOP_ONLY@
@@ -240,6 +240,7 @@ import:
     definitions:
       NAME: @NETLIST_OUTPUT@
       COMMENT: Schematic netlist in KiCad format
+      DIR: @NETLIST_DIR@
 
   # Generic manufacturing outputs ==============================================
 
@@ -450,7 +451,7 @@ import:
       NAME: @STEP_OUTPUT@
       COMMENT: PCB 3D model in STEP format
       DIR: @3D_DIR@
-      
+
   # - file: kibot_out_blender.yaml
   #   definitions:
   #     NAME: @BLENDER_OUTPUT@
@@ -533,7 +534,7 @@ import:
     definitions:
       NAME: @MD_README_OUTPUT@
       COMMENT: README file in Markdown format
-      DIR: @OUTPUT_DIR@
+      DIR: '@OUTPUT_DIR@'
       CATEGORY: '.'
       OUTPUT_NAME: README
       TEMPLATE: @REPORT_TEMPLATE_DIR@/readme.txt
@@ -591,7 +592,7 @@ definitions:
   ASSEMBLY_SCALING: 1
 
   # References to exclude from testpoint highlighting ==========================
-  
+
   EXCLUDE_REFS: '[MB*]' # for components on the PCB but not on the schematic
 
   # 3D Viewer rotations (in steps) =============================================
@@ -605,21 +606,24 @@ definitions:
   # Output directories =========================================================
 
   # Root
+  HARDWARE_ROOT: .
   OUTPUT_DIR: ./
 
-  # Relative to root
-  REPORT_DIR: Reports
-  SCHEMATIC_DIR: Schematic
-  MANUFACTURING_DIR: Manufacturing
+  # Output directories, relative to OUTPUT_DIR
+  REPORT_DIR: 'Reports'
+  SCHEMATIC_DIR: 'Schematic'
+  MANUFACTURING_DIR: 'Manufacturing'
   ASSEMBLY_DIR: '@MANUFACTURING_DIR@/Assembly'
   FABRICATION_DIR: '@MANUFACTURING_DIR@/Fabrication'
   GERBERS_DIR: '@FABRICATION_DIR@/Gerbers'
   FAB_DRILL_TABLES_DIR: '@FABRICATION_DIR@/Drill Tables'
-  TESTING_DIR: Testing
+  TESTING_DIR: 'Testing'
   TESTPOINTS_DIR: '@TESTING_DIR@/Testpoints'
-  IMAGES_DIR: Images
-  3D_DIR: 3D
-  RESOURCES_DIR: kibot_resources
+  IMAGES_DIR: 'Images'
+  3D_DIR: '3D'
+  NETLIST_DIR: 'Netlist'
+
+  RESOURCES_DIR: '@HARDWARE_ROOT@/kibot_resources'
   REPORT_TEMPLATE_DIR: '@RESOURCES_DIR@/templates'
   SCRIPTS_DIR: '@RESOURCES_DIR@/scripts'
 
