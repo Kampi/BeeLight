@@ -18,14 +18,6 @@ endforeach()
 
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 
-string(REGEX MATCH "beelight@([0-9]+)/nrf54l15.*" BEELIGHT_BOARD "${BOARD}")
-if(BEELIGHT_BOARD)
-    string(CONCAT VERSION_STRING "\"" ${CMAKE_MATCH_2} "\"")
-    set(CONFIG_BEELIGHT_PCB_REV ${CMAKE_MATCH_2} CACHE INTERNAL "")
-
-    message("PCB revision: " ${CONFIG_BEELIGHT_PCB_REV})
-endif()
-
 project(BeeLight)
 
 add_subdirectory(src/events)
