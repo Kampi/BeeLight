@@ -99,7 +99,7 @@ The firmware can be built with the following command:
 
 ```sh
 cd firmware/app
-west build --build-dir /home/daniel/Projects/BeeLight/firmware/app/build_1 /home/daniel/Projects/BeeLight/firmware/app --pristine --board beelight@1/nrf54l15/cpuapp -- -DNCS_TOOLCHAIN_VERSION=NONE -DCONF_FILE=config/debug.conf -DBOARD_ROOT=/home/daniel/Projects/BeeLight/firmware/app
+west build --build-dir build . --pristine --board beelight@1/nrf54l15/cpuapp -- -DNCS_TOOLCHAIN_VERSION=NONE -DCONF_FILE=config/debug.conf -DBOARD_ROOT=.
 ```
 
 You also need a Zigbee network to test and integrate the device. I use [Zigbee2MQTT](https://www.zigbee2mqtt.io/) running on a Raspberry Pi which allows me to connect my Zigbee network with my Home Automation.

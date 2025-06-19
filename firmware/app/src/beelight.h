@@ -27,7 +27,7 @@
 #define INIT_BASIC_STACK_VERSION                10
 
 /* Version of the hardware of the device (1 byte). */
-#define INIT_BASIC_HW_VERSION                   CONFIG_BOARD_REVISION
+#define INIT_BASIC_HW_VERSION                   1
 
 /* Manufacturer name (32 bytes). */
 #define INIT_BASIC_MANUF_NAME                   "Kampi"
