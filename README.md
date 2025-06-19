@@ -269,6 +269,7 @@ The device can now be connected to your Zigbee network and with this to your Hom
   - `images`: All documentation related images
 - `hardware`: KiCad project for the PCB
 - `firmware`: Zephyr project for the device firmware
+- `prebuilt`: Prebuilt binaries
 - `z2m`: Zigbee2MQTT related files
 
 ## Ressources
