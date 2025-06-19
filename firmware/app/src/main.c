@@ -31,6 +31,8 @@
 #include <zigbee/zigbee_app_utils.h>
 #include <zigbee/zigbee_error_handler.h>
 
+#include <stdlib.h>
+
 #include "events.h"
 #include "beelight.h"
 
@@ -291,7 +293,12 @@ static void clusters_attr_init(void)
     dev_ctx.basic_attr.zcl_version = ZB_ZCL_VERSION;
     dev_ctx.basic_attr.app_version = INIT_BASIC_APP_VERSION;
     dev_ctx.basic_attr.stack_version = INIT_BASIC_STACK_VERSION;
-    dev_ctx.basic_attr.hw_version = INIT_BASIC_HW_VERSION;
+
+    #ifdef CONFIG_BOARD_REVISION
+        dev_ctx.basic_attr.hw_version = (zb_uint8_t)atoi(CONFIG_BOARD_REVISION);
+    #else
+        dev_ctx.basic_attr.hw_version = INIT_BASIC_HW_VERSION;
+    #endif
 
     /* Use ZB_ZCL_SET_STRING_VAL to set strings, because the first byte */
     /* should contain string length without trailing zero. */
