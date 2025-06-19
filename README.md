@@ -263,7 +263,7 @@ The device can now be connected to your Zigbee network and with this to your Hom
 ## Directory structure
 
 - `3d-print`: All 3D print related files
-- `cad`: 3D model of the complete PCB
+- `cad`: All relevant 3D models
 - `docs`: All kinds of project documentation like schematics, BOM, etc.
   - `drawings`: 2D drawings for subcomponents, etc.
   - `images`: All documentation related images
