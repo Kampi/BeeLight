@@ -56,8 +56,8 @@ groups:
       - assembly
       - @PDF_SCHEMATIC_OUTPUT@
       - @MD_README_OUTPUT@
-      # - @HTML_KICANVAS_OUTPUT@ # Very experimental, we exclude it for now
-      - @HTML_KIRI_OUTPUT@
+    # - @HTML_KICANVAS_OUTPUT@ # Very experimental, we exclude it for now
+    # - @HTML_KIRI_OUTPUT@ # Caused some issues
       - @HTML_NAV_RES_OUTPUT@
 
   - name: all_group_k9
@@ -69,8 +69,8 @@ groups:
       - assembly
       - @PDF_SCHEMATIC_OUTPUT@
       - @MD_README_OUTPUT@
-      # - @HTML_KICANVAS_OUTPUT@ # Very experimental, we exclude it for now
-      - @HTML_KIRI_OUTPUT@
+    # - @HTML_KICANVAS_OUTPUT@ # Very experimental, we exclude it for now
+    # - @HTML_KIRI_OUTPUT@ # Caused some issues
       - @HTML_NAV_RES_OUTPUT@
 
   - name: draft_group
@@ -85,7 +85,7 @@ groups:
       - tables
       - @GERBER_OUTPUT@
       - @EXCELLON_DRILL_OUTPUT@
-      # - @DXF_DRILL_MAP_OUTPUT@
+    # - @DXF_DRILL_MAP_OUTPUT@
       - @PDF_DRILL_MAP_OUTPUT@
       - @PDF_FABRICATION_OUTPUT@
       - @ZIP_COMPRESS_FAB_OUTPUT@
@@ -96,7 +96,7 @@ groups:
       - @GERBER_OUTPUT@
       - @ODB_OUTPUT@
       - @EXCELLON_DRILL_OUTPUT@
-      # - @DXF_DRILL_MAP_OUTPUT@
+    # - @DXF_DRILL_MAP_OUTPUT@
       - @PDF_DRILL_MAP_OUTPUT@
       - @PDF_FABRICATION_OUTPUT@
       - @ZIP_COMPRESS_FAB_OUTPUT@
@@ -117,7 +117,7 @@ groups:
   - name: bom
     outputs:
       - @CSV_BOM_OUTPUT@
-      # - @XLSX_BOM_OUTPUT@
+    # - @XLSX_BOM_OUTPUT@
       - @HTML_IBOM_OUTPUT@
       - @HTML_BOM_OUTPUT@
 
@@ -143,7 +143,7 @@ groups:
   - name: 3d
     outputs:
       - @STEP_OUTPUT@
-      # - @BLENDER_OUTPUT@ # looks kinda bad
+    # - @BLENDER_OUTPUT@ # looks kinda bad
 
 import:
 
@@ -226,7 +226,7 @@ import:
   #     NAME_COMP_COUNT: @CSV_COMP_COUNT_OUPUT@
   #     NAME_IMPEDANCE_TABLE: @CSV_IMPEDANCE_TABLE_OUTPUT@
 
-# Generated outputs ============================================================
+  # Generated outputs ============================================================
 
   # Schematic variant with split fields ----------------------------------------
   # - file: kibot_out_sch_variant.yaml
@@ -606,7 +606,6 @@ definitions:
   # Output directories =========================================================
 
   # Root
-  HARDWARE_ROOT: .
   OUTPUT_DIR: ./
 
   # Output directories, relative to OUTPUT_DIR
@@ -623,7 +622,7 @@ definitions:
   3D_DIR: '3D'
   NETLIST_DIR: 'Netlist'
 
-  RESOURCES_DIR: '@HARDWARE_ROOT@/kibot_resources'
+  RESOURCES_DIR: './kibot_resources'
   REPORT_TEMPLATE_DIR: '@RESOURCES_DIR@/templates'
   SCRIPTS_DIR: '@RESOURCES_DIR@/scripts'
 
@@ -640,7 +639,7 @@ definitions:
   LAYER_DNP_CROSS_TOP: F.DNP
   LAYER_DNP_CROSS_BOTTOM: B.DNP
 
- # Filters names ==============================================================
+  # Filters names ==============================================================
 
   FILT_FIELD_RENAME: field_rename
   FILT_TP_ONLY: only_testpoints
@@ -648,7 +647,7 @@ definitions:
   FILT_TP_TOP_ONLY: only_testpoints_top
   FILT_TP_BOTTOM_ONLY: only_testpoints_bottom
 
-    # # Output names  ============================================================
+  # Output names  ============================================================
 
   SCH_VARIANT_OUTPUT: value_split
 

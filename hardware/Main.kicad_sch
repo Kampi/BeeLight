@@ -5,6 +5,7 @@
 	(uuid "ea8c4f5e-7a49-4faf-a994-dbc85ed86b0a")
 	(paper "A3")
 	(title_block
+		(title "Main")
 		(date "2025-06-05")
 		(rev "${REVISION}")
 		(company "${COMPANY}")
@@ -5106,22 +5107,22 @@
 			)
 		)
 		(pin "1"
-			(uuid "d973b98a-26a4-4afd-a9c7-6e9086c50522")
+			(uuid "f08ab47f-2b7a-431f-bbd8-b40e193af7d6")
 		)
 		(pin "2"
-			(uuid "b2d62b92-f06b-499f-9e95-6c14a7272d01")
+			(uuid "00853491-8b1d-40f4-a573-1cf6fd737c4a")
 		)
 		(pin "3"
-			(uuid "6a01c666-b819-4ab4-b579-19f035aa62c0")
+			(uuid "a55e86f7-a330-43e7-8b73-f09f0ea4edfc")
 		)
 		(pin "4"
-			(uuid "3cc3a0df-0444-402d-85df-1ec046776425")
+			(uuid "d39f09b0-8ccd-44bd-8be8-4650d3a148aa")
 		)
 		(pin "5"
-			(uuid "10018d24-3e44-487a-be7c-5389f268afb3")
+			(uuid "8efcc9c7-d112-404d-a403-0d33ed5693ee")
 		)
 		(pin "6"
-			(uuid "cb7e3748-64b4-47d8-a787-60fe0c6556c6")
+			(uuid "70ef623c-d1bf-4bbc-aaf4-2b825e564f8e")
 		)
 		(instances
 			(project "BeeLight"
@@ -5225,10 +5226,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "21e06479-a244-4caf-8a8f-baaa96bd5ba2")
+			(uuid "426766b2-46e5-4c57-9af4-da32a28a9daa")
 		)
 		(pin "2"
-			(uuid "4a232c7a-5c7f-4181-8243-006c4100f2bd")
+			(uuid "9edbfa98-d428-44ab-ac40-860b32132c68")
 		)
 		(instances
 			(project "BeeLight"
@@ -5294,7 +5295,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "29416108-8aa6-4760-ac2a-3c0e8e89f236")
+			(uuid "671f3f1c-748d-4d5d-a41f-4ea572c8b5ee")
 		)
 		(instances
 			(project "BeeLight"
@@ -5359,7 +5360,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "25868b54-47d0-4a96-81e8-f0e59decfcc9")
+			(uuid "74e82d22-f99a-4fab-865a-4745e8e74cdf")
 		)
 		(instances
 			(project "BeeLight"
@@ -5426,7 +5427,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "bc2073d2-e785-4438-8fcb-dc9998eccb58")
+			(uuid "46a7b735-d4f8-43d5-9b4e-824089266a02")
 		)
 		(instances
 			(project "BeeLight"
@@ -5530,10 +5531,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "69a37b5d-ba8d-43da-8098-6d8f82a80300")
+			(uuid "dd04577c-024c-4580-9aa8-d995739dc4b9")
 		)
 		(pin "2"
-			(uuid "7ba0dc83-28e7-40ab-8712-e27e31d99552")
+			(uuid "2dcd61d7-d100-4f25-8777-f9a168140be4")
 		)
 		(instances
 			(project "BeeLight"
@@ -5636,10 +5637,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "fb1b5df7-968e-4f4e-89dc-30d345a22e3c")
+			(uuid "2d14fb50-108d-46cb-a105-e4e36e93590d")
 		)
 		(pin "2"
-			(uuid "3401395c-8c45-4207-a09c-f011c13662b9")
+			(uuid "cd48f1e1-b111-4158-bfd0-a4e699fe8461")
 		)
 		(instances
 			(project "BeeLight"
@@ -5704,7 +5705,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "4bab6c43-138b-431b-a1a7-07a2b9b7e97d")
+			(uuid "4ad8101f-0a26-48ed-a6be-6fedfcacc1aa")
 		)
 		(instances
 			(project "BeeLight"
@@ -5769,7 +5770,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "94275d49-02fe-4c6e-8bc3-17d4661d30e0")
+			(uuid "f33db644-cd0d-4672-9943-98f1de13c8a9")
 		)
 		(instances
 			(project "BeeLight"
@@ -5872,10 +5873,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "e6737fd3-c1a4-4cfc-bd25-5e53ba8387d7")
+			(uuid "05534986-d1c3-430e-94ce-bd1676383666")
 		)
 		(pin "2"
-			(uuid "05ca88ca-d55e-4f1e-8d97-8ca6c0b34e51")
+			(uuid "dfc9d627-07b4-4911-8569-2658b4f95543")
 		)
 		(instances
 			(project "BeeLight"
@@ -5941,7 +5942,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "c6259cf1-8693-4644-8013-d1148fec3ef4")
+			(uuid "cc8b48e7-1fe6-463c-8ff7-743de687cbf4")
 		)
 		(instances
 			(project "BeeLight"
@@ -6043,10 +6044,10 @@
 			)
 		)
 		(pin "2"
-			(uuid "fcbcba57-5985-40e4-9de4-87a583636a68")
+			(uuid "64924d35-d203-4571-b5c4-08321ffd0445")
 		)
 		(pin "1"
-			(uuid "ce9c683a-76ee-4222-b56b-0a80b9d9b9d9")
+			(uuid "34e1d180-2306-4076-864e-00ff3495bb56")
 		)
 		(instances
 			(project "BeeLight"
@@ -6149,10 +6150,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "1c2bd059-feab-4428-a803-991ea10809ba")
+			(uuid "a11d8bf6-1890-44fd-8ae2-f6d4ce7f94ae")
 		)
 		(pin "2"
-			(uuid "5e34f774-4fe8-443a-bc07-79e360329904")
+			(uuid "3fcd9e91-6e27-48e4-888b-bb2d33a3f895")
 		)
 		(instances
 			(project "BeeLight"
@@ -6218,7 +6219,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "b6ec8022-884e-4687-9cf9-21f62e19e0cf")
+			(uuid "6e290a7c-08da-4c87-a6b5-b469fcb8aa6e")
 		)
 		(instances
 			(project "BeeLight"
@@ -6283,7 +6284,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "2f438465-21b6-408b-be4b-54b7247cc78a")
+			(uuid "7c0d3eb0-89bc-46b1-bc24-58b6d5f9e669")
 		)
 		(instances
 			(project "BeeLight"
@@ -6390,13 +6391,13 @@
 			)
 		)
 		(pin "1"
-			(uuid "c7ca431b-bd7c-448a-95c9-acef56cef4c3")
+			(uuid "a595bf9f-a300-4db7-8d5e-f6779b87a012")
 		)
 		(pin "2"
-			(uuid "1539b2f8-ce99-4b8c-9000-98d0f6b7d8ff")
+			(uuid "a89ade22-73e1-4fbf-9085-566a017b601e")
 		)
 		(pin "3"
-			(uuid "710d5e91-e2f5-4c4b-bb2f-2cfe2ce9b7b0")
+			(uuid "6febe53b-d0d4-48c4-9010-d911a4b4b112")
 		)
 		(instances
 			(project "BeeLight"
@@ -6427,7 +6428,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "1n"
 			(at 82.55 93.98 0)
 			(effects
 				(font
@@ -6445,7 +6446,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf"
+		(property "Datasheet" "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GCM1555C2A102JE02-01A.pdf"
 			(at 86.36 92.71 0)
 			(effects
 				(font
@@ -6463,7 +6464,7 @@
 				(hide yes)
 			)
 		)
-		(property "manf" "KYOCERA AVX"
+		(property "manf" "Murata Electronics"
 			(at 86.36 92.71 0)
 			(effects
 				(font
@@ -6472,7 +6473,7 @@
 				(hide yes)
 			)
 		)
-		(property "manf#" "04025C104KAT4A"
+		(property "manf#" "GCM1555C2A102JE02D"
 			(at 86.36 92.71 0)
 			(effects
 				(font
@@ -6481,7 +6482,16 @@
 				(hide yes)
 			)
 		)
-		(property "mouser#" "581-04025C104KAT4A"
+		(property "mouser#" "81-GCM1555C2A102JE02D"
+			(at 86.36 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CONFIG" ""
 			(at 86.36 92.71 0)
 			(effects
 				(font
@@ -6491,10 +6501,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "06f10072-1971-44f4-a619-3e322fbeeb3d")
+			(uuid "2191b686-5acf-4098-9d2a-d97d2cd00d08")
 		)
 		(pin "2"
-			(uuid "1bc8fe01-68c6-4004-89eb-2fbbbeb7650b")
+			(uuid "ab70a470-0d84-4a40-b8f5-096bb1e1f32d")
 		)
 		(instances
 			(project "BeeLight"
@@ -6559,7 +6569,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "f8adad07-eb81-48af-a664-3aafbfaaacb2")
+			(uuid "a1c48064-8e51-4f91-8594-7907d00ea388")
 		)
 		(instances
 			(project "BeeLight"
@@ -6662,10 +6672,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "63d201e3-196d-4e9e-970a-f1c146c69e8d")
+			(uuid "594cb6de-5a13-45a4-ba36-35b1683d4c3e")
 		)
 		(pin "2"
-			(uuid "2de1a1bd-05c3-4fea-8f6c-1f1be2ad9f06")
+			(uuid "919d1da5-3104-43aa-b81a-61513313b40f")
 		)
 		(instances
 			(project "BeeLight"
@@ -6730,7 +6740,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "29197853-95bb-46e3-b146-86a5d206dc06")
+			(uuid "21272b4f-dfb4-483b-a7d0-4148e10610cd")
 		)
 		(instances
 			(project "BeeLight"
@@ -6796,7 +6806,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "04ac09a8-9221-4ae2-a112-e9d18f756a3c")
+			(uuid "feee33d2-42e5-44d7-9ef5-3f5d0a488139")
 		)
 		(instances
 			(project "BeeLight"
@@ -6862,7 +6872,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "1960e3e4-e1c3-4a97-896b-3acc835d22c8")
+			(uuid "48cd06d6-fe60-4865-b5b7-4a9dcfe13bec")
 		)
 		(instances
 			(project "BeeLight"
@@ -6928,7 +6938,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "0b65889a-a78a-4ee5-8276-db55b3164a39")
+			(uuid "9deb54e5-a22f-4791-a463-1c2f95da3c9a")
 		)
 		(instances
 			(project "BeeLight"
@@ -7031,10 +7041,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "d30eb1cf-ca5f-4821-93ed-76bebcbaf73c")
+			(uuid "3e8aff4c-92a0-459c-95f1-d424dba432ac")
 		)
 		(pin "2"
-			(uuid "fd81a758-d12f-44d9-bb18-b06aab7f31da")
+			(uuid "1dc2c5b9-f346-47ad-a51b-00eb9c37cbb8")
 		)
 		(instances
 			(project "BeeLight"
@@ -7136,121 +7146,121 @@
 			)
 		)
 		(pin "12"
-			(uuid "2478b20f-fb52-433a-97b4-2a17caa3a6b9")
+			(uuid "b3a0b13c-62ed-4ed7-abef-fcb9b439fac9")
 		)
 		(pin "15"
-			(uuid "5d22a6cd-38d1-4ebf-bd74-2d30fc04c974")
+			(uuid "0debb785-08ab-47d4-ac90-3e44c89da2b1")
 		)
 		(pin "5"
-			(uuid "56fc5b02-85ac-4c57-ace3-593e4680cc64")
+			(uuid "b5e2d3ab-e744-4078-89a9-28bdaffbfe69")
 		)
 		(pin "8"
-			(uuid "f30d8d76-e006-4c5e-8325-1b3ff8220059")
+			(uuid "b057bd4d-fc47-4b52-abf2-504ce48b2012")
 		)
 		(pin "18"
-			(uuid "e9a8754b-e02f-4381-bd68-f096230eb134")
+			(uuid "3eaf4fff-70bb-479d-b85a-e2e37aead10a")
 		)
 		(pin "14"
-			(uuid "66c2a89f-5020-45be-b32e-fbb52612d851")
+			(uuid "0570b049-ea4e-44bd-b7d2-66c0ece2fdc3")
 		)
 		(pin "19"
-			(uuid "1abd071a-6315-4cb0-b912-3f2363f08c80")
+			(uuid "b693b232-49da-4808-b366-c9df0e56fb44")
 		)
 		(pin "25"
-			(uuid "f8e80088-5c9c-4e00-886c-55aec6b58933")
+			(uuid "37f31392-502d-4a05-9613-3c4c7ea7bb93")
 		)
 		(pin "27"
-			(uuid "fe7783e4-ff2b-4392-9f4a-2f2ab0c78ca8")
+			(uuid "e3a5db75-051f-4022-9cf4-12df1fab270f")
 		)
 		(pin "36"
-			(uuid "6b678cbb-664a-4c72-ac69-0f35ecf86205")
+			(uuid "08080cca-2593-4f48-9bfd-5dcdb830488b")
 		)
 		(pin "37"
-			(uuid "c56e3695-66d9-4890-a110-ea88b8da332c")
+			(uuid "a1b5bacd-f1c0-4fd8-81c5-23f8e063baf5")
 		)
 		(pin "38"
-			(uuid "2a046fb9-8fe4-4b33-a861-b7963068a0bc")
+			(uuid "dfe1f0b5-9ece-439b-9583-b1d18bab02af")
 		)
 		(pin "7"
-			(uuid "0a988ec8-a3c8-4e98-ad07-3e5ca598af65")
+			(uuid "4508e537-3031-4765-ae12-958df9b370e0")
 		)
 		(pin "10"
-			(uuid "67b71028-419c-48d7-a356-576e4d91db29")
+			(uuid "ae0eb9a4-b4fb-4a09-bf43-36faa94f91f8")
 		)
 		(pin "22"
-			(uuid "cd0ee1a5-ec85-4b14-b95f-e454540b7bc3")
+			(uuid "e1e29126-f39e-4d01-8c98-7b31d96b14fa")
 		)
 		(pin "23"
-			(uuid "b1f3eaec-b4ab-4f29-a72e-7a797221f5f7")
+			(uuid "d1d63f84-14bb-4b6b-8adb-171014f54dee")
 		)
 		(pin "21"
-			(uuid "03d1da43-e946-42b6-83c0-d8c5d035ae5b")
+			(uuid "7de3e0d3-8c91-48a5-8039-5383e3370bc3")
 		)
 		(pin "28"
-			(uuid "c370205d-6735-45b9-910c-016e28f4f59b")
+			(uuid "f1031e3b-ac6f-4142-8156-444964035440")
 		)
 		(pin "16"
-			(uuid "6e55a078-7134-4ef5-8523-9002d1739ce3")
+			(uuid "0c89e518-b507-4131-92bd-b73c5daf940c")
 		)
 		(pin "13"
-			(uuid "b114b1c4-1312-43cb-b941-e9ac6d5eaba5")
+			(uuid "f003552d-51ef-4c59-949d-a00fe821f6ef")
 		)
 		(pin "24"
-			(uuid "9bb19f49-79a1-4181-9765-2e575a4d92c4")
+			(uuid "fc3cd88c-dc33-4701-b3c1-87d6d36234ba")
 		)
 		(pin "26"
-			(uuid "4822cec2-3b5c-4830-ba77-0fb43d0d0b1c")
+			(uuid "db984aff-fd4a-46e1-9773-207c8878760d")
 		)
 		(pin "2"
-			(uuid "4fbff9db-6ddd-4847-bf66-0729baf8700e")
+			(uuid "5409c79a-6b4b-4a2c-a183-f66a2c77a4c7")
 		)
 		(pin "3"
-			(uuid "6d1181e2-9798-4eec-9b2a-6eb97b7bf562")
+			(uuid "9d500199-375e-4bcd-ba22-5b3a0f01596b")
 		)
 		(pin "30"
-			(uuid "9d4afed5-8e67-48dd-8010-92a2234669f9")
+			(uuid "f4dcca30-e76f-4cc9-acdf-3a9122331355")
 		)
 		(pin "31"
-			(uuid "b437ff47-291a-49b6-93bf-5ed58e22a4d3")
+			(uuid "31c337d3-7f51-4ced-8e00-1e166ad33ab4")
 		)
 		(pin "1"
-			(uuid "935706e5-fe94-4878-a9dc-350ccb99ec7d")
+			(uuid "01e8a4ef-98c7-4a1c-8bff-583c6d819741")
 		)
 		(pin "11"
-			(uuid "784846e7-cdf0-4b5c-aa49-82f476e63f9f")
+			(uuid "7bc45a17-1df6-4087-9732-7942e9593ac4")
 		)
 		(pin "32"
-			(uuid "28ccb208-b538-4b4d-bb26-36b9e7a17262")
+			(uuid "bfde495c-9b60-433b-9f2c-0bd3724978a1")
 		)
 		(pin "33"
-			(uuid "7447be12-d978-4db4-88c2-053ed4aa502c")
+			(uuid "4f4c5aad-a9c5-4e45-b26f-98a90a89e0c7")
 		)
 		(pin "17"
-			(uuid "0420fe23-a4d7-4c31-894d-8b15f7ac959f")
+			(uuid "f40d876e-684c-44bf-a2aa-cb25aa79a1fb")
 		)
 		(pin "20"
-			(uuid "c650528e-b907-4285-b550-e838ed96c1cd")
+			(uuid "79b9d27f-5ec5-436b-b7b3-9d402c8a5fa4")
 		)
 		(pin "34"
-			(uuid "300aac1f-371c-475b-917c-c13a76791289")
+			(uuid "b2cb13f8-5797-4229-b29b-60013a28728a")
 		)
 		(pin "29"
-			(uuid "1f6ad2c5-6cc5-4861-b9b0-0d8cbb24acf8")
+			(uuid "df81e090-6e7c-4436-85a1-5831394dfe33")
 		)
 		(pin "35"
-			(uuid "e79e4998-1eff-4b9f-a62b-60241658c73f")
+			(uuid "aa7dc7a3-3ade-4620-a79f-7b95d5797633")
 		)
 		(pin "39"
-			(uuid "d4165c6a-423e-4c22-af68-51dc24229f3d")
+			(uuid "c1fd96c4-fba2-4c9a-8e90-f5563131f49e")
 		)
 		(pin "4"
-			(uuid "3983e5d6-31b3-445c-a712-b70ba617b3ed")
+			(uuid "e9e077c1-b0d7-43c1-a471-42551cb9c564")
 		)
 		(pin "6"
-			(uuid "b82e9ed6-03d4-4e07-9161-c4c10125142b")
+			(uuid "630957b4-9557-4fb1-92ea-1c04eb72c9e6")
 		)
 		(pin "9"
-			(uuid "c35c0e2a-d10d-4768-b1ac-d12370276047")
+			(uuid "162f0b06-8617-424f-85e6-56e1e9f62414")
 		)
 		(instances
 			(project "BeeLight"
@@ -7354,10 +7364,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "659ddeec-2d1c-42a7-8b56-2a371419d614")
+			(uuid "6ee9359e-1d5e-48be-b9be-e73250324e4b")
 		)
 		(pin "2"
-			(uuid "f02937f8-285b-46fa-b6b5-0ec26616b55e")
+			(uuid "04c8d1a0-f054-4ae6-8aad-7150f0270e43")
 		)
 		(instances
 			(project "BeeLight"
@@ -7460,10 +7470,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "08e121de-a3a8-4563-951c-cfdd196982d0")
+			(uuid "600126e3-d7b0-4395-bb01-53ca91cc366d")
 		)
 		(pin "2"
-			(uuid "6c7d9ded-67fe-4195-b723-f050a39e3825")
+			(uuid "750c03e1-bd7f-4554-b3e6-dd2a31f7e3e6")
 		)
 		(instances
 			(project "BeeLight"
@@ -7530,7 +7540,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "b7ac4884-f1ba-4d54-9b23-9a8cb3731bdd")
+			(uuid "5578cb3a-7637-469a-9cb2-be2e04b9ed3e")
 		)
 		(instances
 			(project "BeeLight"
@@ -7630,28 +7640,28 @@
 			)
 		)
 		(pin "1"
-			(uuid "a613d1b5-bdfb-4716-ae3c-0440ba124ea8")
+			(uuid "9b5027bb-494d-4341-9a3a-84fb848c7d82")
 		)
 		(pin "2"
-			(uuid "98438843-1a90-4cf4-a619-493c93aab339")
+			(uuid "c30b5697-4530-42f9-a7af-da3bdf6a2bf4")
 		)
 		(pin "3"
-			(uuid "ce1f4467-60b5-477d-8f86-b05d33bc2944")
+			(uuid "e094ba19-899a-4aeb-a847-bf1ee834265d")
 		)
 		(pin "4"
-			(uuid "c54563f5-482e-443c-bd3c-04b2267e5c14")
+			(uuid "40a9cde4-af4a-4d8e-a758-5d1ece4455c0")
 		)
 		(pin "5"
-			(uuid "a2b503ad-a4bd-4279-bc86-9c61e59b3ee0")
+			(uuid "b9f0b456-5ad8-4805-8fe7-f3f1061a1a2d")
 		)
 		(pin "6"
-			(uuid "8d9c5afc-c6f2-4f63-8968-3b6dc6dcc6da")
+			(uuid "27a688eb-700e-4ff9-ad82-55c567b6c28a")
 		)
 		(pin "7"
-			(uuid "11eddc5a-8820-4ccf-a6b5-c11cc9cdc990")
+			(uuid "f1dc6fca-3ef3-4f34-874a-367a02ebe0be")
 		)
 		(pin "8"
-			(uuid "4df4164f-3307-43f5-ad6d-fd338c0c0125")
+			(uuid "e2793bb5-7f7b-441b-9d01-b9103bfc92d7")
 		)
 		(instances
 			(project "BeeLight"
@@ -7716,7 +7726,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "b6d61629-8866-4858-aeac-c529aa7e4452")
+			(uuid "6cfc6b8a-9568-4db1-b73b-f15f89d18552")
 		)
 		(instances
 			(project "BeeLight"
@@ -7781,7 +7791,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "aa9cab38-b9e5-4d21-a95d-fbd0c71a7bc4")
+			(uuid "98cda9a7-fd17-402f-80ea-03740f918f49")
 		)
 		(instances
 			(project "BeeLight"
@@ -7875,10 +7885,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "29b0c025-79b6-4f27-af42-c6e83e3810e4")
+			(uuid "02332968-5055-432a-a340-d239bc6c9fbe")
 		)
 		(pin "2"
-			(uuid "f79cceab-6741-4309-abf4-c6cbb93ca3ad")
+			(uuid "1fc58448-b26f-46d0-8ad3-2c8d9b57ce14")
 		)
 		(instances
 			(project "BeeLight"
@@ -7980,34 +7990,34 @@
 			)
 		)
 		(pin "1"
-			(uuid "c4f322b8-1f04-47d1-909d-caac466ca762")
+			(uuid "b37b60c9-7750-4ff2-b5c7-92c52d8e5239")
 		)
 		(pin "10"
-			(uuid "f35c823b-5f88-45fb-bf96-08d7670e79cf")
+			(uuid "3e08d5d5-7e48-4587-b3f5-57d4c53baf6c")
 		)
 		(pin "2"
-			(uuid "b73ca2fb-ba98-46fc-9631-3c934e7fbf6d")
+			(uuid "62570983-1372-4e0f-8e83-5747c0ecdfa7")
 		)
 		(pin "3"
-			(uuid "0b211df3-3531-45b7-bcc0-155f39aaba86")
+			(uuid "7fa9de2e-4275-4692-96b4-215f82e9c4a4")
 		)
 		(pin "4"
-			(uuid "d6c96915-db19-439f-be40-b1d6c93f8421")
+			(uuid "3aacb28d-e521-484c-b67c-59b8afe3984e")
 		)
 		(pin "5"
-			(uuid "3c467d26-154a-4101-b49a-a1b3402428d4")
+			(uuid "664ff3e9-c939-4c90-947b-d98d6a2e5635")
 		)
 		(pin "6"
-			(uuid "6747db38-1046-42e2-8e06-bdf72f3018e7")
+			(uuid "1534c8de-a392-463e-9582-4927fc263083")
 		)
 		(pin "7"
-			(uuid "dc4c4ff8-e7d9-48b7-901b-b4044a5562db")
+			(uuid "0b18a55c-8039-4e95-a22d-1b7144139851")
 		)
 		(pin "8"
-			(uuid "45159af0-b94a-4420-ab3b-8896a77e01ed")
+			(uuid "d204bd7b-46cd-4d0d-ac5a-444b4875b3f8")
 		)
 		(pin "9"
-			(uuid "a42bde8d-39f1-4ff8-a5e4-7e4c4aa4f85a")
+			(uuid "e0165445-52b7-4a8d-97e6-b8ee787623af")
 		)
 		(instances
 			(project "BeeLight"
@@ -8101,10 +8111,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "c96600aa-4e90-48c9-89ae-aaddf45a9e92")
+			(uuid "cb59d55a-8780-43f1-9687-60383aeeb0ac")
 		)
 		(pin "2"
-			(uuid "68feb809-e591-45bf-931c-9de271c5c2dc")
+			(uuid "db6e42c1-ef35-4129-a32f-cb912233b147")
 		)
 		(instances
 			(project "BeeLight"
@@ -8208,10 +8218,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "51b76226-2707-4618-94a4-726686987a28")
+			(uuid "a0e16317-7b0e-4f88-b888-61a4c5cfcf2e")
 		)
 		(pin "2"
-			(uuid "6bf8ec10-1381-4ef8-a9d2-d11ece4ef98d")
+			(uuid "56fbcac7-f566-4c77-b017-1d492299ba7b")
 		)
 		(instances
 			(project "BeeLight"
@@ -8313,10 +8323,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "90f98e24-68e2-4575-a2ec-7498a1090856")
+			(uuid "be2f0991-c206-4493-a23f-95ee66a08b8a")
 		)
 		(pin "2"
-			(uuid "feb8060c-68a8-4f9b-9b99-659dfb11fe32")
+			(uuid "1ed2f6ad-7130-4c62-b251-9a19cc0b43bf")
 		)
 		(instances
 			(project "BeeLight"
@@ -8381,7 +8391,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "6d7679ee-e0de-48b6-9e80-b6633f415ca4")
+			(uuid "11f35560-c356-4819-8aec-82c9cea19543")
 		)
 		(instances
 			(project "BeeLight"
@@ -8446,7 +8456,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "69f31731-6285-4205-a968-afce63841df2")
+			(uuid "42858954-20ff-4caa-9485-3e50e9539157")
 		)
 		(instances
 			(project "BeeLight"
@@ -8512,7 +8522,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "4cd7c21f-b647-40b7-9c1b-45b700c73efb")
+			(uuid "878dea69-ae2b-475c-bcfe-8533f629feae")
 		)
 		(instances
 			(project "BeeLight"
@@ -8616,10 +8626,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "077222f4-b30d-4716-ad98-be90cdf2db30")
+			(uuid "a3c897cc-a511-4520-b9f9-63c73d768d87")
 		)
 		(pin "2"
-			(uuid "a132fdb3-90ab-4007-82b8-c2b2f36b98e2")
+			(uuid "f56e4a1a-1b40-4daf-aee3-3b468cca7346")
 		)
 		(instances
 			(project "BeeLight"
@@ -8686,7 +8696,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "6a1b2955-d9bf-4303-8e64-861a2e5290a1")
+			(uuid "a54dc34d-b536-41b1-b78e-d00f5494eeaf")
 		)
 		(instances
 			(project "BeeLight"
@@ -8752,7 +8762,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "75f84771-b165-4118-a725-d0299694e4a7")
+			(uuid "41b6d8b0-b1a2-4fc6-8aa1-d0e885b9bf53")
 		)
 		(instances
 			(project "BeeLight"
@@ -8817,7 +8827,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "ff8d0e92-c4bc-4a64-99be-9447bfacd49e")
+			(uuid "016330ed-977f-4202-8858-d2c6750e6567")
 		)
 		(instances
 			(project "BeeLight"
@@ -8918,10 +8928,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "bae56710-01a8-4a87-b9f7-fb52a1963156")
+			(uuid "24782189-76e1-431e-a463-560919b4d4a8")
 		)
 		(pin "2"
-			(uuid "878659d9-6ead-4059-a938-c2113f1f242a")
+			(uuid "153397fe-b6c4-4a26-86a6-56c371cf6346")
 		)
 		(instances
 			(project "BeeLight"
@@ -8986,7 +8996,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "e9ce7cb7-cd28-4d23-adc8-37c5ec567ad8")
+			(uuid "80054861-3eee-4264-82af-ab048c4d2914")
 		)
 		(instances
 			(project "BeeLight"
@@ -9052,7 +9062,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "c3130cf8-5e1e-4355-a43b-68dcfb0c2c8a")
+			(uuid "f7afcf69-631a-4c77-8fd5-60ed0f2ee13c")
 		)
 		(instances
 			(project "BeeLight"
@@ -9156,10 +9166,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "25ab91dc-39fa-4c7f-9cef-3846f2f2b84a")
+			(uuid "6c3b54b9-0015-43fd-97d6-1dd6a0957c94")
 		)
 		(pin "2"
-			(uuid "88c61b46-9610-4770-aa2e-5fe929b390f7")
+			(uuid "c0506c89-39f6-4354-a888-6d349ec0031e")
 		)
 		(instances
 			(project "BeeLight"
@@ -9224,7 +9234,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "91fdf68d-e980-44a2-bee6-3a090bfd5d76")
+			(uuid "1a22240f-e249-48ac-ac85-7f84696e4ff4")
 		)
 		(instances
 			(project "BeeLight"

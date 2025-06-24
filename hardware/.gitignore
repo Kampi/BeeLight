@@ -35,7 +35,6 @@ fp-info-cache
 *.cmp
 
 # Exported BOM files
-*.xml
 *.csv
 *.tsv
 

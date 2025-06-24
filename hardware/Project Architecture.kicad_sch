@@ -5,6 +5,7 @@
 	(uuid "07236397-3ba4-47af-9809-3faac3a2aa49")
 	(paper "A3")
 	(title_block
+		(title "Project Architecture")
 		(date "2025-06-05")
 		(rev "${REVISION}")
 		(company "${COMPANY}")
@@ -62,7 +63,7 @@
 		)
 		(uuid 94ad6bc3-4505-4c4a-89fc-83d0c51dd562)
 	)
-	(text "Page 5"
+	(text "Page 4"
 		(exclude_from_sim no)
 		(at 226.06 133.35 0)
 		(effects
@@ -199,11 +200,6 @@
 			)
 		)
 		(instances
-			(project "KDT_Hierarchical_KiBot"
-				(path "/f9e05184-c88b-4a88-ae9c-ab2bdb32be7c/c5103ceb-5325-4a84-a025-9638a412984e"
-					(page "5")
-				)
-			)
 			(project "BeeLight"
 				(path "/d5742f03-3b1a-42e5-a384-018bd4b919aa/c5103ceb-5325-4a84-a025-9638a412984e"
 					(page "4")

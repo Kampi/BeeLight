@@ -76,10 +76,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Getting the dependencies
+      - name: Initialize
         run: |
-          git clone https://github.com/Kampi/KiCad.git library
-          echo "KICAD_LIBRARY=$(pwd)/library" >> $GITHUB_ENV
+          mkdir -p log
 
       # Run these changelog update steps only on tag pushes
       - name: Pull latest changes for changelog update
@@ -89,6 +88,11 @@ jobs:
           git config --global user.name "GitHub Actions"
           git fetch
           git pull origin main
+
+      - name: Getting the dependencies
+        run: |
+          git clone https://github.com/Kampi/KiCad.git library
+          echo "KICAD_LIBRARY=$(pwd)/library" >> $GITHUB_ENV
 
       - name: Extract release notes
         if: ${{ github.ref_type == 'tag' }}
@@ -157,19 +161,33 @@ jobs:
         if: ${{ env.kibot_variant != 'DRAFT' }}
         run: |
           cd hardware
-          kibot -c ${{ env.kibot_config }} -d ${{ env.kibot_output_dir }} -b ${{ env.kicad_board }}.kicad_pcb -s all -g variant=${{ env.kibot_variant }} notes
+          kibot -vvvv -c ${{ env.kibot_config }} -d ${{ env.kibot_output_dir }} -b ${{ env.kicad_board }}.kicad_pcb -s all -g variant=${{ env.kibot_variant }} notes 2> ../log/kibot_notes.log
 
       - name: Generate README only
         if: ${{ env.kibot_variant == 'DRAFT' }}
         run: |
           cd hardware
-          kibot -c ${{ env.kibot_config }} -d ${{ env.kibot_output_dir }} -b ${{ env.kicad_board }}.kicad_pcb -s draw_fancy_stackup,set_text_variables,erc,drc -g variant=${{ env.kibot_variant }} md_readme
+          kibot -vvvv -c ${{ env.kibot_config }} -d ${{ env.kibot_output_dir }} -b ${{ env.kicad_board }}.kicad_pcb -s draw_fancy_stackup,set_text_variables,erc,drc -g variant=${{ env.kibot_variant }} md_readme 2> ../log/kibot_readme.log
 
       # Generate outputs
       - name: Generate outputs
         run: |
           cd hardware
-          kibot -c ${{ env.kibot_config }} -d ${{ env.kibot_output_dir }} -b ${{ env.kicad_board }}.kicad_pcb -g variant=${{ env.kibot_variant }} ${{ env.additional_args }}
+          kibot -vvvv -c ${{ env.kibot_config }} -d ${{ env.kibot_output_dir }} -b ${{ env.kicad_board }}.kicad_pcb -g variant=${{ env.kibot_variant }} ${{ env.additional_args }} 2> ../log/kibot_output.log
+
+      - name: Upload logs
+        uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: Log-${{ env.kibot_variant }}
+          path: log
+
+      - name: Upload Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.kibot_variant }}
+          path: production
+          if-no-files-found: ignore
 
       - name: Pull latest changes
         run: |
@@ -203,7 +221,12 @@ jobs:
           git clean -f "*.kicad_dru"
           git clean -f "*.kicad_prl"
 
-      - name: Update Outputs
+      - name: Clean up
+        run: |
+          find . -type f -iname \*.log -delete
+          find . -type f -iname \*.ogv -delete
+
+      - name: Push Outputs
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: ${{ github.ref_name }}

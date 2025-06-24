@@ -5,7 +5,7 @@ kibot:
   version: 1
 
 global:
-  resources_dir: '@HARDWARE_ROOT@/kibot_resources'
+  resources_dir: '@RESOURCES_DIR@'
   out_dir: '@OUTPUT_DIR@'
   dnp_cross_top_layer: '@LAYER_DNP_TOP@'
   dnp_cross_bottom_layer: '@LAYER_DNP_BOTTOM@'

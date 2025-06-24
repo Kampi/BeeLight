@@ -23,4 +23,4 @@ definitions:
   COMMENT: Report
   DIR: Manufacturing
   OUTPUT_ID: _notes
-  TEMPLATE: kibot_ressources/template/fabrication_notes.txt
+  TEMPLATE: '@RESOURCES_DIR@/template/fabrication_notes.txt'
