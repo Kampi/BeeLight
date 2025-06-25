@@ -3,14 +3,6 @@ menu "Zephyr Kernel"
 endmenu
 
 menu "BeeLight"
-    menu "Configuration"
-        config BEELIGHT_CONFIG_SENSOR_SAMPLE_RATE_SECONDS
-            int
-        range 1 3600
-        prompt "Sensor sample time in seconds"
-        default 1800
-    endmenu
-
     menu "Logging"
         rsource "src/events/Kconfig"
         rsource "src/sensors/Kconfig"

@@ -21,15 +21,24 @@
 
 #include "events/events.h"
 
-static struct k_work_delayable periodic_sample_work;
+static struct k_work_delayable periodic_24h_work;
+static struct k_work_delayable periodic_5min_work;
 
-ZBUS_CHAN_DEFINE(periodic_sample_event_chan,
+ZBUS_CHAN_DEFINE(periodic_24h_chan,
                  struct periodic_event,
                  NULL,
-                 &periodic_sample_work,
+                 &periodic_24h_work,
                  ZBUS_OBSERVERS_EMPTY,
                  ZBUS_MSG_INIT()
-                );
+                 );
+
+ZBUS_CHAN_DEFINE(periodic_5min_chan,
+                 struct periodic_event,
+                 NULL,
+                 &periodic_5min_work,
+                 ZBUS_OBSERVERS_EMPTY,
+                 ZBUS_MSG_INIT()
+                 );
 
 ZBUS_CHAN_DEFINE(light_data_chan,
                  struct light_event,
@@ -37,7 +46,7 @@ ZBUS_CHAN_DEFINE(light_data_chan,
                  NULL,
                  ZBUS_OBSERVERS_EMPTY,
                  ZBUS_MSG_INIT()
-                );
+                 );
 
 ZBUS_CHAN_DEFINE(env_data_chan,
                  struct env_event,
@@ -45,7 +54,7 @@ ZBUS_CHAN_DEFINE(env_data_chan,
                  NULL,
                  ZBUS_OBSERVERS_EMPTY,
                  ZBUS_MSG_INIT()
-                );
+                 );
 
 ZBUS_CHAN_DEFINE(battery_data_chan,
                  struct battery_event,
@@ -53,30 +62,54 @@ ZBUS_CHAN_DEFINE(battery_data_chan,
                  NULL,
                  ZBUS_OBSERVERS_EMPTY,
                  ZBUS_MSG_INIT()
-                );
+                 );
 
-LOG_MODULE_REGISTER(events, CONFIG_BEELIGHT_EVENTS_LOG_LEVEL);
+LOG_MODULE_REGISTER(events, LOG_LEVEL_DBG);
 
-static void handle_sample_timeout(struct k_work *item)
+static void handle_24h_timeout(struct k_work *item)
 {
     struct periodic_event evt = {
     };
     struct k_work_delayable *work = NULL;
 
-    zbus_chan_claim(&periodic_sample_event_chan, K_FOREVER);
-    work = (struct k_work_delayable *)zbus_chan_user_data(&periodic_sample_event_chan);
-    k_work_reschedule(work, K_MSEC(CONFIG_BEELIGHT_CONFIG_SENSOR_SAMPLE_RATE_SECONDS * 1000));
-    zbus_chan_finish(&periodic_sample_event_chan);
+    LOG_DBG("24 h timeout");
 
-    zbus_chan_pub(&periodic_sample_event_chan, &evt, K_MSEC(250));
+    zbus_chan_claim(&periodic_24h_chan, K_FOREVER);
+    work = (struct k_work_delayable *)zbus_chan_user_data(&periodic_24h_chan);
+    k_work_reschedule(work, K_MSEC(24 * 60 * 60 * 1000UL));
+    zbus_chan_finish(&periodic_24h_chan);
+
+    zbus_chan_pub(&periodic_24h_chan, &evt, K_NO_WAIT);
+}
+
+static void handle_5min_timeout(struct k_work *item)
+{
+    struct periodic_event evt = {
+    };
+    struct k_work_delayable *work = NULL;
+
+    LOG_DBG("5 min timeout");
+
+    zbus_chan_claim(&periodic_5min_chan, K_FOREVER);
+    work = (struct k_work_delayable *)zbus_chan_user_data(&periodic_5min_chan);
+    k_work_reschedule(work, K_MSEC(5 * 60 * 1000UL));
+    zbus_chan_finish(&periodic_5min_chan);
+
+    zbus_chan_pub(&periodic_5min_chan, &evt, K_NO_WAIT);
 }
 
 static int beelight_events_init(void)
 {
     struct k_work_delayable *work = NULL;
 
-    work = (struct k_work_delayable *)zbus_chan_user_data(&periodic_sample_event_chan);
-    k_work_init_delayable(work, handle_sample_timeout);
+    work = (struct k_work_delayable *)zbus_chan_user_data(&periodic_24h_chan);
+    k_work_init_delayable(work, handle_24h_timeout);
+    k_work_reschedule(work, K_MSEC(10000));
+
+    work = (struct k_work_delayable *)zbus_chan_user_data(&periodic_5min_chan);
+    k_work_init_delayable(work, handle_5min_timeout);
+
+    LOG_DBG("Events initialized");
 
     return k_work_reschedule(work, K_MSEC(10000));
 }

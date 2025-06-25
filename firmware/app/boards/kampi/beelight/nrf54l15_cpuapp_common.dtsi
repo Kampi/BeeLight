@@ -56,10 +56,6 @@
     status = "okay";
 };
 
-&uart20 {
-    status = "disabled";
-};
-
 &gpio0 {
     status = "okay";
 };
@@ -80,14 +76,6 @@
     status = "okay";
 };
 
-&radio {
-    status = "okay";
-};
-
-&ieee802154 {
-    status = "okay";
-};
-
 &temp {
     status = "okay";
 };
@@ -96,12 +84,16 @@
     status = "okay";
 };
 
-&spi00 {
-    status = "disabled";
+&radio {
+    status = "okay";
+};
+
+&ieee802154 {
+    status = "okay";
 };
 
 &i2c20 {
-    status = "okay";
+    status = "disabled";
     clock-frequency = <I2C_BITRATE_FAST>;
     pinctrl-0 = <&i2c_default>;
     pinctrl-1 = <&i2c_sleep>;
@@ -119,7 +111,7 @@
         zephyr,reference = "ADC_REF_INTERNAL";
         zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
         zephyr,input-positive = <NRF_SAADC_AIN0>;
-        zephyr,resolution = <14>;
+        zephyr,resolution = <10>;
     };
 };
 

@@ -63,9 +63,13 @@
  */
 #define SENSOR_ENDPOINT                         10
 
-/** @brief The ratet battery voltage in 10th of millivolts.
+/** @brief The ratet battery voltage in millivolts.
  */
-#define SENSOR_RATET_VOLTAGE                    3000UL
+#define SENSOR_RATET_VOLTAGE_MV                 3000UL
+
+/** @brief The lowest battery voltage in millivolts.
+ */
+#define SENSOR_EMPTY_VOLTAGE_MV                 2700UL
 
 /** @brief
 */

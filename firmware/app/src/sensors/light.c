@@ -21,17 +21,17 @@
 
 #include "events.h"
 
-static void zbus_10s_callback(const struct zbus_channel *chan);
+static void zbus_5min_callback(const struct zbus_channel *chan);
 
 const struct device *const apds9306 = DEVICE_DT_GET_OR_NULL(DT_NODELABEL(apds9306));
 
 ZBUS_CHAN_DECLARE(light_data_chan);
-ZBUS_CHAN_DECLARE(periodic_sample_event_chan);
-ZBUS_LISTENER_DEFINE(light_periodic_sample_event_lis, zbus_10s_callback);
+ZBUS_CHAN_DECLARE(periodic_5min_chan);
+ZBUS_LISTENER_DEFINE(light_periodic_sample_event_lis, zbus_5min_callback);
 
-LOG_MODULE_REGISTER(light, CONFIG_BEELIGHT_SENSORS_LOG_LEVEL);
+LOG_MODULE_REGISTER(light, LOG_LEVEL_DBG);
 
-static void zbus_10s_callback(const struct zbus_channel *chan)
+static void zbus_5min_callback(const struct zbus_channel *chan)
 {
     struct sensor_value sensor_val;
 
@@ -42,13 +42,13 @@ static void zbus_10s_callback(const struct zbus_channel *chan)
 
             memset(&evt, 0, sizeof(struct light_event));
 
-            evt.value = sensor_val.val1;
+            evt.light = sensor_val.val1;
 
             zbus_chan_pub(&light_data_chan, &evt, K_NO_WAIT);
             LOG_DBG("Publish new data...");
+            LOG_DBG("   Light: %u", evt.light);
         }
-    }
-    else {
+    } else {
         LOG_ERR("Device \"%s\" is not ready!", apds9306->name);
     }
 }
@@ -59,7 +59,7 @@ static int beelight_light_sensor_init(void)
 
     pm_device_runtime_auto_enable(apds9306);
 
-    err = zbus_chan_add_obs(&periodic_sample_event_chan, &light_periodic_sample_event_lis, K_NO_WAIT);
+    err = zbus_chan_add_obs(&periodic_5min_chan, &light_periodic_sample_event_lis, K_NO_WAIT);
     if (err != 0) {
         return err;
     }

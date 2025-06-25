@@ -22,21 +22,19 @@
 
 #include "events.h"
 
-static void zbus_10s_callback(const struct zbus_channel *chan);
+static void zbus_24h_callback(const struct zbus_channel *chan);
 
 const struct device *const vbatt = DEVICE_DT_GET_OR_NULL(DT_NODELABEL(vbatt));
 
 ZBUS_CHAN_DECLARE(battery_data_chan);
-ZBUS_CHAN_DECLARE(periodic_sample_event_chan);
-ZBUS_LISTENER_DEFINE(batt_periodic_sample_event_lis, zbus_10s_callback);
+ZBUS_CHAN_DECLARE(periodic_24h_chan);
+ZBUS_LISTENER_DEFINE(batt_periodic_sample_event_lis, zbus_24h_callback);
 
-LOG_MODULE_REGISTER(battery, CONFIG_BEELIGHT_SENSORS_LOG_LEVEL);
+LOG_MODULE_REGISTER(battery, LOG_LEVEL_DBG);
 
-static void zbus_10s_callback(const struct zbus_channel *chan)
+static void zbus_24h_callback(const struct zbus_channel *chan)
 {
     struct sensor_value sensor_val;
-
-    LOG_DBG("Battery sample event");
 
     if (device_is_ready(vbatt)) {
         pm_device_runtime_get(vbatt);
@@ -46,14 +44,14 @@ static void zbus_10s_callback(const struct zbus_channel *chan)
 
             memset(&evt, 0, sizeof(struct battery_event));
 
-            evt.mV = (sensor_val.val1 * 1000) + (sensor_val.val2 / 1000);
+            evt.voltage = (sensor_val.val1 * 1000) + (sensor_val.val2 / 1000);
 
             zbus_chan_pub(&battery_data_chan, &evt, K_NO_WAIT);
             LOG_DBG("Publish new data...");
+            LOG_DBG("   Voltage: %u", evt.voltage);
         }
         pm_device_runtime_put(vbatt);
-    }
-    else {
+    } else {
         LOG_ERR("Device \"%s\" is not ready!", vbatt->name);
     }
 }
@@ -64,7 +62,7 @@ static int beelight_battery_sensor_init(void)
 
     pm_device_runtime_enable(vbatt);
 
-    err = zbus_chan_add_obs(&periodic_sample_event_chan, &batt_periodic_sample_event_lis, K_NO_WAIT);
+    err = zbus_chan_add_obs(&periodic_24h_chan, &batt_periodic_sample_event_lis, K_NO_WAIT);
     if (err != 0) {
         return err;
     }

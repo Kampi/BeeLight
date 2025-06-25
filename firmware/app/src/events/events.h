@@ -29,7 +29,7 @@ struct periodic_event {
 /** @brief
  */
 struct light_event {
-    uint16_t value;             /**< */
+    uint16_t light;             /**< */
 };
 
 /** @brief
@@ -55,6 +55,6 @@ struct env_event {
 /** @brief
  */
 struct battery_event {
-    uint32_t mV;                /**< */
+    uint32_t voltage;           /**< */
     uint8_t percent;            /**< */
 };
