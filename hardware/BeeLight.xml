@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>/__w/BeeLight/BeeLight/hardware/BeeLight.kicad_sch</source>
-    <date>2025-06-27T09:01:05+0000</date>
+    <date>2025-06-27T11:45:59+0000</date>
     <tool>Eeschema 9.0.1+1</tool>
     <textvar name="ASSEMBLY_NOTES"/>
     <textvar name="BOARD_NAME">BeeLight</textvar>
@@ -19,45 +19,45 @@
     <textvar name="RELEASE_TITLE_UNRELEASED">Version Unreleased not found.</textvar>
     <textvar name="REVISION">+ (Unreleased)</textvar>
     <textvar name="SHEET_NAME_1">Cover Page</textvar>
-    <textvar name="SHEET_NAME_10">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_11">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_12">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_13">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_14">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_15">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_16">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_17">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_18">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_19">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_2">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_20">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_21">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_22">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_23">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_24">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_25">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_26">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_27">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_28">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_29">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_3">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_30">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_31">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_32">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_33">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_34">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_35">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_36">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_37">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_38">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_39">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_4">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_40">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_5">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_6">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_7">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_8">Error: XML File not found</textvar>
-    <textvar name="SHEET_NAME_9">Error: XML File not found</textvar>
+    <textvar name="SHEET_NAME_10">......................................</textvar>
+    <textvar name="SHEET_NAME_11">......................................</textvar>
+    <textvar name="SHEET_NAME_12">......................................</textvar>
+    <textvar name="SHEET_NAME_13">......................................</textvar>
+    <textvar name="SHEET_NAME_14">......................................</textvar>
+    <textvar name="SHEET_NAME_15">......................................</textvar>
+    <textvar name="SHEET_NAME_16">......................................</textvar>
+    <textvar name="SHEET_NAME_17">......................................</textvar>
+    <textvar name="SHEET_NAME_18">......................................</textvar>
+    <textvar name="SHEET_NAME_19">......................................</textvar>
+    <textvar name="SHEET_NAME_2">Block Diagram</textvar>
+    <textvar name="SHEET_NAME_20">......................................</textvar>
+    <textvar name="SHEET_NAME_21">......................................</textvar>
+    <textvar name="SHEET_NAME_22">......................................</textvar>
+    <textvar name="SHEET_NAME_23">......................................</textvar>
+    <textvar name="SHEET_NAME_24">......................................</textvar>
+    <textvar name="SHEET_NAME_25">......................................</textvar>
+    <textvar name="SHEET_NAME_26">......................................</textvar>
+    <textvar name="SHEET_NAME_27">......................................</textvar>
+    <textvar name="SHEET_NAME_28">......................................</textvar>
+    <textvar name="SHEET_NAME_29">......................................</textvar>
+    <textvar name="SHEET_NAME_3">Project Architecture</textvar>
+    <textvar name="SHEET_NAME_30">......................................</textvar>
+    <textvar name="SHEET_NAME_31">......................................</textvar>
+    <textvar name="SHEET_NAME_32">......................................</textvar>
+    <textvar name="SHEET_NAME_33">......................................</textvar>
+    <textvar name="SHEET_NAME_34">......................................</textvar>
+    <textvar name="SHEET_NAME_35">......................................</textvar>
+    <textvar name="SHEET_NAME_36">......................................</textvar>
+    <textvar name="SHEET_NAME_37">......................................</textvar>
+    <textvar name="SHEET_NAME_38">......................................</textvar>
+    <textvar name="SHEET_NAME_39">......................................</textvar>
+    <textvar name="SHEET_NAME_4">Main</textvar>
+    <textvar name="SHEET_NAME_40">......................................</textvar>
+    <textvar name="SHEET_NAME_5">Revision History</textvar>
+    <textvar name="SHEET_NAME_6">Power Consumption</textvar>
+    <textvar name="SHEET_NAME_7">......................................</textvar>
+    <textvar name="SHEET_NAME_8">......................................</textvar>
+    <textvar name="SHEET_NAME_9">......................................</textvar>
     <textvar name="VARIANT">PRELIMINARY</textvar>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
