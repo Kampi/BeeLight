@@ -172,7 +172,7 @@ definitions:
   SHEET_NAME_VAR: SHEET_NAME_
   RELEASE_TITLE_VAR: RELEASE_TITLE_
   RELEASE_BODY_VAR: RELEASE_BODY_
-  GET_SHEET_CMD: python3 @SCRIPTS_DIR@/get_sheet_title.py -f "hardware/BeeLight.xml" --dots-number 38 -p
+  GET_SHEET_CMD: python3 @SCRIPTS_DIR@/get_sheet_title.py -f "${KIBOT_SCH_NAME%.kicad_sch}.xml" --dots-number 38 -p
   GET_TITLE_CMD: python3 @SCRIPTS_DIR@/get_changelog.py -f CHANGELOG.md --title-only --version
   GET_BODY_CMD: python3 @SCRIPTS_DIR@/get_changelog.py -f CHANGELOG.md --extra-spaces --separators 35 --version
   FABRICATION_DIR: Manufacturing/Fabrication

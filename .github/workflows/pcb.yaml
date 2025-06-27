@@ -172,6 +172,9 @@ jobs:
       # Generate outputs
       - name: Generate outputs
         run: |
+          pwd
+          ls
+          ls hardware
           cd hardware
           kibot -vvvv -c ${{ env.kibot_config }} -d ${{ env.kibot_output_dir }} -b ${{ env.kicad_board }}.kicad_pcb -g variant=${{ env.kibot_variant }} ${{ env.additional_args }} 2> ../log/kibot_output.log
 

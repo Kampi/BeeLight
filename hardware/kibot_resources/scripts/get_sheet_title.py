@@ -30,7 +30,7 @@ def get_sheet_title(file_path, page_number, dots_number):
     except ET.ParseError:
         print("Error: Invalid XML format")
     except FileNotFoundError:
-        print("Error: XML File not found")
+        print("Error: XML File {} not found".format(file_path))
     except Exception as e:
         print(f"Error: {e}")
 
