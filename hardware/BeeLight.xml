@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>/__w/BeeLight/BeeLight/hardware/BeeLight.kicad_sch</source>
-    <date>2025-06-27T11:45:59+0000</date>
+    <date>2025-06-28T11:34:34+0000</date>
     <tool>Eeschema 9.0.1+1</tool>
     <textvar name="ASSEMBLY_NOTES"/>
     <textvar name="BOARD_NAME">BeeLight</textvar>
@@ -14,8 +14,8 @@
     <textvar name="GIT_URL">https://github.com/Kampi/BeeLight</textvar>
     <textvar name="PROJECT_NAME">BeeLight</textvar>
     <textvar name="RELEASE_BODY_UNRELEASED">Version Unreleased not found.</textvar>
-    <textvar name="RELEASE_DATE">27-Jun-2025</textvar>
-    <textvar name="RELEASE_DATE_NUM">2025-06-27</textvar>
+    <textvar name="RELEASE_DATE">28-Jun-2025</textvar>
+    <textvar name="RELEASE_DATE_NUM">2025-06-28</textvar>
     <textvar name="RELEASE_TITLE_UNRELEASED">Version Unreleased not found.</textvar>
     <textvar name="REVISION">+ (Unreleased)</textvar>
     <textvar name="SHEET_NAME_1">Cover Page</textvar>
