@@ -571,8 +571,8 @@ definitions:
 
   # BoM ========================================================================
 
-  MPN_FIELD: 'Manufacturer Part Number'
-  MAN_FIELD: 'Manufacturer'
+  MPN_FIELD: 'manf#'
+  MAN_FIELD: 'manf'
 
   # Drill table and drill map parameters =======================================
 

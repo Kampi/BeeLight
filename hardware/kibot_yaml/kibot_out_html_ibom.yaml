@@ -28,4 +28,4 @@ definitions:
   DIR: Manufacturing/Assembly
   EXCLUDE_FILTER: exclude_testpoints
   TITLE: ""
-  MPN_FIELD: 'Manufacturer Part Number'
+  MPN_FIELD: 'manf#'
