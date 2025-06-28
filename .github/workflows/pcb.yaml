@@ -170,14 +170,20 @@ jobs:
           cd hardware
           kibot -vvvv -c ${{ env.kibot_config }} -d ${{ env.kibot_output_dir }} -b ${{ env.kicad_board }}.kicad_pcb -s draw_fancy_stackup,set_text_variables,erc,drc -g variant=${{ env.kibot_variant }} md_readme 2> ../log/kibot_readme.log
 
-      # Generate outputs
       - name: Generate outputs
         run: |
-          pwd
-          ls
-          ls hardware
           cd hardware
           kibot -vvvv -c ${{ env.kibot_config }} -d ${{ env.kibot_output_dir }} -b ${{ env.kicad_board }}.kicad_pcb -g variant=${{ env.kibot_variant }} ${{ env.additional_args }} 2> ../log/kibot_output.log
+
+      - name: Collect PCB costs
+        run: |
+          cd hardware
+          revision=$(python3 kibot_resources/scripts/get_changelog_version.py -f CHANGELOG.md)
+          if [[ $? -ne 0 ]]; then
+              echo -e "${YELLOW}Warning: Unable to determine version from CHANGELOG.md. Defaulting to empty revision.${NC}"
+              revision=""
+          fi
+          kibot -vvvv  --skip-pre erc,drc,draw_fancy_stackup -c kibot_yaml/kibot_main.yaml -d ${{ env.kibot_output_dir }} -g variant=${{ env.kibot_variant }} -E REVISION='$revision' -E KICOST_CONFIG=kibot_yaml/kicost_config_local.yaml xlsx_bom 2> ../log/kibot_output.log
 
       - name: Upload logs
         uses: actions/upload-artifact@v4

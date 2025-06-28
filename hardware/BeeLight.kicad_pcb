@@ -135,13 +135,13 @@
 	(property "COMPANY" "null")
 	(property "DESIGNER" "Daniel Kampert")
 	(property "FABRICATION_NOTES" "")
-	(property "GIT_HASH_PCB" "0c20f1f")
-	(property "GIT_HASH_SCH" "0c20f1f")
+	(property "GIT_HASH_PCB" "1260bd1")
+	(property "GIT_HASH_SCH" "1260bd1")
 	(property "GIT_URL" "https://github.com/Kampi/BeeLight")
 	(property "PROJECT_NAME" "BeeLight")
 	(property "RELEASE_BODY_UNRELEASED" "Version Unreleased not found.")
-	(property "RELEASE_DATE" "19-Jun-2025")
-	(property "RELEASE_DATE_NUM" "2025-06-19")
+	(property "RELEASE_DATE" "27-Jun-2025")
+	(property "RELEASE_DATE_NUM" "2025-06-27")
 	(property "RELEASE_TITLE_UNRELEASED" "Version Unreleased not found.")
 	(property "REVISION" "+ (Unreleased)")
 	(property "SHEET_NAME_1" "Cover Page")
@@ -7476,7 +7476,7 @@
 	)
 	(dimension
 		(type aligned)
-		(layer "Dwgs.User")
+		(layer "User.6")
 		(uuid "608011dc-ced6-4b7f-91b6-21a7e3d5674b")
 		(pts
 			(xy 123 106) (xy 123 82)
@@ -7500,7 +7500,7 @@
 		)
 		(gr_text "24,0000 mm"
 			(at 118.18 94 90)
-			(layer "Dwgs.User")
+			(layer "User.6")
 			(uuid "608011dc-ced6-4b7f-91b6-21a7e3d5674b")
 			(effects
 				(font
@@ -7512,7 +7512,7 @@
 	)
 	(dimension
 		(type aligned)
-		(layer "Dwgs.User")
+		(layer "User.6")
 		(uuid "652a8822-524d-4dd5-91c9-fe2e7a1150fa")
 		(pts
 			(xy 122 105) (xy 154 105)
@@ -7536,7 +7536,7 @@
 		)
 		(gr_text "32,0000 mm"
 			(at 138 109.229999 0)
-			(layer "Dwgs.User")
+			(layer "User.6")
 			(uuid "652a8822-524d-4dd5-91c9-fe2e7a1150fa")
 			(effects
 				(font

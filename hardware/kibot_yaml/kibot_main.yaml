@@ -60,19 +60,6 @@ groups:
     # - @HTML_KIRI_OUTPUT@ # Caused some issues
       - @HTML_NAV_RES_OUTPUT@
 
-  - name: all_group_k9
-    outputs:
-      - @NETLIST_OUTPUT@
-      - bom
-      - 3d
-      - fab_k9
-      - assembly
-      - @PDF_SCHEMATIC_OUTPUT@
-      - @MD_README_OUTPUT@
-    # - @HTML_KICANVAS_OUTPUT@ # Very experimental, we exclude it for now
-    # - @HTML_KIRI_OUTPUT@ # Caused some issues
-      - @HTML_NAV_RES_OUTPUT@
-
   - name: draft_group
     outputs:
       - @NETLIST_OUTPUT@
@@ -81,16 +68,6 @@ groups:
       - @HTML_BOM_OUTPUT@
 
   - name: fab
-    outputs:
-      - tables
-      - @GERBER_OUTPUT@
-      - @EXCELLON_DRILL_OUTPUT@
-    # - @DXF_DRILL_MAP_OUTPUT@
-      - @PDF_DRILL_MAP_OUTPUT@
-      - @PDF_FABRICATION_OUTPUT@
-      - @ZIP_COMPRESS_FAB_OUTPUT@
-
-  - name: fab_k9
     outputs:
       - tables
       - @GERBER_OUTPUT@

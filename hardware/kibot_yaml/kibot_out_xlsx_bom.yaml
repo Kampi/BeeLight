@@ -18,8 +18,8 @@ outputs:
     count_smd_tht: true
     distributors:
         - Mouser
-        - Digi-Key
-        - TME
+        # - Digi-Key
+        # - TME
         # - Arrow
         # - Farnell
     xlsx:
