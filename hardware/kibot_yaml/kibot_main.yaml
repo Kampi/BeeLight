@@ -120,6 +120,7 @@ groups:
     # - @XLSX_BOM_OUTPUT@
       - @HTML_IBOM_OUTPUT@
       - @HTML_BOM_OUTPUT@
+      - @MOUSER_BOM_OUTPUT@
 
   - name: tables
     outputs:
@@ -353,6 +354,12 @@ import:
       COMMENT: Bill of Materials in XLSX format
       DIR: @ASSEMBLY_DIR@
       FILT_PRE_TRANSFORM: @FILT_FIELD_RENAME@
+
+  - file: kibot_out_mouser_bom.yaml
+    definitions:
+      NAME: @MOUSER_BOM_OUTPUT@
+      COMMENT: BOM for the Mouser BOM-Tool
+      DIR: @PURCHASING_DIR@
 
   # Interactive HTML BOM. Needs netlist.
   - file: kibot_out_html_ibom.yaml
@@ -611,6 +618,7 @@ definitions:
   # Output directories, relative to OUTPUT_DIR
   REPORT_DIR: 'Reports'
   SCHEMATIC_DIR: 'Schematic'
+  PURCHASING_DIR: 'Purchasing'
   MANUFACTURING_DIR: 'Manufacturing'
   ASSEMBLY_DIR: '@MANUFACTURING_DIR@/Assembly'
   FABRICATION_DIR: '@MANUFACTURING_DIR@/Fabrication'
@@ -669,6 +677,7 @@ definitions:
   XLSX_BOM_OUTPUT: xlsx_bom
   HTML_IBOM_OUTPUT: html_bom_interactive
   HTML_BOM_OUTPUT: html_bom
+  MOUSER_BOM_OUTPUT: mouser_bom
   CSV_COMP_COUNT_OUPUT: csv_comp_count
   CSV_IMPEDANCE_TABLE_OUTPUT: csv_impedance_table
 

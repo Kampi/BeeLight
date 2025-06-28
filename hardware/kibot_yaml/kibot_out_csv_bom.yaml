@@ -15,7 +15,7 @@ outputs:
     csv:
       hide_pcb_info: true
       hide_stats_info: true
-      
+
     group_fields: ['@MPN_FIELD@', 'Value']
 
     columns:
