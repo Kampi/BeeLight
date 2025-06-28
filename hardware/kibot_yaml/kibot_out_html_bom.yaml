@@ -34,7 +34,7 @@ outputs:
       # - "arrow#"
       # - "digikey#"
       # - "farnell#"
-      # - "mouser#"
+      - "mouser#"
       # - "newark#"
       # - "rs#"
       # - "tme#"
