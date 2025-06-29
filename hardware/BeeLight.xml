@@ -2,14 +2,14 @@
 <export version="E">
   <design>
     <source>/__w/BeeLight/BeeLight/hardware/BeeLight.kicad_sch</source>
-    <date>2025-06-28T11:34:34+0000</date>
+    <date>2025-06-29T08:57:49+0000</date>
     <tool>Eeschema 9.0.1+1</tool>
     <textvar name="ASSEMBLY_NOTES"/>
     <textvar name="BOARD_NAME">BeeLight</textvar>
     <textvar name="COMPANY">null</textvar>
     <textvar name="DESIGNER">Daniel Kampert</textvar>
     <textvar name="FABRICATION_NOTES"/>
-    <textvar name="GIT_HASH_PCB">1260bd1</textvar>
+    <textvar name="GIT_HASH_PCB">42474b5</textvar>
     <textvar name="GIT_HASH_SCH">1260bd1</textvar>
     <textvar name="GIT_URL">https://github.com/Kampi/BeeLight</textvar>
     <textvar name="PROJECT_NAME">BeeLight</textvar>
@@ -17,7 +17,7 @@
     <textvar name="RELEASE_DATE">28-Jun-2025</textvar>
     <textvar name="RELEASE_DATE_NUM">2025-06-28</textvar>
     <textvar name="RELEASE_TITLE_UNRELEASED">Version Unreleased not found.</textvar>
-    <textvar name="REVISION">+ (Unreleased)</textvar>
+    <textvar name="REVISION">$revision</textvar>
     <textvar name="SHEET_NAME_1">Cover Page</textvar>
     <textvar name="SHEET_NAME_10">......................................</textvar>
     <textvar name="SHEET_NAME_11">......................................</textvar>
@@ -63,7 +63,7 @@
       <title_block>
         <title>Cover Page</title>
         <company>null</company>
-        <rev>+ (Unreleased)</rev>
+        <rev>$revision</rev>
         <date>2025-06-05</date>
         <source>BeeLight.kicad_sch</source>
         <comment number="1" value=""/>
@@ -81,7 +81,7 @@
       <title_block>
         <title>Block Diagram</title>
         <company>null</company>
-        <rev>+ (Unreleased)</rev>
+        <rev>$revision</rev>
         <date>2025-06-05</date>
         <source>Block Diagram.kicad_sch</source>
         <comment number="1" value=""/>
@@ -99,7 +99,7 @@
       <title_block>
         <title>Project Architecture</title>
         <company>null</company>
-        <rev>+ (Unreleased)</rev>
+        <rev>$revision</rev>
         <date>2025-06-05</date>
         <source>Project Architecture.kicad_sch</source>
         <comment number="1" value=""/>
@@ -117,7 +117,7 @@
       <title_block>
         <title>Main</title>
         <company>null</company>
-        <rev>+ (Unreleased)</rev>
+        <rev>$revision</rev>
         <date>2025-06-05</date>
         <source>Main.kicad_sch</source>
         <comment number="1" value=""/>
@@ -135,7 +135,7 @@
       <title_block>
         <title>Revision History</title>
         <company>null</company>
-        <rev>+ (Unreleased)</rev>
+        <rev>$revision</rev>
         <date>2025-06-05</date>
         <source>Revision History.kicad_sch</source>
         <comment number="1" value=""/>
@@ -153,7 +153,7 @@
       <title_block>
         <title>Power Consumption</title>
         <company>null</company>
-        <rev>+ (Unreleased)</rev>
+        <rev>$revision</rev>
         <date>2025-06-05</date>
         <source>Power Consumption.kicad_sch</source>
         <comment number="1" value=""/>
