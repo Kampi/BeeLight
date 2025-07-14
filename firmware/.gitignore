@@ -1,1 +1,9 @@
 .west/
+bootloader/
+modules/
+ncs-zigbee/
+nrf/
+nrfxlib/
+test/
+tools/
+zephyr/
