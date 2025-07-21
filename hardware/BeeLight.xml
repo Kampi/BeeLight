@@ -2,20 +2,20 @@
 <export version="E">
   <design>
     <source>/__w/BeeLight/BeeLight/hardware/BeeLight.kicad_sch</source>
-    <date>2025-06-29T08:57:49+0000</date>
+    <date>2025-07-21T23:13:10+0000</date>
     <tool>Eeschema 9.0.1+1</tool>
     <textvar name="ASSEMBLY_NOTES"/>
     <textvar name="BOARD_NAME">BeeLight</textvar>
     <textvar name="COMPANY">null</textvar>
     <textvar name="DESIGNER">Daniel Kampert</textvar>
     <textvar name="FABRICATION_NOTES"/>
-    <textvar name="GIT_HASH_PCB">42474b5</textvar>
-    <textvar name="GIT_HASH_SCH">1260bd1</textvar>
+    <textvar name="GIT_HASH_PCB">b5b023f</textvar>
+    <textvar name="GIT_HASH_SCH">b5b023f</textvar>
     <textvar name="GIT_URL">https://github.com/Kampi/BeeLight</textvar>
     <textvar name="PROJECT_NAME">BeeLight</textvar>
     <textvar name="RELEASE_BODY_UNRELEASED">Version Unreleased not found.</textvar>
-    <textvar name="RELEASE_DATE">28-Jun-2025</textvar>
-    <textvar name="RELEASE_DATE_NUM">2025-06-28</textvar>
+    <textvar name="RELEASE_DATE">14-Jul-2025</textvar>
+    <textvar name="RELEASE_DATE_NUM">2025-07-14</textvar>
     <textvar name="RELEASE_TITLE_UNRELEASED">Version Unreleased not found.</textvar>
     <textvar name="REVISION">$revision</textvar>
     <textvar name="SHEET_NAME_1">Cover Page</textvar>
@@ -53,8 +53,8 @@
     <textvar name="SHEET_NAME_39">......................................</textvar>
     <textvar name="SHEET_NAME_4">Main</textvar>
     <textvar name="SHEET_NAME_40">......................................</textvar>
-    <textvar name="SHEET_NAME_5">Revision History</textvar>
-    <textvar name="SHEET_NAME_6">Power Consumption</textvar>
+    <textvar name="SHEET_NAME_5">Power Consumption</textvar>
+    <textvar name="SHEET_NAME_6">Revision History</textvar>
     <textvar name="SHEET_NAME_7">......................................</textvar>
     <textvar name="SHEET_NAME_8">......................................</textvar>
     <textvar name="SHEET_NAME_9">......................................</textvar>
@@ -131,13 +131,13 @@
         <comment number="9" value=""/>
       </title_block>
     </sheet>
-    <sheet number="5" name="/Revision History/" tstamps="/6e125bd6-2f99-4e5d-b3ea-4899f4540739/">
+    <sheet number="5" name="/Power Consumption/" tstamps="/9bb2279e-ee74-4135-a186-0cf4fda25e03/">
       <title_block>
-        <title>Revision History</title>
+        <title>Power Consumption</title>
         <company>null</company>
         <rev>$revision</rev>
         <date>2025-06-05</date>
-        <source>Revision History.kicad_sch</source>
+        <source>Power Consumption.kicad_sch</source>
         <comment number="1" value=""/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
@@ -149,13 +149,13 @@
         <comment number="9" value=""/>
       </title_block>
     </sheet>
-    <sheet number="6" name="/Power Consumption/" tstamps="/9bb2279e-ee74-4135-a186-0cf4fda25e03/">
+    <sheet number="6" name="/Revision History/" tstamps="/6e125bd6-2f99-4e5d-b3ea-4899f4540739/">
       <title_block>
-        <title>Power Consumption</title>
+        <title>Revision History</title>
         <company>null</company>
         <rev>$revision</rev>
         <date>2025-06-05</date>
-        <source>Power Consumption.kicad_sch</source>
+        <source>Revision History.kicad_sch</source>
         <comment number="1" value=""/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
@@ -622,6 +622,8 @@
       <property name="CONFIG" value=""/>
       <property name="Sheetname" value="Main"/>
       <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="dnp"/>
       <property name="ki_keywords" value="R res resistor"/>
       <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>

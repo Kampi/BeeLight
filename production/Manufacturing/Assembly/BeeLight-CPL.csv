@@ -16,7 +16,6 @@ Ref,Val,Package,PosX,PosY,Rot,Side
 "R103","220R","R_0402_1005Metric_Pad0.72x0.64mm_HandSolder",-17.6500,8.3250,90.0000,top
 "R104","1k8","R_0402_1005Metric_Pad0.72x0.64mm_HandSolder",-33.4500,26.3846,0.0000,top
 "R105","1k8","R_0402_1005Metric_Pad0.72x0.64mm_HandSolder",-31.1000,25.3750,180.0000,top
-"R106","1k8","R_0402_1005Metric_Pad0.72x0.64mm_HandSolder",-34.7500,21.9750,0.0000,top
 "R108","8k2","R_0402_1005Metric_Pad0.72x0.64mm_HandSolder",-17.1000,14.9125,180.0000,top
 "R109","2k2","R_0402_1005Metric_Pad0.72x0.64mm_HandSolder",-17.0975,15.9125,0.0000,top
 "SW101","JOIN","WS-TASV-6x6",-24.1000,10.5750,180.0000,top

@@ -699,12 +699,12 @@
       "Main"
     ],
     [
-      "6e125bd6-2f99-4e5d-b3ea-4899f4540739",
-      "Revision History"
-    ],
-    [
       "9bb2279e-ee74-4135-a186-0cf4fda25e03",
       "Power Consumption"
+    ],
+    [
+      "6e125bd6-2f99-4e5d-b3ea-4899f4540739",
+      "Revision History"
     ]
   ],
   "text_variables": {
@@ -713,13 +713,13 @@
     "COMPANY": "null",
     "DESIGNER": "Daniel Kampert",
     "FABRICATION_NOTES": "",
-    "GIT_HASH_PCB": "42474b5",
-    "GIT_HASH_SCH": "1260bd1",
+    "GIT_HASH_PCB": "b5b023f",
+    "GIT_HASH_SCH": "b5b023f",
     "GIT_URL": "https://github.com/Kampi/BeeLight",
     "PROJECT_NAME": "BeeLight",
     "RELEASE_BODY_UNRELEASED": "Version Unreleased not found.",
-    "RELEASE_DATE": "28-Jun-2025",
-    "RELEASE_DATE_NUM": "2025-06-28",
+    "RELEASE_DATE": "14-Jul-2025",
+    "RELEASE_DATE_NUM": "2025-07-14",
     "RELEASE_TITLE_UNRELEASED": "Version Unreleased not found.",
     "REVISION": "+ (Unreleased)",
     "SHEET_NAME_1": "Cover Page",

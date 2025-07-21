@@ -9,7 +9,7 @@ Row,Quantity Per PCB,References,Value,Datasheet,Footprint,Description,manf,manf#
 8,1,Q101,BSS84,https://www.mouser.de/datasheet/2/308/1/BSS84_D-2310226.pdf,SOT-23-3,"-0.13A Id, -50V Vds, P-Channel MOSFET, SOT-23",onsemi / Fairchild,BSS84,512-BSS84
 9,1,R102,0R,https://www.mouser.de/datasheet/2/54/cr_a_as-1858644.pdf,R_0805_2012Metric_Pad1.20x1.40mm_HandSolder,Resistor,Bourns,CR0805AJ/-000EAS,652-CR0805AJ/-000EAS
 10,1,R103,220R,https://www.mouser.de/datasheet/2/54/cr-1858361.pdf,R_0402_1005Metric_Pad0.72x0.64mm_HandSolder,Resistor,Bourns,CR0402-JW-221GLF,652-CR0402-JW-221GLF
-11,3,R104 R105 R106,1k8,https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf,R_0402_1005Metric_Pad0.72x0.64mm_HandSolder,Resistor,YAGEO,RC0402FR-071K8L,603-RC0402FR-071K8L
+11,2,R104 R105,1k8,https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf,R_0402_1005Metric_Pad0.72x0.64mm_HandSolder,Resistor,YAGEO,RC0402FR-071K8L,603-RC0402FR-071K8L
 12,1,R109,2k2,https://www.mouser.de/datasheet/2/447/PYu_RT_1_to_0_01_RoHS_L_15-3461507.pdf,R_0402_1005Metric_Pad0.72x0.64mm_HandSolder,Resistor 62.5 mW 0.1,YAGEO,RT0402BRD072K2L,603-RT0402BRD072K2L
 13,1,R108,8k2,https://www.mouser.de/datasheet/2/447/PYu_RT_1_to_0_01_RoHS_L_15-3461507.pdf,R_0402_1005Metric_Pad0.72x0.64mm_HandSolder,Resistor 62.5 mW 0.1%,Yageo,RT0402BRD078K2L,603-RT0402BRD078K2L
 14,1,R101,100k,https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf,R_0402_1005Metric_Pad0.72x0.64mm_HandSolder,Resistor,YAGEO,RC0402FR-07100KL,603-RC0402FR-07100KL
