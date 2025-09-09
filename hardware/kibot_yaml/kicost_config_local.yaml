@@ -8,7 +8,7 @@ kicost:
 # Add any API option here
 # Avoid secrets
 APIs:
-  Digi-Key:
+  # Digi-Key:
     # Digi-Key Client ID for a registered APP
     # client_id: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     # Digi-Key Client Secret for a registered APP
@@ -20,7 +20,7 @@ APIs:
     # enable: true
     # Directory for the APIs caches
     # cache_path: ~/.cache/kicost/Digi-Key
-  #Mouser:
+  Mouser:
     # Mouser Part API key
     # NOTE: This is set via environment
     # key: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
