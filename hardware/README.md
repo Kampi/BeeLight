@@ -1,32 +1,28 @@
 <p align="center" width="100%">
-  <img alt="Logo" width="33%" src="Logos/dummy_logo.svg">
+  <img alt="Logo" width="33%" src="Logos/Dummy.png">
 </p>
 
-<h1 align="center">BeeLight</h1>
+<h1 align="center">Template</h1>
 
 <p align="center" width="100%">
-  <a href="https://github.com/Kampi/BeeLight/actions/workflows/pcb.yaml">
-    <img alt="CI Badge" src="https://github.com/Kampi/BeeLight/actions/workflows/pcb.yaml/badge.svg?branch=">
+  <a href="${GIT_URL}/actions/workflows/devkit.yaml">
+    <img alt="CI Badge" src="${GIT_URL}/actions/workflows/devkit.yaml/badge.svg">
   </a>
-</p>
-
-<p align="center" width="100%">
-    <img src="Images/dummy_image.png">
 </p>
 
 ***
 
 <p align="center">
-  <img alt="3D Top Angled" src="Images/BeeLight-angled_top.png" width="45%">
+  <img alt="3D Top Angled" src="Images/Template-angled_top.png" width="45%">
 &nbsp; &nbsp; &nbsp; &nbsp;
-  <img alt="3D Bottom Angled" src="Images/BeeLight-angled_bottom.png" width="45%">
+  <img alt="3D Bottom Angled" src="Images/Template-angled_bottom.png" width="45%">
 </p>
 
 ***
 
 ## SPECIFICATIONS
 
-| Parameter | Value | 
+| Parameter | Value |
 | --- | --- |
 | Dimensions | 32.0 × 24.0 mm |
 
@@ -66,6 +62,6 @@
     ├─ Schematic          # PDF of schematic
     ├─ Templates          # Title block templates
     ├─ Testing
-    │  └─ Testpoints      # Testpoints tables      
+    │  └─ Testpoints      # Testpoints tables
     │
     └─ Variants           # Outputs for assembly variants
