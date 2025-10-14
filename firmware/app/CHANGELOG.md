@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## [2.0] - 
+## [2.0] -
 
 **Changed:**
 
@@ -10,7 +10,9 @@
 **Added:**
 
 - Add BME688
-- Add blocklist to west.yml
+- Add suport for BME688 only and Bosch BSEC
+- Add blocklist to west manifest
+- Add groupfilters to west manifest
 - Add west command to build and flash the device configuration
 - Add custom cluster for VOC, IAQ and CO2 for Zigbee2Mqtt
 - Add patches for custom cluster for ncs-zigbee

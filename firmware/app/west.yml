@@ -5,6 +5,10 @@ manifest:
   remotes:
     - name: ncs
       url-base: http://github.com/nrfconnect
+    - name: bosch
+      url-base: https://github.com/boschsensortec
+
+  group-filter: [+bsec2]
 
   projects:
     - name: ncs-zigbee
@@ -39,3 +43,9 @@ manifest:
           - edtt
           - trusted-firmware-m
           - sof
+ 
+    - name: bsec2
+      repo-path: Bosch-BSEC2-Library
+      remote: bosch
+      groups:
+        - bsec2
