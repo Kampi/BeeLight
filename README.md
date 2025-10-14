@@ -65,7 +65,6 @@ west update
 Run the following commands to install the BSEC2 library:
 
 ```sh
-west config manifest.group-filter +bsec
 west update
 ```
 
@@ -86,10 +85,10 @@ cd hardware
 
 As an alternative you can run it via CI/CD in GitHub.
 
-> **NOTE**  
+> **NOTE**
 > You have to provide a Mouser API key with a variable called `MOUSER_KEY` to make use of the KiCost feature in the Kibot job.
 
-> **NOTE**  
+> **NOTE**
 > The programming connector is optional and can be left out or unsoldered after flashing the device.
 
 ### Firmware
@@ -105,7 +104,7 @@ west build --build-dir build . --pristine --board beelight@1/nrf54l15/cpuapp -- 
 
 You also need a Zigbee network to test and integrate the device. I use [Zigbee2MQTT](https://www.zigbee2mqtt.io/) running on a Raspberry Pi which allows me to connect my Zigbee network with my Home Automation.
 
-> **NOTE**  
+> **NOTE**
 > I do not support other Zigbee networks (like [ZHA](https://www.home-assistant.io/integrations/zha/)). The Zigbee standard allows you to connect the device with all other networks but I can´t deliver a functional integration for these networks. You have to do it on your own!
 
 #### Flash the firmware
@@ -118,7 +117,7 @@ west flash
 
 to flash the firmware into the module.
 
-> **NOTE**  
+> **NOTE**
 > For some reason the current consumption stays high after flashing. I recommend a complete power cycle after flashing to make sure the device is consuming the lowest current possible.
 
 #### Generate the production config for the device
@@ -136,7 +135,7 @@ nrfutil nrf5sdk-tools zigbee production_config zigbee_config.yml zigbee_config.h
 nrfjprog --program zigbee_config.hex --verify
 ```
 
-> **NOTE**  
+> **NOTE**
 > The offset `0x17a000` is taken from `build/<app>/zephyr/include/generated/pm_config.h`. Also make sure to change `extended_address` in the Zigbee
 > configuration file if you use more than one device!
 
@@ -180,7 +179,7 @@ Make sure to use a Zigbee 3 compatible dongle like [SONOFF ZBDongle-E](https://s
 
 #### Install the device to Zigbee2MQTT
 
-> **NOTE**  
+> **NOTE**
 > Because it´s not possible to use custom cluster with Zigbee2MQTT easily, so you must adjust the application directly to use the sensor. Please take a look into the directory `z2m/data/external_converters/example` if you want to check how the modified files look like.
 
 1. Download and install [Zigbee2MQTT](https://github.com/zigbee2mqtt/hassio-zigbee2mqtt)
