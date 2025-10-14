@@ -82,9 +82,8 @@
 */
 #define ZB_DEVICE_ID                            0x106
 
-
 #if CONFIG_BME68X_IAQ
-    #include "beelight_bsec2.h"
+#include "beelight_bsec2.h"
 #else
-    #include "beelight_nobsec2.h"
+#include "beelight_nobsec2.h"
 #endif

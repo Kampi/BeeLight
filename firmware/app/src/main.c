@@ -1,3 +1,20 @@
+/*
+ * This file is part of the BeeLight project <https://github.com/Kampi/BeeLight>.
+ * Copyright (c) 2025 Daniel Kampert.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include <zephyr/types.h>
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
@@ -279,11 +296,11 @@ static void app_clusters_attr_init(void)
     dev_ctx.basic_attr.app_version = INIT_BASIC_APP_VERSION;
     dev_ctx.basic_attr.stack_version = INIT_BASIC_STACK_VERSION;
 
-    #ifdef CONFIG_BOARD_REVISION
-        dev_ctx.basic_attr.hw_version = (zb_uint8_t)atoi(CONFIG_BOARD_REVISION);
-    #else
-        dev_ctx.basic_attr.hw_version = INIT_BASIC_HW_VERSION;
-    #endif
+#ifdef CONFIG_BOARD_REVISION
+    dev_ctx.basic_attr.hw_version = (zb_uint8_t)atoi(CONFIG_BOARD_REVISION);
+#else
+    dev_ctx.basic_attr.hw_version = INIT_BASIC_HW_VERSION;
+#endif
 
     /* Use ZB_ZCL_SET_STRING_VAL to set strings, because the first byte */
     /* should contain string length without trailing zero. */
@@ -371,8 +388,7 @@ void zboss_signal_handler(zb_bufid_t bufid)
 
     /* Update network status LED. */
     switch (sig) {
-        case ZB_SIGNAL_JOIN_DONE:
-        {
+        case ZB_SIGNAL_JOIN_DONE: {
             dk_set_led_off(ZIGBEE_NETWORK_STATE_LED);
             if (status == RET_OK) {
                 for (uint8_t i = 0; i < 4; i++) {
@@ -385,8 +401,7 @@ void zboss_signal_handler(zb_bufid_t bufid)
 
             break;
         }
-        case ZB_ZDO_SIGNAL_LEAVE:
-        {
+        case ZB_ZDO_SIGNAL_LEAVE: {
             for (uint8_t i = 0; i < 2; i++) {
                 dk_set_led_on(ZIGBEE_NETWORK_STATE_LED);
                 k_msleep(100);
@@ -396,8 +411,7 @@ void zboss_signal_handler(zb_bufid_t bufid)
 
             break;
         }
-        default:
-        {
+        default: {
             break;
         }
     }
@@ -642,7 +656,7 @@ int main(void)
     }
 
 #ifdef CONFIG_ZIGBEE_FOTA
-    #error "Not supported yet!"
+#error "Not supported yet!"
     /* Initialize Zigbee FOTA download service. */
     zigbee_fota_init(on_zcl_ota_evt_handler);
 
@@ -655,7 +669,7 @@ int main(void)
 
     /* Register device context (endpoints). */
     ZB_AF_REGISTER_DEVICE_CTX(&env_sensor_ctx);
- 
+
     app_clusters_attr_init();
 
     /* Register handler to identify notifications. */

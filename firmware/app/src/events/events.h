@@ -39,7 +39,7 @@ struct env_event {
     float pressure;             /**< */
     float humidity;             /**< */
 #if CONFIG_BME68X_IAQ
-    struct{
+    struct {
         float value;            /**< */
         uint32_t tolerance;     /**< */
     } iaq;

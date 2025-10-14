@@ -1,3 +1,8 @@
+# Copyright (c) 2025 Daniel Kampert
+# SPDX-License-Identifier: Apache-2.0
+
+#!/usr/bin/env python
+
 import os
 import fileinput
 
@@ -65,7 +70,7 @@ class UploadConfigWestCommand(WestCommand):
             if("extended_address" in line):
                 print("extended_address: {}".format(address), end = "\n")
             else:
-                print(line, end = "") 
+                print(line, end = "")
 
         os.system("nrfutil nrf5sdk-tools zigbee production_config {} {} --offset {}".format(args.path + os.path.sep + args.input, args.path + os.path.sep + args.output, args.offset))
         os.system("nrfjprog --program {} --verify".format(args.path + os.path.sep + args.output))
