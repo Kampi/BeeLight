@@ -4,7 +4,7 @@ Date: Fri, 6 Dec 2024 19:02:11 +0100
 Subject: [PATCH] drivers: sensor: apds9306 fix unchecked return value coverity
  issue
 
-check the return valeus of i2c_reg_write_byte_dt function and return
+check the return values of i2c_reg_write_byte_dt function and return
 appropriate error code
 
 Signed-off-by: Jilay Pandya <jilay.pandya@outlook.com>
@@ -25,11 +25,11 @@ index fab461d983a..87723b21624 100644
 +			LOG_ERR("Failed reading sensor status!");
 +			return -EFAULT;
 +		}
- 
+
  		/* We wait 100 ms maximum for the device to become ready. */
  		if ((k_uptime_get_32() - now) > 100) {
 @@ -308,7 +311,10 @@ static int apds9306_sensor_setup(const struct device *dev)
- 
+
  	/* Perform a dummy read to avoid bus errors after the reset. See */
  	/* https://lore.kernel.org/lkml/ab1d9746-4d23-efcc-0ee1-d2b8c634becd@tweaklogic.com/ */
 -	i2c_reg_read_byte_dt(&config->i2c, APDS9306_REGISTER_PART_ID, &temp);
@@ -37,8 +37,8 @@ index fab461d983a..87723b21624 100644
 +		LOG_ERR("Failed reading chip id!");
 +		return -EFAULT;
 +	}
- 
+
  	return 0;
  }
--- 
+--
 2.48.1.windows.1

@@ -54,10 +54,6 @@ static void zbus_on_env_callback(const struct zbus_channel *chan);
  */
 static void zbus_on_battery_callback(const struct zbus_channel *chan);
 
-/** @brief Declare attribute list for Identify cluster (client).
- */
-ZB_ZCL_DECLARE_IDENTIFY_CLIENT_ATTRIB_LIST(identify_client_attr_list);
-
 /** @brief Declare attribute list for Identify cluster (server).
  */
 ZB_ZCL_DECLARE_IDENTIFY_SERVER_ATTRIB_LIST(
@@ -166,7 +162,6 @@ ZB_ZCL_DECLARE_VOC_MEASUREMENT_ATTRIB_LIST(
 ZB_DECLARE_ENV_SENSOR_CLUSTER_LIST(
     env_sensor_clusters,
     basic_attr_list,
-    identify_client_attr_list,
     identify_server_attr_list,
     power_attr_list,
     light_sensor_attr_list,
@@ -340,7 +335,7 @@ static void app_clusters_attr_init(void)
     /* Initialize the values for the Battery cluster attributes */
     dev_ctx.power_attr.size = ZB_ZCL_POWER_CONFIG_BATTERY_SIZE_CR2;
     dev_ctx.power_attr.quantity = 1;
-    dev_ctx.power_attr.rated_voltage = SENSOR_RATET_VOLTAGE_MV / 100;
+    dev_ctx.power_attr.rated_voltage = SENSOR_RATED_VOLTAGE_MV / 100;
 
     ZB_ZCL_SET_ATTRIBUTE(
         SENSOR_ENDPOINT,
@@ -604,11 +599,13 @@ static void zbus_on_battery_callback(const struct zbus_channel *chan)
     /* We need the difference between empty and full for the remaining percent */
     /* A CR2032 counts as empty when a voltage of 2.7 V is reached. */
     /* Formula: (Voltage - Min. Voltage) [V] / (Rated voltage - Min. Voltage) [V] * 100 */
-    remaining = ((evt->voltage - SENSOR_EMPTY_VOLTAGE_MV) / (SENSOR_RATET_VOLTAGE_MV - SENSOR_EMPTY_VOLTAGE_MV)) * 100;
+    remaining = ((evt->voltage - SENSOR_EMPTY_VOLTAGE_MV) / (SENSOR_RATED_VOLTAGE_MV - SENSOR_EMPTY_VOLTAGE_MV)) * 100;
 
     /* Cap the voltage between 100 and 0 */
     if (remaining > 100) {
         remaining = 100;
+    } else if (remaining < 0) {
+        remaining = 0;
     } else if (remaining < 100) {
         remaining = 0;
     }

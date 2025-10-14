@@ -30,4 +30,4 @@
 
 ## Maintainer
 
-- [Daniel Kampert](mailto:daniel.kameprt@kampis-elektroecke.de)
+- [Daniel Kampert](mailto:DanielKampert@kampis-elektroecke.de)

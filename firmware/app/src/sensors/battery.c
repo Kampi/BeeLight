@@ -46,7 +46,11 @@ static void zbus_24h_callback(const struct zbus_channel *chan)
 
             evt.voltage = (sensor_val.val1 * 1000) + (sensor_val.val2 / 1000);
 
-            zbus_chan_pub(&battery_data_chan, &evt, K_NO_WAIT);
+            int ret = zbus_chan_pub(&battery_data_chan, &evt, K_NO_WAIT);
+            if (ret != 0) {
+                LOG_ERR("Failed to publish battery data: %d", ret);
+            }
+
             LOG_DBG("Publish new data...");
             LOG_DBG("   Voltage: %u", evt.voltage);
         }

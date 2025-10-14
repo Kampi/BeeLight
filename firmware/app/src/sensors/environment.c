@@ -71,7 +71,11 @@ static void zbus_5min_callback(const struct zbus_channel *chan)
             }
 #endif /* CONFIG_BME68X_IAQ */
 
-            zbus_chan_pub(&env_data_chan, &evt, K_NO_WAIT);
+            int ret = zbus_chan_pub(&env_data_chan, &evt, K_NO_WAIT);
+            if (ret != 0) {
+                LOG_ERR("Failed to publish env data: %d", ret);
+            }
+
             LOG_DBG("Publish new data...");
             LOG_DBG("   Temperature: %f", (double)evt.temperature);
             LOG_DBG("   Pressure: %f", (double)evt.pressure);
@@ -91,7 +95,16 @@ static int beelight_env_sensor_init(void)
 {
     int err;
 
-    pm_device_runtime_auto_enable(bme688);
+    if (!device_is_ready(bme688)) {
+        LOG_ERR("BME688 device is not ready");
+        return -ENODEV;
+    }
+
+    err = pm_device_runtime_auto_enable(bme688);
+    if (err != 0) {
+        LOG_ERR("Failed to enable runtime PM: %d", err);
+        return err;
+    }
 
     err = zbus_chan_add_obs(&periodic_5min_chan, &env_periodic_sample_event_lis, K_NO_WAIT);
     if (err != 0) {

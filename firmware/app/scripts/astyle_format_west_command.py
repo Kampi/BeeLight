@@ -1,7 +1,7 @@
+#!/usr/bin/env python
+
 # Copyright (c) 2025 Daniel Kampert
 # SPDX-License-Identifier: Apache-2.0
-
-#!/usr/bin/env python
 
 import os
 import sys
@@ -30,10 +30,10 @@ class FormatCodeWestCommand(WestCommand):
 
         return parser
 
-    def do_run(self, args, unknown_args):
+    def do_run(self, args, _unknown_args):
         astyle_args = ["astyle"]
 
-        if(args.dry_run == True):
+        if(args.dry_run):
             astyle_args.append("--dry-run")
         astyle_args.extend(
             [

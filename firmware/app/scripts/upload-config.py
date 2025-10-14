@@ -1,10 +1,11 @@
+#!/usr/bin/env python
+
 # Copyright (c) 2025 Daniel Kampert
 # SPDX-License-Identifier: Apache-2.0
 
-#!/usr/bin/env python
-
 import os
 import fileinput
+import subprocess
 
 from pathlib import Path
 from west.commands import WestCommand
@@ -13,7 +14,7 @@ class UploadConfigWestCommand(WestCommand):
     def __init__(self):
         super().__init__(
             "upload-config",
-            "Upload a prodiction config",
+            "Upload a production config",
             """Upload the production config to a sensor.""",
         )
 
@@ -61,7 +62,7 @@ class UploadConfigWestCommand(WestCommand):
 
     def do_run(self, args, unknown_args):
         # Use a random adress if the length is invalid
-        if(len(args.address) < 8):
+        if(len(args.address) < 16):
             address = os.urandom(8).hex().upper()
         else:
             address = args.address
@@ -72,5 +73,5 @@ class UploadConfigWestCommand(WestCommand):
             else:
                 print(line, end = "")
 
-        os.system("nrfutil nrf5sdk-tools zigbee production_config {} {} --offset {}".format(args.path + os.path.sep + args.input, args.path + os.path.sep + args.output, args.offset))
-        os.system("nrfjprog --program {} --verify".format(args.path + os.path.sep + args.output))
+        subprocess.run("nrfutil nrf5sdk-tools zigbee production_config {} {} --offset {}".format(args.path + os.path.sep + args.input, args.path + os.path.sep + args.output, args.offset), check = True)
+        subprocess.run("nrfjprog --program {} --verify".format(args.path + os.path.sep + args.output), check = True)

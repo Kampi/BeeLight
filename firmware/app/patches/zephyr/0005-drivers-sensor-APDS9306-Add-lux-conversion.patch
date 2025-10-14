@@ -34,12 +34,12 @@ index a307b11f93c..be685a6cfc6 100644
 - * Author: Daniel Kampert <DanielKampert@kampis-Elektroecke.de>
 + * Author: Daniel Kampert <DanielKampert@kampis-elektroecke.de>
   */
- 
+
  #include <zephyr/device.h>
 @@ -45,15 +45,40 @@
- 
+
  LOG_MODULE_REGISTER(avago_apds9306, CONFIG_SENSOR_LOG_LEVEL);
- 
+
 +/* Array length for the measurement period values. Aligned with avago,apds9306.yaml */
 +static const uint8_t AVAGO_APDS_9306_MEASUREMENT_PERIOD_ARRAY_LENGTH = 7;
 +
@@ -68,7 +68,7 @@ index a307b11f93c..be685a6cfc6 100644
 +				/*  resolution.*/
 +	uint8_t chip_id;
  };
- 
+
  struct apds9306_config {
  	struct i2c_dt_spec i2c;
 -	uint8_t resolution;
@@ -78,12 +78,12 @@ index a307b11f93c..be685a6cfc6 100644
 +	uint8_t measurement_period_idx;
 +	uint8_t gain_idx;
  };
- 
+
  struct apds9306_worker_item_t {
 @@ -61,26 +86,6 @@ struct apds9306_worker_item_t {
  	const struct device *dev;
  } apds9306_worker_item;
- 
+
 -static uint32_t apds9306_get_time_for_resolution(uint8_t value)
 -{
 -	switch (value) {
@@ -109,7 +109,7 @@ index a307b11f93c..be685a6cfc6 100644
  	const struct apds9306_config *config = dev->config;
 @@ -128,7 +133,41 @@ static void apds9306_worker(struct k_work *p_work)
  	}
- 
+
  	data->light = sys_get_le24(buffer);
 +	LOG_DBG("Last raw measurement: %u", data->light);
 +
@@ -141,25 +141,25 @@ index a307b11f93c..be685a6cfc6 100644
 +	if (data->chip_id == APDS_9306_065_CHIP_ID) {
 +		factor = 14;
 +	}
- 
+
 +	data->light = (data->light * factor) / (gain * integration_time);
 +
 +	LOG_DBG("Gain: %u", gain);
 +	LOG_DBG("Integration time: %u", integration_time);
  	LOG_DBG("Last measurement: %u", data->light);
  }
- 
+
 @@ -139,20 +178,30 @@ static int apds9306_attr_set(const struct device *dev, enum sensor_channel chann
  	uint8_t mask;
  	uint8_t temp;
  	const struct apds9306_config *config = dev->config;
 +	struct apds9306_data *data = dev->data;
- 
+
 -	if (channel != SENSOR_CHAN_LIGHT) {
 +	if ((channel != SENSOR_CHAN_ALL) && (channel != SENSOR_CHAN_LIGHT)) {
  		return -ENOTSUP;
  	}
- 
+
  	if (attribute == SENSOR_ATTR_SAMPLING_FREQUENCY) {
 +		if (value->val1 > (AVAGO_APDS_9306_MEASUREMENT_PERIOD_ARRAY_LENGTH - 1)) {
 +			return -EINVAL;
@@ -184,7 +184,7 @@ index a307b11f93c..be685a6cfc6 100644
 @@ -165,51 +214,44 @@ static int apds9306_attr_set(const struct device *dev, enum sensor_channel chann
  		return -EFAULT;
  	}
- 
+
 +	/* We only save the new values when no error occurs to prevent invalid settings. */
 +	if (attribute == SENSOR_ATTR_SAMPLING_FREQUENCY) {
 +		data->measurement_period_idx = value->val1;
@@ -196,7 +196,7 @@ index a307b11f93c..be685a6cfc6 100644
 +
  	return 0;
  }
- 
+
  static int apds9306_attr_get(const struct device *dev, enum sensor_channel channel,
  			     enum sensor_attribute attribute, struct sensor_value *value)
  {
@@ -205,12 +205,12 @@ index a307b11f93c..be685a6cfc6 100644
 -	uint8_t reg;
 -	const struct apds9306_config *config = dev->config;
 +	struct apds9306_data *data = dev->data;
- 
+
 -	if (channel != SENSOR_CHAN_LIGHT) {
 +	if ((channel != SENSOR_CHAN_ALL) && (channel != SENSOR_CHAN_LIGHT)) {
  		return -ENOTSUP;
  	}
- 
+
  	if (attribute == SENSOR_ATTR_SAMPLING_FREQUENCY) {
 -		reg = APDS9306_REGISTER_ALS_MEAS_RATE;
 -		mask = 0x00;
@@ -226,7 +226,7 @@ index a307b11f93c..be685a6cfc6 100644
  	} else {
  		return -ENOTSUP;
  	}
- 
+
 -	if (i2c_reg_read_byte_dt(&config->i2c, reg, &temp)) {
 -		LOG_ERR("Failed to read sensor attribute!");
 -		return -EFAULT;
@@ -237,7 +237,7 @@ index a307b11f93c..be685a6cfc6 100644
 -
  	return 0;
  }
- 
+
  static int apds9306_sample_fetch(const struct device *dev, enum sensor_channel channel)
  {
 -	uint8_t buffer;
@@ -245,13 +245,13 @@ index a307b11f93c..be685a6cfc6 100644
  	uint16_t delay;
 -	const struct apds9306_config *config = dev->config;
 +	struct apds9306_data *data = dev->data;
- 
+
  	if ((channel != SENSOR_CHAN_ALL) && (channel != SENSOR_CHAN_LIGHT)) {
  		return -ENOTSUP;
 @@ -221,17 +263,10 @@ static int apds9306_sample_fetch(const struct device *dev, enum sensor_channel c
  		return -EFAULT;
  	}
- 
+
 -	/* Get the measurement resolution. */
 -	if (i2c_reg_read_byte_dt(&config->i2c, APDS9306_REGISTER_ALS_MEAS_RATE, &buffer)) {
 -		LOG_ERR("Failed reading resolution");
@@ -266,13 +266,13 @@ index a307b11f93c..be685a6cfc6 100644
 +	delay = avago_apds9306_integration_time[data->resolution_idx];
 +	LOG_DBG("Measurement resolution index: %u", data->resolution_idx);
 +	LOG_DBG("Wait for %d ms", delay);
- 
+
  	/* We add a bit more delay to cover the startup time etc. */
  	if (!k_work_delayable_is_pending(&apds9306_worker_item.dwork)) {
 @@ -252,13 +287,15 @@ static int apds9306_channel_get(const struct device *dev, enum sensor_channel ch
  {
  	struct apds9306_data *data = dev->data;
- 
+
 -	if (channel != SENSOR_CHAN_LIGHT) {
 +	switch (channel) {
 +	case SENSOR_CHAN_LIGHT:
@@ -282,38 +282,38 @@ index a307b11f93c..be685a6cfc6 100644
 +	default:
  		return -ENOTSUP;
  	}
- 
+
 -	value->val1 = data->light;
 -	value->val2 = 0;
 -
  	return 0;
  }
- 
+
 @@ -267,6 +304,7 @@ static int apds9306_sensor_setup(const struct device *dev)
  	uint32_t now;
  	uint8_t temp;
  	const struct apds9306_config *config = dev->config;
 +	struct apds9306_data *data = dev->data;
- 
+
  	/* Wait for the device to become ready after a possible power cycle. */
  	now = k_uptime_get_32();
 @@ -285,19 +323,19 @@ static int apds9306_sensor_setup(const struct device *dev)
  		k_msleep(10);
  	} while (temp & APDS9306_BIT_POWER_ON_STATUS);
- 
+
 -	if (i2c_reg_read_byte_dt(&config->i2c, APDS9306_REGISTER_PART_ID, &temp)) {
 +	if (i2c_reg_read_byte_dt(&config->i2c, APDS9306_REGISTER_PART_ID, &data->chip_id)) {
  		LOG_ERR("Failed reading chip id!");
  		return -EFAULT;
  	}
- 
+
 -	if ((temp != APDS_9306_CHIP_ID) && (temp != APDS_9306_065_CHIP_ID)) {
 -		LOG_ERR("Invalid chip id! Found 0x%X!", temp);
 +	if ((data->chip_id != APDS_9306_CHIP_ID) && (data->chip_id != APDS_9306_065_CHIP_ID)) {
 +		LOG_ERR("Invalid chip id! Found 0x%X!", data->chip_id);
  		return -EFAULT;
  	}
- 
+
 -	if (temp == APDS_9306_CHIP_ID) {
 +	if (data->chip_id == APDS_9306_CHIP_ID) {
  		LOG_DBG("APDS-9306 found!");
@@ -321,19 +321,19 @@ index a307b11f93c..be685a6cfc6 100644
 +	} else if (data->chip_id == APDS_9306_065_CHIP_ID) {
  		LOG_DBG("APDS-9306-065 found!");
  	}
- 
+
 @@ -316,6 +354,7 @@ static int apds9306_init(const struct device *dev)
  {
  	uint8_t value;
  	const struct apds9306_config *config = dev->config;
 +	struct apds9306_data *data = dev->data;
- 
+
  	LOG_DBG("Start to initialize APDS9306...");
- 
+
 @@ -329,16 +368,18 @@ static int apds9306_init(const struct device *dev)
  		return -EFAULT;
  	}
- 
+
 -	value = ((config->resolution & 0x07) << 4) | (config->frequency & 0x0F);
 +	data->measurement_period_idx = config->measurement_period_idx;
 +	data->resolution_idx = config->resolution_idx;
@@ -343,7 +343,7 @@ index a307b11f93c..be685a6cfc6 100644
  	if (i2c_reg_write_byte_dt(&config->i2c, APDS9306_REGISTER_ALS_MEAS_RATE, value)) {
  		return -EFAULT;
  	}
- 
+
 -	value = config->gain;
 +	data->gain_idx = config->gain_idx;
  	LOG_DBG("Write configuration 0x%x to register 0x%x", value, APDS9306_REGISTER_ALS_GAIN);
@@ -351,7 +351,7 @@ index a307b11f93c..be685a6cfc6 100644
 +	if (i2c_reg_write_byte_dt(&config->i2c, APDS9306_REGISTER_ALS_GAIN, data->gain_idx)) {
  		return -EFAULT;
  	}
- 
+
 @@ -358,9 +399,9 @@ static DEVICE_API(sensor, apds9306_driver_api) = {
  	static struct apds9306_data apds9306_data_##inst;                                          \
  	static const struct apds9306_config apds9306_config_##inst = {                             \
@@ -374,9 +374,9 @@ index 1458611dbf0..edc62f2aae3 100644
  # Copyright (c) 2024 Daniel Kampert
 -# Author: Daniel Kampert <DanielKampert@Kampis-Elektroecke.de>
 +# Author: Daniel Kampert <DanielKampert@kampis-elektroecke.de>
- 
+
  description: APDS9306 miniature Surface-Mount Digital Ambient Light Sensor.
- 
+
 @@ -13,13 +13,13 @@ include:
  properties:
    gain:
@@ -414,7 +414,7 @@ index 1458611dbf0..edc62f2aae3 100644
      description:
        ALS Resolution / Bit width.
        The default corresponds to the reset value of the register field.
- 
+
 -  frequency:
 +  measurement-period:
      type: int
@@ -444,17 +444,17 @@ index 183180e9624..ef6aecf794c 100644
 @@ -27,11 +27,11 @@ overlay that specifies the sensor configuration for your setup.
  Building and Running
  ********************
- 
+
 -Build and flash the sample as follows, changing ``nrf52dk_nrf52832`` to your board:
 +Build and flash the sample as follows, changing ``nrf52dk/nrf52832`` to your board:
- 
+
  .. zephyr-app-commands::
     :zephyr-app: samples/sensor/light_polling
 -   :board: nrf52dk_nrf52832
 +   :board: nrf52dk/nrf52832
     :goals: build flash
     :compact:
- 
+
 diff --git a/samples/sensor/light_polling/boards/apds_9306.overlay b/samples/sensor/light_polling/boards/apds_9306.overlay
 new file mode 100644
 index 00000000000..57741d13ff6
@@ -495,8 +495,7 @@ index 6ebced54204..83bccfcaeef 100644
 -	frequency = <2000>;
 +	measurement-period = <2000>;
  };
- 
- test_i2c_wsen_hids_2525020210002: wsen_hids_2525020210002@9b {
--- 
-2.34.1
 
+ test_i2c_wsen_hids_2525020210002: wsen_hids_2525020210002@9b {
+--
+2.34.1

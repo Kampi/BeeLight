@@ -59,7 +59,7 @@ jobs:
       - name: Determine VERSION argument and override variant if tag
         shell: bash
         run: |
-          last_tag=$(git describe --tags --abbrev=0 || echo "")
+          last_tag="$(git describe --tags --abbrev=0 || echo "")"
           if [[ "${{ github.ref_type }}" == "tag" ]]; then
             echo "Overriding kibot_variant to 'RELEASED' for tag"
             echo "kibot_variant=RELEASED" >> $GITHUB_ENV
@@ -84,7 +84,7 @@ jobs:
         run: |
           apt-get update
           apt-get install -y zip
-          zip -r ${{ env.kicad_board }}.zip ${{ env.kibot_output_dir }}-${{ env.kibot_variant }}
+          zip -r "${{ env.kicad_board }}.zip" "${{ env.kibot_output_dir }}-${{ env.kibot_variant }}"
 
       - name: Release
         uses: docker://antonyurchenko/git-release:v6
@@ -125,7 +125,8 @@ jobs:
         shell: bash
         run: |
           git clone https://github.com/Kampi/KiCad.git kicad-library
-          echo "KICAD_LIBRARY=$(pwd)/kicad-library" >> $GITHUB_ENV
+          echo "KICAD_LIBRARY=$(pwd)/kicad-library" >> "$GITHUB_ENV"
+          pip install defusedxml --break-system-packages
 
       - name: Extract release notes
         if: ${{ github.ref_type == 'tag' }}
@@ -148,7 +149,6 @@ jobs:
           branch: ${{ env.master_branch }}
           commit_message: Update CHANGELOG
           file_pattern: ${{ env.kibot_input_dir }}/CHANGELOG.md
-          push_options: '--force'
 
       - name: Cache 3D models data
         uses: set-soft/cache@main
@@ -165,7 +165,7 @@ jobs:
             echo "Overriding kibot_variant to 'RELEASED' for tag"
             echo "kibot_variant=RELEASED" >> $GITHUB_ENV
           else
-            version_arg="-E REVISION='${last_tag}+ (Unreleased)'"
+            version_arg="-E REVISION='${last_tag} + (Unreleased)'"
             echo "kibot_variant=${{ env.kibot_variant }}" >> $GITHUB_ENV
           fi
 
@@ -186,8 +186,8 @@ jobs:
               ;;
           esac
 
-          echo "version_arg=${version_arg}" >> $GITHUB_ENV
-          echo "additional_args=${additional_args}" >> $GITHUB_ENV
+          echo "version_arg=${version_arg}" >> "$GITHUB_ENV"
+          echo "additional_args=${additional_args}" >> "$GITHUB_ENV"
 
       # Generate notes (skipped for DRAFT variant)
       - name: Generate notes
@@ -214,8 +214,7 @@ jobs:
         shell: bash
         run: |
           cd ${{ env.kibot_input_dir }}
-          revision=$(python3 kibot_resources/scripts/get_changelog_version.py -f CHANGELOG.md)
-          if [[ $? -ne 0 ]]; then
+          if ! revision=$(python3 kibot_resources/scripts/get_changelog_version.py -f CHANGELOG.md); then
               echo -e "${YELLOW}Warning: Unable to determine version from CHANGELOG.md. Defaulting to empty revision.${NC}"
               revision=""
           fi
@@ -245,7 +244,7 @@ jobs:
       - name: Clean up
         shell: bash
         run: |
-          rm -rf ${KICAD_LIBRARY}
+          rm -rf "${KICAD_LIBRARY}"
           find . -type f -iname \*.log -delete
           find . -type f -iname \*.ogv -delete
           find . -type f -iname \*.kicad_pro-bak -delete

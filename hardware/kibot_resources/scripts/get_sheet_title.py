@@ -1,12 +1,11 @@
 import argparse
-import xml.etree.ElementTree as ET
-import sys
+import defusedxml.ElementTree as ET
 
 def get_sheet_title(file_path, page_number, dots_number):
     try:
         tree = ET.parse(file_path)
         root = tree.getroot()
-        
+
         page_number = str(page_number)
         titles = []
 
@@ -19,7 +18,7 @@ def get_sheet_title(file_path, page_number, dots_number):
                 title = title_block.find("title").text if title_block is not None else None
                 if name:
                     titles.append(name.split("/")[-2 if name.endswith("/") else -1])
-        
+
         if not titles:
             print('.'*dots_number)
 

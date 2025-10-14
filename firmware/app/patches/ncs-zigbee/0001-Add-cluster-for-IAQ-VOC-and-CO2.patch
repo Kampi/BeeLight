@@ -26,27 +26,16 @@ diff --git a/lib/zboss/include/osif/zb_vendor.h b/lib/zboss/include/osif/zb_vend
 index fca27d0..939b97e 100644
 --- a/lib/zboss/include/osif/zb_vendor.h
 +++ b/lib/zboss/include/osif/zb_vendor.h
-@@ -144,6 +144,8 @@
- 
- #ifdef CONFIG_ZB_ZCL_SUPPORT_CLUSTER_WWAH
- #define ZB_ZCL_SUPPORT_CLUSTER_WWAH
-+#define ZB_ZCL_SUPPORT_CLUSTER_IAQ_MEASUREMENT
-+#define ZB_ZCL_SUPPORT_CLUSTER_VOC_MEASUREMENT
- 
- #ifdef CONFIG_ZB_ZCL_ENABLE_WWAH_CLIENT
- #define ZB_ZCL_ENABLE_WWAH_CLIENT
-@@ -359,6 +361,13 @@
+@@ -359,6 +361,11 @@
  #define ZB_ZCL_SUPPORT_CLUSTER_TUNNELING
  #define ZB_ZCL_SUPPORT_CLUSTER_WINDOW_COVERING
  #define ZB_ZCL_SUPPORT_CLUSTER_WWAH
-+#define ZB_ZCL_SUPPORT_CLUSTER_IAQ_MEASUREMENT
-+#define ZB_ZCL_SUPPORT_CLUSTER_VOC_MEASUREMENT
 +
 +/* Support custom IAQ, VOC and CO2 cluster */
 +#define ZB_ZCL_SUPPORT_CLUSTER_IAQ_MEASUREMENT
 +#define ZB_ZCL_SUPPORT_CLUSTER_VOC_MEASUREMENT
 +#define ZB_ZCL_SUPPORT_CLUSTER_CO2_MEASUREMENT
- 
+
  /* Include rejoin backoff procedure (always included, except macsplit). */
  #define ZB_REJOIN_BACKOFF
 diff --git a/lib/zboss/include/zboss_api_zcl.h b/lib/zboss/include/zboss_api_zcl.h
@@ -75,7 +64,7 @@ index e96d9c6..c92b22d 100644
 +#if defined (ZB_ZCL_SUPPORT_CLUSTER_VOC_MEASUREMENT)
 +#include "zcl/zb_zcl_voc_cluster.h"
 +#endif
- 
+
  #if defined (ZB_ZCL_SUPPORT_CLUSTER_IAS_ACE)
  #include "zcl/zb_zcl_ias_ace.h"
 @@ -171,6 +189,27 @@
@@ -103,7 +92,7 @@ index e96d9c6..c92b22d 100644
 +#if defined (ZB_ZCL_SUPPORT_CLUSTER_VOC_MEASUREMENT)
 +#include "zcl/zb_zcl_voc_cluster.h"
 +#endif
- 
+
  #if defined (ZB_ZCL_SUPPORT_CLUSTER_TIME)
  #include "zcl/zb_zcl_time.h"
 diff --git a/lib/zboss/include/zcl/zb_zcl_co2_cluster.h b/lib/zboss/include/zcl/zb_zcl_co2_cluster.h
@@ -172,7 +161,7 @@ index 0000000..d2d5054
 +{                                                                                       \
 +    ZB_ZCL_ATTR_CO2_MEASUREMENT_MIN_VALUE_ID,                                           \
 +    ZB_ZCL_ATTR_TYPE_U16,                                                               \
-+    ZB_ZCL_ATTR_ACCESS_WRITE_ONLY,                                                      \
++    ZB_ZCL_ATTR_ACCESS_READ_WRITE | ZB_ZCL_ATTR_ACCESS_REPORTING,                       \
 +    (ZB_ZCL_NON_MANUFACTURER_SPECIFIC),                                                 \
 +    (void*) data_ptr                                                                    \
 +}
@@ -181,7 +170,7 @@ index 0000000..d2d5054
 +{                                                                                       \
 +    ZB_ZCL_ATTR_CO2_MEASUREMENT_MAX_VALUE_ID,                                           \
 +    ZB_ZCL_ATTR_TYPE_U16,                                                               \
-+    ZB_ZCL_ATTR_ACCESS_READ_WRITE,                                                      \
++    ZB_ZCL_ATTR_ACCESS_READ_WRITE | ZB_ZCL_ATTR_ACCESS_REPORTING,                       \
 +    (ZB_ZCL_NON_MANUFACTURER_SPECIFIC),                                                 \
 +    (void*) data_ptr                                                                    \
 +}
@@ -232,7 +221,7 @@ index 0b0e092..a8cbca1 100644
 +#define ZB_ZCL_CLUSTER_ID_IAQ_MEASUREMENT          0x1A0AU /*!< IAQ measurement */
 +#define ZB_ZCL_CLUSTER_ID_VOC_MEASUREMENT          0x1A0BU /*!< VOC measurement */
 +#define ZB_ZCL_CLUSTER_ID_CO2_MEASUREMENT          0x1A0CU /*!< CO2 measurement */
- 
+
  /* Measurement and Sensing: Concentration Measurement */
  #define ZB_ZCL_CLUSTER_ID_CARBON_DIOXIDE_MEASUREMENT 0x040DU /*!< Carbon Dioxide (CO2) measurement */
 diff --git a/lib/zboss/include/zcl/zb_zcl_iaq_cluster.h b/lib/zboss/include/zcl/zb_zcl_iaq_cluster.h
@@ -301,7 +290,7 @@ index 0000000..bc288ed
 +{                                                                                       \
 +    ZB_ZCL_ATTR_IAQ_MEASUREMENT_MIN_VALUE_ID,                                           \
 +    ZB_ZCL_ATTR_TYPE_U16,                                                               \
-+    ZB_ZCL_ATTR_ACCESS_WRITE_ONLY,                                                      \
++    ZB_ZCL_ATTR_ACCESS_READ_WRITE | ZB_ZCL_ATTR_ACCESS_REPORTING,                       \
 +    (ZB_ZCL_NON_MANUFACTURER_SPECIFIC),                                                 \
 +    (void*) data_ptr                                                                    \
 +}
@@ -310,7 +299,7 @@ index 0000000..bc288ed
 +{                                                                                       \
 +    ZB_ZCL_ATTR_IAQ_MEASUREMENT_MAX_VALUE_ID,                                           \
 +    ZB_ZCL_ATTR_TYPE_U16,                                                               \
-+    ZB_ZCL_ATTR_ACCESS_READ_WRITE,                                                      \
++    ZB_ZCL_ATTR_ACCESS_READ_WRITE | ZB_ZCL_ATTR_ACCESS_REPORTING,                       \
 +    (ZB_ZCL_NON_MANUFACTURER_SPECIFIC),                                                 \
 +    (void*) data_ptr                                                                    \
 +}
@@ -416,7 +405,7 @@ index 0000000..087de0a
 +{                                                                                       \
 +    ZB_ZCL_ATTR_VOC_MEASUREMENT_MIN_VALUE_ID,                                           \
 +    ZB_ZCL_ATTR_TYPE_U16,                                                               \
-+    ZB_ZCL_ATTR_ACCESS_WRITE_ONLY,                                                      \
++    ZB_ZCL_ATTR_ACCESS_READ_WRITE | ZB_ZCL_ATTR_ACCESS_REPORTING,                       \
 +    (ZB_ZCL_NON_MANUFACTURER_SPECIFIC),                                                 \
 +    (void*) data_ptr                                                                    \
 +}
@@ -425,7 +414,7 @@ index 0000000..087de0a
 +{                                                                                       \
 +    ZB_ZCL_ATTR_VOC_MEASUREMENT_MAX_VALUE_ID,                                           \
 +    ZB_ZCL_ATTR_TYPE_U16,                                                               \
-+    ZB_ZCL_ATTR_ACCESS_READ_WRITE,                                                      \
++    ZB_ZCL_ATTR_ACCESS_READ_WRITE | ZB_ZCL_ATTR_ACCESS_REPORTING,                       \
 +    (ZB_ZCL_NON_MANUFACTURER_SPECIFIC),                                                 \
 +    (void*) data_ptr                                                                    \
 +}
@@ -476,8 +465,8 @@ index b550f41..fc5a77b 100644
 +zephyr_library_sources(zcl/zcl_iaq_measurement.c)
 +zephyr_library_sources(zcl/zcl_voc_measurement.c)
 +zephyr_library_sources(zcl/zcl_co2_measurement.c)
- 
- 
+
+
  # Link with ZBOSS interface library.
 diff --git a/lib/zboss/src/zcl/zcl_co2_measurement.c b/lib/zboss/src/zcl/zcl_co2_measurement.c
 new file mode 100644
@@ -767,6 +756,5 @@ index 0000000..5dd0a95
 +    return ret;
 +}
 \ No newline at end of file
--- 
+--
 2.34.1
-

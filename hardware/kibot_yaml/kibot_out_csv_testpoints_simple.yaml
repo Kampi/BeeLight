@@ -1,4 +1,4 @@
-# KiBot output for generating CSV Tespoints
+# KiBot output for generating CSV Testpoints
 # https://kibot.readthedocs.io/en/latest/configuration/outputs/bom.html
 
 kibot:
@@ -30,7 +30,7 @@ outputs:
       - field: References
         name: Ref.
       - field: Net Label
-        name: Net 
+        name: Net
       - field: Footprint X
         name: X [mm]
       - field: Footprint Y
