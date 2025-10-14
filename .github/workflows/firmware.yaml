@@ -44,7 +44,7 @@ jobs:
           mkdir -p fw_images
 
       - name: Style
-        working-directory: ZSWatch
+        working-directory: BeeLight/firmware/app
         run: |
           west format --dry-run
 
@@ -56,13 +56,17 @@ jobs:
           # It's output to GITHUB_ENV so it can be used in the next steps
           # and only needs to be calculated once.
           BUILD_DIR=${{ matrix.board }}_${{ matrix.built_type }}
-          echo "BUILD_DIR=${BUILD_DIR}" | sed 's/\//_/g' >> $GITHUB_ENV
+          echo "BUILD_DIR=${BUILD_DIR}" | sed 's/\//_/g' >> "$GITHUB_ENV"
 
       - name: Build firmware
         working-directory: BeeLight/firmware/app
         run: |
-          west build --build-dir ${{ env.BUILD_DIR }} --pristine --board ${{ matrix.board }} -- -DNCS_TOOLCHAIN_VERSION=NONE -DCONF_FILE=config/${{ matrix.built_type }}.conf -DBOARD_ROOT=.
-          mv ${{ env.BUILD_DIR }}/merged.hex fw_images/${{ matrix.built_type }}.hex
+          set -e
+          west build --build-dir "${{ env.BUILD_DIR }}" --pristine --board "${{ matrix.board }}" -- -DNCS_TOOLCHAIN_VERSION=NONE -DCONF_FILE="config/${{ matrix.built_type }}.conf" -DBOARD_ROOT=.
+          src_hex=""
+          if [ -f "${{ env.BUILD_DIR }}/merged.hex" ]; then src_hex="${{ env.BUILD_DIR }}/merged.hex"; fi
+          if [ -z "$src_hex" ] && [ -f "${{ env.BUILD_DIR }}/zephyr/merged.hex" ]; then src_hex="${{ env.BUILD_DIR }}/zephyr/merged.hex"; fi
+          if [ -n "$src_hex" ]; then cp "$src_hex" "fw_images/${{ matrix.built_type }}.hex"; else echo "merged.hex not found, skipping"; fi
 
       - name : Upload Firmware
         uses: actions/upload-artifact@v4.3.3

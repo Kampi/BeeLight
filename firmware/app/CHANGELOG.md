@@ -10,7 +10,7 @@
 **Added:**
 
 - Add BME688
-- Add suport for BME688 only and Bosch BSEC
+- Add support for BME688 only and Bosch BSEC
 - Add blocklist to west manifest
 - Add groupfilters to west manifest
 - Add west command to build and flash the device configuration

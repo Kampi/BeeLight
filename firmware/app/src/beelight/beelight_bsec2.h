@@ -49,108 +49,9 @@
 */
 #define ZB_ENV_SENSOR_REPORT_ATTR_COUNT         10
 
-/* */
-typedef struct {
-    zb_uint8_t voltage;                 /**< Attribute 3.3.2.2.3.1 */
-    zb_uint8_t size;                    /**< Attribute 3.3.2.2.4.2 */
-    zb_uint8_t quantity;                /**< Attribute 3.3.2.2.4.4 */
-    zb_uint8_t rated_voltage;           /**< Attribute 3.3.2.2.4.5 */
-    zb_uint8_t alarm_mask;              /**< Attribute 3.3.2.2.4.6 */
-    zb_uint8_t voltage_min_threshold;   /**< Attribute 3.3.2.2.4.7 */
-    zb_uint8_t percent_remaining;       /**< Attribute 3.3.2.2.3.1
-                                             NOTE: A value of 200  is equal to 100%! */
-    zb_uint8_t voltage_threshold_1;     /**< Attribute 3.3.2.2.4.8 */
-    zb_uint8_t voltage_threshold_2;     /**< Attribute 3.3.2.2.4.8 */
-    zb_uint8_t voltage_threshold_3;     /**< Attribute 3.3.2.2.4.8 */
-    zb_uint8_t percent_min_threshold;   /**< Attribute 3.3.2.2.4.9 */
-    zb_uint8_t percent_threshold_1;     /**< Attribute 3.3.2.2.4.10 */
-    zb_uint8_t percent_threshold_2;     /**< Attribute 3.3.2.2.4.10 */
-    zb_uint8_t percent_threshold_3;     /**< Attribute 3.3.2.2.4.10 */
-    zb_uint32_t alarm_state;            /**< Attribute 3.3.2.2.4.11 */
-} zb_zcl_power_attrs_t;
-
-/** @brief 4.2 Illuminance Measurement
-*/
-typedef struct {
-    zb_uint16_t measurement_attr;       /**< Attribute 4.2.2.2.1 */
-    zb_uint16_t min_attr;               /**< Attribute 4.2.2.2.2 */
-    zb_uint16_t max_attr;               /**< Attribute 4.2.2.2.3 */
-} zb_zcl_illuminance_attrs_t;
-
-/** @brief 4.4 Temperature Measurement
-*/
-typedef struct {
-    zb_uint16_t measurement_attr;       /**< Attribute 4.4.2.2.1 */
-    zb_uint16_t min_attr;               /**< Attribute 4.4.2.2.2 */
-    zb_uint16_t max_attr;               /**< Attribute 4.4.2.2.3 */
-    zb_uint16_t tolerance;              /**< Attribute 4.4.2.2.4 */
-} zb_zcl_temperature_attrs_t;
-
-/** @brief 4.5 Pressure Measurement
-*/
-typedef struct {
-    zb_uint16_t measurement_attr;       /**< Attribute 4.5.2.2.1 */
-    zb_uint16_t min_attr;               /**< Attribute 4.5.2.2.2 */
-    zb_uint16_t max_attr;               /**< Attribute 4.5.2.2.3 */
-    zb_uint16_t tolerance;              /**< Attribute 4.5.2.2.4 */
-} zb_zcl_pressure_attrs_t;
-
-/** @brief 4.7 Relative Humidity Measurement
-*/
-typedef struct {
-    zb_uint16_t measurement_attr;       /**< Attribute 4.7.2.2.1 */
-    zb_uint16_t min_attr;               /**< Attribute 4.7.2.2.2 */
-    zb_uint16_t max_attr;               /**< Attribute 4.7.2.2.3 */
-    zb_uint16_t tolerance;              /**< Attribute 4.7.2.2.4 */
-} zb_zcl_humidity_attrs_t;
-
-/** @brief IAQ Measurement
-*/
-typedef struct {
-    zb_uint16_t measurement_attr;       /**< */
-    zb_uint16_t min_attr;               /**< */
-    zb_uint16_t max_attr;               /**< */
-    zb_uint8_t tolerance;               /**< */
-} zb_zcl_iaq_attrs_t;
-
-/** @brief VOC Measurement
-*/
-typedef struct {
-    zb_uint16_t measurement_attr;       /**< */
-    zb_uint16_t min_attr;               /**< */
-    zb_uint16_t max_attr;               /**< */
-    zb_uint8_t tolerance;               /**< */
-} zb_zcl_voc_attrs_t;
-
-/** @brief CO2 Measurement
-*/
-typedef struct {
-    zb_uint16_t measurement_attr;       /**< */
-    zb_uint16_t min_attr;               /**< */
-    zb_uint16_t max_attr;               /**< */
-    zb_uint8_t tolerance;               /**< */
-} zb_zcl_co2_attrs_t;
-
-/** @brief Main application customizable context. Stores all settings and static values.
- */
-typedef struct {
-    zb_zcl_basic_attrs_ext_t basic_attr;
-    zb_zcl_identify_attrs_t identify_attr;
-    zb_zcl_groups_attrs_t groups_attr;
-    zb_zcl_power_attrs_t power_attr;
-    zb_zcl_illuminance_attrs_t illuminance_attr;
-    zb_zcl_temperature_attrs_t temperature_attr;
-    zb_zcl_pressure_attrs_t pressure_attr;
-    zb_zcl_humidity_attrs_t humidity_attr;
-    zb_zcl_co2_attrs_t co2_attr;
-    zb_zcl_iaq_attrs_t iaq_attr;
-    zb_zcl_voc_attrs_t voc_attr;
-} device_ctx_t;
-
 /** @brief                              Declare the cluster list for the Environment Sensor device.
  *  @param cluster_list_name            Cluster list variable name
  *  @param basic_attr_list              Attribute list for Basic cluster
- *  @param identify_client_attr_list    Attribute list for Identify cluster (Client)
  *  @param identify_server_attr_list    Attribute list for Identify cluster (Server)
  *  @param power_attr_list              Attribute list for Power cluster
  *  @param illu_attr_list               Attribute list for Illuminance Measurement cluster
@@ -164,7 +65,6 @@ typedef struct {
 #define ZB_DECLARE_ENV_SENSOR_CLUSTER_LIST(                                 \
     cluster_list_name,                                                      \
     basic_attr_list,                                                        \
-    identify_client_attr_list,                                              \
     identify_server_attr_list,                                              \
     power_attr_list,                                                        \
     illu_attr_list,                                                         \
@@ -278,34 +178,3 @@ typedef struct {
             ZB_ZCL_CLUSTER_ID_VOC_MEASUREMENT,                                                  \
         }                                                                                       \
     }
-
-/** @brief                  Declare endpoint for the Environment Sensor device.
- *  @param ep_name          Endpoint variable name
- *  @param ep_id            Endpoint ID
- *  @param cluster_list     Endpoint cluster list
- */
-#define ZB_DECLARE_ENV_SENSOR_EP(ep_name, ep_id, cluster_list)                  \
-    ZB_ZCL_DECLARE_HA_ENV_SENSOR_SIMPLE_DESC(                                   \
-        ep_name,                                                                \
-        ep_id,                                                                  \
-        ZB_ENV_SENSOR_IN_CLUSTER_NUM,                                           \
-        ZB_ENV_SENSOR_OUT_CLUSTER_NUM                                           \
-    );                                                                          \
-    ZBOSS_DEVICE_DECLARE_REPORTING_CTX(                                         \
-        reporting_info##ep_name,                                                \
-        ZB_ENV_SENSOR_REPORT_ATTR_COUNT                                         \
-    );                                                                          \
-    ZB_AF_DECLARE_ENDPOINT_DESC(                                                \
-        ep_name,                                                                \
-        ep_id,                                                                  \
-        ZB_PROFILE_ID,                                                          \
-        0,                                                                      \
-        NULL,                                                                   \
-        ZB_ZCL_ARRAY_SIZE(cluster_list, zb_zcl_cluster_desc_t),                 \
-        cluster_list,                                                           \
-        (zb_af_simple_desc_1_1_t *)&simple_desc_##ep_name,                      \
-        ZB_ENV_SENSOR_REPORT_ATTR_COUNT,                                        \
-        reporting_info##ep_name,                                                \
-        0,                                                                      \
-        NULL                                                                    \
-    )

@@ -40,11 +40,13 @@ static void zbus_5min_callback(const struct zbus_channel *chan)
             (sensor_channel_get(apds9306, SENSOR_CHAN_LIGHT, &sensor_val) == 0)) {
             struct light_event evt;
 
-            memset(&evt, 0, sizeof(struct light_event));
-
             evt.light = sensor_val.val1;
 
-            zbus_chan_pub(&light_data_chan, &evt, K_NO_WAIT);
+            int ret = zbus_chan_pub(&light_data_chan, &evt, K_NO_WAIT);
+            if (ret != 0) {
+                LOG_ERR("Failed to publish light data: %d", ret);
+            }
+
             LOG_DBG("Publish new data...");
             LOG_DBG("   Light: %u", evt.light);
         }
@@ -57,7 +59,16 @@ static int beelight_light_sensor_init(void)
 {
     int err;
 
-    pm_device_runtime_auto_enable(apds9306);
+    if (!device_is_ready(apds9306)) {
+        LOG_ERR("APDS9306 device is not ready");
+        return -ENODEV;
+    }
+
+    err = pm_device_runtime_auto_enable(apds9306);
+    if (err != 0) {
+        LOG_ERR("Failed to enable runtime PM: %d", err);
+        return err;
+    }
 
     err = zbus_chan_add_obs(&periodic_5min_chan, &light_periodic_sample_event_lis, K_NO_WAIT);
     if (err != 0) {

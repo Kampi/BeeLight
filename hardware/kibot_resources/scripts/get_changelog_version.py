@@ -28,7 +28,7 @@ def get_last_version(file_path):
 
     except FileNotFoundError:
         return f"File '{file_path}' not found."
-    except Exception as e:
+    except (IOError, OSError) as e:
         return f"An error occurred: {e}"
 
 if __name__ == "__main__":

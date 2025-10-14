@@ -26,7 +26,7 @@
 
 ## About
 
-Open-Source Zigbee-based light and environmental sensor with [Zigbee2MQTT](https://www.zigbee2mqtt.io/]) support for your Home Automation with I. e. Home Assistant.
+Open-Source Zigbee-based light and environmental sensor with [Zigbee2MQTT](https://www.zigbee2mqtt.io/) support for your Home Automation with I. e. Home Assistant.
 
 ![Rendering](/docs/images/Rendering.png)
 
@@ -87,7 +87,7 @@ As an alternative you can run it via CI/CD in GitHub.
 
 > **NOTE**
 > You have to provide a Mouser API key with a variable called `MOUSER_KEY` to make use of the KiCost feature in the Kibot job.
-
+>
 > **NOTE**
 > The programming connector is optional and can be left out or unsoldered after flashing the device.
 
@@ -180,7 +180,7 @@ Make sure to use a Zigbee 3 compatible dongle like [SONOFF ZBDongle-E](https://s
 #### Install the device to Zigbee2MQTT
 
 > **NOTE**
-> Because it´s not possible to use custom cluster with Zigbee2MQTT easily, so you must adjust the application directly to use the sensor. Please take a look into the directory `z2m/data/external_converters/example` if you want to check how the modified files look like.
+> Because it's not possible to use custom cluster with Zigbee2MQTT easily, you must adjust the application directly to use the sensor. Please take a look into the directory `z2m/data/external_converters/example` if you want to check how the modified files look like.
 
 1. Download and install [Zigbee2MQTT](https://github.com/zigbee2mqtt/hassio-zigbee2mqtt)
 2. Copy the external converter from `z2m/data_external_converters` to the `data` directory of your `Zigbee2MQTT` installation
@@ -297,4 +297,5 @@ The device can now be connected to your Zigbee network and with this to your Hom
 
 ## Maintainer
 
-- [Daniel Kampert](mailto:daniel.kameprt@kampis-elektroecke.de)
+- [Daniel Kampert](mailto:DanielKampert@kampis-elektroecke.de)
+

@@ -15,7 +15,6 @@ supported:
   - spi
   - counter
   - watchdog
-  - adc
   - i2s
 vendor: kampi
 sysbuild: true

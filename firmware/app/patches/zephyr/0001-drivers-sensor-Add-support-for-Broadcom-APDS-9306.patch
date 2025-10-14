@@ -510,5 +510,5 @@ index 00000000000..1458611dbf0
 +    description:
 +      ALS Measurement Rate in milliseconds.
 +      The default corresponds to the reset value of the register field.
--- 
+--
 2.48.1.windows.1

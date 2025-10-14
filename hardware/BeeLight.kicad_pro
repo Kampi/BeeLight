@@ -540,7 +540,7 @@
       "specctra_dsn": "",
       "step": "../cad/PCB.stp",
       "svg": "",
-      "vrml": "../cad/ZSWatch.wrl"
+      "vrml": "../cad/BeeLight.wrl"
     },
     "page_layout_descr_file": "${KIPRJMOD}/Templates/KDT_Template_PCB_GIT_A4.kicad_wks"
   },
