@@ -30,7 +30,7 @@ ZBUS_CHAN_DEFINE(periodic_24h_chan,
                  &periodic_24h_work,
                  ZBUS_OBSERVERS_EMPTY,
                  ZBUS_MSG_INIT()
-                 );
+                );
 
 ZBUS_CHAN_DEFINE(periodic_5min_chan,
                  struct periodic_event,
@@ -38,7 +38,7 @@ ZBUS_CHAN_DEFINE(periodic_5min_chan,
                  &periodic_5min_work,
                  ZBUS_OBSERVERS_EMPTY,
                  ZBUS_MSG_INIT()
-                 );
+                );
 
 ZBUS_CHAN_DEFINE(light_data_chan,
                  struct light_event,
@@ -46,7 +46,7 @@ ZBUS_CHAN_DEFINE(light_data_chan,
                  NULL,
                  ZBUS_OBSERVERS_EMPTY,
                  ZBUS_MSG_INIT()
-                 );
+                );
 
 ZBUS_CHAN_DEFINE(env_data_chan,
                  struct env_event,
@@ -54,7 +54,7 @@ ZBUS_CHAN_DEFINE(env_data_chan,
                  NULL,
                  ZBUS_OBSERVERS_EMPTY,
                  ZBUS_MSG_INIT()
-                 );
+                );
 
 ZBUS_CHAN_DEFINE(battery_data_chan,
                  struct battery_event,
@@ -62,7 +62,7 @@ ZBUS_CHAN_DEFINE(battery_data_chan,
                  NULL,
                  ZBUS_OBSERVERS_EMPTY,
                  ZBUS_MSG_INIT()
-                 );
+                );
 
 LOG_MODULE_REGISTER(events, LOG_LEVEL_DBG);
 

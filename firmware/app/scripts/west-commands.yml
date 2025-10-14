@@ -4,3 +4,9 @@ west-commands:
       - name: upload_config
         class: UploadConfigWestCommand
         help: Upload the production config to a sensor.
+
+  - file: scripts/astyle_format_west_command.py
+    commands:
+      - name: format
+        class: FormatCodeWestCommand
+        help: Format the code using AStyle.
