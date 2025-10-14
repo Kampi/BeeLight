@@ -34,23 +34,30 @@
         full-ohms = <(8200 + 2200)>;
         power-gpios = <&gpio2 4 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
     };
+
+    gpio_i2c0: gpio_i2c {
+        status = "okay";
+        compatible = "gpio-i2c";
+        clock-frequency = <I2C_BITRATE_FAST>;
+        sda-gpios = <&gpio2 6 GPIO_OPEN_DRAIN>;
+        scl-gpios = <&gpio0 3 GPIO_OPEN_DRAIN>;
+        #address-cells = <1>;
+        #size-cells = <0>;
+    };
 };
 
 &i2c20 {
-    status = "okay";
-    compatible = "nordic,nrf-twim";
-    clock-frequency = <I2C_BITRATE_FAST>;
-    pinctrl-0 = <&i2c_default>;
-    pinctrl-1 = <&i2c_sleep>;
-    pinctrl-names = "default", "sleep";
+    status = "disabled";
+};
 
+&gpio_i2c0 {
     apds9306: apds9306@52 {
         status = "okay";
         compatible = "avago,apds9306";
         reg = <0x52>;
         gain = <1>;
         resolution = <13>;
-        frequency = <2000>;
+        measurement-period = <2000>;
     };
 
     bme688: bme688@76 {

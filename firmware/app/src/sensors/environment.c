@@ -69,7 +69,7 @@ static void zbus_5min_callback(const struct zbus_channel *chan)
                 evt.iaq.value = sensor_val.val1;
                 evt.iaq.tolerance = sensor_val.val2;
             }
-#endif
+#endif /* CONFIG_BME68X_IAQ */
 
             zbus_chan_pub(&env_data_chan, &evt, K_NO_WAIT);
             LOG_DBG("Publish new data...");
