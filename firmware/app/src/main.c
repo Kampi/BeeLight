@@ -161,7 +161,7 @@ ZB_ZCL_DECLARE_VOC_MEASUREMENT_ATTRIB_LIST(
     &dev_ctx.voc_attr.min_attr,
     &dev_ctx.voc_attr.max_attr,
     &dev_ctx.voc_attr.tolerance);
-#endif
+#endif /* CONFIG_BME68X_IAQ */
 
 ZB_DECLARE_ENV_SENSOR_CLUSTER_LIST(
     env_sensor_clusters,
@@ -179,7 +179,7 @@ ZB_DECLARE_ENV_SENSOR_CLUSTER_LIST(
     voc_sensor_attr_list
 #else
     hum_sensor_attr_list
-#endif
+#endif /* CONFIG_BME68X_IAQ */
 );
 
 ZB_DECLARE_ENV_SENSOR_EP(
@@ -300,7 +300,7 @@ static void app_clusters_attr_init(void)
     dev_ctx.basic_attr.hw_version = (zb_uint8_t)atoi(CONFIG_BOARD_REVISION);
 #else
     dev_ctx.basic_attr.hw_version = INIT_BASIC_HW_VERSION;
-#endif
+#endif /* CONFIG_BOARD_REVISION */
 
     /* Use ZB_ZCL_SET_STRING_VAL to set strings, because the first byte */
     /* should contain string length without trailing zero. */
@@ -371,7 +371,7 @@ static void on_zcl_cb_handler(zb_bufid_t bufid)
     if (device_cb_param->device_cb_id == ZB_ZCL_OTA_UPGRADE_VALUE_CB_ID) {
 #ifdef CONFIG_ZIGBEE_FOTA
         zigbee_fota_zcl_cb(bufid);
-#endif
+#endif /* CONFIG_ZIGBEE_FOTA */
     } else {
         device_cb_param->status = RET_NOT_IMPLEMENTED;
     }
@@ -586,7 +586,7 @@ static void zbus_on_env_callback(const struct zbus_channel *chan)
 
         LOG_DBG("VOC: %u", dev_ctx.voc_attr.measurement_attr);
     }
-#endif
+#endif /* CONFIG_BME68X_IAQ */
 }
 
 static void zbus_on_battery_callback(const struct zbus_channel *chan)
@@ -665,7 +665,7 @@ int main(void)
 
     /* Register callback for handling ZCL commands. */
     ZB_ZCL_REGISTER_DEVICE_CB(on_zcl_cb_handler);
-#endif
+#endif /* CONFIG_ZIGBEE_FOTA */
 
     /* Register device context (endpoints). */
     ZB_AF_REGISTER_DEVICE_CTX(&env_sensor_ctx);

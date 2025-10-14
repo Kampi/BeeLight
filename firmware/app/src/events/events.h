@@ -51,7 +51,7 @@ struct env_event {
         float value;            /**< */
         uint32_t tolerance;     /**< */
     } co2;
-#endif
+#endif /* CONFIG_BME68X_IAQ */
 };
 
 /** @brief

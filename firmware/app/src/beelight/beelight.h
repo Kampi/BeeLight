@@ -86,4 +86,4 @@
 #include "beelight_bsec2.h"
 #else
 #include "beelight_nobsec2.h"
-#endif
+#endif /* CONFIG_BME68X_IAQ */
