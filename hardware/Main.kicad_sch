@@ -3240,7 +3240,7 @@
 	(text_box "Power Supply"
 		(exclude_from_sim no)
 		(at 233.68 229.87 0)
-		(size 60.96 9.525)
+		(size 29.21 9.525)
 		(margins 1.9049 1.9049 1.9049 1.9049)
 		(stroke
 			(width -0.0001)
@@ -3261,15 +3261,15 @@
 		)
 		(uuid "67a85d80-fe45-4492-a23f-f4ed25b939a9")
 	)
-	(text_box "DESIGN NOTE:"
+	(text_box "You can use CR2477 batteries."
 		(exclude_from_sim no)
-		(at 60.96 115.57 0)
-		(size 21.59 15.24)
-		(margins 1.3525 1.3525 1.3525 1.3525)
+		(at 264.16 229.87 0)
+		(size 30.48 10.16)
+		(margins 2 2 2 2)
 		(stroke
-			(width 0.8)
+			(width 1)
 			(type solid)
-			(color 255 165 0 1)
+			(color 200 200 200 1)
 		)
 		(fill
 			(type none)
@@ -3277,37 +3277,12 @@
 		(effects
 			(font
 				(face "Arial")
-				(size 1.27 1.27)
+				(size 2 2)
 				(color 0 0 0 1)
 			)
 			(justify left top)
 		)
-		(uuid "7118d66d-27ed-4a42-9d0f-29873dd1133d")
-	)
-	(text_box "LAYOUT NOTE:"
-		(exclude_from_sim no)
-		(at 85.09 115.57 0)
-		(size 26.67 15.24)
-		(margins 1.4525 1.4525 1.4525 1.4525)
-		(stroke
-			(width 1)
-			(type solid)
-			(color 0 0 255 1)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(face "Arial")
-				(size 1.27 1.27)
-				(thickness 0.4)
-				(bold yes)
-				(color 0 0 255 1)
-			)
-			(justify left top)
-		)
-		(uuid "789bb8df-08ec-4683-a441-f4ff02e08c1e")
+		(uuid "726c96aa-1503-4c75-b164-8e104ec5f55f")
 	)
 	(text_box "Battery measurement\n"
 		(exclude_from_sim no)
@@ -5573,7 +5548,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Keystone:3002"
+		(property "Footprint" "Keystone:3039"
 			(at 254 213.106 90)
 			(effects
 				(font
@@ -5582,7 +5557,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://eu.mouser.com/datasheet/2/215/002-745381.pdf"
+		(property "Datasheet" "https://www.mouser.de/datasheet/3/201/1/3039.pdf"
 			(at 254 213.106 90)
 			(effects
 				(font
@@ -5609,7 +5584,7 @@
 				(hide yes)
 			)
 		)
-		(property "manf#" "3002"
+		(property "manf#" "3039"
 			(at 254 214.63 0)
 			(effects
 				(font
@@ -5618,7 +5593,7 @@
 				(hide yes)
 			)
 		)
-		(property "mouser#" "534-3002"
+		(property "mouser#" "534-3039"
 			(at 254 214.63 0)
 			(effects
 				(font

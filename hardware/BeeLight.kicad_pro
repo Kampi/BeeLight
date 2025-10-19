@@ -538,7 +538,7 @@
       "plot": "../production/",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "../cad/PCB.stp",
+      "step": "../cad/PCB.step",
       "svg": "",
       "vrml": "../cad/BeeLight.wrl"
     },
