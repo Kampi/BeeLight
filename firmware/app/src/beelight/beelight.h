@@ -18,7 +18,7 @@
 #pragma once
 
 /* Version of the application software (1 byte). */
-#define INIT_BASIC_APP_VERSION                  01
+#define INIT_BASIC_APP_VERSION                  1
 
 /* Version of the implementation of the Zigbee stack (1 byte). */
 #define INIT_BASIC_STACK_VERSION                10
@@ -30,12 +30,16 @@
 #define INIT_BASIC_MANUF_NAME                   "Kampi"
 
 /* Model number assigned by manufacturer (32-bytes long string). */
-#define INIT_BASIC_MODEL_ID                     "BeeLight_v2.0"
+#define INIT_BASIC_MODEL_ID                     "BeeLight_v2"
 
 /* First 8 bytes specify the date of manufacturer of the device
  * in ISO 8601 format (YYYYMMDD). The rest (8 bytes) are manufacturer specific.
  */
-#define INIT_BASIC_DATE_CODE                    "20200329"
+#ifdef CONFIG_DEBUG
+#define INIT_BASIC_DATE_CODE                    "20251019_Debug"
+#else
+#define INIT_BASIC_DATE_CODE                    "20251019_Release"
+#endif
 
 /* Describes the physical location of the device (16 bytes).
  * May be modified during commissioning process.
@@ -58,15 +62,15 @@
 
 /** @brief Device endpoint, used to receive environment sensor results.
  */
-#define SENSOR_ENDPOINT                         10
+#define BEELIGHT_ENDPOINT                       10
 
 /** @brief The rated battery voltage in millivolts.
  */
-#define SENSOR_RATED_VOLTAGE_MV                 3000UL
+#define BEELIGHT_RATED_VOLTAGE_MV               3300UL
 
 /** @brief The lowest battery voltage in millivolts.
  */
-#define SENSOR_EMPTY_VOLTAGE_MV                 2700UL
+#define BEELIGHT_EMPTY_VOLTAGE_MV               2700UL
 
 /** @brief ZigBee device version.
 */
@@ -87,16 +91,16 @@
  *  @param ep_id            Endpoint ID
  *  @param cluster_list     Endpoint cluster list
  */
-#define ZB_DECLARE_ENV_SENSOR_EP(ep_name, ep_id, cluster_list)                  \
-    ZB_ZCL_DECLARE_HA_ENV_SENSOR_SIMPLE_DESC(                                   \
+#define BEELIGHT_DECLARE_EP(ep_name, ep_id, cluster_list)                       \
+    BEELIGHT_DECLARE_SIMPLE_DESC(                                               \
         ep_name,                                                                \
         ep_id,                                                                  \
-        ZB_ENV_SENSOR_IN_CLUSTER_NUM,                                           \
-        ZB_ENV_SENSOR_OUT_CLUSTER_NUM                                           \
+        BEELIGHT_IN_CLUSTER_NUM,                                                \
+        BEELIGHT_OUT_CLUSTER_NUM                                                \
     );                                                                          \
     ZBOSS_DEVICE_DECLARE_REPORTING_CTX(                                         \
         reporting_info##ep_name,                                                \
-        ZB_ENV_SENSOR_REPORT_ATTR_COUNT                                         \
+        BEELIGHT_REPORT_ATTR_COUNT                                              \
     );                                                                          \
     ZB_AF_DECLARE_ENDPOINT_DESC(                                                \
         ep_name,                                                                \
@@ -107,7 +111,7 @@
         ZB_ZCL_ARRAY_SIZE(cluster_list, zb_zcl_cluster_desc_t),                 \
         cluster_list,                                                           \
         (zb_af_simple_desc_1_1_t *)&simple_desc_##ep_name,                      \
-        ZB_ENV_SENSOR_REPORT_ATTR_COUNT,                                        \
+        BEELIGHT_REPORT_ATTR_COUNT,                                             \
         reporting_info##ep_name,                                                \
         0,                                                                      \
         NULL                                                                    \
@@ -215,6 +219,115 @@ typedef struct {
     zb_zcl_voc_attrs_t voc_attr;
 #endif /* CONFIG_BME68X_IAQ */
 } device_ctx_t;
+
+#define BEELIGHT_CLUSTER_BASIC_DESC(basic_attr_list) \
+    ZB_ZCL_CLUSTER_DESC( \
+        ZB_ZCL_CLUSTER_ID_BASIC, \
+        ZB_ZCL_ARRAY_SIZE(basic_attr_list, zb_zcl_attr_t), \
+        (basic_attr_list), \
+        ZB_ZCL_CLUSTER_SERVER_ROLE, \
+        ZB_ZCL_MANUF_CODE_INVALID \
+    ),
+
+#define BEELIGHT_CLUSTER_IDENTIFY_DESC(identify_server_attr_list) \
+    ZB_ZCL_CLUSTER_DESC( \
+        ZB_ZCL_CLUSTER_ID_IDENTIFY, \
+        ZB_ZCL_ARRAY_SIZE(identify_server_attr_list, zb_zcl_attr_t), \
+        (identify_server_attr_list), \
+        ZB_ZCL_CLUSTER_SERVER_ROLE, \
+        ZB_ZCL_MANUF_CODE_INVALID \
+    ),
+
+#define BEELIGHT_CLUSTER_POWER_DESC(power_attr_list) \
+    ZB_ZCL_CLUSTER_DESC( \
+        ZB_ZCL_CLUSTER_ID_POWER_CONFIG, \
+        ZB_ZCL_ARRAY_SIZE(power_attr_list, zb_zcl_attr_t), \
+        (power_attr_list), \
+        ZB_ZCL_CLUSTER_SERVER_ROLE, \
+        ZB_ZCL_MANUF_CODE_INVALID \
+    ),
+
+#define BEELIGHT_CLUSTER_ILLUMINANCE_DESC(illu_attr_list) \
+    ZB_ZCL_CLUSTER_DESC( \
+        ZB_ZCL_CLUSTER_ID_ILLUMINANCE_MEASUREMENT, \
+        ZB_ZCL_ARRAY_SIZE(illu_attr_list, zb_zcl_attr_t), \
+        (illu_attr_list), \
+        ZB_ZCL_CLUSTER_SERVER_ROLE, \
+        ZB_ZCL_MANUF_CODE_INVALID \
+    ),
+
+#define BEELIGHT_CLUSTER_TEMP_DESC(temp_attr_list) \
+    ZB_ZCL_CLUSTER_DESC( \
+        ZB_ZCL_CLUSTER_ID_TEMP_MEASUREMENT, \
+        ZB_ZCL_ARRAY_SIZE(temp_attr_list, zb_zcl_attr_t), \
+        (temp_attr_list), \
+        ZB_ZCL_CLUSTER_SERVER_ROLE, \
+        ZB_ZCL_MANUF_CODE_INVALID \
+    ),
+
+#define BEELIGHT_CLUSTER_PRESSURE_DESC(pres_attr_list) \
+    ZB_ZCL_CLUSTER_DESC( \
+        ZB_ZCL_CLUSTER_ID_PRESSURE_MEASUREMENT, \
+        ZB_ZCL_ARRAY_SIZE(pres_attr_list, zb_zcl_attr_t), \
+        (pres_attr_list), \
+        ZB_ZCL_CLUSTER_SERVER_ROLE, \
+        ZB_ZCL_MANUF_CODE_INVALID \
+    ),
+
+#define BEELIGHT_CLUSTER_HUMIDITY_DESC(hum_attr_list) \
+    ZB_ZCL_CLUSTER_DESC( \
+        ZB_ZCL_CLUSTER_ID_REL_HUMIDITY_MEASUREMENT, \
+        ZB_ZCL_ARRAY_SIZE(hum_attr_list, zb_zcl_attr_t), \
+        (hum_attr_list), \
+        ZB_ZCL_CLUSTER_SERVER_ROLE, \
+        ZB_ZCL_MANUF_CODE_INVALID \
+    ),
+
+#define BEELIGHT_CLUSTER_CO2_DESC(co2_attr_list) \
+    ZB_ZCL_CLUSTER_DESC( \
+        ZB_ZCL_CLUSTER_ID_CO2_MEASUREMENT, \
+        ZB_ZCL_ARRAY_SIZE(co2_attr_list, zb_zcl_attr_t), \
+        (co2_attr_list), \
+        ZB_ZCL_CLUSTER_SERVER_ROLE, \
+        ZB_ZCL_MANUF_CODE_INVALID \
+    ),
+
+#define BEELIGHT_CLUSTER_IAQ_DESC(iaq_attr_list) \
+    ZB_ZCL_CLUSTER_DESC( \
+        ZB_ZCL_CLUSTER_ID_IAQ_MEASUREMENT, \
+        ZB_ZCL_ARRAY_SIZE(iaq_attr_list, zb_zcl_attr_t), \
+        (iaq_attr_list), \
+        ZB_ZCL_CLUSTER_SERVER_ROLE, \
+        ZB_ZCL_MANUF_CODE_INVALID \
+    ),
+
+#define BEELIGHT_CLUSTER_VOC_DESC(voc_attr_list) \
+    ZB_ZCL_CLUSTER_DESC( \
+        ZB_ZCL_CLUSTER_ID_VOC_MEASUREMENT, \
+        ZB_ZCL_ARRAY_SIZE(voc_attr_list, zb_zcl_attr_t), \
+        (voc_attr_list), \
+        ZB_ZCL_CLUSTER_SERVER_ROLE, \
+        ZB_ZCL_MANUF_CODE_INVALID \
+    ),
+
+/** @brief Basic cluster IDs (for both variants)
+ */
+#define BEELIGHT_CLUSTER_IDS_BASIC \
+    ZB_ZCL_CLUSTER_ID_BASIC, \
+    ZB_ZCL_CLUSTER_ID_IDENTIFY, \
+    ZB_ZCL_CLUSTER_ID_POWER_CONFIG, \
+    ZB_ZCL_CLUSTER_ID_ILLUMINANCE_MEASUREMENT, \
+    ZB_ZCL_CLUSTER_ID_TEMP_MEASUREMENT, \
+    ZB_ZCL_CLUSTER_ID_PRESSURE_MEASUREMENT, \
+    ZB_ZCL_CLUSTER_ID_REL_HUMIDITY_MEASUREMENT,
+
+/** @brief Additional cluster IDs (for both variants)
+ */
+#define BEELIGHT_CLUSTER_IDS_EXTENDED \
+    BEELIGHT_CLUSTER_IDS_BASIC \
+    ZB_ZCL_CLUSTER_ID_CO2_MEASUREMENT, \
+    ZB_ZCL_CLUSTER_ID_IAQ_MEASUREMENT, \
+    ZB_ZCL_CLUSTER_ID_VOC_MEASUREMENT,
 
 #if CONFIG_BME68X_IAQ
 #include "beelight_bsec2.h"

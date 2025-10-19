@@ -24,6 +24,7 @@ add_subdirectory(src/events)
 add_subdirectory(src/sensors)
 
 include_directories(src)
+include_directories(src/events)
 
 target_sources(app PRIVATE
                    src/main.c

@@ -62,9 +62,9 @@ jobs:
           last_tag="$(git describe --tags --abbrev=0 || echo "")"
           if [[ "${{ github.ref_type }}" == "tag" ]]; then
             echo "Overriding kibot_variant to 'RELEASED' for tag"
-            echo "kibot_variant=RELEASED" >> $GITHUB_ENV
+            echo "kibot_variant=RELEASED" >> "${GITHUB_ENV}"
           else
-            echo "kibot_variant=${{ env.kibot_variant }}" >> $GITHUB_ENV
+            echo "kibot_variant=${{ env.kibot_variant }}" >> "${GITHUB_ENV}"
           fi
 
       - name: Download updated CHANGELOG
@@ -99,7 +99,7 @@ jobs:
     runs-on: ubuntu-latest
     container: ghcr.io/inti-cmnb/kicad9_auto_full:latest
 
-    if: "!contains(github.event.head_commit.message, 'Merge pull request') || github.ref_type == 'tag'"
+    if: '!contains(github.event.head_commit.message, ''Merge pull request'') || github.ref_type == ''tag'''
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5
@@ -109,7 +109,7 @@ jobs:
       - name: Initialize
         run: |
           mkdir -p log
-          echo "DATE=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
+          echo "DATE=$(date +'%Y-%m-%d %H:%M:%S')" >> "${GITHUB_ENV}"
 
       # Run these changelog update steps only on tag pushes
       - name: Pull latest changes for changelog update
@@ -125,7 +125,7 @@ jobs:
         shell: bash
         run: |
           git clone https://github.com/Kampi/KiCad.git kicad-library
-          echo "KICAD_LIBRARY=$(pwd)/kicad-library" >> "$GITHUB_ENV"
+          echo "KICAD_LIBRARY=$(pwd)/kicad-library" >> "${GITHUB_ENV}"
           pip install defusedxml --break-system-packages
 
       - name: Extract release notes
@@ -163,10 +163,10 @@ jobs:
           if [[ "${{ github.ref_type }}" == "tag" ]]; then
             version_arg="-E REVISION='${last_tag}'"
             echo "Overriding kibot_variant to 'RELEASED' for tag"
-            echo "kibot_variant=RELEASED" >> $GITHUB_ENV
+            echo "kibot_variant=RELEASED" >> "${GITHUB_ENV}"
           else
             version_arg="-E REVISION='${last_tag} + (Unreleased)'"
-            echo "kibot_variant=${{ env.kibot_variant }}" >> $GITHUB_ENV
+            echo "kibot_variant=${{ env.kibot_variant }}" >> "${GITHUB_ENV}"
           fi
 
           # Determine additional_args based on the variant
@@ -186,8 +186,8 @@ jobs:
               ;;
           esac
 
-          echo "version_arg=${version_arg}" >> "$GITHUB_ENV"
-          echo "additional_args=${additional_args}" >> "$GITHUB_ENV"
+          echo "version_arg=${version_arg}" >> "${GITHUB_ENV}"
+          echo "additional_args=${additional_args}" >> "${GITHUB_ENV}"
 
       # Generate notes (skipped for DRAFT variant)
       - name: Generate notes
@@ -227,6 +227,16 @@ jobs:
           name: Log-${{ env.kibot_variant }}
           path: log
 
+      - name: Clean up
+        shell: bash
+        run: |
+          rm -rf "${KICAD_LIBRARY}"
+          find . -type f -iname \*.log -delete
+          find . -type f -iname \*.ogv -delete
+          find . -type f -iname \*.kicad_pro-bak -delete
+          rm ${{ env.kibot_input_dir }}/kibot_*.kicad_pro
+          rm ${{ env.kibot_input_dir }}/kibot_*.kicad_pcb
+
       - name: Upload artifacts (results)
         uses: actions/upload-artifact@v4
         with:
@@ -240,16 +250,6 @@ jobs:
         with:
           name: CHANGELOG
           path: ${{ env.kibot_input_dir }}/CHANGELOG.md
-
-      - name: Clean up
-        shell: bash
-        run: |
-          rm -rf "${KICAD_LIBRARY}"
-          find . -type f -iname \*.log -delete
-          find . -type f -iname \*.ogv -delete
-          find . -type f -iname \*.kicad_pro-bak -delete
-          rm ${{ env.kibot_input_dir }}/kibot_*.kicad_pro
-          rm ${{ env.kibot_input_dir }}/kibot_*.kicad_pcb
 
       - name: Pull latest changes
         shell: bash
@@ -285,4 +285,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: ${{ github.ref_name }}
-          commit_message: Push outputs from CI/CD (${{ env.DATE }})
+          commit_message: Push outputs from CI/CD (${{ github.event.head_commit.timestamp }})

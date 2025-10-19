@@ -20,7 +20,7 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/zbus/zbus.h>
 
-#include "events/events.h"
+#include "events.h"
 
 static struct k_work_delayable periodic_24h_work;
 static struct k_work_delayable periodic_5min_work;

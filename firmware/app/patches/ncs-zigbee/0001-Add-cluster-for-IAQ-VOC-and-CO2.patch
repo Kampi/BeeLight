@@ -42,49 +42,12 @@ diff --git a/lib/zboss/include/zboss_api_zcl.h b/lib/zboss/include/zboss_api_zcl
 index e96d9c6..c92b22d 100644
 --- a/lib/zboss/include/zboss_api_zcl.h
 +++ b/lib/zboss/include/zboss_api_zcl.h
-@@ -155,6 +155,24 @@
- #if defined (ZB_ZCL_SUPPORT_CLUSTER_ILLUMINANCE_MEASUREMENT)
- #include "zcl/zb_zcl_illuminance_measurement.h"
- #endif
-+#if defined (ZB_ZCL_SUPPORT_CLUSTER_IAQ_MEASUREMENT)
-+#include "zcl/zb_zcl_iaq_cluster.h"
-+#endif
-+#if defined (ZB_ZCL_SUPPORT_CLUSTER_VOC_MEASUREMENT)
-+#include "zcl/zb_zcl_voc_cluster.h"
-+#endif
-+#if defined (ZB_ZCL_SUPPORT_CLUSTER_IAQ_MEASUREMENT)
-+#include "zcl/zb_zcl_iaq_cluster.h"
-+#endif
-+#if defined (ZB_ZCL_SUPPORT_CLUSTER_VOC_MEASUREMENT)
-+#include "zcl/zb_zcl_voc_cluster.h"
-+#endif
-+#if defined (ZB_ZCL_SUPPORT_CLUSTER_IAQ_MEASUREMENT)
-+#include "zcl/zb_zcl_iaq_cluster.h"
-+#endif
-+#if defined (ZB_ZCL_SUPPORT_CLUSTER_VOC_MEASUREMENT)
-+#include "zcl/zb_zcl_voc_cluster.h"
-+#endif
-
- #if defined (ZB_ZCL_SUPPORT_CLUSTER_IAS_ACE)
- #include "zcl/zb_zcl_ias_ace.h"
-@@ -171,6 +189,27 @@
+@@ -171,6 +189,15 @@
  #if defined (ZB_ZCL_SUPPORT_CLUSTER_CUSTOM_CLUSTER)
  #include "zcl/zb_zcl_custom_cluster.h"
  #endif
-+#if defined (ZB_ZCL_SUPPORT_CLUSTER_IAQ_MEASUREMENT)
-+#include "zcl/zb_zcl_iaq_cluster.h"
-+#endif
-+#if defined (ZB_ZCL_SUPPORT_CLUSTER_VOC_MEASUREMENT)
-+#include "zcl/zb_zcl_voc_cluster.h"
-+#endif
 +#if defined (ZB_ZCL_SUPPORT_CLUSTER_CO2_MEASUREMENT)
 +#include "zcl/zb_zcl_co2_cluster.h"
-+#endif
-+#if defined (ZB_ZCL_SUPPORT_CLUSTER_IAQ_MEASUREMENT)
-+#include "zcl/zb_zcl_iaq_cluster.h"
-+#endif
-+#if defined (ZB_ZCL_SUPPORT_CLUSTER_VOC_MEASUREMENT)
-+#include "zcl/zb_zcl_voc_cluster.h"
 +#endif
 +#if defined (ZB_ZCL_SUPPORT_CLUSTER_IAQ_MEASUREMENT)
 +#include "zcl/zb_zcl_iaq_cluster.h"
@@ -161,7 +124,7 @@ index 0000000..d2d5054
 +{                                                                                       \
 +    ZB_ZCL_ATTR_CO2_MEASUREMENT_MIN_VALUE_ID,                                           \
 +    ZB_ZCL_ATTR_TYPE_U16,                                                               \
-+    ZB_ZCL_ATTR_ACCESS_READ_WRITE | ZB_ZCL_ATTR_ACCESS_REPORTING,                       \
++    ZB_ZCL_ATTR_ACCESS_READ_ONLY,                                                       \
 +    (ZB_ZCL_NON_MANUFACTURER_SPECIFIC),                                                 \
 +    (void*) data_ptr                                                                    \
 +}
@@ -170,7 +133,7 @@ index 0000000..d2d5054
 +{                                                                                       \
 +    ZB_ZCL_ATTR_CO2_MEASUREMENT_MAX_VALUE_ID,                                           \
 +    ZB_ZCL_ATTR_TYPE_U16,                                                               \
-+    ZB_ZCL_ATTR_ACCESS_READ_WRITE | ZB_ZCL_ATTR_ACCESS_REPORTING,                       \
++    ZB_ZCL_ATTR_ACCESS_READ_ONLY,                                                       \
 +    (ZB_ZCL_NON_MANUFACTURER_SPECIFIC),                                                 \
 +    (void*) data_ptr                                                                    \
 +}

@@ -12,8 +12,8 @@ const e = exposes.presets;
 const ea = exposes.access;
 
 const definition = {
-    zigbeeModel: ["BeeLight_v2.0"],
-    model: "BeeLight_v2.0",
+    zigbeeModel: ["BeeLight_v2"],
+    model: "BeeLight_v2",
     vendor: "Kampi",
     description: "Zigbee based Light and Environment Sensor (https://github.com/Kampi/BeeLight)",
 

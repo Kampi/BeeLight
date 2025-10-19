@@ -159,7 +159,7 @@ ZB_ZCL_DECLARE_VOC_MEASUREMENT_ATTRIB_LIST(
     &dev_ctx.voc_attr.tolerance);
 #endif /* CONFIG_BME68X_IAQ */
 
-ZB_DECLARE_ENV_SENSOR_CLUSTER_LIST(
+BEELIGHT_DECLARE_CLUSTER_LIST(
     env_sensor_clusters,
     basic_attr_list,
     identify_server_attr_list,
@@ -177,9 +177,9 @@ ZB_DECLARE_ENV_SENSOR_CLUSTER_LIST(
 #endif /* CONFIG_BME68X_IAQ */
 );
 
-ZB_DECLARE_ENV_SENSOR_EP(
+BEELIGHT_DECLARE_EP(
     env_sensor_ep,
-    SENSOR_ENDPOINT,
+    BEELIGHT_ENDPOINT,
     env_sensor_clusters);
 
 ZBOSS_DECLARE_DEVICE_CTX_1_EP(
@@ -208,7 +208,7 @@ static void start_identifying(zb_bufid_t bufid)
         /* Check if endpoint is in identifying mode, if not, put desired endpoint in identifying mode. */
         if (dev_ctx.identify_attr.identify_time == ZB_ZCL_IDENTIFY_IDENTIFY_TIME_DEFAULT_VALUE) {
 
-            zb_ret_t zb_err_code = zb_bdb_finding_binding_target(SENSOR_ENDPOINT);
+            zb_ret_t zb_err_code = zb_bdb_finding_binding_target(BEELIGHT_ENDPOINT);
 
             if (zb_err_code == RET_OK) {
                 LOG_INF("Enter identify mode");
@@ -335,10 +335,10 @@ static void app_clusters_attr_init(void)
     /* Initialize the values for the Battery cluster attributes */
     dev_ctx.power_attr.size = ZB_ZCL_POWER_CONFIG_BATTERY_SIZE_CR2;
     dev_ctx.power_attr.quantity = 1;
-    dev_ctx.power_attr.rated_voltage = SENSOR_RATED_VOLTAGE_MV / 100;
+    dev_ctx.power_attr.rated_voltage = BEELIGHT_RATED_VOLTAGE_MV / 100;
 
     ZB_ZCL_SET_ATTRIBUTE(
-        SENSOR_ENDPOINT,
+        BEELIGHT_ENDPOINT,
         ZB_ZCL_CLUSTER_ID_POWER_CONFIG,
         ZB_ZCL_CLUSTER_SERVER_ROLE,
         ZB_ZCL_ATTR_POWER_CONFIG_BATTERY_VOLTAGE_ID,
@@ -347,7 +347,7 @@ static void app_clusters_attr_init(void)
     );
 
     ZB_ZCL_SET_ATTRIBUTE(
-        SENSOR_ENDPOINT,
+        BEELIGHT_ENDPOINT,
         ZB_ZCL_CLUSTER_ID_POWER_CONFIG,
         ZB_ZCL_CLUSTER_SERVER_ROLE,
         ZB_ZCL_ATTR_POWER_CONFIG_BATTERY_PERCENTAGE_REMAINING_ID,
@@ -425,13 +425,18 @@ void zbus_on_light_callback(const struct zbus_channel *chan)
 {
     const struct light_event *evt = zbus_chan_const_msg(chan);
 
+    /* Compute ZCL-scaled value; clamp 0 lux per spec */
+    /* See chapter 4.2.2.2.1 if the ZCL Specification */
+    zb_uint16_t measured = (evt->light == 0)
+                           ? 0
+                           : (zb_uint16_t)(10000 * log10((double)evt->light) + 1);
+
     /* Only update when values differ */
-    if (evt->light == dev_ctx.illuminance_attr.measurement_attr) {
-        //return;
+    if (measured == dev_ctx.illuminance_attr.measurement_attr) {
+        return;
     }
 
-    /* See chapter 4.2.2.2.1 if the ZCL Specification */
-    dev_ctx.illuminance_attr.measurement_attr = (10000 * log10((double)evt->light)) + 1;
+    dev_ctx.illuminance_attr.measurement_attr = measured;
 
     if (evt->light > dev_ctx.illuminance_attr.max_attr) {
         dev_ctx.illuminance_attr.max_attr = dev_ctx.illuminance_attr.measurement_attr;
@@ -444,7 +449,7 @@ void zbus_on_light_callback(const struct zbus_channel *chan)
     LOG_DBG("Light max: %u", dev_ctx.illuminance_attr.max_attr);
 
     ZB_ZCL_SET_ATTRIBUTE(
-        SENSOR_ENDPOINT,
+        BEELIGHT_ENDPOINT,
         ZB_ZCL_CLUSTER_ID_ILLUMINANCE_MEASUREMENT,
         ZB_ZCL_CLUSTER_SERVER_ROLE,
         ZB_ZCL_ATTR_ILLUMINANCE_MEASUREMENT_MEASURED_VALUE_ID,
@@ -453,7 +458,7 @@ void zbus_on_light_callback(const struct zbus_channel *chan)
     );
 
     ZB_ZCL_SET_ATTRIBUTE(
-        SENSOR_ENDPOINT,
+        BEELIGHT_ENDPOINT,
         ZB_ZCL_CLUSTER_ID_ILLUMINANCE_MEASUREMENT,
         ZB_ZCL_CLUSTER_SERVER_ROLE,
         ZB_ZCL_ATTR_ILLUMINANCE_MEASUREMENT_MIN_MEASURED_VALUE_ID,
@@ -462,7 +467,7 @@ void zbus_on_light_callback(const struct zbus_channel *chan)
     );
 
     ZB_ZCL_SET_ATTRIBUTE(
-        SENSOR_ENDPOINT,
+        BEELIGHT_ENDPOINT,
         ZB_ZCL_CLUSTER_ID_ILLUMINANCE_MEASUREMENT,
         ZB_ZCL_CLUSTER_SERVER_ROLE,
         ZB_ZCL_ATTR_ILLUMINANCE_MEASUREMENT_MAX_MEASURED_VALUE_ID,
@@ -483,7 +488,7 @@ static void zbus_on_env_callback(const struct zbus_channel *chan)
         // TODO: Add Min / Max
 
         ZB_ZCL_SET_ATTRIBUTE(
-            SENSOR_ENDPOINT,
+            BEELIGHT_ENDPOINT,
             ZB_ZCL_CLUSTER_ID_TEMP_MEASUREMENT,
             ZB_ZCL_CLUSTER_SERVER_ROLE,
             ZB_ZCL_ATTR_TEMP_MEASUREMENT_VALUE_ID,
@@ -501,7 +506,7 @@ static void zbus_on_env_callback(const struct zbus_channel *chan)
         // TODO: Add Min / Max
 
         ZB_ZCL_SET_ATTRIBUTE(
-            SENSOR_ENDPOINT,
+            BEELIGHT_ENDPOINT,
             ZB_ZCL_CLUSTER_ID_PRESSURE_MEASUREMENT,
             ZB_ZCL_CLUSTER_SERVER_ROLE,
             ZB_ZCL_ATTR_PRESSURE_MEASUREMENT_VALUE_ID,
@@ -519,7 +524,7 @@ static void zbus_on_env_callback(const struct zbus_channel *chan)
         // TODO: Add Min / Max
 
         ZB_ZCL_SET_ATTRIBUTE(
-            SENSOR_ENDPOINT,
+            BEELIGHT_ENDPOINT,
             ZB_ZCL_CLUSTER_ID_REL_HUMIDITY_MEASUREMENT,
             ZB_ZCL_CLUSTER_SERVER_ROLE,
             ZB_ZCL_ATTR_REL_HUMIDITY_MEASUREMENT_VALUE_ID,
@@ -537,7 +542,7 @@ static void zbus_on_env_callback(const struct zbus_channel *chan)
         dev_ctx.co2_attr.tolerance = (zb_uint8_t)evt->co2.tolerance;
 
         ZB_ZCL_SET_ATTRIBUTE(
-            SENSOR_ENDPOINT,
+            BEELIGHT_ENDPOINT,
             ZB_ZCL_CLUSTER_ID_CO2_MEASUREMENT,
             ZB_ZCL_CLUSTER_SERVER_ROLE,
             ZB_ZCL_ATTR_CO2_MEASUREMENT_VALUE_ID,
@@ -554,7 +559,7 @@ static void zbus_on_env_callback(const struct zbus_channel *chan)
         dev_ctx.iaq_attr.tolerance = (zb_uint8_t)evt->iaq.tolerance;
 
         ZB_ZCL_SET_ATTRIBUTE(
-            SENSOR_ENDPOINT,
+            BEELIGHT_ENDPOINT,
             ZB_ZCL_CLUSTER_ID_IAQ_MEASUREMENT,
             ZB_ZCL_CLUSTER_SERVER_ROLE,
             ZB_ZCL_ATTR_IAQ_MEASUREMENT_VALUE_ID,
@@ -571,7 +576,7 @@ static void zbus_on_env_callback(const struct zbus_channel *chan)
         dev_ctx.voc_attr.tolerance = (zb_uint8_t)evt->voc.tolerance;
 
         ZB_ZCL_SET_ATTRIBUTE(
-            SENSOR_ENDPOINT,
+            BEELIGHT_ENDPOINT,
             ZB_ZCL_CLUSTER_ID_VOC_MEASUREMENT,
             ZB_ZCL_CLUSTER_SERVER_ROLE,
             ZB_ZCL_ATTR_VOC_MEASUREMENT_VALUE_ID,
@@ -599,15 +604,15 @@ static void zbus_on_battery_callback(const struct zbus_channel *chan)
     /* We need the difference between empty and full for the remaining percent */
     /* A CR2032 counts as empty when a voltage of 2.7 V is reached. */
     /* Formula: (Voltage - Min. Voltage) [V] / (Rated voltage - Min. Voltage) [V] * 100 */
-    remaining = ((evt->voltage - SENSOR_EMPTY_VOLTAGE_MV) / (SENSOR_RATED_VOLTAGE_MV - SENSOR_EMPTY_VOLTAGE_MV)) * 100;
+    remaining = (evt->voltage - BEELIGHT_EMPTY_VOLTAGE_MV);
 
-    /* Cap the voltage between 100 and 0 */
-    if (remaining > 100) {
-        remaining = 100;
-    } else if (remaining < 0) {
+    if (remaining < 0) {
         remaining = 0;
-    } else if (remaining < 100) {
-        remaining = 0;
+    } else {
+        remaining = (remaining * 100) / (BEELIGHT_RATED_VOLTAGE_MV - BEELIGHT_EMPTY_VOLTAGE_MV);
+        if (remaining > 100) {
+            remaining = 100;
+        }
     }
 
     dev_ctx.power_attr.percent_remaining = remaining * 2;
@@ -616,7 +621,7 @@ static void zbus_on_battery_callback(const struct zbus_channel *chan)
     LOG_DBG("Battery remaining: %u", dev_ctx.power_attr.percent_remaining);
 
     ZB_ZCL_SET_ATTRIBUTE(
-        SENSOR_ENDPOINT,
+        BEELIGHT_ENDPOINT,
         ZB_ZCL_CLUSTER_ID_POWER_CONFIG,
         ZB_ZCL_CLUSTER_SERVER_ROLE,
         ZB_ZCL_ATTR_POWER_CONFIG_BATTERY_VOLTAGE_ID,
@@ -625,7 +630,7 @@ static void zbus_on_battery_callback(const struct zbus_channel *chan)
     );
 
     ZB_ZCL_SET_ATTRIBUTE(
-        SENSOR_ENDPOINT,
+        BEELIGHT_ENDPOINT,
         ZB_ZCL_CLUSTER_ID_POWER_CONFIG,
         ZB_ZCL_CLUSTER_SERVER_ROLE,
         ZB_ZCL_ATTR_POWER_CONFIG_BATTERY_PERCENTAGE_REMAINING_ID,
@@ -670,7 +675,7 @@ int main(void)
     app_clusters_attr_init();
 
     /* Register handler to identify notifications. */
-    ZB_AF_SET_IDENTIFY_NOTIFICATION_HANDLER(SENSOR_ENDPOINT, on_identify_cb_handler);
+    ZB_AF_SET_IDENTIFY_NOTIFICATION_HANDLER(BEELIGHT_ENDPOINT, on_identify_cb_handler);
 
     /* Start Zigbee default thread. */
     zigbee_enable();

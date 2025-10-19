@@ -95,14 +95,19 @@ static int beelight_env_sensor_init(void)
 {
     int err;
 
+    if (bme688 == NULL) {
+        LOG_ERR("BME688 device node not found!");
+        return -ENODEV;
+    }
+
     if (!device_is_ready(bme688)) {
-        LOG_ERR("BME688 device is not ready");
+        LOG_ERR("BME688 device is not ready!");
         return -ENODEV;
     }
 
     err = pm_device_runtime_auto_enable(bme688);
     if (err != 0) {
-        LOG_ERR("Failed to enable runtime PM: %d", err);
+        LOG_ERR("Failed to enable runtime PM: %d!", err);
         return err;
     }
 

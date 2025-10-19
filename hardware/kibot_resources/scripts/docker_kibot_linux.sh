@@ -17,9 +17,9 @@ docker run --rm -it \
     --volume="/home/$USER_NAME:/home/$USER_NAME:rw" \
     --entrypoint /bin/bash \
     "$IMAGE" -c "
-    if ! id $USER_NAME &>/dev/null; then
-        echo \"Creating user $USER_NAME ($USER_ID:$GROUP_ID)...\"
-        useradd -u $USER_ID -g $GROUP_ID -d /home/$USER_NAME -m $USER_NAME
-        chown -R $USER_ID:$GROUP_ID /home/$USER_NAME
+    if ! id '$USER_NAME' >/dev/null 2>&1; then
+        echo \"Creating user '$USER_NAME' ('$USER_ID':'$GROUP_ID')...\"
+        useradd -u '$USER_ID' -g '$GROUP_ID' -d '/home/$USER_NAME' -m '$USER_NAME'
+        chown -R '$USER_ID':'$GROUP_ID' '/home/$USER_NAME'
     fi
-    exec su - $USER_NAME"
+    exec su - '$USER_NAME'"

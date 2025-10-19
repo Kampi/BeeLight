@@ -5,6 +5,7 @@
 
 import os
 import sys
+import shutil
 import subprocess
 
 from west.commands import WestCommand
@@ -32,6 +33,9 @@ class FormatCodeWestCommand(WestCommand):
 
     def do_run(self, args, _unknown_args):
         astyle_args = ["astyle"]
+        if(shutil.which("astyle") is None):
+            print("ERROR: 'astyle' not found in PATH", file = sys.stderr)
+            return 127
 
         if(args.dry_run):
             astyle_args.append("--dry-run")

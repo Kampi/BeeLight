@@ -4,7 +4,7 @@ board:
   vendor: kampi
   revision:
     format: number
-    default: "1"
+    default: "2"
     revisions:
     - name: "1"
   socs:
