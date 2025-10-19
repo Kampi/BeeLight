@@ -16,19 +16,19 @@
         - [Using the command line](#using-the-command-line)
     - [Housing](#housing)
     - [Zigbee](#zigbee)
-      - [Standard cluster](#standard-cluster)
+      - [Standard clusters](#standard-clusters)
       - [Custom cluster](#custom-cluster)
       - [Zigbee Dongle](#zigbee-dongle)
       - [Install the device to Zigbee2MQTT](#install-the-device-to-zigbee2mqtt)
   - [Directory structure](#directory-structure)
-  - [Ressources](#ressources)
+  - [Resources](#resources)
   - [Maintainer](#maintainer)
 
 ## About
 
-Open-Source Zigbee-based light and environmental sensor with [Zigbee2MQTT](https://www.zigbee2mqtt.io/) support for your Home Automation with I. e. Home Assistant.
+Open-Source Zigbee-based light and environmental sensor with [Zigbee2MQTT](https://www.zigbee2mqtt.io/) support for your Home Automation (e.g., Home Assistant).
 
-![Rendering](/docs/images/Rendering.png)
+![Rendering](docs/images/Rendering.png)
 
 ### Technical features
 
@@ -43,11 +43,11 @@ Open-Source Zigbee-based light and environmental sensor with [Zigbee2MQTT](https
   - VOC equivalent
   - Light intensity
   - Battery voltage
-- Small housing (40x42 mm)
+- Small housing (40x42x20 mm)
 - Very basic electronic → Can be assembled by hand very easily
 - Zigbee2MQTT compatibility
 
-![Block diagram](/docs/images/Block%20diagram.png)
+![Block diagram](docs/images/Block%20diagram.png)
 
 ## Before you start
 
@@ -59,12 +59,6 @@ cd BeeLight
 git submodule update --init --recursive
 cd firmware/app
 west init -l .
-west update
-```
-
-Run the following commands to install the BSEC2 library:
-
-```sh
 west update
 ```
 
@@ -105,7 +99,7 @@ west build --build-dir build . --pristine --board beelight@1/nrf54l15/cpuapp -- 
 You also need a Zigbee network to test and integrate the device. I use [Zigbee2MQTT](https://www.zigbee2mqtt.io/) running on a Raspberry Pi which allows me to connect my Zigbee network with my Home Automation.
 
 > **NOTE**
-> I do not support other Zigbee networks (like [ZHA](https://www.home-assistant.io/integrations/zha/)). The Zigbee standard allows you to connect the device with all other networks but I can´t deliver a functional integration for these networks. You have to do it on your own!
+> I do not support other Zigbee networks (like [ZHA](https://www.home-assistant.io/integrations/zha/)). The Zigbee standard allows you to connect the device with all other networks but I can't deliver a functional integration for these networks. You have to do it on your own!
 
 #### Flash the firmware
 
@@ -147,7 +141,7 @@ The housing is optimized for 3D printing and needs ~12 g of filament (PLA). You 
 
 The device uses different standard and custom cluster to report the data to the network.
 
-#### Standard cluster
+#### Standard clusters
 
 | Cluster | ID |
 | ------- | -- |
@@ -158,7 +152,7 @@ The device uses different standard and custom cluster to report the data to the 
 
 #### Custom cluster
 
-The device uses two custom cluster to report `IAQ`, `VOC` and `CO2` to the network. Both clusters have three attributes for `value`, `min_value`, `max_value` and `tolerance`.
+The device uses three custom cluster to report `IAQ`, `VOC` and `CO2` to the network. Both clusters have three attributes for `value`, `min_value`, `max_value` and `tolerance`.
 
 | Cluster | ID |
 | ------- | -- |
@@ -180,7 +174,7 @@ Make sure to use a Zigbee 3 compatible dongle like [SONOFF ZBDongle-E](https://s
 #### Install the device to Zigbee2MQTT
 
 > **NOTE**
-> Because it's not possible to use custom cluster with Zigbee2MQTT easily, you must adjust the application directly to use the sensor. Please take a look into the directory `z2m/data/external_converters/example` if you want to check how the modified files look like.
+> Because it's not possible to use custom clusters with Zigbee2MQTT easily, you must adjust the application directly to use the sensor. Please take a look into the directory `z2m/data/external_converters/example` if you want to check how the modified files look like.
 
 1. Download and install [Zigbee2MQTT](https://github.com/zigbee2mqtt/hassio-zigbee2mqtt)
 2. Copy the external converter from `z2m/data_external_converters` to the `data` directory of your `Zigbee2MQTT` installation
@@ -276,18 +270,18 @@ The device can now be connected to your Zigbee network and with this to your Hom
 
 ## Directory structure
 
-- `3d-print`: All 3D print related files
+- `3d-print`: All 3D print.related files
 - `cad`: All relevant 3D models
 - `docs`: All kinds of project documentation like schematics, BOM, etc.
   - `drawings`: 2D drawings for subcomponents, etc.
-  - `images`: All documentation related images
+  - `images`: All documentation-relateBd images
 - `hardware`: KiCad project for the PCB
 - `firmware`: Zephyr project for the device firmware
 - `prebuilt`: Prebuilt binaries
 - `production`: Production files from the latest CI/CD run
-- `z2m`: Zigbee2MQTT related files
+- `z2m`: Zigbee2MQTT-related files
 
-## Ressources
+## Resources
 
 - [Adding new Zigbee2MQTT devices](https://www.zigbee2mqtt.io/advanced/support-new-devices/01_support_new_devices.html)
 - [Zigbee Cluster Library Specification](https://zigbeealliance.org/wp-content/uploads/2019/12/07-5123-06-zigbee-cluster-library-specification.pdf)
@@ -298,4 +292,3 @@ The device can now be connected to your Zigbee network and with this to your Hom
 ## Maintainer
 
 - [Daniel Kampert](mailto:DanielKampert@kampis-elektroecke.de)
-

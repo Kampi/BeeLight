@@ -21,7 +21,6 @@ docker run --rm -it ^
     --env NO_AT_BRIDGE=1 ^
     --env DISPLAY=%DISPLAY% ^
     --workdir="/home/%USER_NAME%" ^
-    --volume=C:\Users\%USER_NAME%:/home/%USER_NAME%:rw ^
-    --volume=/tmp/.X11-unix:/tmp/.X11-unix ^
+    --volume=%USERPROFILE%:/home/%USER_NAME%:rw ^
     --entrypoint /bin/bash ^
     %IMAGE%

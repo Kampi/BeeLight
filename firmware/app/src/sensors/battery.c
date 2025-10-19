@@ -36,6 +36,11 @@ static void zbus_24h_callback(const struct zbus_channel *chan)
 {
     struct sensor_value sensor_val;
 
+    if (vbatt == NULL) {
+        LOG_ERR("VBATT device node not found");
+        return;
+    }
+
     if (device_is_ready(vbatt)) {
         pm_device_runtime_get(vbatt);
         if ((sensor_sample_fetch(vbatt) == 0) &&
@@ -64,7 +69,16 @@ static int beelight_battery_sensor_init(void)
 {
     int err;
 
-    pm_device_runtime_enable(vbatt);
+    if (vbatt == NULL) {
+        LOG_ERR("VBATT device node not found!");
+        return -ENODEV;
+    }
+
+    err = pm_device_runtime_enable(vbatt);
+    if (err != 0) {
+        LOG_ERR("Failed to enable runtime PM: %d!", err);
+        return err;
+    }
 
     err = zbus_chan_add_obs(&periodic_24h_chan, &batt_periodic_sample_event_lis, K_NO_WAIT);
     if (err != 0) {

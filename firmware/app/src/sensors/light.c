@@ -59,14 +59,19 @@ static int beelight_light_sensor_init(void)
 {
     int err;
 
+    if (apds9306 == NULL) {
+        LOG_ERR("APDS9306 device node not found!");
+        return -ENODEV;
+    }
+
     if (!device_is_ready(apds9306)) {
-        LOG_ERR("APDS9306 device is not ready");
+        LOG_ERR("APDS9306 device is not ready!");
         return -ENODEV;
     }
 
     err = pm_device_runtime_auto_enable(apds9306);
     if (err != 0) {
-        LOG_ERR("Failed to enable runtime PM: %d", err);
+        LOG_ERR("Failed to enable runtime PM: %d!", err);
         return err;
     }
 

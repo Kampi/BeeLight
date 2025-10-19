@@ -23,25 +23,42 @@ manifest:
         name-blocklist:
           - ci-tools
           - hal_st
+          - hal_adi
+          - hal_afbr
+          - hal_atmel
           - hal_ambiq
+          - hal_bouffalolab
           - hal_ethos_u
+          - hal_espressif
           - hal_rpi_pico
           - hal_gigadevice
           - hal_altera
           - hal_cypress
           - hal_infineon
+          - hal_intel
           - hal_microchip
           - hal_cirrus-logic
           - hal_nxp
+          - hal_nuvoton
           - hal_openisa
-          - hal_silabs
           - hal_xtensa
+          - hal_quicklogic
+          - hal_renesas
+          - hal_sifli
+          - hal_silabs
+          - hal_st
+          - hal_stm32
           - hal_ti
+          - hal_tdk
+          - hal_telink
+          - hal_wch
+          - hal_wuerthelektronik
           - loramac-node
           - net-tools
           - edtt
           - trusted-firmware-m
           - sof
+          - xtensa
 
     - name: bsec2
       repo-path: Bosch-BSEC2-Library

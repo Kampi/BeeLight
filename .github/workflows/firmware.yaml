@@ -9,11 +9,12 @@ env:
 jobs:
   build:
     runs-on: ubuntu-24.04
-    container: ghcr.io/zephyrproject-rtos/ci:latest
+    container: ghcr.io/zephyrproject-rtos/ci:v0.27.4
     strategy:
       matrix:
         built_type: [debug, release]
         board: [beelight@1/nrf54l15/cpuapp]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,8 +24,6 @@ jobs:
 
       - name: Dependencies
         run: |
-          apt-get update && apt-get install -y lbzip2 build-essential cmake pkg-config libsdl2-dev || true
-          apt-get install -f -y
           wget https://sourceforge.net/projects/astyle/files/astyle/astyle%203.4/astyle-3.4.10.tar.bz2/download -O astyle.tar.bz2
           tar -xf astyle.tar.bz2
           cd astyle-3.4.10
@@ -56,9 +55,11 @@ jobs:
           # It's output to GITHUB_ENV so it can be used in the next steps
           # and only needs to be calculated once.
           BUILD_DIR=${{ matrix.board }}_${{ matrix.built_type }}
-          echo "BUILD_DIR=${BUILD_DIR}" | sed 's/\//_/g' >> "$GITHUB_ENV"
+          echo "BUILD_DIR=${BUILD_DIR}" | sed 's/\//_/g' >> ""${GITHUB_ENV}""
 
       - name: Build firmware
+        env:
+          BUILD_DIR: ${{ env.BUILD_DIR }}
         working-directory: BeeLight/firmware/app
         run: |
           set -e
@@ -68,7 +69,9 @@ jobs:
           if [ -z "$src_hex" ] && [ -f "${{ env.BUILD_DIR }}/zephyr/merged.hex" ]; then src_hex="${{ env.BUILD_DIR }}/zephyr/merged.hex"; fi
           if [ -n "$src_hex" ]; then cp "$src_hex" "fw_images/${{ matrix.built_type }}.hex"; else echo "merged.hex not found, skipping"; fi
 
-      - name : Upload Firmware
+      - name: Upload Firmware
+        env:
+          BUILD_DIR: ${{ env.BUILD_DIR }}
         uses: actions/upload-artifact@v4.3.3
         with:
           name: ${{ env.BUILD_DIR }}

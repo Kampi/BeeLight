@@ -36,15 +36,15 @@
 
 /** @brief Number of IN (server) clusters.
 */
-#define ZB_ENV_SENSOR_IN_CLUSTER_NUM            7
+#define BEELIGHT_IN_CLUSTER_NUM            7
 
 /** @brief Number of OUT (client) clusters.
 */
-#define ZB_ENV_SENSOR_OUT_CLUSTER_NUM           0
+#define BEELIGHT_OUT_CLUSTER_NUM           0
 
 /** @brief Number of attributes.
 */
-#define ZB_ENV_SENSOR_REPORT_ATTR_COUNT         7
+#define BEELIGHT_REPORT_ATTR_COUNT         7
 
 /** @brief                              Declare the cluster list for the Environment Sensor device.
  *  @param cluster_list_name            Cluster list variable name
@@ -56,7 +56,7 @@
  *  @param pres_attr_list               Attribute list for Pressure Measurement cluster
  *  @param hum_attr_list                Attribute list for Humidity Measurement cluster
  */
-#define ZB_DECLARE_ENV_SENSOR_CLUSTER_LIST(                                 \
+#define BEELIGHT_DECLARE_SENSOR_CLUSTER_LIST(                               \
     cluster_list_name,                                                      \
     basic_attr_list,                                                        \
     identify_server_attr_list,                                              \
@@ -65,57 +65,15 @@
     temp_attr_list,                                                         \
     pres_attr_list,                                                         \
     hum_attr_list)                                                          \
-    zb_zcl_cluster_desc_t cluster_list_name[] =                             \
+    static zb_zcl_cluster_desc_t cluster_list_name[] =                      \
     {                                                                       \
-        ZB_ZCL_CLUSTER_DESC(                                                \
-            ZB_ZCL_CLUSTER_ID_BASIC,                                        \
-            ZB_ZCL_ARRAY_SIZE(basic_attr_list, zb_zcl_attr_t),              \
-            (basic_attr_list),                                              \
-            ZB_ZCL_CLUSTER_SERVER_ROLE,                                     \
-            ZB_ZCL_MANUF_CODE_INVALID                                       \
-        ),                                                                  \
-        ZB_ZCL_CLUSTER_DESC(                                                \
-            ZB_ZCL_CLUSTER_ID_IDENTIFY,                                     \
-            ZB_ZCL_ARRAY_SIZE(identify_server_attr_list, zb_zcl_attr_t),    \
-            (identify_server_attr_list),                                    \
-            ZB_ZCL_CLUSTER_SERVER_ROLE,                                     \
-            ZB_ZCL_MANUF_CODE_INVALID                                       \
-        ),                                                                  \
-        ZB_ZCL_CLUSTER_DESC(                                                \
-            ZB_ZCL_CLUSTER_ID_POWER_CONFIG,                                 \
-            ZB_ZCL_ARRAY_SIZE(power_attr_list, zb_zcl_attr_t),              \
-            (power_attr_list),                                              \
-            ZB_ZCL_CLUSTER_SERVER_ROLE,                                     \
-            ZB_ZCL_MANUF_CODE_INVALID                                       \
-        ),                                                                  \
-        ZB_ZCL_CLUSTER_DESC(                                                \
-            ZB_ZCL_CLUSTER_ID_ILLUMINANCE_MEASUREMENT,                      \
-            ZB_ZCL_ARRAY_SIZE(illu_attr_list, zb_zcl_attr_t),               \
-            (illu_attr_list),                                               \
-            ZB_ZCL_CLUSTER_SERVER_ROLE,                                     \
-            ZB_ZCL_MANUF_CODE_INVALID                                       \
-        ),                                                                  \
-        ZB_ZCL_CLUSTER_DESC(                                                \
-            ZB_ZCL_CLUSTER_ID_TEMP_MEASUREMENT,                             \
-            ZB_ZCL_ARRAY_SIZE(temp_attr_list, zb_zcl_attr_t),               \
-            (temp_attr_list),                                               \
-            ZB_ZCL_CLUSTER_SERVER_ROLE,                                     \
-            ZB_ZCL_MANUF_CODE_INVALID                                       \
-        ),                                                                  \
-        ZB_ZCL_CLUSTER_DESC(                                                \
-            ZB_ZCL_CLUSTER_ID_PRESSURE_MEASUREMENT,                         \
-            ZB_ZCL_ARRAY_SIZE(pres_attr_list, zb_zcl_attr_t),               \
-            (pres_attr_list),                                               \
-            ZB_ZCL_CLUSTER_SERVER_ROLE,                                     \
-            ZB_ZCL_MANUF_CODE_INVALID                                       \
-        ),                                                                  \
-        ZB_ZCL_CLUSTER_DESC(                                                \
-            ZB_ZCL_CLUSTER_ID_REL_HUMIDITY_MEASUREMENT,                     \
-            ZB_ZCL_ARRAY_SIZE(hum_attr_list, zb_zcl_attr_t),                \
-            (hum_attr_list),                                                \
-            ZB_ZCL_CLUSTER_SERVER_ROLE,                                     \
-            ZB_ZCL_MANUF_CODE_INVALID                                       \
-        ),                                                                  \
+        BEELIGHT_CLUSTER_BASIC_DESC(basic_attr_list)                        \
+        BEELIGHT_CLUSTER_IDENTIFY_DESC(identify_server_attr_list)           \
+        BEELIGHT_CLUSTER_POWER_DESC(power_attr_list)                        \
+        BEELIGHT_CLUSTER_ILLUMINANCE_DESC(illu_attr_list)                   \
+        BEELIGHT_CLUSTER_TEMP_DESC(temp_attr_list)                          \
+        BEELIGHT_CLUSTER_PRESSURE_DESC(pres_attr_list)                      \
+        BEELIGHT_CLUSTER_HUMIDITY_DESC(hum_attr_list)                       \
     }
 
 /** @brief                  Declare simple descriptor for the Environment Sensor device.
@@ -124,24 +82,18 @@
  *  @param in_clust_num     Number of supported input clusters
  *  @param out_clust_num    Number of supported output clusters
  */
-#define ZB_ZCL_DECLARE_HA_ENV_SENSOR_SIMPLE_DESC(ep_name, ep_id, in_clust_num, out_clust_num)   \
-    ZB_DECLARE_SIMPLE_DESC(in_clust_num, out_clust_num);                                        \
-    ZB_AF_SIMPLE_DESC_TYPE(in_clust_num, out_clust_num) simple_desc_##ep_name =                 \
-    {                                                                                           \
-        ep_id,                                                                                  \
-        ZB_PROFILE_ID,                                                                          \
-        ZB_DEVICE_ID,                                                                           \
-        ZB_DEVICE_VER,                                                                          \
-        0,                                                                                      \
-        in_clust_num,                                                                           \
-        out_clust_num,                                                                          \
-        {                                                                                       \
-            ZB_ZCL_CLUSTER_ID_BASIC,                                                            \
-            ZB_ZCL_CLUSTER_ID_IDENTIFY,                                                         \
-            ZB_ZCL_CLUSTER_ID_POWER_CONFIG,                                                     \
-            ZB_ZCL_CLUSTER_ID_ILLUMINANCE_MEASUREMENT,                                          \
-            ZB_ZCL_CLUSTER_ID_TEMP_MEASUREMENT,                                                 \
-            ZB_ZCL_CLUSTER_ID_PRESSURE_MEASUREMENT,                                             \
-            ZB_ZCL_CLUSTER_ID_REL_HUMIDITY_MEASUREMENT,                                         \
-        }                                                                                       \
+#define BEELIGHT_DECLARE_SIMPLE_DESC(ep_name, ep_id, in_clust_num, out_clust_num) \
+    ZB_DECLARE_SIMPLE_DESC(in_clust_num, out_clust_num); \
+    ZB_AF_SIMPLE_DESC_TYPE(in_clust_num, out_clust_num) simple_desc_##ep_name = \
+    { \
+        ep_id, \
+        ZB_PROFILE_ID, \
+        ZB_DEVICE_ID, \
+        ZB_DEVICE_VER, \
+        0, \
+        in_clust_num, \
+        out_clust_num, \
+        { \
+            BEELIGHT_CLUSTER_IDS_BASIC \
+        } \
     }
