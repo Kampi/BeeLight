@@ -547,7 +547,7 @@ static void zbus_on_env_callback(const struct zbus_channel *chan)
             ZB_ZCL_CLUSTER_SERVER_ROLE,
             ZB_ZCL_ATTR_CO2_MEASUREMENT_VALUE_ID,
             (zb_uint8_t *)&dev_ctx.co2_attr.measurement_attr,
-            ZB_FALSE
+            ZB_TRUE
         );
 
         LOG_DBG("CO2: %u", dev_ctx.co2_attr.measurement_attr);
@@ -564,7 +564,7 @@ static void zbus_on_env_callback(const struct zbus_channel *chan)
             ZB_ZCL_CLUSTER_SERVER_ROLE,
             ZB_ZCL_ATTR_IAQ_MEASUREMENT_VALUE_ID,
             (zb_uint8_t *)&dev_ctx.iaq_attr.measurement_attr,
-            ZB_FALSE
+            ZB_TRUE
         );
 
         LOG_DBG("IAQ: %u", dev_ctx.iaq_attr.measurement_attr);
@@ -581,7 +581,7 @@ static void zbus_on_env_callback(const struct zbus_channel *chan)
             ZB_ZCL_CLUSTER_SERVER_ROLE,
             ZB_ZCL_ATTR_VOC_MEASUREMENT_VALUE_ID,
             (zb_uint8_t *)&dev_ctx.voc_attr.measurement_attr,
-            ZB_FALSE
+            ZB_TRUE
         );
 
         LOG_DBG("VOC: %u", dev_ctx.voc_attr.measurement_attr);

@@ -1,5 +1,4 @@
 "use strict";
-/* eslint max-len: 0 */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Clusters = void 0;
 const enums_1 = require("./enums");
@@ -99,7 +98,7 @@ exports.Clusters = {
         commands: {
             identify: {
                 ID: 0,
-                parameters: [{ name: 'identifytime', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "identifytime", type: enums_1.DataType.UINT16 }],
             },
             identifyQuery: {
                 ID: 1,
@@ -107,27 +106,27 @@ exports.Clusters = {
             },
             ezmodeInvoke: {
                 ID: 2,
-                parameters: [{ name: 'action', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "action", type: enums_1.DataType.UINT8 }],
             },
             updateCommissionState: {
                 ID: 3,
                 parameters: [
-                    { name: 'action', type: enums_1.DataType.UINT8 },
-                    { name: 'commstatemask', type: enums_1.DataType.UINT8 },
+                    { name: "action", type: enums_1.DataType.UINT8 },
+                    { name: "commstatemask", type: enums_1.DataType.UINT8 },
                 ],
             },
             triggerEffect: {
                 ID: 64,
                 parameters: [
-                    { name: 'effectid', type: enums_1.DataType.UINT8 },
-                    { name: 'effectvariant', type: enums_1.DataType.UINT8 },
+                    { name: "effectid", type: enums_1.DataType.UINT8 },
+                    { name: "effectvariant", type: enums_1.DataType.UINT8 },
                 ],
             },
         },
         commandsResponse: {
             identifyQueryRsp: {
                 ID: 0,
-                parameters: [{ name: 'timeout', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "timeout", type: enums_1.DataType.UINT16 }],
             },
         },
     },
@@ -141,27 +140,27 @@ exports.Clusters = {
                 ID: 0,
                 response: 0,
                 parameters: [
-                    { name: 'groupid', type: enums_1.DataType.UINT16 },
-                    { name: 'groupname', type: enums_1.DataType.CHAR_STR },
+                    { name: "groupid", type: enums_1.DataType.UINT16 },
+                    { name: "groupname", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             view: {
                 ID: 1,
                 response: 1,
-                parameters: [{ name: 'groupid', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "groupid", type: enums_1.DataType.UINT16 }],
             },
             getMembership: {
                 ID: 2,
                 response: 2,
                 parameters: [
-                    { name: 'groupcount', type: enums_1.DataType.UINT8 },
-                    { name: 'grouplist', type: enums_1.BuffaloZclDataType.LIST_UINT16 },
+                    { name: "groupcount", type: enums_1.DataType.UINT8 },
+                    { name: "grouplist", type: enums_1.BuffaloZclDataType.LIST_UINT16 },
                 ],
             },
             remove: {
                 ID: 3,
                 response: 3,
-                parameters: [{ name: 'groupid', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "groupid", type: enums_1.DataType.UINT16 }],
             },
             removeAll: {
                 ID: 4,
@@ -170,44 +169,44 @@ exports.Clusters = {
             addIfIdentifying: {
                 ID: 5,
                 parameters: [
-                    { name: 'groupid', type: enums_1.DataType.UINT16 },
-                    { name: 'groupname', type: enums_1.DataType.CHAR_STR },
+                    { name: "groupid", type: enums_1.DataType.UINT16 },
+                    { name: "groupname", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             miboxerSetZones: {
                 ID: 0xf0,
-                parameters: [{ name: 'zones', type: enums_1.BuffaloZclDataType.LIST_MIBOXER_ZONES }],
+                parameters: [{ name: "zones", type: enums_1.BuffaloZclDataType.LIST_MIBOXER_ZONES }],
             },
         },
         commandsResponse: {
             addRsp: {
                 ID: 0,
                 parameters: [
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'groupid', type: enums_1.DataType.UINT16 },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    { name: "groupid", type: enums_1.DataType.UINT16 },
                 ],
             },
             viewRsp: {
                 ID: 1,
                 parameters: [
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'groupid', type: enums_1.DataType.UINT16 },
-                    { name: 'groupname', type: enums_1.DataType.CHAR_STR },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    { name: "groupid", type: enums_1.DataType.UINT16 },
+                    { name: "groupname", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             getMembershipRsp: {
                 ID: 2,
                 parameters: [
-                    { name: 'capacity', type: enums_1.DataType.UINT8 },
-                    { name: 'groupcount', type: enums_1.DataType.UINT8 },
-                    { name: 'grouplist', type: enums_1.BuffaloZclDataType.LIST_UINT16 },
+                    { name: "capacity", type: enums_1.DataType.UINT8 },
+                    { name: "groupcount", type: enums_1.DataType.UINT8 },
+                    { name: "grouplist", type: enums_1.BuffaloZclDataType.LIST_UINT16 },
                 ],
             },
             removeRsp: {
                 ID: 3,
                 parameters: [
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'groupid', type: enums_1.DataType.UINT16 },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    { name: "groupid", type: enums_1.DataType.UINT16 },
                 ],
             },
         },
@@ -227,190 +226,210 @@ exports.Clusters = {
                 ID: 0,
                 response: 0,
                 parameters: [
-                    { name: 'groupid', type: enums_1.DataType.UINT16 },
-                    { name: 'sceneid', type: enums_1.DataType.UINT8 },
-                    { name: 'transtime', type: enums_1.DataType.UINT16 },
-                    { name: 'scenename', type: enums_1.DataType.CHAR_STR },
-                    { name: 'extensionfieldsets', type: enums_1.BuffaloZclDataType.EXTENSION_FIELD_SETS },
+                    { name: "groupid", type: enums_1.DataType.UINT16 },
+                    { name: "sceneid", type: enums_1.DataType.UINT8 },
+                    { name: "transtime", type: enums_1.DataType.UINT16 },
+                    { name: "scenename", type: enums_1.DataType.CHAR_STR },
+                    { name: "extensionfieldsets", type: enums_1.BuffaloZclDataType.EXTENSION_FIELD_SETS },
                 ],
             },
             view: {
                 ID: 1,
                 response: 1,
                 parameters: [
-                    { name: 'groupid', type: enums_1.DataType.UINT16 },
-                    { name: 'sceneid', type: enums_1.DataType.UINT8 },
+                    { name: "groupid", type: enums_1.DataType.UINT16 },
+                    { name: "sceneid", type: enums_1.DataType.UINT8 },
                 ],
             },
             remove: {
                 ID: 2,
                 response: 2,
                 parameters: [
-                    { name: 'groupid', type: enums_1.DataType.UINT16 },
-                    { name: 'sceneid', type: enums_1.DataType.UINT8 },
+                    { name: "groupid", type: enums_1.DataType.UINT16 },
+                    { name: "sceneid", type: enums_1.DataType.UINT8 },
                 ],
             },
             removeAll: {
                 ID: 3,
                 response: 3,
-                parameters: [{ name: 'groupid', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "groupid", type: enums_1.DataType.UINT16 }],
             },
             store: {
                 ID: 4,
                 response: 4,
                 parameters: [
-                    { name: 'groupid', type: enums_1.DataType.UINT16 },
-                    { name: 'sceneid', type: enums_1.DataType.UINT8 },
+                    { name: "groupid", type: enums_1.DataType.UINT16 },
+                    { name: "sceneid", type: enums_1.DataType.UINT8 },
                 ],
             },
             recall: {
                 ID: 5,
                 parameters: [
-                    { name: 'groupid', type: enums_1.DataType.UINT16 },
-                    { name: 'sceneid', type: enums_1.DataType.UINT8 },
+                    { name: "groupid", type: enums_1.DataType.UINT16 },
+                    { name: "sceneid", type: enums_1.DataType.UINT8 },
                 ],
             },
             getSceneMembership: {
                 ID: 6,
                 response: 6,
-                parameters: [{ name: 'groupid', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "groupid", type: enums_1.DataType.UINT16 }],
             },
             enhancedAdd: {
                 ID: 64,
                 response: 64,
                 parameters: [
-                    { name: 'groupid', type: enums_1.DataType.UINT16 },
-                    { name: 'sceneid', type: enums_1.DataType.UINT8 },
-                    { name: 'transtime', type: enums_1.DataType.UINT16 },
-                    { name: 'scenename', type: enums_1.DataType.CHAR_STR },
-                    { name: 'extensionfieldsets', type: enums_1.BuffaloZclDataType.EXTENSION_FIELD_SETS },
+                    { name: "groupid", type: enums_1.DataType.UINT16 },
+                    { name: "sceneid", type: enums_1.DataType.UINT8 },
+                    { name: "transtime", type: enums_1.DataType.UINT16 },
+                    { name: "scenename", type: enums_1.DataType.CHAR_STR },
+                    { name: "extensionfieldsets", type: enums_1.BuffaloZclDataType.EXTENSION_FIELD_SETS },
                 ],
             },
             enhancedView: {
                 ID: 65,
                 response: 65,
                 parameters: [
-                    { name: 'groupid', type: enums_1.DataType.UINT16 },
-                    { name: 'sceneid', type: enums_1.DataType.UINT8 },
+                    { name: "groupid", type: enums_1.DataType.UINT16 },
+                    { name: "sceneid", type: enums_1.DataType.UINT8 },
                 ],
             },
             copy: {
                 ID: 66,
                 response: 66,
                 parameters: [
-                    { name: 'mode', type: enums_1.DataType.UINT8 },
-                    { name: 'groupidfrom', type: enums_1.DataType.UINT16 },
-                    { name: 'sceneidfrom', type: enums_1.DataType.UINT8 },
-                    { name: 'groupidto', type: enums_1.DataType.UINT16 },
-                    { name: 'sceneidto', type: enums_1.DataType.UINT8 },
+                    { name: "mode", type: enums_1.DataType.UINT8 },
+                    { name: "groupidfrom", type: enums_1.DataType.UINT16 },
+                    { name: "sceneidfrom", type: enums_1.DataType.UINT8 },
+                    { name: "groupidto", type: enums_1.DataType.UINT16 },
+                    { name: "sceneidto", type: enums_1.DataType.UINT8 },
                 ],
             },
             tradfriArrowSingle: {
                 ID: 7,
                 parameters: [
-                    { name: 'value', type: enums_1.DataType.UINT16 },
-                    { name: 'value2', type: enums_1.DataType.UINT16 },
+                    { name: "value", type: enums_1.DataType.UINT16 },
+                    { name: "value2", type: enums_1.DataType.UINT16 },
                 ],
             },
             tradfriArrowHold: {
                 ID: 8,
-                parameters: [{ name: 'value', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "value", type: enums_1.DataType.UINT16 }],
             },
             tradfriArrowRelease: {
                 ID: 9,
-                parameters: [{ name: 'value', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "value", type: enums_1.DataType.UINT16 }],
             },
         },
         commandsResponse: {
             addRsp: {
                 ID: 0,
                 parameters: [
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'groupId', type: enums_1.DataType.UINT16 },
-                    { name: 'sceneId', type: enums_1.DataType.UINT8 },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    { name: "groupId", type: enums_1.DataType.UINT16 },
+                    { name: "sceneId", type: enums_1.DataType.UINT8 },
                 ],
             },
             viewRsp: {
                 ID: 1,
                 parameters: [
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'groupid', type: enums_1.DataType.UINT16 },
-                    { name: 'sceneid', type: enums_1.DataType.UINT8 },
-                    { name: 'transtime', type: enums_1.DataType.UINT16, conditions: [{ type: enums_1.ParameterCondition.STATUS_EQUAL, value: status_1.Status.SUCCESS }] },
-                    { name: 'scenename', type: enums_1.DataType.CHAR_STR, conditions: [{ type: enums_1.ParameterCondition.STATUS_EQUAL, value: status_1.Status.SUCCESS }] },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    { name: "groupid", type: enums_1.DataType.UINT16 },
+                    { name: "sceneid", type: enums_1.DataType.UINT8 },
                     {
-                        name: 'extensionfieldsets',
+                        name: "transtime",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "scenename",
+                        type: enums_1.DataType.CHAR_STR,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "extensionfieldsets",
                         type: enums_1.BuffaloZclDataType.EXTENSION_FIELD_SETS,
-                        conditions: [{ type: enums_1.ParameterCondition.STATUS_EQUAL, value: status_1.Status.SUCCESS }],
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
                     },
                 ],
             },
             removeRsp: {
                 ID: 2,
                 parameters: [
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'groupid', type: enums_1.DataType.UINT16 },
-                    { name: 'sceneid', type: enums_1.DataType.UINT8 },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    { name: "groupid", type: enums_1.DataType.UINT16 },
+                    { name: "sceneid", type: enums_1.DataType.UINT8 },
                 ],
             },
             removeAllRsp: {
                 ID: 3,
                 parameters: [
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'groupid', type: enums_1.DataType.UINT16 },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    { name: "groupid", type: enums_1.DataType.UINT16 },
                 ],
             },
             storeRsp: {
                 ID: 4,
                 parameters: [
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'groupid', type: enums_1.DataType.UINT16 },
-                    { name: 'sceneid', type: enums_1.DataType.UINT8 },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    { name: "groupid", type: enums_1.DataType.UINT16 },
+                    { name: "sceneid", type: enums_1.DataType.UINT8 },
                 ],
             },
             getSceneMembershipRsp: {
                 ID: 6,
                 parameters: [
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'capacity', type: enums_1.DataType.UINT8 },
-                    { name: 'groupid', type: enums_1.DataType.UINT16 },
-                    { name: 'scenecount', type: enums_1.DataType.UINT8, conditions: [{ type: enums_1.ParameterCondition.STATUS_EQUAL, value: status_1.Status.SUCCESS }] },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    { name: "capacity", type: enums_1.DataType.UINT8 },
+                    { name: "groupid", type: enums_1.DataType.UINT16 },
                     {
-                        name: 'scenelist',
+                        name: "scenecount",
+                        type: enums_1.DataType.UINT8,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "scenelist",
                         type: enums_1.BuffaloZclDataType.LIST_UINT8,
-                        conditions: [{ type: enums_1.ParameterCondition.STATUS_EQUAL, value: status_1.Status.SUCCESS }],
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
                     },
                 ],
             },
             enhancedAddRsp: {
                 ID: 64,
                 parameters: [
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'groupId', type: enums_1.DataType.UINT16 },
-                    { name: 'sceneId', type: enums_1.DataType.UINT8 },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    { name: "groupId", type: enums_1.DataType.UINT16 },
+                    { name: "sceneId", type: enums_1.DataType.UINT8 },
                 ],
             },
             enhancedViewRsp: {
                 ID: 65,
                 parameters: [
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'groupid', type: enums_1.DataType.UINT16 },
-                    { name: 'sceneid', type: enums_1.DataType.UINT8 },
-                    { name: 'transtime', type: enums_1.DataType.UINT16, conditions: [{ type: enums_1.ParameterCondition.STATUS_EQUAL, value: status_1.Status.SUCCESS }] },
-                    { name: 'scenename', type: enums_1.DataType.CHAR_STR, conditions: [{ type: enums_1.ParameterCondition.STATUS_EQUAL, value: status_1.Status.SUCCESS }] },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    { name: "groupid", type: enums_1.DataType.UINT16 },
+                    { name: "sceneid", type: enums_1.DataType.UINT8 },
                     {
-                        name: 'extensionfieldsets',
+                        name: "transtime",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "scenename",
+                        type: enums_1.DataType.CHAR_STR,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "extensionfieldsets",
                         type: enums_1.BuffaloZclDataType.EXTENSION_FIELD_SETS,
-                        conditions: [{ type: enums_1.ParameterCondition.STATUS_EQUAL, value: status_1.Status.SUCCESS }],
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
                     },
                 ],
             },
             copyRsp: {
                 ID: 66,
                 parameters: [
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'groupidfrom', type: enums_1.DataType.UINT16 },
-                    { name: 'sceneidfrom', type: enums_1.DataType.UINT8 },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    { name: "groupidfrom", type: enums_1.DataType.UINT16 },
+                    { name: "sceneidfrom", type: enums_1.DataType.UINT8 },
                 ],
             },
         },
@@ -448,8 +467,8 @@ exports.Clusters = {
             offWithEffect: {
                 ID: 64,
                 parameters: [
-                    { name: 'effectid', type: enums_1.DataType.UINT8 },
-                    { name: 'effectvariant', type: enums_1.DataType.UINT8 },
+                    { name: "effectid", type: enums_1.DataType.UINT8 },
+                    { name: "effectvariant", type: enums_1.DataType.UINT8 },
                 ],
             },
             onWithRecallGlobalScene: {
@@ -459,21 +478,21 @@ exports.Clusters = {
             onWithTimedOff: {
                 ID: 66,
                 parameters: [
-                    { name: 'ctrlbits', type: enums_1.DataType.UINT8 },
-                    { name: 'ontime', type: enums_1.DataType.UINT16 },
-                    { name: 'offwaittime', type: enums_1.DataType.UINT16 },
+                    { name: "ctrlbits", type: enums_1.DataType.UINT8 },
+                    { name: "ontime", type: enums_1.DataType.UINT16 },
+                    { name: "offwaittime", type: enums_1.DataType.UINT16 },
                 ],
             },
             tuyaAction: {
                 ID: 0xfd,
                 parameters: [
-                    { name: 'value', type: enums_1.DataType.UINT8 },
-                    { name: 'data', type: enums_1.BuffaloZclDataType.BUFFER },
+                    { name: "value", type: enums_1.DataType.UINT8 },
+                    { name: "data", type: enums_1.BuffaloZclDataType.BUFFER },
                 ],
             },
             tuyaAction2: {
                 ID: 0xfc,
-                parameters: [{ name: 'value', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "value", type: enums_1.DataType.UINT8 }],
             },
         },
         commandsResponse: {},
@@ -508,23 +527,23 @@ exports.Clusters = {
             moveToLevel: {
                 ID: 0,
                 parameters: [
-                    { name: 'level', type: enums_1.DataType.UINT8 },
-                    { name: 'transtime', type: enums_1.DataType.UINT16 },
+                    { name: "level", type: enums_1.DataType.UINT8 },
+                    { name: "transtime", type: enums_1.DataType.UINT16 },
                 ],
             },
             move: {
                 ID: 1,
                 parameters: [
-                    { name: 'movemode', type: enums_1.DataType.UINT8 },
-                    { name: 'rate', type: enums_1.DataType.UINT8 },
+                    { name: "movemode", type: enums_1.DataType.UINT8 },
+                    { name: "rate", type: enums_1.DataType.UINT8 },
                 ],
             },
             step: {
                 ID: 2,
                 parameters: [
-                    { name: 'stepmode', type: enums_1.DataType.UINT8 },
-                    { name: 'stepsize', type: enums_1.DataType.UINT8 },
-                    { name: 'transtime', type: enums_1.DataType.UINT16 },
+                    { name: "stepmode", type: enums_1.DataType.UINT8 },
+                    { name: "stepsize", type: enums_1.DataType.UINT8 },
+                    { name: "transtime", type: enums_1.DataType.UINT16 },
                 ],
             },
             stop: {
@@ -534,23 +553,23 @@ exports.Clusters = {
             moveToLevelWithOnOff: {
                 ID: 4,
                 parameters: [
-                    { name: 'level', type: enums_1.DataType.UINT8 },
-                    { name: 'transtime', type: enums_1.DataType.UINT16 },
+                    { name: "level", type: enums_1.DataType.UINT8 },
+                    { name: "transtime", type: enums_1.DataType.UINT16 },
                 ],
             },
             moveWithOnOff: {
                 ID: 5,
                 parameters: [
-                    { name: 'movemode', type: enums_1.DataType.UINT8 },
-                    { name: 'rate', type: enums_1.DataType.UINT8 },
+                    { name: "movemode", type: enums_1.DataType.UINT8 },
+                    { name: "rate", type: enums_1.DataType.UINT8 },
                 ],
             },
             stepWithOnOff: {
                 ID: 6,
                 parameters: [
-                    { name: 'stepmode', type: enums_1.DataType.UINT8 },
-                    { name: 'stepsize', type: enums_1.DataType.UINT8 },
-                    { name: 'transtime', type: enums_1.DataType.UINT16 },
+                    { name: "stepmode", type: enums_1.DataType.UINT8 },
+                    { name: "stepsize", type: enums_1.DataType.UINT8 },
+                    { name: "transtime", type: enums_1.DataType.UINT16 },
                 ],
             },
             stopWithOnOff: {
@@ -560,8 +579,8 @@ exports.Clusters = {
             moveToLevelTuya: {
                 ID: 240,
                 parameters: [
-                    { name: 'level', type: enums_1.DataType.UINT16 },
-                    { name: 'transtime', type: enums_1.DataType.UINT16 },
+                    { name: "level", type: enums_1.DataType.UINT16 },
+                    { name: "transtime", type: enums_1.DataType.UINT16 },
                 ],
             },
         },
@@ -576,8 +595,8 @@ exports.Clusters = {
             reset: {
                 ID: 0,
                 parameters: [
-                    { name: 'alarmcode', type: enums_1.DataType.UINT8 },
-                    { name: 'clusterid', type: enums_1.DataType.UINT16 },
+                    { name: "alarmcode", type: enums_1.DataType.UINT8 },
+                    { name: "clusterid", type: enums_1.DataType.UINT16 },
                 ],
             },
             resetAll: {
@@ -601,17 +620,17 @@ exports.Clusters = {
             alarm: {
                 ID: 0,
                 parameters: [
-                    { name: 'alarmcode', type: enums_1.DataType.UINT8 },
-                    { name: 'clusterid', type: enums_1.DataType.UINT16 },
+                    { name: "alarmcode", type: enums_1.DataType.UINT8 },
+                    { name: "clusterid", type: enums_1.DataType.UINT16 },
                 ],
             },
             getRsp: {
                 ID: 1,
                 parameters: [
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'alarmcode', type: enums_1.DataType.UINT8 },
-                    { name: 'clusterid', type: enums_1.DataType.UINT16 },
-                    { name: 'timestamp', type: enums_1.DataType.UINT32 },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    { name: "alarmcode", type: enums_1.DataType.UINT8 },
+                    { name: "clusterid", type: enums_1.DataType.UINT16 },
+                    { name: "timestamp", type: enums_1.DataType.UINT32 },
                 ],
             },
             getEventLog: {
@@ -640,109 +659,260 @@ exports.Clusters = {
     genRssiLocation: {
         ID: 11,
         attributes: {
+            /** read/write | [2: coordinator system, 1: 2-D, 1: absolute] */
             type: { ID: 0, type: enums_1.DataType.DATA8 },
+            /** read/write | @see LocationMethod */
             method: { ID: 1, type: enums_1.DataType.ENUM8 },
             age: { ID: 2, type: enums_1.DataType.UINT16 },
+            /** 0x00..0x64 i.e. zero..complete confidence */
             qualityMeasure: { ID: 3, type: enums_1.DataType.UINT8 },
             numOfDevices: { ID: 4, type: enums_1.DataType.UINT8 },
+            /** read/write | -0x8000..0x7fff */
             coordinate1: { ID: 16, type: enums_1.DataType.INT16 },
+            /** read/write | -0x8000..0x7fff */
             coordinate2: { ID: 17, type: enums_1.DataType.INT16 },
+            /** read/write | -0x8000..0x7fff | optional */
             coordinate3: { ID: 18, type: enums_1.DataType.INT16 },
+            /** read/write | -0x8000..0x7fff */
             power: { ID: 19, type: enums_1.DataType.INT16 },
+            /** read/write | 0x0000..0xffff */
             pathLossExponent: { ID: 20, type: enums_1.DataType.UINT16 },
+            /** read/write | 0x0000..0xffff | optional */
             reportingPeriod: { ID: 21, type: enums_1.DataType.UINT16 },
+            /** read/write | 0x0000..0xffff | optional */
             calcPeriod: { ID: 22, type: enums_1.DataType.UINT16 },
-            numRSSIMeasurements: { ID: 23, type: enums_1.DataType.UINT16 },
+            /** read/write | 0x01..0xff */
+            numRSSIMeasurements: { ID: 23, type: enums_1.DataType.UINT8 },
         },
         commands: {
             setAbsolute: {
                 ID: 0,
                 parameters: [
-                    { name: 'coord1', type: enums_1.DataType.INT16 },
-                    { name: 'coord2', type: enums_1.DataType.INT16 },
-                    { name: 'coord3', type: enums_1.DataType.INT16 },
-                    { name: 'power', type: enums_1.DataType.INT16 },
-                    { name: 'pathlossexponent', type: enums_1.DataType.UINT16 },
+                    { name: "coord1", type: enums_1.DataType.INT16 },
+                    { name: "coord2", type: enums_1.DataType.INT16 },
+                    { name: "coord3", type: enums_1.DataType.INT16 },
+                    { name: "power", type: enums_1.DataType.INT16 },
+                    { name: "pathLossExponent", type: enums_1.DataType.UINT16 },
                 ],
             },
-            setDevCfg: {
+            setDeviceConfig: {
                 ID: 1,
                 parameters: [
-                    { name: 'power', type: enums_1.DataType.INT16 },
-                    { name: 'pathlossexponent', type: enums_1.DataType.UINT16 },
-                    { name: 'calperiod', type: enums_1.DataType.UINT16 },
-                    { name: 'numrssimeasurements', type: enums_1.DataType.UINT8 },
-                    { name: 'reportingperiod', type: enums_1.DataType.UINT16 },
+                    { name: "power", type: enums_1.DataType.INT16 },
+                    { name: "pathLossExponent", type: enums_1.DataType.UINT16 },
+                    { name: "calcPeriod", type: enums_1.DataType.UINT16 },
+                    { name: "numRssiMeasurements", type: enums_1.DataType.UINT8 },
+                    { name: "reportingPeriod", type: enums_1.DataType.UINT16 },
                 ],
             },
-            getDevCfg: {
+            getDeviceConfig: {
                 ID: 2,
-                parameters: [{ name: 'targetaddr', type: enums_1.DataType.IEEE_ADDR }],
+                parameters: [{ name: "targetAddr", type: enums_1.DataType.IEEE_ADDR }],
             },
-            getData: {
+            getLocationData: {
                 ID: 3,
                 parameters: [
-                    { name: 'getdatainfo', type: enums_1.DataType.UINT8 },
-                    { name: 'numrsp', type: enums_1.DataType.UINT8 },
-                    { name: 'targetaddr', type: enums_1.DataType.IEEE_ADDR },
+                    /** [3: reserved, 1: compactResponse, 1: broadcastResponse, 1: broadcastIndicator, 1: recalculate, 1: absoluteOnly] */
+                    { name: "info", type: enums_1.DataType.BITMAP8 },
+                    { name: "numResponses", type: enums_1.DataType.UINT8 },
+                    {
+                        name: "targetAddr",
+                        type: enums_1.DataType.IEEE_ADDR,
+                        conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "info", mask: 0b100, reversed: true }],
+                    },
+                ],
+            },
+            rssiResponse: {
+                ID: 4,
+                parameters: [
+                    { name: "replyingDevice", type: enums_1.DataType.IEEE_ADDR },
+                    { name: "x", type: enums_1.DataType.INT16 },
+                    { name: "y", type: enums_1.DataType.INT16 },
+                    { name: "z", type: enums_1.DataType.INT16 },
+                    { name: "rssi", type: enums_1.DataType.INT8 },
+                    { name: "numRssiMeasurements", type: enums_1.DataType.UINT8 },
+                ],
+            },
+            sendPings: {
+                ID: 5,
+                parameters: [
+                    { name: "targetAddr", type: enums_1.DataType.IEEE_ADDR },
+                    { name: "numRssiMeasurements", type: enums_1.DataType.UINT8 },
+                    { name: "calcPeriod", type: enums_1.DataType.UINT16 },
+                ],
+            },
+            anchorNodeAnnounce: {
+                ID: 6,
+                parameters: [
+                    { name: "anchorNodeAddr", type: enums_1.DataType.IEEE_ADDR },
+                    { name: "x", type: enums_1.DataType.INT16 },
+                    { name: "y", type: enums_1.DataType.INT16 },
+                    { name: "z", type: enums_1.DataType.INT16 },
                 ],
             },
         },
         commandsResponse: {
-            devCfgRsp: {
+            deviceConfigResponse: {
                 ID: 0,
                 parameters: [
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'power', type: enums_1.DataType.INT16 },
-                    { name: 'pathlossexp', type: enums_1.DataType.UINT16 },
-                    { name: 'calperiod', type: enums_1.DataType.UINT16 },
-                    { name: 'numrssimeasurements', type: enums_1.DataType.UINT8 },
-                    { name: 'reportingperiod', type: enums_1.DataType.UINT16 },
+                    { name: "status", type: enums_1.DataType.ENUM8 },
+                    {
+                        name: "power",
+                        type: enums_1.DataType.INT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "pathLossExponent",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "calcPeriod",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "numRssiMeasurements",
+                        type: enums_1.DataType.UINT8,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "reportingPeriod",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
                 ],
             },
-            dataRsp: {
+            locationDataResponse: {
                 ID: 1,
                 parameters: [
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'locationtype', type: enums_1.DataType.UINT8 },
-                    { name: 'coord1', type: enums_1.DataType.INT16 },
-                    { name: 'coord2', type: enums_1.DataType.INT16 },
-                    { name: 'coord3', type: enums_1.DataType.INT16 },
-                    { name: 'power', type: enums_1.DataType.INT16 },
-                    { name: 'pathlossexp', type: enums_1.DataType.UINT16 },
-                    { name: 'locationmethod', type: enums_1.DataType.UINT8 },
-                    { name: 'qualitymeasure', type: enums_1.DataType.UINT8 },
-                    { name: 'locationage', type: enums_1.DataType.UINT16 },
+                    { name: "status", type: enums_1.DataType.ENUM8 },
+                    {
+                        name: "type",
+                        type: enums_1.DataType.DATA8,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "coord1",
+                        type: enums_1.DataType.INT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "coord2",
+                        type: enums_1.DataType.INT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "coord3",
+                        type: enums_1.DataType.INT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "power",
+                        type: enums_1.DataType.INT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "pathLossExponent",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "method",
+                        type: enums_1.DataType.ENUM8,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "qualityMeasure",
+                        type: enums_1.DataType.UINT8,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "age",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
                 ],
             },
-            dataNotif: {
+            locationDataNotification: {
                 ID: 2,
                 parameters: [
-                    { name: 'locationtype', type: enums_1.DataType.UINT8 },
-                    { name: 'coord1', type: enums_1.DataType.INT16 },
-                    { name: 'coord2', type: enums_1.DataType.INT16 },
-                    { name: 'coord3', type: enums_1.DataType.INT16 },
-                    { name: 'power', type: enums_1.DataType.INT16 },
-                    { name: 'pathlossexp', type: enums_1.DataType.UINT16 },
-                    { name: 'locationmethod', type: enums_1.DataType.UINT8 },
-                    { name: 'qualitymeasure', type: enums_1.DataType.UINT8 },
-                    { name: 'locationage', type: enums_1.DataType.UINT16 },
+                    { name: "type", type: enums_1.DataType.DATA8 },
+                    { name: "coord1", type: enums_1.DataType.INT16 },
+                    { name: "coord2", type: enums_1.DataType.INT16 },
+                    {
+                        name: "coord3",
+                        type: enums_1.DataType.INT16,
+                        conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "type", mask: 0b10, reversed: true }],
+                    },
+                    { name: "power", type: enums_1.DataType.INT16 },
+                    { name: "pathLossExponent", type: enums_1.DataType.UINT16 },
+                    {
+                        name: "method",
+                        type: enums_1.DataType.ENUM8,
+                        conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "type", mask: 0b1, reversed: true }],
+                    },
+                    {
+                        name: "qualityMeasure",
+                        type: enums_1.DataType.UINT8,
+                        conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "type", mask: 0b1, reversed: true }],
+                    },
+                    {
+                        name: "age",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "type", mask: 0b1, reversed: true }],
+                    },
                 ],
             },
-            compactDataNotif: {
+            compactLocationDataNotification: {
                 ID: 3,
                 parameters: [
-                    { name: 'locationtype', type: enums_1.DataType.UINT8 },
-                    { name: 'coord1', type: enums_1.DataType.INT16 },
-                    { name: 'coord2', type: enums_1.DataType.INT16 },
-                    { name: 'coord3', type: enums_1.DataType.INT16 },
-                    { name: 'qualitymeasure', type: enums_1.DataType.UINT8 },
-                    { name: 'locationage', type: enums_1.DataType.UINT16 },
+                    { name: "type", type: enums_1.DataType.DATA8 },
+                    { name: "coord1", type: enums_1.DataType.INT16 },
+                    { name: "coord2", type: enums_1.DataType.INT16 },
+                    {
+                        name: "coord3",
+                        type: enums_1.DataType.INT16,
+                        conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "type", mask: 0b10, reversed: true }],
+                    },
+                    {
+                        name: "qualityMeasure",
+                        type: enums_1.DataType.UINT8,
+                        conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "type", mask: 0b1, reversed: true }],
+                    },
+                    {
+                        name: "age",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "type", mask: 0b1, reversed: true }],
+                    },
                 ],
             },
             rssiPing: {
                 ID: 4,
-                parameters: [{ name: 'locationtype', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "type", type: enums_1.DataType.DATA8 }],
+            },
+            rssiRequest: {
+                ID: 5,
+                parameters: [],
+            },
+            reportRssiMeasurements: {
+                ID: 6,
+                parameters: [
+                    { name: "measuringDeviceAddr", type: enums_1.DataType.IEEE_ADDR },
+                    { name: "numNeighbors", type: enums_1.DataType.UINT8 },
+                    // TODO: needs special Buffalo read(/write)
+                    // {name: "neighborInfo", type: DataType.ARRAY},
+                    //   {name: "neighbor", type: DataType.IEEE_ADDR},
+                    //   {name: "x", type: DataType.INT16},
+                    //   {name: "y", type: DataType.INT16},
+                    //   {name: "z", type: DataType.INT16},
+                    //   {name: "rssi", type: DataType.INT8},
+                    //   {name: "numRssiMeasurements", type: DataType.UINT8},
+                ],
+            },
+            requestOwnLocation: {
+                ID: 7,
+                parameters: [{ name: "blindNodeAddr", type: enums_1.DataType.IEEE_ADDR }],
             },
         },
     },
@@ -934,49 +1104,49 @@ exports.Clusters = {
             restartDevice: {
                 ID: 0,
                 parameters: [
-                    { name: 'options', type: enums_1.DataType.UINT8 },
-                    { name: 'delay', type: enums_1.DataType.UINT8 },
-                    { name: 'jitter', type: enums_1.DataType.UINT8 },
+                    { name: "options", type: enums_1.DataType.UINT8 },
+                    { name: "delay", type: enums_1.DataType.UINT8 },
+                    { name: "jitter", type: enums_1.DataType.UINT8 },
                 ],
             },
             saveStartupParams: {
                 ID: 1,
                 parameters: [
-                    { name: 'options', type: enums_1.DataType.UINT8 },
-                    { name: 'index', type: enums_1.DataType.UINT8 },
+                    { name: "options", type: enums_1.DataType.UINT8 },
+                    { name: "index", type: enums_1.DataType.UINT8 },
                 ],
             },
             restoreStartupParams: {
                 ID: 2,
                 parameters: [
-                    { name: 'options', type: enums_1.DataType.UINT8 },
-                    { name: 'index', type: enums_1.DataType.UINT8 },
+                    { name: "options", type: enums_1.DataType.UINT8 },
+                    { name: "index", type: enums_1.DataType.UINT8 },
                 ],
             },
             resetStartupParams: {
                 ID: 3,
                 parameters: [
-                    { name: 'options', type: enums_1.DataType.UINT8 },
-                    { name: 'index', type: enums_1.DataType.UINT8 },
+                    { name: "options", type: enums_1.DataType.UINT8 },
+                    { name: "index", type: enums_1.DataType.UINT8 },
                 ],
             },
         },
         commandsResponse: {
             restartDeviceRsp: {
                 ID: 0,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             saveStartupParamsRsp: {
                 ID: 1,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             restoreStartupParamsRsp: {
                 ID: 2,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             resetStartupParamsRsp: {
                 ID: 3,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
         },
     },
@@ -1000,46 +1170,81 @@ exports.Clusters = {
                 ID: 1,
                 response: 2,
                 parameters: [
-                    { name: 'fieldControl', type: enums_1.DataType.UINT8 },
-                    { name: 'manufacturerCode', type: enums_1.DataType.UINT16 },
-                    { name: 'imageType', type: enums_1.DataType.UINT16 },
-                    { name: 'fileVersion', type: enums_1.DataType.UINT32 },
+                    { name: "fieldControl", type: enums_1.DataType.UINT8 },
+                    { name: "manufacturerCode", type: enums_1.DataType.UINT16 },
+                    { name: "imageType", type: enums_1.DataType.UINT16 },
+                    { name: "fileVersion", type: enums_1.DataType.UINT32 },
+                    {
+                        name: "hardwareVersion",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "fieldControl", mask: 0b1 }],
+                    },
                 ],
             },
             imageBlockRequest: {
                 ID: 3,
                 response: 5,
                 parameters: [
-                    { name: 'fieldControl', type: enums_1.DataType.UINT8 },
-                    { name: 'manufacturerCode', type: enums_1.DataType.UINT16 },
-                    { name: 'imageType', type: enums_1.DataType.UINT16 },
-                    { name: 'fileVersion', type: enums_1.DataType.UINT32 },
-                    { name: 'fileOffset', type: enums_1.DataType.UINT32 },
-                    { name: 'maximumDataSize', type: enums_1.DataType.UINT8 },
+                    { name: "fieldControl", type: enums_1.DataType.UINT8 },
+                    { name: "manufacturerCode", type: enums_1.DataType.UINT16 },
+                    { name: "imageType", type: enums_1.DataType.UINT16 },
+                    { name: "fileVersion", type: enums_1.DataType.UINT32 },
+                    { name: "fileOffset", type: enums_1.DataType.UINT32 },
+                    { name: "maximumDataSize", type: enums_1.DataType.UINT8 },
+                    {
+                        name: "requestNodeIeeeAddress",
+                        type: enums_1.DataType.IEEE_ADDR,
+                        conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "fieldControl", mask: 0b1 }],
+                    },
+                    {
+                        name: "minimumBlockPeriod",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [
+                            { type: enums_1.ParameterCondition.BITMASK_SET, param: "fieldControl", mask: 0b10 },
+                            // WORKAROUND: https://github.com/Koenkk/zigbee2mqtt/issues/28217
+                            { type: enums_1.ParameterCondition.MINIMUM_REMAINING_BUFFER_BYTES, value: 2 },
+                        ],
+                    },
                 ],
             },
             imagePageRequest: {
                 ID: 4,
                 response: 5,
                 parameters: [
-                    { name: 'fieldControl', type: enums_1.DataType.UINT8 },
-                    { name: 'manufacturerCode', type: enums_1.DataType.UINT16 },
-                    { name: 'imageType', type: enums_1.DataType.UINT16 },
-                    { name: 'fileVersion', type: enums_1.DataType.UINT32 },
-                    { name: 'fileOffset', type: enums_1.DataType.UINT32 },
-                    { name: 'maximumDataSize', type: enums_1.DataType.UINT8 },
-                    { name: 'pageSize', type: enums_1.DataType.UINT16 },
-                    { name: 'responseSpacing', type: enums_1.DataType.UINT16 },
+                    { name: "fieldControl", type: enums_1.DataType.UINT8 },
+                    { name: "manufacturerCode", type: enums_1.DataType.UINT16 },
+                    { name: "imageType", type: enums_1.DataType.UINT16 },
+                    { name: "fileVersion", type: enums_1.DataType.UINT32 },
+                    { name: "fileOffset", type: enums_1.DataType.UINT32 },
+                    { name: "maximumDataSize", type: enums_1.DataType.UINT8 },
+                    { name: "pageSize", type: enums_1.DataType.UINT16 },
+                    { name: "responseSpacing", type: enums_1.DataType.UINT16 },
+                    {
+                        name: "requestNodeIeeeAddress",
+                        type: enums_1.DataType.IEEE_ADDR,
+                        conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "fieldControl", mask: 0b1 }],
+                    },
                 ],
             },
             upgradeEndRequest: {
                 ID: 6,
                 response: 7,
                 parameters: [
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'manufacturerCode', type: enums_1.DataType.UINT16 },
-                    { name: 'imageType', type: enums_1.DataType.UINT16 },
-                    { name: 'fileVersion', type: enums_1.DataType.UINT32 },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    { name: "manufacturerCode", type: enums_1.DataType.UINT16 },
+                    { name: "imageType", type: enums_1.DataType.UINT16 },
+                    { name: "fileVersion", type: enums_1.DataType.UINT32 },
+                ],
+            },
+            queryDeviceSpecificFileRequest: {
+                ID: 8,
+                response: 9,
+                parameters: [
+                    { name: "eui64", type: enums_1.DataType.IEEE_ADDR },
+                    { name: "manufacturerCode", type: enums_1.DataType.UINT16 },
+                    { name: "imageType", type: enums_1.DataType.UINT16 },
+                    { name: "fileVersion", type: enums_1.DataType.UINT32 },
+                    { name: "zigbeeStackVersion", type: enums_1.DataType.UINT16 },
                 ],
             },
         },
@@ -1047,40 +1252,137 @@ exports.Clusters = {
             imageNotify: {
                 ID: 0,
                 parameters: [
-                    { name: 'payloadType', type: enums_1.DataType.UINT8 },
-                    { name: 'queryJitter', type: enums_1.DataType.UINT8 },
+                    { name: "payloadType", type: enums_1.DataType.UINT8 },
+                    { name: "queryJitter", type: enums_1.DataType.UINT8 },
+                    {
+                        name: "manufacturerCode",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_GT, field: "payloadType", value: 0x00 }],
+                    },
+                    {
+                        name: "imageType",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_GT, field: "payloadType", value: 0x01 }],
+                    },
+                    {
+                        name: "fileVersion",
+                        type: enums_1.DataType.UINT32,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_GT, field: "payloadType", value: 0x02 }],
+                    },
                 ],
             },
             queryNextImageResponse: {
                 ID: 2,
                 parameters: [
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'manufacturerCode', type: enums_1.DataType.UINT16, conditions: [{ type: enums_1.ParameterCondition.STATUS_EQUAL, value: status_1.Status.SUCCESS }] },
-                    { name: 'imageType', type: enums_1.DataType.UINT16, conditions: [{ type: enums_1.ParameterCondition.STATUS_EQUAL, value: status_1.Status.SUCCESS }] },
-                    { name: 'fileVersion', type: enums_1.DataType.UINT32, conditions: [{ type: enums_1.ParameterCondition.STATUS_EQUAL, value: status_1.Status.SUCCESS }] },
-                    { name: 'imageSize', type: enums_1.DataType.UINT32, conditions: [{ type: enums_1.ParameterCondition.STATUS_EQUAL, value: status_1.Status.SUCCESS }] },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    {
+                        name: "manufacturerCode",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "imageType",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "fileVersion",
+                        type: enums_1.DataType.UINT32,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "imageSize",
+                        type: enums_1.DataType.UINT32,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
                 ],
             },
             imageBlockResponse: {
                 ID: 5,
                 parameters: [
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'manufacturerCode', type: enums_1.DataType.UINT16 },
-                    { name: 'imageType', type: enums_1.DataType.UINT16 },
-                    { name: 'fileVersion', type: enums_1.DataType.UINT32 },
-                    { name: 'fileOffset', type: enums_1.DataType.UINT32 },
-                    { name: 'dataSize', type: enums_1.DataType.UINT8 },
-                    { name: 'data', type: enums_1.BuffaloZclDataType.BUFFER },
+                    // alone if Status.ABORT
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    {
+                        name: "manufacturerCode",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "imageType",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "fileVersion",
+                        type: enums_1.DataType.UINT32,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "fileOffset",
+                        type: enums_1.DataType.UINT32,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "dataSize",
+                        type: enums_1.DataType.UINT8,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "data",
+                        type: enums_1.BuffaloZclDataType.BUFFER,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "currentTime",
+                        type: enums_1.DataType.UINT32,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.WAIT_FOR_DATA }],
+                    },
+                    {
+                        name: "requestTime",
+                        type: enums_1.DataType.UINT32,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.WAIT_FOR_DATA }],
+                    },
+                    {
+                        name: "minimumBlockPeriod",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.WAIT_FOR_DATA }],
+                    },
                 ],
             },
             upgradeEndResponse: {
                 ID: 7,
                 parameters: [
-                    { name: 'manufacturerCode', type: enums_1.DataType.UINT16 },
-                    { name: 'imageType', type: enums_1.DataType.UINT16 },
-                    { name: 'fileVersion', type: enums_1.DataType.UINT32 },
-                    { name: 'currentTime', type: enums_1.DataType.UINT32 },
-                    { name: 'upgradeTime', type: enums_1.DataType.UINT32 },
+                    { name: "manufacturerCode", type: enums_1.DataType.UINT16 },
+                    { name: "imageType", type: enums_1.DataType.UINT16 },
+                    { name: "fileVersion", type: enums_1.DataType.UINT32 },
+                    { name: "currentTime", type: enums_1.DataType.UINT32 },
+                    { name: "upgradeTime", type: enums_1.DataType.UINT32 },
+                ],
+            },
+            queryDeviceSpecificFileResponse: {
+                ID: 9,
+                parameters: [
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    {
+                        name: "manufacturerCode",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "imageType",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "fileVersion",
+                        type: enums_1.DataType.UINT32,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
+                    {
+                        name: "imageSize",
+                        type: enums_1.DataType.UINT32,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "status", value: status_1.Status.SUCCESS }],
+                    },
                 ],
             },
         },
@@ -1100,8 +1402,8 @@ exports.Clusters = {
             checkinRsp: {
                 ID: 0,
                 parameters: [
-                    { name: 'startFastPolling', type: enums_1.DataType.BOOLEAN },
-                    { name: 'fastPollTimeout', type: enums_1.DataType.UINT16 },
+                    { name: "startFastPolling", type: enums_1.DataType.BOOLEAN },
+                    { name: "fastPollTimeout", type: enums_1.DataType.UINT16 },
                 ],
             },
             fastPollStop: {
@@ -1110,11 +1412,11 @@ exports.Clusters = {
             },
             setLongPollInterval: {
                 ID: 2,
-                parameters: [{ name: 'newLongPollInterval', type: enums_1.DataType.UINT32 }],
+                parameters: [{ name: "newLongPollInterval", type: enums_1.DataType.UINT32 }],
             },
             setShortPollInterval: {
                 ID: 3,
-                parameters: [{ name: 'newShortPollInterval', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "newShortPollInterval", type: enums_1.DataType.UINT16 }],
             },
         },
         commandsResponse: {
@@ -1131,55 +1433,75 @@ exports.Clusters = {
             notification: {
                 ID: 0,
                 parameters: [
-                    { name: 'options', type: enums_1.DataType.UINT16 },
+                    { name: "options", type: enums_1.DataType.BITMAP16 },
                     {
-                        name: 'srcID',
+                        name: "srcID",
                         type: enums_1.DataType.UINT32,
-                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: 'options', offset: 0, size: 3, value: 0b000 }],
+                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: "options", offset: 0, size: 3, value: 0b000 }],
                     },
                     {
-                        name: 'gpdIEEEAddr',
+                        name: "gpdIEEEAddr",
                         type: enums_1.DataType.IEEE_ADDR,
-                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: 'options', offset: 0, size: 3, value: 0b010 }],
+                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: "options", offset: 0, size: 3, value: 0b010 }],
                     },
                     {
-                        name: 'gpdEndpoint',
+                        name: "gpdEndpoint",
                         type: enums_1.DataType.UINT8,
-                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: 'options', offset: 0, size: 3, value: 0b010 }],
+                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: "options", offset: 0, size: 3, value: 0b010 }],
                     },
-                    { name: 'frameCounter', type: enums_1.DataType.UINT32 },
-                    { name: 'commandID', type: enums_1.DataType.UINT8 },
-                    { name: 'payloadSize', type: enums_1.DataType.UINT8 },
-                    { name: 'commandFrame', type: enums_1.BuffaloZclDataType.GDP_FRAME },
-                    { name: 'gppNwkAddr', type: enums_1.DataType.UINT16, conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: 'options', mask: 0x4000 }] },
-                    { name: 'gppGddLink', type: enums_1.DataType.UINT8, conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: 'options', mask: 0x4000 }] },
+                    { name: "frameCounter", type: enums_1.DataType.UINT32 },
+                    { name: "commandID", type: enums_1.DataType.UINT8 },
+                    { name: "payloadSize", type: enums_1.DataType.UINT8 },
+                    {
+                        name: "commandFrame",
+                        type: enums_1.BuffaloZclDataType.GPD_FRAME,
+                        // not parsing when FULLENCR (requires decryption first - then re-parsing)
+                        conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "options", mask: 0xc0, reversed: true }],
+                    },
+                    { name: "gppNwkAddr", type: enums_1.DataType.UINT16, conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "options", mask: 0x4000 }] },
+                    /** Bits: 0..5 RSSI 6..7 Link quality */
+                    {
+                        name: "gppGpdLink",
+                        type: enums_1.DataType.BITMAP8,
+                        conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "options", mask: 0x4000 }],
+                    },
                 ],
             },
             commissioningNotification: {
                 ID: 4,
                 parameters: [
-                    { name: 'options', type: enums_1.DataType.UINT16 },
+                    { name: "options", type: enums_1.DataType.BITMAP16 },
                     {
-                        name: 'srcID',
+                        name: "srcID",
                         type: enums_1.DataType.UINT32,
-                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: 'options', offset: 0, size: 3, value: 0b000 }],
+                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: "options", offset: 0, size: 3, value: 0b000 }],
                     },
                     {
-                        name: 'gpdIEEEAddr',
+                        name: "gpdIEEEAddr",
                         type: enums_1.DataType.IEEE_ADDR,
-                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: 'options', offset: 0, size: 3, value: 0b010 }],
+                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: "options", offset: 0, size: 3, value: 0b010 }],
                     },
                     {
-                        name: 'gpdEndpoint',
+                        name: "gpdEndpoint",
                         type: enums_1.DataType.UINT8,
-                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: 'options', offset: 0, size: 3, value: 0b010 }],
+                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: "options", offset: 0, size: 3, value: 0b010 }],
                     },
-                    { name: 'frameCounter', type: enums_1.DataType.UINT32 },
-                    { name: 'commandID', type: enums_1.DataType.UINT8 },
-                    { name: 'payloadSize', type: enums_1.DataType.UINT8 },
-                    { name: 'commandFrame', type: enums_1.BuffaloZclDataType.GDP_FRAME },
-                    { name: 'gppNwkAddr', type: enums_1.DataType.UINT16, conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: 'options', mask: 0x800 }] },
-                    { name: 'gppGddLink', type: enums_1.DataType.UINT8, conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: 'options', mask: 0x800 }] },
+                    { name: "frameCounter", type: enums_1.DataType.UINT32 },
+                    { name: "commandID", type: enums_1.DataType.UINT8 },
+                    { name: "payloadSize", type: enums_1.DataType.UINT8 },
+                    {
+                        name: "commandFrame",
+                        type: enums_1.BuffaloZclDataType.GPD_FRAME,
+                        conditions: [
+                            // not parsing when FULLENCR and "security failed" bit is set (requires decryption first - then re-parsing)
+                            { type: enums_1.ParameterCondition.BITMASK_SET, param: "options", mask: 0x30, reversed: true },
+                            { type: enums_1.ParameterCondition.BITMASK_SET, param: "options", mask: 0x200, reversed: true },
+                        ],
+                    },
+                    { name: "gppNwkAddr", type: enums_1.DataType.UINT16, conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "options", mask: 0x800 }] },
+                    /** Bits: 0..5 RSSI 6..7 Link quality */
+                    { name: "gppGpdLink", type: enums_1.DataType.BITMAP8, conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "options", mask: 0x800 }] },
+                    { name: "mic", type: enums_1.DataType.UINT32, conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "options", mask: 0x200 }] },
                 ],
             },
         },
@@ -1187,91 +1509,106 @@ exports.Clusters = {
             response: {
                 ID: 6,
                 parameters: [
-                    { name: 'options', type: enums_1.DataType.UINT8 },
-                    { name: 'tempMaster', type: enums_1.DataType.UINT16 },
-                    { name: 'tempMasterTx', type: enums_1.DataType.UINT8 },
+                    { name: "options", type: enums_1.DataType.UINT8 },
+                    { name: "tempMaster", type: enums_1.DataType.UINT16 },
+                    { name: "tempMasterTx", type: enums_1.DataType.BITMAP8 },
                     {
-                        name: 'srcID',
+                        name: "srcID",
                         type: enums_1.DataType.UINT32,
-                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: 'options', offset: 0, size: 3, value: 0b000 }],
+                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: "options", offset: 0, size: 3, value: 0b000 }],
                     },
                     {
-                        name: 'gpdIEEEAddr',
+                        name: "gpdIEEEAddr",
                         type: enums_1.DataType.IEEE_ADDR,
-                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: 'options', offset: 0, size: 3, value: 0b010 }],
+                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: "options", offset: 0, size: 3, value: 0b010 }],
                     },
                     {
-                        name: 'gpdEndpoint',
+                        name: "gpdEndpoint",
                         type: enums_1.DataType.UINT8,
-                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: 'options', offset: 0, size: 3, value: 0b010 }],
+                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: "options", offset: 0, size: 3, value: 0b010 }],
                     },
-                    { name: 'gpdCmd', type: enums_1.DataType.UINT8 },
-                    { name: 'gpdPayload', type: enums_1.BuffaloZclDataType.GDP_FRAME },
+                    { name: "gpdCmd", type: enums_1.DataType.UINT8 },
+                    { name: "gpdPayload", type: enums_1.BuffaloZclDataType.GPD_FRAME },
                 ],
             },
             pairing: {
                 ID: 1,
                 parameters: [
-                    { name: 'options', type: enums_1.DataType.UINT24 },
+                    { name: "options", type: enums_1.DataType.BITMAP24 },
                     {
-                        name: 'srcID',
+                        name: "srcID",
                         type: enums_1.DataType.UINT32,
-                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: 'options', offset: 0, size: 3, value: 0b000 }],
+                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: "options", offset: 0, size: 3, value: 0b000 }],
                     },
                     {
-                        name: 'gpdIEEEAddr',
+                        name: "gpdIEEEAddr",
                         type: enums_1.DataType.IEEE_ADDR,
-                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: 'options', offset: 0, size: 3, value: 0b010 }],
+                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: "options", offset: 0, size: 3, value: 0b010 }],
                     },
                     {
-                        name: 'gpdEndpoint',
+                        name: "gpdEndpoint",
                         type: enums_1.DataType.UINT8,
-                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: 'options', offset: 0, size: 3, value: 0b010 }],
+                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: "options", offset: 0, size: 3, value: 0b010 }],
                     },
                     {
-                        name: 'sinkIEEEAddr',
+                        name: "sinkIEEEAddr",
                         type: enums_1.DataType.IEEE_ADDR,
-                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: 'options', offset: 4, size: 3, value: 0b110 }],
+                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: "options", offset: 4, size: 3, value: 0b110 }],
                     },
                     {
-                        name: 'sinkIEEEAddr',
+                        name: "sinkIEEEAddr",
                         type: enums_1.DataType.IEEE_ADDR,
-                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: 'options', offset: 4, size: 3, value: 0b000 }],
+                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: "options", offset: 4, size: 3, value: 0b000 }],
                     },
                     {
-                        name: 'sinkNwkAddr',
+                        name: "sinkNwkAddr",
                         type: enums_1.DataType.UINT16,
-                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: 'options', offset: 4, size: 3, value: 0b110 }],
+                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: "options", offset: 4, size: 3, value: 0b110 }],
                     },
                     {
-                        name: 'sinkNwkAddr',
+                        name: "sinkNwkAddr",
                         type: enums_1.DataType.UINT16,
-                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: 'options', offset: 4, size: 3, value: 0b000 }],
+                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: "options", offset: 4, size: 3, value: 0b000 }],
                     },
                     {
-                        name: 'sinkGroupID',
+                        name: "sinkGroupID",
                         type: enums_1.DataType.UINT16,
-                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: 'options', offset: 4, size: 3, value: 0b100 }],
+                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: "options", offset: 4, size: 3, value: 0b100 }],
                     },
                     {
-                        name: 'sinkGroupID',
+                        name: "sinkGroupID",
                         type: enums_1.DataType.UINT16,
-                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: 'options', offset: 4, size: 3, value: 0b010 }],
+                        conditions: [{ type: enums_1.ParameterCondition.BITFIELD_ENUM, param: "options", offset: 4, size: 3, value: 0b010 }],
                     },
-                    { name: 'deviceID', type: enums_1.DataType.UINT8, conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: 'options', mask: 0x0008 }] },
+                    { name: "deviceID", type: enums_1.DataType.UINT8, conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "options", mask: 0x0008 }] },
                     {
-                        name: 'frameCounter',
+                        name: "frameCounter",
                         type: enums_1.DataType.UINT32,
-                        conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: 'options', mask: 0x4000 }],
+                        conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "options", mask: 0x4000 }],
                     },
-                    { name: 'gpdKey', type: enums_1.DataType.SEC_KEY, conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: 'options', mask: 0x8000 }] },
+                    { name: "gpdKey", type: enums_1.DataType.SEC_KEY, conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "options", mask: 0x8000 }] },
+                    {
+                        name: "assignedAlias",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "options", mask: 0x10000 }],
+                    },
+                    {
+                        name: "groupcastRadius",
+                        type: enums_1.DataType.UINT8,
+                        conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "options", mask: 0x20000 }],
+                    },
                 ],
             },
             commisioningMode: {
                 ID: 2,
                 parameters: [
-                    { name: 'options', type: enums_1.DataType.UINT8 },
-                    { name: 'commisioningWindow', type: enums_1.DataType.UINT16 },
+                    { name: "options", type: enums_1.DataType.BITMAP8 },
+                    {
+                        name: "commisioningWindow",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "options", mask: 0x2 }],
+                    },
+                    { name: "channel", type: enums_1.DataType.UINT8, conditions: [{ type: enums_1.ParameterCondition.BITMASK_SET, param: "options", mask: 0x10 }] },
                 ],
             },
         },
@@ -1364,50 +1701,50 @@ exports.Clusters = {
             lockDoor: {
                 ID: 0,
                 response: 0,
-                parameters: [{ name: 'pincodevalue', type: enums_1.DataType.CHAR_STR }],
+                parameters: [{ name: "pincodevalue", type: enums_1.DataType.CHAR_STR }],
             },
             unlockDoor: {
                 ID: 1,
                 response: 1,
-                parameters: [{ name: 'pincodevalue', type: enums_1.DataType.CHAR_STR }],
+                parameters: [{ name: "pincodevalue", type: enums_1.DataType.CHAR_STR }],
             },
             toggleDoor: {
                 ID: 2,
                 response: 2,
-                parameters: [{ name: 'pincodevalue', type: enums_1.DataType.CHAR_STR }],
+                parameters: [{ name: "pincodevalue", type: enums_1.DataType.CHAR_STR }],
             },
             unlockWithTimeout: {
                 ID: 3,
                 response: 3,
                 parameters: [
-                    { name: 'timeout', type: enums_1.DataType.UINT16 },
-                    { name: 'pincodevalue', type: enums_1.DataType.CHAR_STR },
+                    { name: "timeout", type: enums_1.DataType.UINT16 },
+                    { name: "pincodevalue", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             getLogRecord: {
                 ID: 4,
                 response: 4,
-                parameters: [{ name: 'logindex', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "logindex", type: enums_1.DataType.UINT16 }],
             },
             setPinCode: {
                 ID: 5,
                 response: 5,
                 parameters: [
-                    { name: 'userid', type: enums_1.DataType.UINT16 },
-                    { name: 'userstatus', type: enums_1.DataType.UINT8 },
-                    { name: 'usertype', type: enums_1.DataType.UINT8 },
-                    { name: 'pincodevalue', type: enums_1.DataType.CHAR_STR },
+                    { name: "userid", type: enums_1.DataType.UINT16 },
+                    { name: "userstatus", type: enums_1.DataType.UINT8 },
+                    { name: "usertype", type: enums_1.DataType.UINT8 },
+                    { name: "pincodevalue", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             getPinCode: {
                 ID: 6,
                 response: 6,
-                parameters: [{ name: 'userid', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "userid", type: enums_1.DataType.UINT16 }],
             },
             clearPinCode: {
                 ID: 7,
                 response: 7,
-                parameters: [{ name: 'userid', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "userid", type: enums_1.DataType.UINT16 }],
             },
             clearAllPinCodes: {
                 ID: 8,
@@ -1418,122 +1755,122 @@ exports.Clusters = {
                 ID: 9,
                 response: 9,
                 parameters: [
-                    { name: 'userid', type: enums_1.DataType.UINT16 },
-                    { name: 'userstatus', type: enums_1.DataType.UINT8 },
+                    { name: "userid", type: enums_1.DataType.UINT16 },
+                    { name: "userstatus", type: enums_1.DataType.UINT8 },
                 ],
             },
             getUserStatus: {
                 ID: 10,
                 response: 10,
-                parameters: [{ name: 'userid', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "userid", type: enums_1.DataType.UINT16 }],
             },
             setWeekDaySchedule: {
                 ID: 11,
                 response: 11,
                 parameters: [
-                    { name: 'scheduleid', type: enums_1.DataType.UINT8 },
-                    { name: 'userid', type: enums_1.DataType.UINT16 },
-                    { name: 'daysmask', type: enums_1.DataType.UINT8 },
-                    { name: 'starthour', type: enums_1.DataType.UINT8 },
-                    { name: 'startminute', type: enums_1.DataType.UINT8 },
-                    { name: 'endhour', type: enums_1.DataType.UINT8 },
-                    { name: 'endminute', type: enums_1.DataType.UINT8 },
+                    { name: "scheduleid", type: enums_1.DataType.UINT8 },
+                    { name: "userid", type: enums_1.DataType.UINT16 },
+                    { name: "daysmask", type: enums_1.DataType.UINT8 },
+                    { name: "starthour", type: enums_1.DataType.UINT8 },
+                    { name: "startminute", type: enums_1.DataType.UINT8 },
+                    { name: "endhour", type: enums_1.DataType.UINT8 },
+                    { name: "endminute", type: enums_1.DataType.UINT8 },
                 ],
             },
             getWeekDaySchedule: {
                 ID: 12,
                 response: 12,
                 parameters: [
-                    { name: 'scheduleid', type: enums_1.DataType.UINT8 },
-                    { name: 'userid', type: enums_1.DataType.UINT16 },
+                    { name: "scheduleid", type: enums_1.DataType.UINT8 },
+                    { name: "userid", type: enums_1.DataType.UINT16 },
                 ],
             },
             clearWeekDaySchedule: {
                 ID: 13,
                 response: 13,
                 parameters: [
-                    { name: 'scheduleid', type: enums_1.DataType.UINT8 },
-                    { name: 'userid', type: enums_1.DataType.UINT16 },
+                    { name: "scheduleid", type: enums_1.DataType.UINT8 },
+                    { name: "userid", type: enums_1.DataType.UINT16 },
                 ],
             },
             setYearDaySchedule: {
                 ID: 14,
                 response: 14,
                 parameters: [
-                    { name: 'scheduleid', type: enums_1.DataType.UINT8 },
-                    { name: 'userid', type: enums_1.DataType.UINT16 },
-                    { name: 'zigbeelocalstarttime', type: enums_1.DataType.UINT32 },
-                    { name: 'zigbeelocalendtime', type: enums_1.DataType.UINT32 },
+                    { name: "scheduleid", type: enums_1.DataType.UINT8 },
+                    { name: "userid", type: enums_1.DataType.UINT16 },
+                    { name: "zigbeelocalstarttime", type: enums_1.DataType.UINT32 },
+                    { name: "zigbeelocalendtime", type: enums_1.DataType.UINT32 },
                 ],
             },
             getYearDaySchedule: {
                 ID: 15,
                 response: 15,
                 parameters: [
-                    { name: 'scheduleid', type: enums_1.DataType.UINT8 },
-                    { name: 'userid', type: enums_1.DataType.UINT16 },
+                    { name: "scheduleid", type: enums_1.DataType.UINT8 },
+                    { name: "userid", type: enums_1.DataType.UINT16 },
                 ],
             },
             clearYearDaySchedule: {
                 ID: 16,
                 response: 16,
                 parameters: [
-                    { name: 'scheduleid', type: enums_1.DataType.UINT8 },
-                    { name: 'userid', type: enums_1.DataType.UINT16 },
+                    { name: "scheduleid", type: enums_1.DataType.UINT8 },
+                    { name: "userid", type: enums_1.DataType.UINT16 },
                 ],
             },
             setHolidaySchedule: {
                 ID: 17,
                 response: 17,
                 parameters: [
-                    { name: 'holidayscheduleid', type: enums_1.DataType.UINT8 },
-                    { name: 'zigbeelocalstarttime', type: enums_1.DataType.UINT32 },
-                    { name: 'zigbeelocalendtime', type: enums_1.DataType.UINT32 },
-                    { name: 'opermodelduringholiday', type: enums_1.DataType.UINT8 },
+                    { name: "holidayscheduleid", type: enums_1.DataType.UINT8 },
+                    { name: "zigbeelocalstarttime", type: enums_1.DataType.UINT32 },
+                    { name: "zigbeelocalendtime", type: enums_1.DataType.UINT32 },
+                    { name: "opermodelduringholiday", type: enums_1.DataType.UINT8 },
                 ],
             },
             getHolidaySchedule: {
                 ID: 18,
                 response: 18,
-                parameters: [{ name: 'holidayscheduleid', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "holidayscheduleid", type: enums_1.DataType.UINT8 }],
             },
             clearHolidaySchedule: {
                 ID: 19,
                 response: 19,
-                parameters: [{ name: 'holidayscheduleid', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "holidayscheduleid", type: enums_1.DataType.UINT8 }],
             },
             setUserType: {
                 ID: 20,
                 response: 20,
                 parameters: [
-                    { name: 'userid', type: enums_1.DataType.UINT16 },
-                    { name: 'usertype', type: enums_1.DataType.UINT8 },
+                    { name: "userid", type: enums_1.DataType.UINT16 },
+                    { name: "usertype", type: enums_1.DataType.UINT8 },
                 ],
             },
             getUserType: {
                 ID: 21,
                 response: 21,
-                parameters: [{ name: 'userid', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "userid", type: enums_1.DataType.UINT16 }],
             },
             setRfidCode: {
                 ID: 22,
                 response: 22,
                 parameters: [
-                    { name: 'userid', type: enums_1.DataType.UINT16 },
-                    { name: 'userstatus', type: enums_1.DataType.UINT8 },
-                    { name: 'usertype', type: enums_1.DataType.UINT8 },
-                    { name: 'pincodevalue', type: enums_1.DataType.CHAR_STR },
+                    { name: "userid", type: enums_1.DataType.UINT16 },
+                    { name: "userstatus", type: enums_1.DataType.UINT8 },
+                    { name: "usertype", type: enums_1.DataType.UINT8 },
+                    { name: "pincodevalue", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             getRfidCode: {
                 ID: 23,
                 response: 23,
-                parameters: [{ name: 'userid', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "userid", type: enums_1.DataType.UINT16 }],
             },
             clearRfidCode: {
                 ID: 24,
                 response: 24,
-                parameters: [{ name: 'userid', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "userid", type: enums_1.DataType.UINT16 }],
             },
             clearAllRfidCodes: {
                 ID: 25,
@@ -1544,175 +1881,175 @@ exports.Clusters = {
         commandsResponse: {
             lockDoorRsp: {
                 ID: 0,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             unlockDoorRsp: {
                 ID: 1,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             toggleDoorRsp: {
                 ID: 2,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             unlockWithTimeoutRsp: {
                 ID: 3,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             getLogRecordRsp: {
                 ID: 4,
                 parameters: [
-                    { name: 'logentryid', type: enums_1.DataType.UINT16 },
-                    { name: 'timestamp', type: enums_1.DataType.UINT32 },
-                    { name: 'eventtype', type: enums_1.DataType.UINT8 },
-                    { name: 'source', type: enums_1.DataType.UINT8 },
-                    { name: 'eventidalarmcode', type: enums_1.DataType.UINT8 },
-                    { name: 'userid', type: enums_1.DataType.UINT16 },
-                    { name: 'pincodevalue', type: enums_1.DataType.CHAR_STR },
+                    { name: "logentryid", type: enums_1.DataType.UINT16 },
+                    { name: "timestamp", type: enums_1.DataType.UINT32 },
+                    { name: "eventtype", type: enums_1.DataType.UINT8 },
+                    { name: "source", type: enums_1.DataType.UINT8 },
+                    { name: "eventidalarmcode", type: enums_1.DataType.UINT8 },
+                    { name: "userid", type: enums_1.DataType.UINT16 },
+                    { name: "pincodevalue", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             setPinCodeRsp: {
                 ID: 5,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             getPinCodeRsp: {
                 ID: 6,
                 parameters: [
-                    { name: 'userid', type: enums_1.DataType.UINT16 },
-                    { name: 'userstatus', type: enums_1.DataType.UINT8 },
-                    { name: 'usertype', type: enums_1.DataType.UINT8 },
-                    { name: 'pincodevalue', type: enums_1.DataType.CHAR_STR },
+                    { name: "userid", type: enums_1.DataType.UINT16 },
+                    { name: "userstatus", type: enums_1.DataType.UINT8 },
+                    { name: "usertype", type: enums_1.DataType.UINT8 },
+                    { name: "pincodevalue", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             clearPinCodeRsp: {
                 ID: 7,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             clearAllPinCodesRsp: {
                 ID: 8,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             setUserStatusRsp: {
                 ID: 9,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             getUserStatusRsp: {
                 ID: 10,
                 parameters: [
-                    { name: 'userid', type: enums_1.DataType.UINT16 },
-                    { name: 'userstatus', type: enums_1.DataType.UINT8 },
+                    { name: "userid", type: enums_1.DataType.UINT16 },
+                    { name: "userstatus", type: enums_1.DataType.UINT8 },
                 ],
             },
             setWeekDayScheduleRsp: {
                 ID: 11,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             getWeekDayScheduleRsp: {
                 ID: 12,
                 parameters: [
-                    { name: 'scheduleid', type: enums_1.DataType.UINT8 },
-                    { name: 'userid', type: enums_1.DataType.UINT16 },
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'daysmask', type: enums_1.DataType.UINT8 },
-                    { name: 'starthour', type: enums_1.DataType.UINT8 },
-                    { name: 'startminute', type: enums_1.DataType.UINT8 },
-                    { name: 'endhour', type: enums_1.DataType.UINT8 },
-                    { name: 'endminute', type: enums_1.DataType.UINT8 },
+                    { name: "scheduleid", type: enums_1.DataType.UINT8 },
+                    { name: "userid", type: enums_1.DataType.UINT16 },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    { name: "daysmask", type: enums_1.DataType.UINT8 },
+                    { name: "starthour", type: enums_1.DataType.UINT8 },
+                    { name: "startminute", type: enums_1.DataType.UINT8 },
+                    { name: "endhour", type: enums_1.DataType.UINT8 },
+                    { name: "endminute", type: enums_1.DataType.UINT8 },
                 ],
             },
             clearWeekDayScheduleRsp: {
                 ID: 13,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             setYearDayScheduleRsp: {
                 ID: 14,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             getYearDayScheduleRsp: {
                 ID: 15,
                 parameters: [
-                    { name: 'scheduleid', type: enums_1.DataType.UINT8 },
-                    { name: 'userid', type: enums_1.DataType.UINT16 },
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'zigbeelocalstarttime', type: enums_1.DataType.UINT32 },
-                    { name: 'zigbeelocalendtime', type: enums_1.DataType.UINT32 },
+                    { name: "scheduleid", type: enums_1.DataType.UINT8 },
+                    { name: "userid", type: enums_1.DataType.UINT16 },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    { name: "zigbeelocalstarttime", type: enums_1.DataType.UINT32 },
+                    { name: "zigbeelocalendtime", type: enums_1.DataType.UINT32 },
                 ],
             },
             clearYearDayScheduleRsp: {
                 ID: 16,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             setHolidayScheduleRsp: {
                 ID: 17,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             getHolidayScheduleRsp: {
                 ID: 18,
                 parameters: [
-                    { name: 'holidayscheduleid', type: enums_1.DataType.UINT8 },
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'zigbeelocalstarttime', type: enums_1.DataType.UINT32 },
-                    { name: 'zigbeelocalendtime', type: enums_1.DataType.UINT32 },
-                    { name: 'opermodelduringholiday', type: enums_1.DataType.UINT8 },
+                    { name: "holidayscheduleid", type: enums_1.DataType.UINT8 },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    { name: "zigbeelocalstarttime", type: enums_1.DataType.UINT32 },
+                    { name: "zigbeelocalendtime", type: enums_1.DataType.UINT32 },
+                    { name: "opermodelduringholiday", type: enums_1.DataType.UINT8 },
                 ],
             },
             clearHolidayScheduleRsp: {
                 ID: 19,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             setUserTypeRsp: {
                 ID: 20,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             getUserTypeRsp: {
                 ID: 21,
                 parameters: [
-                    { name: 'userid', type: enums_1.DataType.UINT16 },
-                    { name: 'usertype', type: enums_1.DataType.UINT8 },
+                    { name: "userid", type: enums_1.DataType.UINT16 },
+                    { name: "usertype", type: enums_1.DataType.UINT8 },
                 ],
             },
             setRfidCodeRsp: {
                 ID: 22,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             getRfidCodeRsp: {
                 ID: 23,
                 parameters: [
-                    { name: 'userid', type: enums_1.DataType.UINT16 },
-                    { name: 'userstatus', type: enums_1.DataType.UINT8 },
-                    { name: 'usertype', type: enums_1.DataType.UINT8 },
-                    { name: 'pincodevalue', type: enums_1.DataType.CHAR_STR },
+                    { name: "userid", type: enums_1.DataType.UINT16 },
+                    { name: "userstatus", type: enums_1.DataType.UINT8 },
+                    { name: "usertype", type: enums_1.DataType.UINT8 },
+                    { name: "pincodevalue", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             clearRfidCodeRsp: {
                 ID: 24,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             clearAllRfidCodesRsp: {
                 ID: 25,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             operationEventNotification: {
                 ID: 32,
                 parameters: [
-                    { name: 'opereventsrc', type: enums_1.DataType.UINT8 },
-                    { name: 'opereventcode', type: enums_1.DataType.UINT8 },
-                    { name: 'userid', type: enums_1.DataType.UINT16 },
-                    { name: 'pin', type: enums_1.DataType.OCTET_STR },
-                    { name: 'zigbeelocaltime', type: enums_1.DataType.UINT32 },
-                    { name: 'data', type: enums_1.DataType.UINT8 },
+                    { name: "opereventsrc", type: enums_1.DataType.UINT8 },
+                    { name: "opereventcode", type: enums_1.DataType.UINT8 },
+                    { name: "userid", type: enums_1.DataType.UINT16 },
+                    { name: "pin", type: enums_1.DataType.OCTET_STR },
+                    { name: "zigbeelocaltime", type: enums_1.DataType.UINT32 },
+                    { name: "data", type: enums_1.DataType.UINT8 },
                 ],
             },
             programmingEventNotification: {
                 ID: 33,
                 parameters: [
-                    { name: 'programeventsrc', type: enums_1.DataType.UINT8 },
-                    { name: 'programeventcode', type: enums_1.DataType.UINT8 },
-                    { name: 'userid', type: enums_1.DataType.UINT16 },
-                    { name: 'pin', type: enums_1.DataType.OCTET_STR },
-                    { name: 'usertype', type: enums_1.DataType.UINT8 },
-                    { name: 'userstatus', type: enums_1.DataType.UINT8 },
-                    { name: 'zigbeelocaltime', type: enums_1.DataType.UINT32 },
-                    { name: 'data', type: enums_1.DataType.UINT8 },
+                    { name: "programeventsrc", type: enums_1.DataType.UINT8 },
+                    { name: "programeventcode", type: enums_1.DataType.UINT8 },
+                    { name: "userid", type: enums_1.DataType.UINT16 },
+                    { name: "pin", type: enums_1.DataType.OCTET_STR },
+                    { name: "usertype", type: enums_1.DataType.UINT8 },
+                    { name: "userstatus", type: enums_1.DataType.UINT8 },
+                    { name: "zigbeelocaltime", type: enums_1.DataType.UINT32 },
+                    { name: "data", type: enums_1.DataType.UINT8 },
                 ],
             },
         },
@@ -1775,25 +2112,25 @@ exports.Clusters = {
             },
             goToLiftValue: {
                 ID: 4,
-                parameters: [{ name: 'liftvalue', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "liftvalue", type: enums_1.DataType.UINT16 }],
             },
             goToLiftPercentage: {
                 ID: 5,
-                parameters: [{ name: 'percentageliftvalue', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "percentageliftvalue", type: enums_1.DataType.UINT8 }],
             },
             goToTiltValue: {
                 ID: 7,
-                parameters: [{ name: 'tiltvalue', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "tiltvalue", type: enums_1.DataType.UINT16 }],
             },
             goToTiltPercentage: {
                 ID: 8,
-                parameters: [{ name: 'percentagetiltvalue', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "percentagetiltvalue", type: enums_1.DataType.UINT8 }],
             },
             elkoStopOrStepLiftPercentage: {
                 ID: 0x80,
                 parameters: [
-                    { name: 'direction', type: enums_1.DataType.UINT16 },
-                    { name: 'stepvalue', type: enums_1.DataType.UINT16 },
+                    { name: "direction", type: enums_1.DataType.UINT16 },
+                    { name: "stepvalue", type: enums_1.DataType.UINT16 },
                 ],
             },
         },
@@ -1816,7 +2153,7 @@ exports.Clusters = {
         commands: {
             goToPercent: {
                 ID: 0,
-                parameters: [{ name: 'percentOpen', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "percentOpen", type: enums_1.DataType.UINT8 }],
             },
             stop: {
                 ID: 1,
@@ -1939,6 +2276,9 @@ exports.Clusters = {
             danfossRoomFloorSensorMode: { ID: 0x4120, type: enums_1.DataType.ENUM8, manufacturerCode: manufacturerCode_1.ManufacturerCode.DANFOSS_A_S },
             danfossFloorMinSetpoint: { ID: 0x4121, type: enums_1.DataType.INT16, manufacturerCode: manufacturerCode_1.ManufacturerCode.DANFOSS_A_S },
             danfossFloorMaxSetpoint: { ID: 0x4122, type: enums_1.DataType.INT16, manufacturerCode: manufacturerCode_1.ManufacturerCode.DANFOSS_A_S },
+            danfossScheduleTypeUsed: { ID: 0x4130, type: enums_1.DataType.ENUM8, manufacturerCode: manufacturerCode_1.ManufacturerCode.DANFOSS_A_S },
+            danfossIcon2PreHeat: { ID: 0x4131, type: enums_1.DataType.ENUM8, manufacturerCode: manufacturerCode_1.ManufacturerCode.DANFOSS_A_S },
+            danfossIcon2PreHeatStatus: { ID: 0x414f, type: enums_1.DataType.ENUM8, manufacturerCode: manufacturerCode_1.ManufacturerCode.DANFOSS_A_S },
             elkoLoad: { ID: 0x0401, type: enums_1.DataType.UINT16 },
             elkoDisplayText: { ID: 0x0402, type: enums_1.DataType.CHAR_STR },
             elkoSensor: { ID: 0x0403, type: enums_1.DataType.ENUM8 },
@@ -1964,24 +2304,25 @@ exports.Clusters = {
             setpointRaiseLower: {
                 ID: 0,
                 parameters: [
-                    { name: 'mode', type: enums_1.DataType.UINT8 },
-                    { name: 'amount', type: enums_1.DataType.INT8 },
+                    { name: "mode", type: enums_1.DataType.UINT8 },
+                    { name: "amount", type: enums_1.DataType.INT8 },
                 ],
             },
             setWeeklySchedule: {
                 ID: 1,
                 parameters: [
-                    { name: 'numoftrans', type: enums_1.DataType.UINT8 },
-                    { name: 'dayofweek', type: enums_1.DataType.UINT8 },
-                    { name: 'mode', type: enums_1.DataType.UINT8 },
-                    { name: 'transitions', type: enums_1.BuffaloZclDataType.LIST_THERMO_TRANSITIONS },
+                    { name: "numoftrans", type: enums_1.DataType.UINT8 },
+                    { name: "dayofweek", type: enums_1.DataType.UINT8 },
+                    { name: "mode", type: enums_1.DataType.UINT8 },
+                    { name: "transitions", type: enums_1.BuffaloZclDataType.LIST_THERMO_TRANSITIONS },
                 ],
             },
             getWeeklySchedule: {
                 ID: 2,
+                response: 0,
                 parameters: [
-                    { name: 'daystoreturn', type: enums_1.DataType.UINT8 },
-                    { name: 'modetoreturn', type: enums_1.DataType.UINT8 },
+                    { name: "daystoreturn", type: enums_1.DataType.UINT8 },
+                    { name: "modetoreturn", type: enums_1.DataType.UINT8 },
                 ],
             },
             clearWeeklySchedule: {
@@ -1990,39 +2331,40 @@ exports.Clusters = {
             },
             getRelayStatusLog: {
                 ID: 4,
+                response: 1,
                 parameters: [],
             },
             danfossSetpointCommand: {
                 ID: 64,
                 parameters: [
-                    { name: 'setpointType', type: enums_1.DataType.ENUM8 },
-                    { name: 'setpoint', type: enums_1.DataType.INT16 },
+                    { name: "setpointType", type: enums_1.DataType.ENUM8 },
+                    { name: "setpoint", type: enums_1.DataType.INT16 },
                 ],
             },
             schneiderWiserThermostatBoost: {
                 ID: 0x80,
                 parameters: [
-                    { name: 'command', type: enums_1.DataType.ENUM8 },
-                    { name: 'enable', type: enums_1.DataType.ENUM8 },
-                    { name: 'temperature', type: enums_1.DataType.UINT16 },
-                    { name: 'duration', type: enums_1.DataType.UINT16 },
+                    { name: "command", type: enums_1.DataType.ENUM8 },
+                    { name: "enable", type: enums_1.DataType.ENUM8 },
+                    { name: "temperature", type: enums_1.DataType.UINT16 },
+                    { name: "duration", type: enums_1.DataType.UINT16 },
                 ],
             },
             wiserSmartSetSetpoint: {
                 ID: 224,
                 parameters: [
-                    { name: 'operatingmode', type: enums_1.DataType.UINT8 },
-                    { name: 'zonemode', type: enums_1.DataType.UINT8 },
-                    { name: 'setpoint', type: enums_1.DataType.INT16 },
-                    { name: 'reserved', type: enums_1.DataType.UINT8 },
+                    { name: "operatingmode", type: enums_1.DataType.UINT8 },
+                    { name: "zonemode", type: enums_1.DataType.UINT8 },
+                    { name: "setpoint", type: enums_1.DataType.INT16 },
+                    { name: "reserved", type: enums_1.DataType.UINT8 },
                 ],
             },
             wiserSmartSetFipMode: {
                 ID: 225,
                 parameters: [
-                    { name: 'zonemode', type: enums_1.DataType.UINT8 },
-                    { name: 'fipmode', type: enums_1.DataType.ENUM8 },
-                    { name: 'reserved', type: enums_1.DataType.UINT8 },
+                    { name: "zonemode", type: enums_1.DataType.UINT8 },
+                    { name: "fipmode", type: enums_1.DataType.ENUM8 },
+                    { name: "reserved", type: enums_1.DataType.UINT8 },
                 ],
             },
             wiserSmartCalibrateValve: {
@@ -2038,21 +2380,21 @@ exports.Clusters = {
             getWeeklyScheduleRsp: {
                 ID: 0,
                 parameters: [
-                    { name: 'numoftrans', type: enums_1.DataType.UINT8 },
-                    { name: 'dayofweek', type: enums_1.DataType.UINT8 },
-                    { name: 'mode', type: enums_1.DataType.UINT8 },
-                    { name: 'transitions', type: enums_1.BuffaloZclDataType.LIST_THERMO_TRANSITIONS },
+                    { name: "numoftrans", type: enums_1.DataType.UINT8 },
+                    { name: "dayofweek", type: enums_1.DataType.UINT8 },
+                    { name: "mode", type: enums_1.DataType.UINT8 },
+                    { name: "transitions", type: enums_1.BuffaloZclDataType.LIST_THERMO_TRANSITIONS },
                 ],
             },
             getRelayStatusLogRsp: {
                 ID: 1,
                 parameters: [
-                    { name: 'timeofday', type: enums_1.DataType.UINT16 },
-                    { name: 'relaystatus', type: enums_1.DataType.UINT16 },
-                    { name: 'localtemp', type: enums_1.DataType.UINT16 },
-                    { name: 'humidity', type: enums_1.DataType.UINT8 },
-                    { name: 'setpoint', type: enums_1.DataType.UINT16 },
-                    { name: 'unreadentries', type: enums_1.DataType.UINT16 },
+                    { name: "timeofday", type: enums_1.DataType.UINT16 },
+                    { name: "relaystatus", type: enums_1.DataType.UINT16 },
+                    { name: "localtemp", type: enums_1.DataType.UINT16 },
+                    { name: "humidity", type: enums_1.DataType.UINT8 },
+                    { name: "setpoint", type: enums_1.DataType.UINT16 },
+                    { name: "unreadentries", type: enums_1.DataType.UINT16 },
                 ],
             },
         },
@@ -2154,199 +2496,199 @@ exports.Clusters = {
             moveToHue: {
                 ID: 0,
                 parameters: [
-                    { name: 'hue', type: enums_1.DataType.UINT8 },
-                    { name: 'direction', type: enums_1.DataType.UINT8 },
-                    { name: 'transtime', type: enums_1.DataType.UINT16 },
+                    { name: "hue", type: enums_1.DataType.UINT8 },
+                    { name: "direction", type: enums_1.DataType.UINT8 },
+                    { name: "transtime", type: enums_1.DataType.UINT16 },
                 ],
             },
             moveHue: {
                 ID: 1,
                 parameters: [
-                    { name: 'movemode', type: enums_1.DataType.UINT8 },
-                    { name: 'rate', type: enums_1.DataType.UINT8 },
+                    { name: "movemode", type: enums_1.DataType.UINT8 },
+                    { name: "rate", type: enums_1.DataType.UINT8 },
                 ],
             },
             stepHue: {
                 ID: 2,
                 parameters: [
-                    { name: 'stepmode', type: enums_1.DataType.UINT8 },
-                    { name: 'stepsize', type: enums_1.DataType.UINT8 },
-                    { name: 'transtime', type: enums_1.DataType.UINT8 },
+                    { name: "stepmode", type: enums_1.DataType.UINT8 },
+                    { name: "stepsize", type: enums_1.DataType.UINT8 },
+                    { name: "transtime", type: enums_1.DataType.UINT8 },
                 ],
             },
             moveToSaturation: {
                 ID: 3,
                 parameters: [
-                    { name: 'saturation', type: enums_1.DataType.UINT8 },
-                    { name: 'transtime', type: enums_1.DataType.UINT16 },
+                    { name: "saturation", type: enums_1.DataType.UINT8 },
+                    { name: "transtime", type: enums_1.DataType.UINT16 },
                 ],
             },
             moveSaturation: {
                 ID: 4,
                 parameters: [
-                    { name: 'movemode', type: enums_1.DataType.UINT8 },
-                    { name: 'rate', type: enums_1.DataType.UINT8 },
+                    { name: "movemode", type: enums_1.DataType.UINT8 },
+                    { name: "rate", type: enums_1.DataType.UINT8 },
                 ],
             },
             stepSaturation: {
                 ID: 5,
                 parameters: [
-                    { name: 'stepmode', type: enums_1.DataType.UINT8 },
-                    { name: 'stepsize', type: enums_1.DataType.UINT8 },
-                    { name: 'transtime', type: enums_1.DataType.UINT8 },
+                    { name: "stepmode", type: enums_1.DataType.UINT8 },
+                    { name: "stepsize", type: enums_1.DataType.UINT8 },
+                    { name: "transtime", type: enums_1.DataType.UINT8 },
                 ],
             },
             moveToHueAndSaturation: {
                 ID: 6,
                 parameters: [
-                    { name: 'hue', type: enums_1.DataType.UINT8 },
-                    { name: 'saturation', type: enums_1.DataType.UINT8 },
-                    { name: 'transtime', type: enums_1.DataType.UINT16 },
+                    { name: "hue", type: enums_1.DataType.UINT8 },
+                    { name: "saturation", type: enums_1.DataType.UINT8 },
+                    { name: "transtime", type: enums_1.DataType.UINT16 },
                 ],
             },
             tuyaMoveToHueAndSaturationBrightness: {
                 ID: 6,
                 parameters: [
-                    { name: 'hue', type: enums_1.DataType.UINT8 },
-                    { name: 'saturation', type: enums_1.DataType.UINT8 },
-                    { name: 'transtime', type: enums_1.DataType.UINT16 },
-                    { name: 'brightness', type: enums_1.DataType.UINT8 },
+                    { name: "hue", type: enums_1.DataType.UINT8 },
+                    { name: "saturation", type: enums_1.DataType.UINT8 },
+                    { name: "transtime", type: enums_1.DataType.UINT16 },
+                    { name: "brightness", type: enums_1.DataType.UINT8 },
                 ],
             },
             moveToColor: {
                 ID: 7,
                 parameters: [
-                    { name: 'colorx', type: enums_1.DataType.UINT16 },
-                    { name: 'colory', type: enums_1.DataType.UINT16 },
-                    { name: 'transtime', type: enums_1.DataType.UINT16 },
+                    { name: "colorx", type: enums_1.DataType.UINT16 },
+                    { name: "colory", type: enums_1.DataType.UINT16 },
+                    { name: "transtime", type: enums_1.DataType.UINT16 },
                 ],
             },
             moveColor: {
                 ID: 8,
                 parameters: [
-                    { name: 'ratex', type: enums_1.DataType.INT16 },
-                    { name: 'ratey', type: enums_1.DataType.INT16 },
+                    { name: "ratex", type: enums_1.DataType.INT16 },
+                    { name: "ratey", type: enums_1.DataType.INT16 },
                 ],
             },
             stepColor: {
                 ID: 9,
                 parameters: [
-                    { name: 'stepx', type: enums_1.DataType.INT16 },
-                    { name: 'stepy', type: enums_1.DataType.INT16 },
-                    { name: 'transtime', type: enums_1.DataType.UINT16 },
+                    { name: "stepx", type: enums_1.DataType.INT16 },
+                    { name: "stepy", type: enums_1.DataType.INT16 },
+                    { name: "transtime", type: enums_1.DataType.UINT16 },
                 ],
             },
             moveToColorTemp: {
                 ID: 10,
                 parameters: [
-                    { name: 'colortemp', type: enums_1.DataType.UINT16 },
-                    { name: 'transtime', type: enums_1.DataType.UINT16 },
+                    { name: "colortemp", type: enums_1.DataType.UINT16 },
+                    { name: "transtime", type: enums_1.DataType.UINT16 },
                 ],
             },
             enhancedMoveToHue: {
                 ID: 64,
                 parameters: [
-                    { name: 'enhancehue', type: enums_1.DataType.UINT16 },
-                    { name: 'direction', type: enums_1.DataType.UINT8 },
-                    { name: 'transtime', type: enums_1.DataType.UINT16 },
+                    { name: "enhancehue", type: enums_1.DataType.UINT16 },
+                    { name: "direction", type: enums_1.DataType.UINT8 },
+                    { name: "transtime", type: enums_1.DataType.UINT16 },
                 ],
             },
             enhancedMoveHue: {
                 ID: 65,
                 parameters: [
-                    { name: 'movemode', type: enums_1.DataType.UINT8 },
-                    { name: 'rate', type: enums_1.DataType.UINT16 },
+                    { name: "movemode", type: enums_1.DataType.UINT8 },
+                    { name: "rate", type: enums_1.DataType.UINT16 },
                 ],
             },
             enhancedStepHue: {
                 ID: 66,
                 parameters: [
-                    { name: 'stepmode', type: enums_1.DataType.UINT8 },
-                    { name: 'stepsize', type: enums_1.DataType.UINT16 },
-                    { name: 'transtime', type: enums_1.DataType.UINT16 },
+                    { name: "stepmode", type: enums_1.DataType.UINT8 },
+                    { name: "stepsize", type: enums_1.DataType.UINT16 },
+                    { name: "transtime", type: enums_1.DataType.UINT16 },
                 ],
             },
             enhancedMoveToHueAndSaturation: {
                 ID: 67,
                 parameters: [
-                    { name: 'enhancehue', type: enums_1.DataType.UINT16 },
-                    { name: 'saturation', type: enums_1.DataType.UINT8 },
-                    { name: 'transtime', type: enums_1.DataType.UINT16 },
+                    { name: "enhancehue", type: enums_1.DataType.UINT16 },
+                    { name: "saturation", type: enums_1.DataType.UINT8 },
+                    { name: "transtime", type: enums_1.DataType.UINT16 },
                 ],
             },
             colorLoopSet: {
                 ID: 68,
                 parameters: [
-                    { name: 'updateflags', type: enums_1.DataType.UINT8 },
-                    { name: 'action', type: enums_1.DataType.UINT8 },
-                    { name: 'direction', type: enums_1.DataType.UINT8 },
-                    { name: 'time', type: enums_1.DataType.UINT16 },
-                    { name: 'starthue', type: enums_1.DataType.UINT16 },
+                    { name: "updateflags", type: enums_1.DataType.UINT8 },
+                    { name: "action", type: enums_1.DataType.UINT8 },
+                    { name: "direction", type: enums_1.DataType.UINT8 },
+                    { name: "time", type: enums_1.DataType.UINT16 },
+                    { name: "starthue", type: enums_1.DataType.UINT16 },
                 ],
             },
             stopMoveStep: {
                 ID: 71,
                 parameters: [
-                    { name: 'bits', type: enums_1.DataType.UINT8 },
-                    { name: 'bytee', type: enums_1.DataType.UINT8 },
-                    { name: 'action', type: enums_1.DataType.UINT8 },
-                    { name: 'direction', type: enums_1.DataType.UINT8 },
-                    { name: 'time', type: enums_1.DataType.UINT16 },
-                    { name: 'starthue', type: enums_1.DataType.UINT16 },
+                    { name: "bits", type: enums_1.DataType.UINT8 },
+                    { name: "bytee", type: enums_1.DataType.UINT8 },
+                    { name: "action", type: enums_1.DataType.UINT8 },
+                    { name: "direction", type: enums_1.DataType.UINT8 },
+                    { name: "time", type: enums_1.DataType.UINT16 },
+                    { name: "starthue", type: enums_1.DataType.UINT16 },
                 ],
             },
             moveColorTemp: {
                 ID: 75,
                 parameters: [
-                    { name: 'movemode', type: enums_1.DataType.UINT8 },
-                    { name: 'rate', type: enums_1.DataType.UINT16 },
-                    { name: 'minimum', type: enums_1.DataType.UINT16 },
-                    { name: 'maximum', type: enums_1.DataType.UINT16 },
+                    { name: "movemode", type: enums_1.DataType.UINT8 },
+                    { name: "rate", type: enums_1.DataType.UINT16 },
+                    { name: "minimum", type: enums_1.DataType.UINT16 },
+                    { name: "maximum", type: enums_1.DataType.UINT16 },
                 ],
             },
             stepColorTemp: {
                 ID: 76,
                 parameters: [
-                    { name: 'stepmode', type: enums_1.DataType.UINT8 },
-                    { name: 'stepsize', type: enums_1.DataType.UINT16 },
-                    { name: 'transtime', type: enums_1.DataType.UINT16 },
-                    { name: 'minimum', type: enums_1.DataType.UINT16 },
-                    { name: 'maximum', type: enums_1.DataType.UINT16 },
+                    { name: "stepmode", type: enums_1.DataType.UINT8 },
+                    { name: "stepsize", type: enums_1.DataType.UINT16 },
+                    { name: "transtime", type: enums_1.DataType.UINT16 },
+                    { name: "minimum", type: enums_1.DataType.UINT16 },
+                    { name: "maximum", type: enums_1.DataType.UINT16 },
                 ],
             },
             tuyaSetMinimumBrightness: {
                 ID: 224,
-                parameters: [{ name: 'minimum', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "minimum", type: enums_1.DataType.UINT16 }],
             },
             tuyaMoveToHueAndSaturationBrightness2: {
                 ID: 225,
                 parameters: [
-                    { name: 'hue', type: enums_1.DataType.UINT16 },
-                    { name: 'saturation', type: enums_1.DataType.UINT16 },
-                    { name: 'brightness', type: enums_1.DataType.UINT16 },
+                    { name: "hue", type: enums_1.DataType.UINT16 },
+                    { name: "saturation", type: enums_1.DataType.UINT16 },
+                    { name: "brightness", type: enums_1.DataType.UINT16 },
                 ],
             },
             tuyaRgbMode: {
                 ID: 240,
-                parameters: [{ name: 'enable', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "enable", type: enums_1.DataType.UINT8 }],
             },
             tuyaOnStartUp: {
                 ID: 249,
                 parameters: [
-                    { name: 'mode', type: enums_1.DataType.UINT16 },
-                    { name: 'data', type: enums_1.BuffaloZclDataType.LIST_UINT8 },
+                    { name: "mode", type: enums_1.DataType.UINT16 },
+                    { name: "data", type: enums_1.BuffaloZclDataType.LIST_UINT8 },
                 ],
             },
             tuyaDoNotDisturb: {
                 ID: 250,
-                parameters: [{ name: 'enable', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "enable", type: enums_1.DataType.UINT8 }],
             },
             tuyaOnOffTransitionTime: {
                 ID: 251,
                 parameters: [
-                    { name: 'unknown', type: enums_1.DataType.UINT8 },
-                    { name: 'onTransitionTime', type: enums_1.BuffaloZclDataType.BIG_ENDIAN_UINT24 },
-                    { name: 'offTransitionTime', type: enums_1.BuffaloZclDataType.BIG_ENDIAN_UINT24 },
+                    { name: "unknown", type: enums_1.DataType.UINT8 },
+                    { name: "onTransitionTime", type: enums_1.BuffaloZclDataType.BIG_ENDIAN_UINT24 },
+                    { name: "offTransitionTime", type: enums_1.BuffaloZclDataType.BIG_ENDIAN_UINT24 },
                 ],
             },
         },
@@ -2378,7 +2720,7 @@ exports.Clusters = {
         commandsResponse: {},
     },
     msIlluminanceMeasurement: {
-        ID: 1024,
+        ID: 1024, // 0x0400
         attributes: {
             measuredValue: { ID: 0, type: enums_1.DataType.UINT16 },
             minMeasuredValue: { ID: 1, type: enums_1.DataType.UINT16 },
@@ -2390,7 +2732,7 @@ exports.Clusters = {
         commandsResponse: {},
     },
     msIlluminanceLevelSensing: {
-        ID: 1025,
+        ID: 1025, // 0x0401
         attributes: {
             levelStatus: { ID: 0, type: enums_1.DataType.ENUM8 },
             lightSensorType: { ID: 1, type: enums_1.DataType.ENUM8 },
@@ -2400,7 +2742,7 @@ exports.Clusters = {
         commandsResponse: {},
     },
     msTemperatureMeasurement: {
-        ID: 1026,
+        ID: 1026, // 0x0402
         attributes: {
             measuredValue: { ID: 0, type: enums_1.DataType.INT16 },
             minMeasuredValue: { ID: 1, type: enums_1.DataType.INT16 },
@@ -2414,7 +2756,7 @@ exports.Clusters = {
         commandsResponse: {},
     },
     msPressureMeasurement: {
-        ID: 1027,
+        ID: 1027, // 0x0403
         attributes: {
             measuredValue: { ID: 0, type: enums_1.DataType.INT16 },
             minMeasuredValue: { ID: 1, type: enums_1.DataType.INT16 },
@@ -2430,7 +2772,7 @@ exports.Clusters = {
         commandsResponse: {},
     },
     msFlowMeasurement: {
-        ID: 1028,
+        ID: 1028, // 0x0404
         attributes: {
             measuredValue: { ID: 0, type: enums_1.DataType.UINT16 },
             minMeasuredValue: { ID: 1, type: enums_1.DataType.UINT16 },
@@ -2441,7 +2783,8 @@ exports.Clusters = {
         commandsResponse: {},
     },
     msRelativeHumidity: {
-        ID: 1029,
+        // Water Content
+        ID: 1029, // 0x0405
         attributes: {
             measuredValue: { ID: 0, type: enums_1.DataType.UINT16 },
             minMeasuredValue: { ID: 1, type: enums_1.DataType.UINT16 },
@@ -2453,7 +2796,7 @@ exports.Clusters = {
         commandsResponse: {},
     },
     msOccupancySensing: {
-        ID: 1030,
+        ID: 1030, // 0x0406
         attributes: {
             occupancy: { ID: 0x0000, type: enums_1.DataType.BITMAP8 },
             occupancySensorType: { ID: 0x0001, type: enums_1.DataType.ENUM8 },
@@ -2477,8 +2820,19 @@ exports.Clusters = {
         commands: {},
         commandsResponse: {},
     },
+    msLeafWetness: {
+        ID: 1031, // 0x0407
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.UINT16 },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.UINT16 },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.UINT16 },
+            tolerance: { ID: 3, type: enums_1.DataType.UINT16 },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
     msSoilMoisture: {
-        ID: 1032,
+        ID: 1032, // 0x0408
         attributes: {
             measuredValue: { ID: 0, type: enums_1.DataType.UINT16 },
             minMeasuredValue: { ID: 1, type: enums_1.DataType.UINT16 },
@@ -2489,7 +2843,7 @@ exports.Clusters = {
         commandsResponse: {},
     },
     pHMeasurement: {
-        ID: 1033,
+        ID: 1033, // 0x0409
         attributes: {
             measuredValue: { ID: 0, type: enums_1.DataType.UINT16 },
             minMeasuredValue: { ID: 1, type: enums_1.DataType.UINT16 },
@@ -2499,58 +2853,414 @@ exports.Clusters = {
         commands: {},
         commandsResponse: {},
     },
-    msCO2: {
-        ID: 1037,
+    msElectricalConductivity: {
+        ID: 1034, // 0x040a
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.UINT16 },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.UINT16 },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.UINT16 },
+            tolerance: { ID: 3, type: enums_1.DataType.UINT16 },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msWindSpeed: {
+        ID: 1035, // 0x040b
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.UINT16 },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.UINT16 },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.UINT16 },
+            tolerance: { ID: 3, type: enums_1.DataType.UINT16 },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msCarbonMonoxide: {
+        // CO
+        ID: 1036, // 0x040c
         attributes: {
             measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
             minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
             maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msCO2: {
+        // Carbon Dioxide
+        ID: 1037, // 0x040d
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
             sprutCO2Calibration: { ID: 0x6600, type: enums_1.DataType.BOOLEAN, manufacturerCode: manufacturerCode_1.ManufacturerCode.CUSTOM_SPRUT_DEVICE },
             sprutCO2AutoCalibration: { ID: 0x6601, type: enums_1.DataType.BOOLEAN, manufacturerCode: manufacturerCode_1.ManufacturerCode.CUSTOM_SPRUT_DEVICE },
         },
         commands: {},
         commandsResponse: {},
     },
+    msEthylene: {
+        // CH2
+        ID: 1038, // 0x040e
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msEthyleneOxide: {
+        // C2H4O
+        ID: 1039, // 0x040f
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msHydrogen: {
+        // H
+        ID: 1040, // 0x0410
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msHydrogenSulfide: {
+        // H2S
+        ID: 1041, // 0x0411
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msNitricOxide: {
+        // NO
+        ID: 1042, // 0x0412
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msNitrogenDioxide: {
+        // NO2
+        ID: 1043, // 0x0413
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msOxygen: {
+        // O2
+        ID: 1044, // 0x0414
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msOzone: {
+        // O3
+        ID: 1045, // 0x0415
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msSulfurDioxide: {
+        // SO2
+        ID: 1046, // 0x0416
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msDissolvedOxygen: {
+        // DO
+        ID: 1047, // 0x0417
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msBromate: {
+        ID: 1048, // 0x0418
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msChloramines: {
+        ID: 1049, // 0x0419
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msChlorine: {
+        ID: 1050, // 0x041a
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msFecalColiformAndEColi: {
+        ID: 1051, // 0x041b
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msFluoride: {
+        ID: 1052, // 0x041c
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msHaloaceticAcids: {
+        ID: 1053, // 0x041d
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msTotalTrihalomethanes: {
+        ID: 1054, // 0x041e
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msTotalColiformBacteria: {
+        ID: 1055, // 0x041f
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msTurbidity: {
+        ID: 1056, // 0x0420
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msCopper: {
+        ID: 1057, // 0x0421
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msLead: {
+        ID: 1058, // 0x0422
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msManganese: {
+        ID: 1059, // 0x0423
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msSulfate: {
+        ID: 1060, // 0x0424
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msBromodichloromethane: {
+        ID: 1061, // 0x0425
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msBromoform: {
+        ID: 1062, // 0x0426
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msChlorodibromomethane: {
+        ID: 1063, // 0x0427
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msChloroform: {
+        ID: 1064, // 0x0428
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
+    msSodium: {
+        ID: 1065, // 0x0429
+        attributes: {
+            measuredValue: { ID: 0, type: enums_1.DataType.SINGLE_PREC },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.SINGLE_PREC },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 3, type: enums_1.DataType.SINGLE_PREC },
+        },
+        commands: {},
+        commandsResponse: {},
+    },
     pm25Measurement: {
-        ID: 0x042a,
+        ID: 1066, // 0x042a
         attributes: {
             measuredValue: { ID: 0x0000, type: enums_1.DataType.SINGLE_PREC },
             measuredMinValue: { ID: 0x0001, type: enums_1.DataType.SINGLE_PREC },
             measuredMaxValue: { ID: 0x0002, type: enums_1.DataType.SINGLE_PREC },
-            measuredTolerance: { ID: 0x0003, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 0x0003, type: enums_1.DataType.SINGLE_PREC },
         },
         commands: {},
         commandsResponse: {},
     },
     msFormaldehyde: {
-        ID: 0x042b,
+        ID: 1067, // 0x042b
         attributes: {
             measuredValue: { ID: 0x0000, type: enums_1.DataType.SINGLE_PREC },
             minMeasuredValue: { ID: 0x0001, type: enums_1.DataType.SINGLE_PREC },
             maxMeasuredValue: { ID: 0x0002, type: enums_1.DataType.SINGLE_PREC },
-            measuredTolerance: { ID: 0x0003, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 0x0003, type: enums_1.DataType.SINGLE_PREC },
         },
         commands: {},
         commandsResponse: {},
     },
     pm1Measurement: {
-        ID: 0x042c,
+        // XXX: not in R8 spec?
+        ID: 1068, // 0x042c
         attributes: {
             measuredValue: { ID: 0x0000, type: enums_1.DataType.SINGLE_PREC },
             measuredMinValue: { ID: 0x0001, type: enums_1.DataType.SINGLE_PREC },
             measuredMaxValue: { ID: 0x0002, type: enums_1.DataType.SINGLE_PREC },
-            measuredTolerance: { ID: 0x0003, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 0x0003, type: enums_1.DataType.SINGLE_PREC },
         },
         commands: {},
         commandsResponse: {},
     },
     pm10Measurement: {
-        ID: 0x042d,
+        // XXX: not in R8 spec?
+        ID: 1069, // 0x042d
         attributes: {
             measuredValue: { ID: 0x0000, type: enums_1.DataType.SINGLE_PREC },
             measuredMinValue: { ID: 0x0001, type: enums_1.DataType.SINGLE_PREC },
             measuredMaxValue: { ID: 0x0002, type: enums_1.DataType.SINGLE_PREC },
-            measuredTolerance: { ID: 0x0003, type: enums_1.DataType.SINGLE_PREC },
+            tolerance: { ID: 0x0003, type: enums_1.DataType.SINGLE_PREC },
         },
         commands: {},
         commandsResponse: {},
@@ -2571,8 +3281,8 @@ exports.Clusters = {
             enrollRsp: {
                 ID: 0,
                 parameters: [
-                    { name: 'enrollrspcode', type: enums_1.DataType.UINT8 },
-                    { name: 'zoneid', type: enums_1.DataType.UINT8 },
+                    { name: "enrollrspcode", type: enums_1.DataType.UINT8 },
+                    { name: "zoneid", type: enums_1.DataType.UINT8 },
                 ],
             },
             initNormalOpMode: {
@@ -2581,22 +3291,25 @@ exports.Clusters = {
             },
             initTestMode: {
                 ID: 2,
-                parameters: [],
+                parameters: [
+                    { name: "testModeDuration", type: enums_1.DataType.UINT8 },
+                    { name: "currentZoneSensitivityLevel", type: enums_1.DataType.UINT8 },
+                ],
             },
         },
         commandsResponse: {
             statusChangeNotification: {
                 ID: 0,
                 parameters: [
-                    { name: 'zonestatus', type: enums_1.DataType.UINT16 },
-                    { name: 'extendedstatus', type: enums_1.DataType.UINT8 },
+                    { name: "zonestatus", type: enums_1.DataType.UINT16 },
+                    { name: "extendedstatus", type: enums_1.DataType.UINT8 },
                 ],
             },
             enrollReq: {
                 ID: 1,
                 parameters: [
-                    { name: 'zonetype', type: enums_1.DataType.UINT16 },
-                    { name: 'manucode', type: enums_1.DataType.UINT16 },
+                    { name: "zonetype", type: enums_1.DataType.UINT16 },
+                    { name: "manucode", type: enums_1.DataType.UINT16 },
                 ],
             },
         },
@@ -2609,16 +3322,16 @@ exports.Clusters = {
                 ID: 0,
                 response: 0,
                 parameters: [
-                    { name: 'armmode', type: enums_1.DataType.UINT8 },
-                    { name: 'code', type: enums_1.DataType.CHAR_STR },
-                    { name: 'zoneid', type: enums_1.DataType.UINT8 },
+                    { name: "armmode", type: enums_1.DataType.UINT8 },
+                    { name: "code", type: enums_1.DataType.CHAR_STR },
+                    { name: "zoneid", type: enums_1.DataType.UINT8 },
                 ],
             },
             bypass: {
                 ID: 1,
                 parameters: [
-                    { name: 'numofzones', type: enums_1.DataType.UINT8 },
-                    { name: 'zoneidlist', type: enums_1.BuffaloZclDataType.LIST_UINT8 },
+                    { name: "numofzones", type: enums_1.DataType.UINT8 },
+                    { name: "zoneidlist", type: enums_1.BuffaloZclDataType.LIST_UINT8 },
                 ],
             },
             emergency: {
@@ -2641,7 +3354,7 @@ exports.Clusters = {
             getZoneInfo: {
                 ID: 6,
                 response: 2,
-                parameters: [{ name: 'zoneid', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "zoneid", type: enums_1.DataType.UINT8 }],
             },
             getPanelStatus: {
                 ID: 7,
@@ -2656,95 +3369,95 @@ exports.Clusters = {
                 ID: 9,
                 response: 8,
                 parameters: [
-                    { name: 'startzoneid', type: enums_1.DataType.UINT8 },
-                    { name: 'maxnumzoneid', type: enums_1.DataType.UINT8 },
-                    { name: 'zonestatusmaskflag', type: enums_1.DataType.UINT8 },
-                    { name: 'zonestatusmask', type: enums_1.DataType.UINT16 },
+                    { name: "startzoneid", type: enums_1.DataType.UINT8 },
+                    { name: "maxnumzoneid", type: enums_1.DataType.UINT8 },
+                    { name: "zonestatusmaskflag", type: enums_1.DataType.UINT8 },
+                    { name: "zonestatusmask", type: enums_1.DataType.UINT16 },
                 ],
             },
         },
         commandsResponse: {
             armRsp: {
                 ID: 0,
-                parameters: [{ name: 'armnotification', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "armnotification", type: enums_1.DataType.UINT8 }],
             },
             getZoneIDMapRsp: {
                 ID: 1,
                 parameters: [
-                    { name: 'zoneidmapsection0', type: enums_1.DataType.UINT16 },
-                    { name: 'zoneidmapsection1', type: enums_1.DataType.UINT16 },
-                    { name: 'zoneidmapsection2', type: enums_1.DataType.UINT16 },
-                    { name: 'zoneidmapsection3', type: enums_1.DataType.UINT16 },
-                    { name: 'zoneidmapsection4', type: enums_1.DataType.UINT16 },
-                    { name: 'zoneidmapsection5', type: enums_1.DataType.UINT16 },
-                    { name: 'zoneidmapsection6', type: enums_1.DataType.UINT16 },
-                    { name: 'zoneidmapsection7', type: enums_1.DataType.UINT16 },
-                    { name: 'zoneidmapsection8', type: enums_1.DataType.UINT16 },
-                    { name: 'zoneidmapsection9', type: enums_1.DataType.UINT16 },
-                    { name: 'zoneidmapsection10', type: enums_1.DataType.UINT16 },
-                    { name: 'zoneidmapsection11', type: enums_1.DataType.UINT16 },
-                    { name: 'zoneidmapsection12', type: enums_1.DataType.UINT16 },
-                    { name: 'zoneidmapsection13', type: enums_1.DataType.UINT16 },
-                    { name: 'zoneidmapsection14', type: enums_1.DataType.UINT16 },
-                    { name: 'zoneidmapsection15', type: enums_1.DataType.UINT16 },
+                    { name: "zoneidmapsection0", type: enums_1.DataType.UINT16 },
+                    { name: "zoneidmapsection1", type: enums_1.DataType.UINT16 },
+                    { name: "zoneidmapsection2", type: enums_1.DataType.UINT16 },
+                    { name: "zoneidmapsection3", type: enums_1.DataType.UINT16 },
+                    { name: "zoneidmapsection4", type: enums_1.DataType.UINT16 },
+                    { name: "zoneidmapsection5", type: enums_1.DataType.UINT16 },
+                    { name: "zoneidmapsection6", type: enums_1.DataType.UINT16 },
+                    { name: "zoneidmapsection7", type: enums_1.DataType.UINT16 },
+                    { name: "zoneidmapsection8", type: enums_1.DataType.UINT16 },
+                    { name: "zoneidmapsection9", type: enums_1.DataType.UINT16 },
+                    { name: "zoneidmapsection10", type: enums_1.DataType.UINT16 },
+                    { name: "zoneidmapsection11", type: enums_1.DataType.UINT16 },
+                    { name: "zoneidmapsection12", type: enums_1.DataType.UINT16 },
+                    { name: "zoneidmapsection13", type: enums_1.DataType.UINT16 },
+                    { name: "zoneidmapsection14", type: enums_1.DataType.UINT16 },
+                    { name: "zoneidmapsection15", type: enums_1.DataType.UINT16 },
                 ],
             },
             getZoneInfoRsp: {
                 ID: 2,
                 parameters: [
-                    { name: 'zoneid', type: enums_1.DataType.UINT8 },
-                    { name: 'zonetype', type: enums_1.DataType.UINT16 },
-                    { name: 'ieeeaddr', type: enums_1.DataType.IEEE_ADDR },
-                    { name: 'zonelabel', type: enums_1.DataType.CHAR_STR },
+                    { name: "zoneid", type: enums_1.DataType.UINT8 },
+                    { name: "zonetype", type: enums_1.DataType.UINT16 },
+                    { name: "ieeeaddr", type: enums_1.DataType.IEEE_ADDR },
+                    { name: "zonelabel", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             zoneStatusChanged: {
                 ID: 3,
                 parameters: [
-                    { name: 'zoneid', type: enums_1.DataType.UINT8 },
-                    { name: 'zonestatus', type: enums_1.DataType.UINT16 },
-                    { name: 'audiblenotif', type: enums_1.DataType.UINT8 },
-                    { name: 'zonelabel', type: enums_1.DataType.CHAR_STR },
+                    { name: "zoneid", type: enums_1.DataType.UINT8 },
+                    { name: "zonestatus", type: enums_1.DataType.UINT16 },
+                    { name: "audiblenotif", type: enums_1.DataType.UINT8 },
+                    { name: "zonelabel", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             panelStatusChanged: {
                 ID: 4,
                 parameters: [
-                    { name: 'panelstatus', type: enums_1.DataType.UINT8 },
-                    { name: 'secondsremain', type: enums_1.DataType.UINT8 },
-                    { name: 'audiblenotif', type: enums_1.DataType.UINT8 },
-                    { name: 'alarmstatus', type: enums_1.DataType.UINT8 },
+                    { name: "panelstatus", type: enums_1.DataType.UINT8 },
+                    { name: "secondsremain", type: enums_1.DataType.UINT8 },
+                    { name: "audiblenotif", type: enums_1.DataType.UINT8 },
+                    { name: "alarmstatus", type: enums_1.DataType.UINT8 },
                 ],
             },
             getPanelStatusRsp: {
                 ID: 5,
                 parameters: [
-                    { name: 'panelstatus', type: enums_1.DataType.UINT8 },
-                    { name: 'secondsremain', type: enums_1.DataType.UINT8 },
-                    { name: 'audiblenotif', type: enums_1.DataType.UINT8 },
-                    { name: 'alarmstatus', type: enums_1.DataType.UINT8 },
+                    { name: "panelstatus", type: enums_1.DataType.UINT8 },
+                    { name: "secondsremain", type: enums_1.DataType.UINT8 },
+                    { name: "audiblenotif", type: enums_1.DataType.UINT8 },
+                    { name: "alarmstatus", type: enums_1.DataType.UINT8 },
                 ],
             },
             setBypassedZoneList: {
                 ID: 6,
                 parameters: [
-                    { name: 'numofzones', type: enums_1.DataType.UINT8 },
-                    { name: 'zoneid', type: enums_1.BuffaloZclDataType.LIST_UINT8 },
+                    { name: "numofzones", type: enums_1.DataType.UINT8 },
+                    { name: "zoneid", type: enums_1.BuffaloZclDataType.LIST_UINT8 },
                 ],
             },
             bypassRsp: {
                 ID: 7,
                 parameters: [
-                    { name: 'numofzones', type: enums_1.DataType.UINT8 },
-                    { name: 'bypassresult', type: enums_1.BuffaloZclDataType.LIST_UINT8 },
+                    { name: "numofzones", type: enums_1.DataType.UINT8 },
+                    { name: "bypassresult", type: enums_1.BuffaloZclDataType.LIST_UINT8 },
                 ],
             },
             getZoneStatusRsp: {
                 ID: 8,
                 parameters: [
-                    { name: 'zonestatuscomplete', type: enums_1.DataType.UINT8 },
-                    { name: 'numofzones', type: enums_1.DataType.UINT8 },
-                    { name: 'zoneinfo', type: enums_1.BuffaloZclDataType.LIST_ZONEINFO },
+                    { name: "zonestatuscomplete", type: enums_1.DataType.UINT8 },
+                    { name: "numofzones", type: enums_1.DataType.UINT8 },
+                    { name: "zoneinfo", type: enums_1.BuffaloZclDataType.LIST_ZONEINFO },
                 ],
             },
         },
@@ -2758,15 +3471,15 @@ exports.Clusters = {
             startWarning: {
                 ID: 0,
                 parameters: [
-                    { name: 'startwarninginfo', type: enums_1.DataType.UINT8 },
-                    { name: 'warningduration', type: enums_1.DataType.UINT16 },
-                    { name: 'strobedutycycle', type: enums_1.DataType.UINT8 },
-                    { name: 'strobelevel', type: enums_1.DataType.UINT8 },
+                    { name: "startwarninginfo", type: enums_1.DataType.UINT8 },
+                    { name: "warningduration", type: enums_1.DataType.UINT16 },
+                    { name: "strobedutycycle", type: enums_1.DataType.UINT8 },
+                    { name: "strobelevel", type: enums_1.DataType.UINT8 },
                 ],
             },
             squawk: {
                 ID: 1,
-                parameters: [{ name: 'squawkinfo', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "squawkinfo", type: enums_1.DataType.UINT8 }],
             },
         },
         commandsResponse: {},
@@ -2781,20 +3494,20 @@ exports.Clusters = {
         commands: {
             matchProtocolAddr: {
                 ID: 0,
-                parameters: [{ name: 'protocoladdr', type: enums_1.DataType.CHAR_STR }],
+                parameters: [{ name: "protocoladdr", type: enums_1.DataType.CHAR_STR }],
             },
         },
         commandsResponse: {
             matchProtocolAddrRsp: {
                 ID: 0,
                 parameters: [
-                    { name: 'devieeeaddr', type: enums_1.DataType.IEEE_ADDR },
-                    { name: 'protocoladdr', type: enums_1.DataType.CHAR_STR },
+                    { name: "devieeeaddr", type: enums_1.DataType.IEEE_ADDR },
+                    { name: "protocoladdr", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             advertiseProtocolAddr: {
                 ID: 1,
-                parameters: [{ name: 'protocoladdr', type: enums_1.DataType.CHAR_STR }],
+                parameters: [{ name: "protocoladdr", type: enums_1.DataType.CHAR_STR }],
             },
         },
     },
@@ -2804,7 +3517,7 @@ exports.Clusters = {
         commands: {
             transferNpdu: {
                 ID: 0,
-                parameters: [{ name: 'npdu', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "npdu", type: enums_1.DataType.UINT8 }],
             },
         },
         commandsResponse: {},
@@ -3412,20 +4125,56 @@ exports.Clusters = {
         ID: 0x0704,
         attributes: {},
         commands: {
+            requestTunnel: {
+                ID: 0,
+                response: 0,
+                parameters: [
+                    { name: "protocolId", type: enums_1.DataType.ENUM8 },
+                    { name: "manufCode", type: enums_1.DataType.UINT16 },
+                    { name: "flowControl", type: enums_1.DataType.BOOLEAN },
+                    { name: "mtuSize", type: enums_1.DataType.UINT16 },
+                ],
+            },
+            closeTunnel: {
+                ID: 1,
+                parameters: [{ name: "tunnelId", type: enums_1.DataType.UINT16 }],
+            },
             transferData: {
                 ID: 2,
                 parameters: [
-                    { name: 'tunnelID', type: enums_1.DataType.UINT16 },
-                    { name: 'data', type: enums_1.BuffaloZclDataType.BUFFER },
+                    { name: "tunnelId", type: enums_1.DataType.UINT16 },
+                    { name: "data", type: enums_1.BuffaloZclDataType.BUFFER },
+                ],
+            },
+            transferDataError: {
+                ID: 3,
+                parameters: [
+                    { name: "tunnelId", type: enums_1.DataType.UINT16 },
+                    { name: "status", type: enums_1.DataType.UINT8 },
                 ],
             },
         },
         commandsResponse: {
+            requestTunnelResp: {
+                ID: 0,
+                parameters: [
+                    { name: "tunnelId", type: enums_1.DataType.UINT16 },
+                    { name: "tunnelStatus", type: enums_1.DataType.UINT8 },
+                    { name: "mtuSize", type: enums_1.DataType.UINT16 },
+                ],
+            },
             transferDataResp: {
                 ID: 1,
                 parameters: [
-                    { name: 'tunnelID', type: enums_1.DataType.UINT16 },
-                    { name: 'data', type: enums_1.BuffaloZclDataType.BUFFER },
+                    { name: "tunnelId", type: enums_1.DataType.UINT16 },
+                    { name: "data", type: enums_1.BuffaloZclDataType.BUFFER },
+                ],
+            },
+            transferDataErrorResp: {
+                ID: 2,
+                parameters: [
+                    { name: "tunnelId", type: enums_1.DataType.UINT16 },
+                    { name: "status", type: enums_1.DataType.UINT8 },
                 ],
             },
         },
@@ -3524,22 +4273,22 @@ exports.Clusters = {
             getAlertsRsp: {
                 ID: 0,
                 parameters: [
-                    { name: 'alertscount', type: enums_1.DataType.UINT8 },
-                    { name: 'aalert', type: enums_1.BuffaloZclDataType.LIST_UINT24 },
+                    { name: "alertscount", type: enums_1.DataType.UINT8 },
+                    { name: "aalert", type: enums_1.BuffaloZclDataType.LIST_UINT24 },
                 ],
             },
             alertsNotification: {
                 ID: 1,
                 parameters: [
-                    { name: 'alertscount', type: enums_1.DataType.UINT8 },
-                    { name: 'aalert', type: enums_1.BuffaloZclDataType.LIST_UINT24 },
+                    { name: "alertscount", type: enums_1.DataType.UINT8 },
+                    { name: "aalert", type: enums_1.BuffaloZclDataType.LIST_UINT24 },
                 ],
             },
             eventNotification: {
                 ID: 2,
                 parameters: [
-                    { name: 'eventheader', type: enums_1.DataType.UINT8 },
-                    { name: 'eventid', type: enums_1.DataType.UINT8 },
+                    { name: "eventheader", type: enums_1.DataType.UINT8 },
+                    { name: "eventid", type: enums_1.DataType.UINT8 },
                 ],
             },
         },
@@ -3553,7 +4302,7 @@ exports.Clusters = {
         commands: {
             log: {
                 ID: 0,
-                parameters: [{ name: 'logid', type: enums_1.DataType.UINT32 }],
+                parameters: [{ name: "logid", type: enums_1.DataType.UINT32 }],
             },
             logQueue: {
                 ID: 1,
@@ -3564,33 +4313,33 @@ exports.Clusters = {
             logNotification: {
                 ID: 0,
                 parameters: [
-                    { name: 'timestamp', type: enums_1.DataType.UINT32 },
-                    { name: 'logid', type: enums_1.DataType.UINT32 },
-                    { name: 'loglength', type: enums_1.DataType.UINT32 },
-                    { name: 'logpayload', type: enums_1.BuffaloZclDataType.LIST_UINT8 },
+                    { name: "timestamp", type: enums_1.DataType.UINT32 },
+                    { name: "logid", type: enums_1.DataType.UINT32 },
+                    { name: "loglength", type: enums_1.DataType.UINT32 },
+                    { name: "logpayload", type: enums_1.BuffaloZclDataType.LIST_UINT8 },
                 ],
             },
             logRsp: {
                 ID: 1,
                 parameters: [
-                    { name: 'timestamp', type: enums_1.DataType.UINT32 },
-                    { name: 'logid', type: enums_1.DataType.UINT32 },
-                    { name: 'loglength', type: enums_1.DataType.UINT32 },
-                    { name: 'logpayload', type: enums_1.BuffaloZclDataType.LIST_UINT8 },
+                    { name: "timestamp", type: enums_1.DataType.UINT32 },
+                    { name: "logid", type: enums_1.DataType.UINT32 },
+                    { name: "loglength", type: enums_1.DataType.UINT32 },
+                    { name: "logpayload", type: enums_1.BuffaloZclDataType.LIST_UINT8 },
                 ],
             },
             logQueueRsp: {
                 ID: 2,
                 parameters: [
-                    { name: 'logqueuesize', type: enums_1.DataType.UINT8 },
-                    { name: 'logid', type: enums_1.BuffaloZclDataType.LIST_UINT32 },
+                    { name: "logqueuesize", type: enums_1.DataType.UINT8 },
+                    { name: "logid", type: enums_1.BuffaloZclDataType.LIST_UINT32 },
                 ],
             },
             statisticsAvailable: {
                 ID: 3,
                 parameters: [
-                    { name: 'logqueuesize', type: enums_1.DataType.UINT8 },
-                    { name: 'logid', type: enums_1.BuffaloZclDataType.LIST_UINT32 },
+                    { name: "logqueuesize", type: enums_1.DataType.UINT8 },
+                    { name: "logid", type: enums_1.BuffaloZclDataType.LIST_UINT32 },
                 ],
             },
         },
@@ -3757,9 +4506,9 @@ exports.Clusters = {
             getMeasurementProfile: {
                 ID: 1,
                 parameters: [
-                    { name: 'attrId', type: enums_1.DataType.UINT16 },
-                    { name: 'starttime', type: enums_1.DataType.UINT32 },
-                    { name: 'numofuntervals', type: enums_1.DataType.UINT8 },
+                    { name: "attrId", type: enums_1.DataType.UINT16 },
+                    { name: "starttime", type: enums_1.DataType.UINT32 },
+                    { name: "numofuntervals", type: enums_1.DataType.UINT8 },
                 ],
             },
         },
@@ -3767,22 +4516,22 @@ exports.Clusters = {
             getProfileInfoRsp: {
                 ID: 0,
                 parameters: [
-                    { name: 'profilecount', type: enums_1.DataType.UINT8 },
-                    { name: 'profileintervalperiod', type: enums_1.DataType.UINT8 },
-                    { name: 'maxnumofintervals', type: enums_1.DataType.UINT8 },
-                    { name: 'numofattrs', type: enums_1.DataType.UINT8 },
-                    { name: 'listofattr', type: enums_1.BuffaloZclDataType.LIST_UINT16 },
+                    { name: "profilecount", type: enums_1.DataType.UINT8 },
+                    { name: "profileintervalperiod", type: enums_1.DataType.UINT8 },
+                    { name: "maxnumofintervals", type: enums_1.DataType.UINT8 },
+                    { name: "numofattrs", type: enums_1.DataType.UINT8 },
+                    { name: "listofattr", type: enums_1.BuffaloZclDataType.LIST_UINT16 },
                 ],
             },
             getMeasurementProfileRsp: {
                 ID: 1,
                 parameters: [
-                    { name: 'starttime', type: enums_1.DataType.UINT32 },
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'profileintervalperiod', type: enums_1.DataType.UINT8 },
-                    { name: 'numofintervalsdeliv', type: enums_1.DataType.UINT8 },
-                    { name: 'attrId', type: enums_1.DataType.UINT16 },
-                    { name: 'intervals', type: enums_1.BuffaloZclDataType.LIST_UINT8 },
+                    { name: "starttime", type: enums_1.DataType.UINT32 },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    { name: "profileintervalperiod", type: enums_1.DataType.UINT8 },
+                    { name: "numofintervalsdeliv", type: enums_1.DataType.UINT8 },
+                    { name: "attrId", type: enums_1.DataType.UINT16 },
+                    { name: "intervals", type: enums_1.BuffaloZclDataType.LIST_UINT8 },
                 ],
             },
         },
@@ -3823,8 +4572,11 @@ exports.Clusters = {
             lastMessageLqi: { ID: 284, type: enums_1.DataType.UINT8 },
             lastMessageRssi: { ID: 285, type: enums_1.DataType.INT8 },
             danfossSystemStatusCode: { ID: 0x4000, type: enums_1.DataType.BITMAP16, manufacturerCode: manufacturerCode_1.ManufacturerCode.DANFOSS_A_S },
+            danfossHeatSupplyRequest: { ID: 0x4031, type: enums_1.DataType.ENUM8, manufacturerCode: manufacturerCode_1.ManufacturerCode.DANFOSS_A_S },
             danfossSystemStatusWater: { ID: 0x4200, type: enums_1.DataType.ENUM8, manufacturerCode: manufacturerCode_1.ManufacturerCode.DANFOSS_A_S },
             danfossMultimasterRole: { ID: 0x4201, type: enums_1.DataType.ENUM8, manufacturerCode: manufacturerCode_1.ManufacturerCode.DANFOSS_A_S },
+            danfossIconApplication: { ID: 0x4210, type: enums_1.DataType.ENUM8, manufacturerCode: manufacturerCode_1.ManufacturerCode.DANFOSS_A_S },
+            danfossIconForcedHeatingCooling: { ID: 0x4220, type: enums_1.DataType.ENUM8, manufacturerCode: manufacturerCode_1.ManufacturerCode.DANFOSS_A_S },
             schneiderMeterStatus: { ID: 0xff01, type: enums_1.DataType.UINT32, manufacturerCode: manufacturerCode_1.ManufacturerCode.SCHNEIDER_ELECTRIC },
             schneiderDiagnosticRegister1: { ID: 0xff02, type: enums_1.DataType.UINT32, manufacturerCode: manufacturerCode_1.ManufacturerCode.SCHNEIDER_ELECTRIC },
             schneiderCommunicationQuality: { ID: 0x4000, type: enums_1.DataType.UINT8, manufacturerCode: manufacturerCode_1.ManufacturerCode.SCHNEIDER_ELECTRIC },
@@ -3837,52 +4589,260 @@ exports.Clusters = {
         attributes: {},
         commands: {
             scanRequest: {
-                ID: 0,
-                response: 1,
+                ID: 0x00,
+                response: 0x01,
                 parameters: [
-                    { name: 'transactionID', type: enums_1.DataType.UINT32 },
-                    { name: 'zigbeeInformation', type: enums_1.DataType.BITMAP8 },
-                    { name: 'touchlinkInformation', type: enums_1.DataType.BITMAP8 },
+                    { name: "transactionID", type: enums_1.DataType.UINT32 },
+                    { name: "zigbeeInformation", type: enums_1.DataType.BITMAP8 },
+                    { name: "touchlinkInformation", type: enums_1.DataType.BITMAP8 },
+                ],
+            },
+            deviceInformation: {
+                ID: 0x02,
+                response: 0x03,
+                parameters: [
+                    { name: "transactionID", type: enums_1.DataType.UINT32 },
+                    { name: "startIndex", type: enums_1.DataType.UINT8 },
                 ],
             },
             identifyRequest: {
-                ID: 6,
+                ID: 0x06,
                 parameters: [
-                    { name: 'transactionID', type: enums_1.DataType.UINT32 },
-                    { name: 'duration', type: enums_1.DataType.UINT16 },
+                    { name: "transactionID", type: enums_1.DataType.UINT32 },
+                    { name: "duration", type: enums_1.DataType.UINT16 },
                 ],
             },
             resetToFactoryNew: {
-                ID: 7,
-                parameters: [{ name: 'transactionID', type: enums_1.DataType.UINT32 }],
+                ID: 0x07,
+                parameters: [{ name: "transactionID", type: enums_1.DataType.UINT32 }],
+            },
+            networkStart: {
+                ID: 0x10,
+                response: 0x11,
+                parameters: [
+                    { name: "transactionID", type: enums_1.DataType.UINT32 },
+                    { name: "extendedPANID", type: enums_1.DataType.IEEE_ADDR },
+                    { name: "keyIndex", type: enums_1.DataType.UINT8 },
+                    { name: "encryptedNetworkKey", type: enums_1.DataType.SEC_KEY },
+                    { name: "logicalChannel", type: enums_1.DataType.UINT8 },
+                    { name: "panID", type: enums_1.DataType.UINT16 },
+                    { name: "nwkAddr", type: enums_1.DataType.UINT16 },
+                    { name: "groupIDsBegin", type: enums_1.DataType.UINT16 },
+                    { name: "groupIDsEnd", type: enums_1.DataType.UINT16 },
+                    { name: "freeNwkAddrRangeBegin", type: enums_1.DataType.UINT16 },
+                    { name: "freeNwkAddrRangeEnd", type: enums_1.DataType.UINT16 },
+                    { name: "freeGroupIDRangeBegin", type: enums_1.DataType.UINT16 },
+                    { name: "freeGroupIDRangeEnd", type: enums_1.DataType.UINT16 },
+                    { name: "initiatorIEEE", type: enums_1.DataType.IEEE_ADDR },
+                    { name: "initiatorNwkAddr", type: enums_1.DataType.UINT16 },
+                ],
+            },
+            networkJoinRouter: {
+                ID: 0x12,
+                response: 0x13,
+                parameters: [
+                    { name: "transactionID", type: enums_1.DataType.UINT32 },
+                    { name: "extendedPANID", type: enums_1.DataType.IEEE_ADDR },
+                    { name: "keyIndex", type: enums_1.DataType.UINT8 },
+                    { name: "encryptedNetworkKey", type: enums_1.DataType.SEC_KEY },
+                    { name: "networkUpdateID", type: enums_1.DataType.UINT8 },
+                    { name: "logicalChannel", type: enums_1.DataType.UINT8 },
+                    { name: "panID", type: enums_1.DataType.UINT16 },
+                    { name: "nwkAddr", type: enums_1.DataType.UINT16 },
+                    { name: "groupIDsBegin", type: enums_1.DataType.UINT16 },
+                    { name: "groupIDsEnd", type: enums_1.DataType.UINT16 },
+                    { name: "freeNwkAddrRangeBegin", type: enums_1.DataType.UINT16 },
+                    { name: "freeNwkAddrRangeEnd", type: enums_1.DataType.UINT16 },
+                    { name: "freeGroupIDRangeBegin", type: enums_1.DataType.UINT16 },
+                    { name: "freeGroupIDRangeEnd", type: enums_1.DataType.UINT16 },
+                ],
+            },
+            networkJoinEndDevice: {
+                ID: 0x14,
+                response: 0x15,
+                parameters: [
+                    { name: "transactionID", type: enums_1.DataType.UINT32 },
+                    { name: "extendedPANID", type: enums_1.DataType.IEEE_ADDR },
+                    { name: "keyIndex", type: enums_1.DataType.UINT8 },
+                    { name: "encryptedNetworkKey", type: enums_1.DataType.SEC_KEY },
+                    { name: "networkUpdateID", type: enums_1.DataType.UINT8 },
+                    { name: "logicalChannel", type: enums_1.DataType.UINT8 },
+                    { name: "panID", type: enums_1.DataType.UINT16 },
+                    { name: "nwkAddr", type: enums_1.DataType.UINT16 },
+                    { name: "groupIDsBegin", type: enums_1.DataType.UINT16 },
+                    { name: "groupIDsEnd", type: enums_1.DataType.UINT16 },
+                    { name: "freeNwkAddrRangeBegin", type: enums_1.DataType.UINT16 },
+                    { name: "freeNwkAddrRangeEnd", type: enums_1.DataType.UINT16 },
+                    { name: "freeGroupIDRangeBegin", type: enums_1.DataType.UINT16 },
+                    { name: "freeGroupIDRangeEnd", type: enums_1.DataType.UINT16 },
+                ],
+            },
+            networkUpdate: {
+                ID: 0x16,
+                parameters: [
+                    { name: "transactionID", type: enums_1.DataType.UINT32 },
+                    { name: "extendedPANID", type: enums_1.DataType.IEEE_ADDR },
+                    { name: "networkUpdateID", type: enums_1.DataType.UINT8 },
+                    { name: "logicalChannel", type: enums_1.DataType.UINT8 },
+                    { name: "panID", type: enums_1.DataType.UINT16 },
+                    { name: "nwkAddr", type: enums_1.DataType.UINT16 },
+                ],
+            },
+            getGroupIdentifiers: {
+                ID: 0x41,
+                response: 0x41,
+                parameters: [{ name: "startIndex", type: enums_1.DataType.UINT8 }],
+            },
+            getEndpointList: {
+                ID: 0x42,
+                response: 0x42,
+                parameters: [{ name: "startIndex", type: enums_1.DataType.UINT8 }],
             },
         },
         commandsResponse: {
             scanResponse: {
-                ID: 1,
+                ID: 0x01,
                 parameters: [
-                    { name: 'transactionID', type: enums_1.DataType.UINT32 },
-                    { name: 'rssiCorrection', type: enums_1.DataType.UINT8 },
-                    { name: 'zigbeeInformation', type: enums_1.DataType.UINT8 },
-                    { name: 'touchlinkInformation', type: enums_1.DataType.UINT8 },
-                    { name: 'keyBitmask', type: enums_1.DataType.UINT16 },
-                    { name: 'responseID', type: enums_1.DataType.UINT32 },
-                    { name: 'extendedPanID', type: enums_1.DataType.IEEE_ADDR },
-                    { name: 'networkUpdateID', type: enums_1.DataType.UINT8 },
-                    { name: 'logicalChannel', type: enums_1.DataType.UINT8 },
-                    { name: 'panID', type: enums_1.DataType.UINT16 },
-                    { name: 'networkAddress', type: enums_1.DataType.UINT16 },
-                    { name: 'numberOfSubDevices', type: enums_1.DataType.UINT8 },
-                    { name: 'totalGroupIdentifiers', type: enums_1.DataType.UINT8 },
-                    // Below are optional according to the spec, not all devices send these.
-                    // e.g. https://github.com/Koenkk/zigbee2mqtt/issues/8535#issuecomment-909199162
-                    // Since we don't have a way to deal with optional attributes yet and since we don't
-                    // use these attributes anyway, disable them for now.
-                    // {name: 'endpointID', type: DataType.UINT8},
-                    // {name: 'profileID', type: DataType.UINT16},
-                    // {name: 'deviceID', type: DataType.UINT16},
-                    // {name: 'version', type: DataType.UINT8},
-                    // {name: 'groupIdentifierCount', type: DataType.UINT8},
+                    { name: "transactionID", type: enums_1.DataType.UINT32 },
+                    { name: "rssiCorrection", type: enums_1.DataType.UINT8 },
+                    { name: "zigbeeInformation", type: enums_1.DataType.UINT8 },
+                    { name: "touchlinkInformation", type: enums_1.DataType.UINT8 },
+                    { name: "keyBitmask", type: enums_1.DataType.UINT16 },
+                    { name: "responseID", type: enums_1.DataType.UINT32 },
+                    { name: "extendedPanID", type: enums_1.DataType.IEEE_ADDR },
+                    { name: "networkUpdateID", type: enums_1.DataType.UINT8 },
+                    { name: "logicalChannel", type: enums_1.DataType.UINT8 },
+                    { name: "panID", type: enums_1.DataType.UINT16 },
+                    { name: "networkAddress", type: enums_1.DataType.UINT16 },
+                    { name: "numberOfSubDevices", type: enums_1.DataType.UINT8 },
+                    { name: "totalGroupIdentifiers", type: enums_1.DataType.UINT8 },
+                    {
+                        name: "endpointID",
+                        type: enums_1.DataType.UINT8,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "numberOfSubDevices", value: 1 }],
+                    },
+                    {
+                        name: "profileID",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "numberOfSubDevices", value: 1 }],
+                    },
+                    {
+                        name: "deviceID",
+                        type: enums_1.DataType.UINT16,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "numberOfSubDevices", value: 1 }],
+                    },
+                    {
+                        name: "version",
+                        type: enums_1.DataType.UINT8,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "numberOfSubDevices", value: 1 }],
+                    },
+                    {
+                        name: "groupIDCount",
+                        type: enums_1.DataType.UINT8,
+                        conditions: [{ type: enums_1.ParameterCondition.FIELD_EQUAL, field: "numberOfSubDevices", value: 1 }],
+                    },
+                ],
+            },
+            deviceInformation: {
+                ID: 0x03,
+                parameters: [
+                    { name: "transactionID", type: enums_1.DataType.UINT32 },
+                    { name: "numberOfSubDevices", type: enums_1.DataType.UINT8 },
+                    { name: "startIndex", type: enums_1.DataType.UINT8 },
+                    { name: "deviceInfoCount", type: enums_1.DataType.UINT8 },
+                    /**
+                     * TODO: (this * deviceInfoCount)
+                     * {name: 'ieeeAddress', type: DataType.IEEE_ADDR},
+                     * {name: 'endpointID', type: DataType.UINT8},
+                     * {name: 'profileID', type: DataType.UINT16},
+                     * {name: 'deviceID', type: DataType.UINT16},
+                     * {name: 'version', type: DataType.UINT8},
+                     * {name: 'groupIdCount', type: DataType.UINT8},
+                     * {name: 'sort', type: DataType.UINT8},
+                     */
+                    // {name: 'deviceInfoRecord', type: TODO},
+                ],
+            },
+            networkStart: {
+                ID: 0x11,
+                parameters: [
+                    { name: "transactionID", type: enums_1.DataType.UINT32 },
+                    /**
+                     * - 0x00 Success
+                     * - 0x01 Failure
+                     * - 0x02 – 0xff Reserved
+                     */
+                    { name: "status", type: enums_1.DataType.ENUM8 },
+                    { name: "extendedPANID", type: enums_1.DataType.IEEE_ADDR },
+                    { name: "networkUpdateID", type: enums_1.DataType.UINT8 },
+                    { name: "logicalChannel", type: enums_1.DataType.UINT8 },
+                    { name: "panID", type: enums_1.DataType.UINT16 },
+                ],
+            },
+            networkJoinRouter: {
+                ID: 0x13,
+                parameters: [
+                    { name: "transactionID", type: enums_1.DataType.UINT32 },
+                    /**
+                     * - 0x00 Success
+                     * - 0x01 Failure
+                     * - 0x02 – 0xff Reserved
+                     */
+                    { name: "status", type: enums_1.DataType.ENUM8 },
+                ],
+            },
+            networkJoinEndDevice: {
+                ID: 0x15,
+                parameters: [
+                    { name: "transactionID", type: enums_1.DataType.UINT32 },
+                    /**
+                     * - 0x00 Success
+                     * - 0x01 Failure
+                     * - 0x02 – 0xff Reserved
+                     */
+                    { name: "status", type: enums_1.DataType.ENUM8 },
+                ],
+            },
+            endpointInformation: {
+                ID: 0x40,
+                parameters: [
+                    { name: "ieeeAddress", type: enums_1.DataType.IEEE_ADDR },
+                    { name: "networkAddress", type: enums_1.DataType.UINT16 },
+                    { name: "endpointID", type: enums_1.DataType.UINT8 },
+                    { name: "profileID", type: enums_1.DataType.UINT16 },
+                    { name: "deviceID", type: enums_1.DataType.UINT16 },
+                    { name: "version", type: enums_1.DataType.UINT8 },
+                ],
+            },
+            getGroupIdentifiers: {
+                ID: 0x41,
+                parameters: [
+                    { name: "total", type: enums_1.DataType.UINT8 },
+                    { name: "startIndex", type: enums_1.DataType.UINT8 },
+                    { name: "count", type: enums_1.DataType.UINT8 },
+                    /**
+                     * TODO: (this * count)
+                     * {name: 'groupID', type: DataType.UINT16},
+                     * {name: 'groupType', type: DataType.UINT8},
+                     */
+                    // {name: 'groupInfoList', type: TODO},
+                ],
+            },
+            getEndpointList: {
+                ID: 0x42,
+                parameters: [
+                    { name: "total", type: enums_1.DataType.UINT8 },
+                    { name: "startIndex", type: enums_1.DataType.UINT8 },
+                    { name: "count", type: enums_1.DataType.UINT8 },
+                    /**
+                     * TODO: (this * count)
+                     * {name: 'networkAddress', type: DataType.UINT16},
+                     * {name: 'endpointID', type: DataType.UINT8},
+                     * {name: 'profileID', type: DataType.UINT16},
+                     * {name: 'deviceID', type: DataType.UINT16},
+                     * {name: 'version', type: DataType.UINT8},
+                     */
+                    // {name: 'endpointInfoList', type: TODO},
                 ],
             },
         },
@@ -3929,12 +4889,12 @@ exports.Clusters = {
             hueNotification: {
                 ID: 0,
                 parameters: [
-                    { name: 'button', type: enums_1.DataType.UINT8 },
-                    { name: 'unknown1', type: enums_1.DataType.UINT24 },
-                    { name: 'type', type: enums_1.DataType.UINT8 },
-                    { name: 'unknown2', type: enums_1.DataType.UINT8 },
-                    { name: 'time', type: enums_1.DataType.UINT8 },
-                    { name: 'unknown2', type: enums_1.DataType.UINT8 },
+                    { name: "button", type: enums_1.DataType.UINT8 },
+                    { name: "unknown1", type: enums_1.DataType.UINT24 },
+                    { name: "type", type: enums_1.DataType.UINT8 },
+                    { name: "unknown2", type: enums_1.DataType.UINT8 },
+                    { name: "time", type: enums_1.DataType.UINT8 },
+                    { name: "unknown3", type: enums_1.DataType.UINT8 },
                 ],
             },
         },
@@ -3948,7 +4908,7 @@ exports.Clusters = {
         commands: {
             multiColor: {
                 ID: 0,
-                parameters: [{ name: 'data', type: enums_1.BuffaloZclDataType.BUFFER }],
+                parameters: [{ name: "data", type: enums_1.BuffaloZclDataType.BUFFER }],
             },
         },
         commandsResponse: {},
@@ -4026,7 +4986,7 @@ exports.Clusters = {
         commands: {
             command0: {
                 ID: 0,
-                parameters: [{ name: 'data', type: enums_1.BuffaloZclDataType.BUFFER }],
+                parameters: [{ name: "data", type: enums_1.BuffaloZclDataType.BUFFER }],
             },
         },
         commandsResponse: {},
@@ -4038,34 +4998,9 @@ exports.Clusters = {
         commands: {
             command0: {
                 ID: 0,
-                parameters: [{ name: 'data', type: enums_1.BuffaloZclDataType.BUFFER }],
+                parameters: [{ name: "data", type: enums_1.BuffaloZclDataType.BUFFER }],
             },
         },
-        commandsResponse: {},
-    },
-    manuSpecificNiko1: {
-        ID: 0xfc00,
-        manufacturerCode: manufacturerCode_1.ManufacturerCode.NIKO_NV,
-        attributes: {
-            /* WARNING: 0x0000 has different datatypes!
-             *          enum8 (switch) vs. bitmap8 (outlet)
-             *          unknown usage/function on outlet
-             */
-            switchOperationMode: { ID: 0x0000, type: enums_1.DataType.ENUM8 },
-            outletLedColor: { ID: 0x0100, type: enums_1.DataType.UINT24 },
-            outletChildLock: { ID: 0x0101, type: enums_1.DataType.UINT8 },
-            outletLedState: { ID: 0x0104, type: enums_1.DataType.UINT8 },
-        },
-        commands: {},
-        commandsResponse: {},
-    },
-    manuSpecificNiko2: {
-        ID: 0xfc01,
-        manufacturerCode: manufacturerCode_1.ManufacturerCode.NIKO_NV,
-        attributes: {
-            switchAction: { ID: 0x0002, type: enums_1.DataType.UINT8 },
-        },
-        commands: {},
         commandsResponse: {},
     },
     wiserDeviceInfo: {
@@ -4096,8 +5031,8 @@ exports.Clusters = {
             dataRequest: {
                 ID: 0,
                 parameters: [
-                    { name: 'seq', type: enums_1.DataType.UINT16 },
-                    { name: 'dpValues', type: enums_1.BuffaloZclDataType.LIST_TUYA_DATAPOINT_VALUES },
+                    { name: "seq", type: enums_1.DataType.UINT16 },
+                    { name: "dpValues", type: enums_1.BuffaloZclDataType.LIST_TUYA_DATAPOINT_VALUES },
                 ],
             },
             /**
@@ -4113,7 +5048,7 @@ exports.Clusters = {
              */
             mcuVersionRequest: {
                 ID: 0x10,
-                parameters: [{ name: 'seq', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "seq", type: enums_1.DataType.UINT16 }],
             },
             /**
              * FIXME: This command is not listed in Tuya zigbee cluster description,
@@ -4124,8 +5059,8 @@ exports.Clusters = {
             sendData: {
                 ID: 4,
                 parameters: [
-                    { name: 'seq', type: enums_1.DataType.UINT16 },
-                    { name: 'dpValues', type: enums_1.BuffaloZclDataType.LIST_TUYA_DATAPOINT_VALUES },
+                    { name: "seq", type: enums_1.DataType.UINT16 },
+                    { name: "dpValues", type: enums_1.BuffaloZclDataType.LIST_TUYA_DATAPOINT_VALUES },
                 ],
             },
             /**
@@ -4134,17 +5069,17 @@ exports.Clusters = {
             mcuOtaNotify: {
                 ID: 0x12,
                 parameters: [
-                    { name: 'seq', type: enums_1.DataType.UINT16 },
+                    { name: "seq", type: enums_1.DataType.UINT16 },
                     // FIXME: key is fixed (8 byte) uint8 array
                     //  Ask Koen is there any type to read fixed size uint_8t.
                     //  currently there is `length` property in options but sems it is
                     //  ignored in `writePayloadCluster()` and other methods.
                     //  So, as workaround we use hi/low for key, which is not best solution
-                    { name: 'key_hi', type: enums_1.DataType.UINT32 },
-                    { name: 'key_lo', type: enums_1.DataType.UINT32 },
-                    { name: 'version', type: enums_1.DataType.UINT8 },
-                    { name: 'imageSize', type: enums_1.DataType.UINT32 },
-                    { name: 'crc', type: enums_1.DataType.UINT32 },
+                    { name: "key_hi", type: enums_1.DataType.UINT32 },
+                    { name: "key_lo", type: enums_1.DataType.UINT32 },
+                    { name: "version", type: enums_1.DataType.UINT8 },
+                    { name: "imageSize", type: enums_1.DataType.UINT32 },
+                    { name: "crc", type: enums_1.DataType.UINT32 },
                 ],
             },
             /**
@@ -4153,13 +5088,13 @@ exports.Clusters = {
             mcuOtaBlockDataResponse: {
                 ID: 0x14,
                 parameters: [
-                    { name: 'seq', type: enums_1.DataType.UINT16 },
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'key_hi', type: enums_1.DataType.UINT32 },
-                    { name: 'key_lo', type: enums_1.DataType.UINT32 },
-                    { name: 'version', type: enums_1.DataType.UINT8 },
-                    { name: 'offset', type: enums_1.DataType.UINT32 },
-                    { name: 'imageData', type: enums_1.BuffaloZclDataType.LIST_UINT8 },
+                    { name: "seq", type: enums_1.DataType.UINT16 },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    { name: "key_hi", type: enums_1.DataType.UINT32 },
+                    { name: "key_lo", type: enums_1.DataType.UINT32 },
+                    { name: "version", type: enums_1.DataType.UINT8 },
+                    { name: "offset", type: enums_1.DataType.UINT32 },
+                    { name: "imageData", type: enums_1.BuffaloZclDataType.LIST_UINT8 },
                 ],
             },
             /**
@@ -4168,8 +5103,8 @@ exports.Clusters = {
             mcuSyncTime: {
                 ID: 0x24,
                 parameters: [
-                    { name: 'payloadSize', type: enums_1.DataType.UINT16 },
-                    { name: 'payload', type: enums_1.BuffaloZclDataType.LIST_UINT8 },
+                    { name: "payloadSize", type: enums_1.DataType.UINT16 },
+                    { name: "payload", type: enums_1.BuffaloZclDataType.LIST_UINT8 },
                 ],
             },
             /**
@@ -4178,9 +5113,16 @@ exports.Clusters = {
             mcuGatewayConnectionStatus: {
                 ID: 0x25,
                 parameters: [
-                    { name: 'payloadSize', type: enums_1.DataType.UINT16 },
-                    { name: 'payload', type: enums_1.DataType.UINT8 },
+                    { name: "payloadSize", type: enums_1.DataType.UINT16 },
+                    { name: "payload", type: enums_1.DataType.UINT8 },
                 ],
+            },
+            /**
+             * Weather forecast synchronization (check requestWeatherInformation)
+             */
+            tuyaWeatherSync: {
+                ID: 0x61,
+                parameters: [{ name: "payload", type: enums_1.BuffaloZclDataType.BUFFER }],
             },
         },
         commandsResponse: {
@@ -4190,8 +5132,8 @@ exports.Clusters = {
             dataResponse: {
                 ID: 1,
                 parameters: [
-                    { name: 'seq', type: enums_1.DataType.UINT16 },
-                    { name: 'dpValues', type: enums_1.BuffaloZclDataType.LIST_TUYA_DATAPOINT_VALUES },
+                    { name: "seq", type: enums_1.DataType.UINT16 },
+                    { name: "dpValues", type: enums_1.BuffaloZclDataType.LIST_TUYA_DATAPOINT_VALUES },
                 ],
             },
             /**
@@ -4200,8 +5142,8 @@ exports.Clusters = {
             dataReport: {
                 ID: 2,
                 parameters: [
-                    { name: 'seq', type: enums_1.DataType.UINT16 },
-                    { name: 'dpValues', type: enums_1.BuffaloZclDataType.LIST_TUYA_DATAPOINT_VALUES },
+                    { name: "seq", type: enums_1.DataType.UINT16 },
+                    { name: "dpValues", type: enums_1.BuffaloZclDataType.LIST_TUYA_DATAPOINT_VALUES },
                 ],
             },
             /**
@@ -4213,8 +5155,8 @@ exports.Clusters = {
             activeStatusReportAlt: {
                 ID: 5,
                 parameters: [
-                    { name: 'seq', type: enums_1.DataType.UINT16 },
-                    { name: 'dpValues', type: enums_1.BuffaloZclDataType.LIST_TUYA_DATAPOINT_VALUES },
+                    { name: "seq", type: enums_1.DataType.UINT16 },
+                    { name: "dpValues", type: enums_1.BuffaloZclDataType.LIST_TUYA_DATAPOINT_VALUES },
                 ],
             },
             /**
@@ -4226,8 +5168,8 @@ exports.Clusters = {
             activeStatusReport: {
                 ID: 6,
                 parameters: [
-                    { name: 'seq', type: enums_1.DataType.UINT16 },
-                    { name: 'dpValues', type: enums_1.BuffaloZclDataType.LIST_TUYA_DATAPOINT_VALUES },
+                    { name: "seq", type: enums_1.DataType.UINT16 },
+                    { name: "dpValues", type: enums_1.BuffaloZclDataType.LIST_TUYA_DATAPOINT_VALUES },
                 ],
             },
             /**
@@ -4236,8 +5178,8 @@ exports.Clusters = {
             mcuVersionResponse: {
                 ID: 0x11,
                 parameters: [
-                    { name: 'seq', type: enums_1.DataType.UINT16 },
-                    { name: 'version', type: enums_1.DataType.UINT8 },
+                    { name: "seq", type: enums_1.DataType.UINT16 },
+                    { name: "version", type: enums_1.DataType.UINT8 },
                 ],
             },
             /**
@@ -4246,12 +5188,12 @@ exports.Clusters = {
             mcuOtaBlockDataRequest: {
                 ID: 0x13,
                 parameters: [
-                    { name: 'seq', type: enums_1.DataType.UINT16 },
-                    { name: 'key_hi', type: enums_1.DataType.UINT32 },
-                    { name: 'key_lo', type: enums_1.DataType.UINT32 },
-                    { name: 'version', type: enums_1.DataType.UINT8 },
-                    { name: 'offset', type: enums_1.DataType.UINT32 },
-                    { name: 'size', type: enums_1.DataType.UINT32 },
+                    { name: "seq", type: enums_1.DataType.UINT16 },
+                    { name: "key_hi", type: enums_1.DataType.UINT32 },
+                    { name: "key_lo", type: enums_1.DataType.UINT32 },
+                    { name: "version", type: enums_1.DataType.UINT8 },
+                    { name: "offset", type: enums_1.DataType.UINT32 },
+                    { name: "size", type: enums_1.DataType.UINT32 },
                 ],
             },
             /**
@@ -4260,11 +5202,11 @@ exports.Clusters = {
             mcuOtaResult: {
                 ID: 0x15,
                 parameters: [
-                    { name: 'seq', type: enums_1.DataType.UINT16 },
-                    { name: 'status', type: enums_1.DataType.UINT8 },
-                    { name: 'key_hi', type: enums_1.DataType.UINT32 },
-                    { name: 'key_lo', type: enums_1.DataType.UINT32 },
-                    { name: 'version', type: enums_1.DataType.UINT8 },
+                    { name: "seq", type: enums_1.DataType.UINT16 },
+                    { name: "status", type: enums_1.DataType.UINT8 },
+                    { name: "key_hi", type: enums_1.DataType.UINT32 },
+                    { name: "key_lo", type: enums_1.DataType.UINT32 },
+                    { name: "version", type: enums_1.DataType.UINT8 },
                 ],
             },
             /**
@@ -4272,14 +5214,25 @@ exports.Clusters = {
              */
             mcuSyncTime: {
                 ID: 0x24,
-                parameters: [{ name: 'payloadSize', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "payloadSize", type: enums_1.DataType.UINT16 }],
             },
             /**
              * Gateway connection status (bidirectional)
              */
             mcuGatewayConnectionStatus: {
                 ID: 0x25,
-                parameters: [{ name: 'payloadSize', type: enums_1.DataType.UINT16 }],
+                parameters: [{ name: "payloadSize", type: enums_1.DataType.UINT16 }],
+            },
+            /**
+             * Device can request weather forecast information and expects response respecting given parameters.
+             * This command ID seem to be device speciffic, because there is simmilar structure documented in Tuya Serial Communication Protocol,
+             * but with different ID (0x3a and 0x3b respectively). In this case, I'm not sure if the name should reflect the one from
+             * docs or be also speciffic (providing space for the implementation of the correct one in the future)?
+             *
+             */
+            tuyaWeatherRequest: {
+                ID: 0x60,
+                parameters: [{ name: "payload", type: enums_1.BuffaloZclDataType.BUFFER }],
             },
         },
     },
@@ -4346,7 +5299,7 @@ exports.Clusters = {
         commands: {},
         commandsResponse: {},
     },
-    manuSpecificTuya_2: {
+    manuSpecificTuya2: {
         ID: 0xe002,
         attributes: {
             alarm_temperature_max: { ID: 53258, type: enums_1.DataType.INT16 },
@@ -4360,7 +5313,7 @@ exports.Clusters = {
         commands: {},
         commandsResponse: {},
     },
-    manuSpecificTuya_3: {
+    manuSpecificTuya3: {
         ID: 0xe001,
         attributes: {
             powerOnBehavior: { ID: 0xd010, type: enums_1.DataType.ENUM8 },
@@ -4370,15 +5323,15 @@ exports.Clusters = {
         commands: {
             setOptions1: {
                 ID: 0xe5,
-                parameters: [{ name: 'data', type: enums_1.BuffaloZclDataType.BUFFER }],
+                parameters: [{ name: "data", type: enums_1.BuffaloZclDataType.BUFFER }],
             },
             setOptions2: {
                 ID: 0xe6,
-                parameters: [{ name: 'data', type: enums_1.BuffaloZclDataType.BUFFER }],
+                parameters: [{ name: "data", type: enums_1.BuffaloZclDataType.BUFFER }],
             },
             setOptions3: {
                 ID: 0xe7,
-                parameters: [{ name: 'data', type: enums_1.BuffaloZclDataType.BUFFER }],
+                parameters: [{ name: "data", type: enums_1.BuffaloZclDataType.BUFFER }],
             },
         },
         commandsResponse: {},
@@ -4418,74 +5371,6 @@ exports.Clusters = {
         commands: {},
         commandsResponse: {},
     },
-    heimanSpecificAirQuality: {
-        // from HS2AQ-3.0海曼智能空气质量检测仪API文档-V01
-        ID: 0xfc81,
-        manufacturerCode: manufacturerCode_1.ManufacturerCode.HEIMAN_TECHNOLOGY_CO_LTD,
-        attributes: {
-            language: { ID: 0xf000, type: enums_1.DataType.UINT8 },
-            unitOfMeasure: { ID: 0xf001, type: enums_1.DataType.UINT8 },
-            batteryState: { ID: 0xf002, type: enums_1.DataType.UINT8 }, //  (0 is not charged, 1 is charging, 2 is fully charged)
-            pm10measuredValue: { ID: 0xf003, type: enums_1.DataType.UINT16 },
-            tvocMeasuredValue: { ID: 0xf004, type: enums_1.DataType.UINT16 },
-            aqiMeasuredValue: { ID: 0xf005, type: enums_1.DataType.UINT16 },
-            temperatureMeasuredMax: { ID: 0xf006, type: enums_1.DataType.INT16 },
-            temperatureMeasuredMin: { ID: 0xf007, type: enums_1.DataType.INT16 },
-            humidityMeasuredMax: { ID: 0xf008, type: enums_1.DataType.UINT16 },
-            humidityMeasuredMin: { ID: 0xf009, type: enums_1.DataType.UINT16 },
-            alarmEnable: { ID: 0xf00a, type: enums_1.DataType.UINT16 },
-        },
-        commands: {
-            setLanguage: {
-                ID: 0x011b,
-                parameters: [
-                    // (1: English 0: Chinese)
-                    { name: 'languageCode', type: enums_1.DataType.UINT8 },
-                ],
-            },
-            setUnitOfTemperature: {
-                ID: 0x011c,
-                parameters: [
-                    // (0: ℉ 1: ℃)
-                    { name: 'unitsCode', type: enums_1.DataType.UINT8 },
-                ],
-            },
-            getTime: {
-                ID: 0x011d,
-                parameters: [],
-            },
-        },
-        commandsResponse: {},
-    },
-    heimanSpecificScenes: {
-        // from HS2SS-3.0海曼智能情景开关API文档-V01
-        ID: 0xfc80,
-        manufacturerCode: manufacturerCode_1.ManufacturerCode.HEIMAN_TECHNOLOGY_CO_LTD,
-        attributes: {},
-        commands: {
-            cinema: {
-                ID: 0xf0,
-                parameters: [],
-            },
-            atHome: {
-                ID: 0xf1,
-                parameters: [],
-            },
-            sleep: {
-                ID: 0xf2,
-                parameters: [],
-            },
-            goOut: {
-                ID: 0xf3,
-                parameters: [],
-            },
-            repast: {
-                ID: 0xf4,
-                parameters: [],
-            },
-        },
-        commandsResponse: {},
-    },
     tradfriButton: {
         ID: 0xfc80,
         manufacturerCode: manufacturerCode_1.ManufacturerCode.IKEA_OF_SWEDEN,
@@ -4493,104 +5378,26 @@ exports.Clusters = {
         commands: {
             action1: {
                 ID: 1,
-                parameters: [{ name: 'data', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "data", type: enums_1.DataType.UINT8 }],
             },
             action2: {
                 ID: 2,
-                parameters: [{ name: 'data', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "data", type: enums_1.DataType.UINT8 }],
             },
             action3: {
                 ID: 3,
-                parameters: [{ name: 'data', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "data", type: enums_1.DataType.UINT8 }],
             },
             action4: {
                 ID: 4,
-                parameters: [{ name: 'data', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "data", type: enums_1.DataType.UINT8 }],
             },
             action6: {
                 ID: 6,
-                parameters: [{ name: 'data', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "data", type: enums_1.DataType.UINT8 }],
             },
         },
         commandsResponse: {},
-    },
-    heimanSpecificInfraRedRemote: {
-        // from HS2IRC-3.0海曼智能红外转发控制器API-V01文档
-        ID: 0xfc82,
-        manufacturerCode: manufacturerCode_1.ManufacturerCode.HEIMAN_TECHNOLOGY_CO_LTD,
-        attributes: {},
-        commands: {
-            sendKey: {
-                ID: 0xf0,
-                parameters: [
-                    { name: 'id', type: enums_1.DataType.UINT8 },
-                    { name: 'keyCode', type: enums_1.DataType.UINT8 },
-                ],
-            },
-            studyKey: {
-                // Total we can have 30 keycode for each device ID (1..30).
-                ID: 0xf1,
-                // response: 0xf2,
-                parameters: [
-                    { name: 'id', type: enums_1.DataType.UINT8 },
-                    { name: 'keyCode', type: enums_1.DataType.UINT8 },
-                ],
-            },
-            deleteKey: {
-                ID: 0xf3,
-                parameters: [
-                    // 1-15 - Delete specific ID, >= 16 - Delete All
-                    { name: 'id', type: enums_1.DataType.UINT8 },
-                    // 1-30 - Delete specific keycode, >= 31 - Delete All keycodes for the ID
-                    { name: 'keyCode', type: enums_1.DataType.UINT8 },
-                ],
-            },
-            createId: {
-                // Total we can have 15 device IDs (1..15).
-                ID: 0xf4,
-                // response: 0xf5,
-                parameters: [{ name: 'modelType', type: enums_1.DataType.UINT8 }],
-            },
-            getIdAndKeyCodeList: {
-                ID: 0xf6,
-                // response: 0xf7,
-                parameters: [],
-            },
-        },
-        commandsResponse: {
-            studyKeyRsp: {
-                ID: 0xf2,
-                parameters: [
-                    { name: 'id', type: enums_1.DataType.UINT8 },
-                    { name: 'keyCode', type: enums_1.DataType.UINT8 },
-                    { name: 'result', type: enums_1.DataType.UINT8 }, // 0 - success, 1 - fail
-                ],
-            },
-            createIdRsp: {
-                ID: 0xf5,
-                parameters: [
-                    { name: 'id', type: enums_1.DataType.UINT8 }, // 0xFF - create failed
-                    { name: 'modelType', type: enums_1.DataType.UINT8 },
-                ],
-            },
-            getIdAndKeyCodeListRsp: {
-                ID: 0xf7,
-                parameters: [
-                    { name: 'packetsTotal', type: enums_1.DataType.UINT8 },
-                    { name: 'packetNumber', type: enums_1.DataType.UINT8 },
-                    { name: 'packetLength', type: enums_1.DataType.UINT8 }, // Max length is 70 bytes
-                    // HELP for learnedDevicesList data structure:
-                    //   struct structPacketPayload {
-                    //     uint8_t ID;
-                    //     uint8_t ModeType;
-                    //     uint8_t KeyNum;
-                    //     uint8_t KeyCode[KeyNum];
-                    //   } arayPacketPayload[CurentPacketLenght];
-                    // }
-                    { name: 'learnedDevicesList', type: enums_1.BuffaloZclDataType.LIST_UINT8 },
-                ],
-            },
-        },
     },
     schneiderSpecificPilotMode: {
         ID: 0xff23,
@@ -4651,15 +5458,6 @@ exports.Clusters = {
         commands: {},
         commandsResponse: {},
     },
-    sprutDevice: {
-        ID: 26112,
-        manufacturerCode: 26214,
-        attributes: {
-            debug: { ID: 0, type: enums_1.DataType.BOOLEAN },
-        },
-        commands: {},
-        commandsResponse: {},
-    },
     sprutVoc: {
         ID: 26113,
         manufacturerCode: 26214,
@@ -4688,15 +5486,15 @@ exports.Clusters = {
         commands: {
             playStore: {
                 ID: 0x00,
-                parameters: [{ name: 'param', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "param", type: enums_1.DataType.UINT8 }],
             },
             learnStart: {
                 ID: 0x01,
-                parameters: [{ name: 'value', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "value", type: enums_1.DataType.UINT8 }],
             },
             learnStop: {
                 ID: 0x02,
-                parameters: [{ name: 'value', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "value", type: enums_1.DataType.UINT8 }],
             },
             clearStore: {
                 ID: 0x03,
@@ -4727,9 +5525,9 @@ exports.Clusters = {
             siglisZigfredButtonEvent: {
                 ID: 0x02,
                 parameters: [
-                    { name: 'button', type: enums_1.DataType.UINT8 },
-                    { name: 'type', type: enums_1.DataType.UINT8 },
-                    { name: 'duration', type: enums_1.DataType.UINT16 },
+                    { name: "button", type: enums_1.DataType.UINT8 },
+                    { name: "type", type: enums_1.DataType.UINT8 },
+                    { name: "duration", type: enums_1.DataType.UINT16 },
                 ],
             },
         },
@@ -4754,59 +5552,59 @@ exports.Clusters = {
             zosungSendIRCode00: {
                 ID: 0,
                 parameters: [
-                    { name: 'seq', type: enums_1.DataType.UINT16 },
-                    { name: 'length', type: enums_1.DataType.UINT32 },
-                    { name: 'unk1', type: enums_1.DataType.UINT32 },
-                    { name: 'unk2', type: enums_1.DataType.UINT16 },
-                    { name: 'unk3', type: enums_1.DataType.UINT8 },
-                    { name: 'cmd', type: enums_1.DataType.UINT8 },
-                    { name: 'unk4', type: enums_1.DataType.UINT16 },
+                    { name: "seq", type: enums_1.DataType.UINT16 },
+                    { name: "length", type: enums_1.DataType.UINT32 },
+                    { name: "unk1", type: enums_1.DataType.UINT32 },
+                    { name: "unk2", type: enums_1.DataType.UINT16 },
+                    { name: "unk3", type: enums_1.DataType.UINT8 },
+                    { name: "cmd", type: enums_1.DataType.UINT8 },
+                    { name: "unk4", type: enums_1.DataType.UINT16 },
                 ],
             },
             zosungSendIRCode01: {
                 ID: 1,
                 parameters: [
-                    { name: 'zero', type: enums_1.DataType.UINT8 },
-                    { name: 'seq', type: enums_1.DataType.UINT16 },
-                    { name: 'length', type: enums_1.DataType.UINT32 },
-                    { name: 'unk1', type: enums_1.DataType.UINT32 },
-                    { name: 'unk2', type: enums_1.DataType.UINT16 },
-                    { name: 'unk3', type: enums_1.DataType.UINT8 },
-                    { name: 'cmd', type: enums_1.DataType.UINT8 },
-                    { name: 'unk4', type: enums_1.DataType.UINT16 },
+                    { name: "zero", type: enums_1.DataType.UINT8 },
+                    { name: "seq", type: enums_1.DataType.UINT16 },
+                    { name: "length", type: enums_1.DataType.UINT32 },
+                    { name: "unk1", type: enums_1.DataType.UINT32 },
+                    { name: "unk2", type: enums_1.DataType.UINT16 },
+                    { name: "unk3", type: enums_1.DataType.UINT8 },
+                    { name: "cmd", type: enums_1.DataType.UINT8 },
+                    { name: "unk4", type: enums_1.DataType.UINT16 },
                 ],
             },
             zosungSendIRCode02: {
                 ID: 2,
                 parameters: [
-                    { name: 'seq', type: enums_1.DataType.UINT16 },
-                    { name: 'position', type: enums_1.DataType.UINT32 },
-                    { name: 'maxlen', type: enums_1.DataType.UINT8 },
+                    { name: "seq", type: enums_1.DataType.UINT16 },
+                    { name: "position", type: enums_1.DataType.UINT32 },
+                    { name: "maxlen", type: enums_1.DataType.UINT8 },
                 ],
             },
             zosungSendIRCode03: {
                 ID: 3,
                 parameters: [
-                    { name: 'zero', type: enums_1.DataType.UINT8 },
-                    { name: 'seq', type: enums_1.DataType.UINT16 },
-                    { name: 'position', type: enums_1.DataType.UINT32 },
-                    { name: 'msgpart', type: enums_1.DataType.OCTET_STR },
-                    { name: 'msgpartcrc', type: enums_1.DataType.UINT8 },
+                    { name: "zero", type: enums_1.DataType.UINT8 },
+                    { name: "seq", type: enums_1.DataType.UINT16 },
+                    { name: "position", type: enums_1.DataType.UINT32 },
+                    { name: "msgpart", type: enums_1.DataType.OCTET_STR },
+                    { name: "msgpartcrc", type: enums_1.DataType.UINT8 },
                 ],
             },
             zosungSendIRCode04: {
                 ID: 4,
                 parameters: [
-                    { name: 'zero0', type: enums_1.DataType.UINT8 },
-                    { name: 'seq', type: enums_1.DataType.UINT16 },
-                    { name: 'zero1', type: enums_1.DataType.UINT16 },
+                    { name: "zero0", type: enums_1.DataType.UINT8 },
+                    { name: "seq", type: enums_1.DataType.UINT16 },
+                    { name: "zero1", type: enums_1.DataType.UINT16 },
                 ],
             },
             zosungSendIRCode05: {
                 ID: 5,
                 parameters: [
-                    { name: 'seq', type: enums_1.DataType.UINT16 },
-                    { name: 'zero', type: enums_1.DataType.UINT16 },
+                    { name: "seq", type: enums_1.DataType.UINT16 },
+                    { name: "zero", type: enums_1.DataType.UINT16 },
                 ],
             },
         },
@@ -4814,18 +5612,18 @@ exports.Clusters = {
             zosungSendIRCode03Resp: {
                 ID: 3,
                 parameters: [
-                    { name: 'zero', type: enums_1.DataType.UINT8 },
-                    { name: 'seq', type: enums_1.DataType.UINT16 },
-                    { name: 'position', type: enums_1.DataType.UINT32 },
-                    { name: 'msgpart', type: enums_1.DataType.OCTET_STR },
-                    { name: 'msgpartcrc', type: enums_1.DataType.UINT8 },
+                    { name: "zero", type: enums_1.DataType.UINT8 },
+                    { name: "seq", type: enums_1.DataType.UINT16 },
+                    { name: "position", type: enums_1.DataType.UINT32 },
+                    { name: "msgpart", type: enums_1.DataType.OCTET_STR },
+                    { name: "msgpartcrc", type: enums_1.DataType.UINT8 },
                 ],
             },
             zosungSendIRCode05Resp: {
                 ID: 5,
                 parameters: [
-                    { name: 'seq', type: enums_1.DataType.UINT16 },
-                    { name: 'zero', type: enums_1.DataType.UINT16 },
+                    { name: "seq", type: enums_1.DataType.UINT16 },
+                    { name: "zero", type: enums_1.DataType.UINT16 },
                 ],
             },
         },
@@ -4838,7 +5636,7 @@ exports.Clusters = {
                 ID: 0,
                 parameters: [
                     // JSON string with a command.
-                    { name: 'data', type: enums_1.BuffaloZclDataType.BUFFER },
+                    { name: "data", type: enums_1.BuffaloZclDataType.BUFFER },
                 ],
             },
         },
@@ -4886,21 +5684,21 @@ exports.Clusters = {
                 ID: 0x30,
                 parameters: [
                     // bit pack ("bbb", slot, status, pinLength) .. pin
-                    { name: 'payload', type: enums_1.DataType.CHAR_STR },
+                    { name: "payload", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             userCodeGet: {
                 ID: 0x31,
                 parameters: [
                     // bit pack ("b", slot)
-                    { name: 'payload', type: enums_1.DataType.CHAR_STR },
+                    { name: "payload", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             userCodeClear: {
                 ID: 0x32,
                 parameters: [
                     // bit pack ("b", slot)
-                    { name: 'payload', type: enums_1.DataType.CHAR_STR },
+                    { name: "payload", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             clearAllUserCodes: {
@@ -4931,21 +5729,21 @@ exports.Clusters = {
                 ID: 0x40,
                 parameters: [
                     // bit pack ("bbbbbbb", 0, slot, weeklyScheduleNumber, startHour, startMinute, hours, minutes)
-                    { name: 'payload', type: enums_1.DataType.CHAR_STR },
+                    { name: "payload", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             getScheduleSlot: {
                 ID: 0x41,
                 parameters: [
                     // bit pack ("bb", slot, userId)
-                    { name: 'payload', type: enums_1.DataType.CHAR_STR },
+                    { name: "payload", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             setScheduleSlotStatus: {
                 ID: 0x42,
                 parameters: [
                     // bit pack ("bbb", 0, slot, status)
-                    { name: 'payload', type: enums_1.DataType.CHAR_STR },
+                    { name: "payload", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             reflash: {
@@ -4953,7 +5751,7 @@ exports.Clusters = {
                 response: 1,
                 parameters: [
                     // bit pack ("bI", version, length)
-                    { name: 'payload', type: enums_1.DataType.CHAR_STR },
+                    { name: "payload", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             reflashData: {
@@ -4961,7 +5759,7 @@ exports.Clusters = {
                 response: 2,
                 parameters: [
                     // bit pack ("IH", segmentId - 1, length) .. string sub (data, start, finish)
-                    { name: 'payload', type: enums_1.DataType.CHAR_STR },
+                    { name: "payload", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             reflashStatus: {
@@ -4969,7 +5767,7 @@ exports.Clusters = {
                 response: 3,
                 parameters: [
                     // bit pack ("bI", reflashStatusParameter, 0x00)
-                    { name: 'payload', type: enums_1.DataType.CHAR_STR },
+                    { name: "payload", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             getReflashLock: {
@@ -5016,19 +5814,19 @@ exports.Clusters = {
         commandsResponse: {
             getLockStatusRsp: {
                 ID: 0,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             reflashRsp: {
                 ID: 1,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             reflashDataRsp: {
                 ID: 2,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             reflashStatusRsp: {
                 ID: 3,
-                parameters: [{ name: 'status', type: enums_1.DataType.UINT8 }],
+                parameters: [{ name: "status", type: enums_1.DataType.UINT8 }],
             },
             /* boltStateRsp: {
                 ID: 4,
@@ -5064,28 +5862,28 @@ exports.Clusters = {
                 ID: 0xfc,
                 parameters: [
                     // bit pack ("bbb", 0x00, 0x00, configurationId)
-                    { name: 'payload', type: enums_1.DataType.CHAR_STR },
+                    { name: "payload", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             setConfigurationParameter: {
                 ID: 0xfd,
                 parameters: [
                     // bit pack ("bbbb", 0x00, 0x00, configurationId, value)
-                    { name: 'payload', type: enums_1.DataType.CHAR_STR },
+                    { name: "payload", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             integrationModeActivation: {
                 ID: 0x25,
                 parameters: [
                     // bit pack ("bbbbb", slot, codeType, string sub (userCode, 1, 2), string sub (userCode, 3, 4), string sub (userCode, 5, 6)) .. String duplicate (0xff, 12)
-                    { name: 'payload', type: enums_1.DataType.CHAR_STR },
+                    { name: "payload", type: enums_1.DataType.CHAR_STR },
                 ],
             },
             armDisarm: {
                 ID: 0x4e,
                 parameters: [
                     // bit pack ("bb", lockSequenceNumber, operatingParameter)
-                    { name: 'payload', type: enums_1.DataType.CHAR_STR },
+                    { name: "payload", type: enums_1.DataType.CHAR_STR },
                 ],
             },
         },
@@ -5132,7 +5930,7 @@ exports.Clusters = {
         },
         commandsResponse: {},
     },
-    msIAQ: {
+    msBeelightIAQ: {
         ID: 6666,
         attributes: {
             measuredValue: { ID: 0, type: enums_1.DataType.UINT16 },
@@ -5143,7 +5941,7 @@ exports.Clusters = {
         commands: {},
         commandsResponse: {},
     },
-    msVOC: {
+    msBeelightVOC: {
         ID: 6667,
         attributes: {
             measuredValue: { ID: 0, type: enums_1.DataType.UINT16 },
@@ -5154,7 +5952,7 @@ exports.Clusters = {
         commands: {},
         commandsResponse: {},
     },
-    msCO2: {
+    msBeelightCO2: {
         ID: 6668,
         attributes: {
             measuredValue: { ID: 0, type: enums_1.DataType.UINT16 },

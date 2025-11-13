@@ -178,53 +178,11 @@ Make sure to use a Zigbee 3 compatible dongle like [SONOFF ZBDongle-E](https://s
 
 1. Download and install [Zigbee2MQTT](https://github.com/zigbee2mqtt/hassio-zigbee2mqtt)
 2. Copy the external converter from `z2m/data_external_converters` to the `data` directory of your `Zigbee2MQTT` installation
-3. Switch into the directory `.../zigbee2mqtt/node_modules/zigbee-herdsman-converters/converters`
-4. Open the file `fromZigbee.js` and add the following code before `const converters = { ...converters1, ...converters2 };` at the end of the file
+3. Switch into the directory `.../zigbee2mqtt/node_modules/zigbee-herdsman/dist/zspec/zcl/definition` and open `cluster.js` and add the following code to `exports.Clusters`
 
-```js
-const converters3 = {
-  BeeLight_iaq: {
-    cluster: 'msIAQ',
-    type: ['attributeReport', 'readResponse'],
-    convert: (model, msg, publish, options, meta) => {
-      const iaq = msg.data['measuredValue'];
-      const tolerance = msg.data['tolerance'];
-      const property = (0, utils_1.postfixWithEndpointName)('iaq', msg, model, meta);
-      return { [property]: iaq };
-    },
-  },
-  BeeLight_voc: {
-    cluster: 'msVOC',
-    type: ['attributeReport', 'readResponse'],
-    convert: (model, msg, publish, options, meta) => {
-      const voc = msg.data['measuredValue'];
-      const tolerance = msg.data['tolerance'];
-      const property = (0, utils_1.postfixWithEndpointName)('voc', msg, model, meta);
-      return { [property]: voc };
-    },
-  },
-  BeeLight_co2: {
-    cluster: 'msCO2',
-    type: ['attributeReport', 'readResponse'],
-    convert: (model, msg, publish, options, meta) => {
-      const co2 = msg.data['measuredValue'];
-      const tolerance = msg.data['tolerance'];
-      const property = (0, utils_1.postfixWithEndpointName)('co2', msg, model, meta);
-      return { [property]: co2 };
-    },
-  },
-};
-```
-
-5. Change `const converters = { ...converters1, ...converters2 };` to `const converters = { ...converters1, ...converters2, ...converters3 };`
-6. Save the file
-7. Switch to `.../zigbee2mqtt/node_modules/zigbee-herdsman/dist/zspec/zcl/definition`
-8. Open the file `cluster.js` and add the following cluster to the end of the list at the end of the file:
-
-```js
-      ...
-    },
-    msIAQ: {
+```ts
+...
+    msBeelightIAQ: {
         ID: 6666,
         attributes: {
             measuredValue: { ID: 0, type: enums_1.DataType.UINT16 },
@@ -235,7 +193,7 @@ const converters3 = {
         commands: {},
         commandsResponse: {},
     },
-    msVOC: {
+    msBeelightVOC: {
         ID: 6667,
         attributes: {
             measuredValue: { ID: 0, type: enums_1.DataType.UINT16 },
@@ -246,18 +204,77 @@ const converters3 = {
         commands: {},
         commandsResponse: {},
     },
-    msCO2: {
+    msBeelightCO2: {
         ID: 6668,
         attributes: {
-            measuredValue: { ID: 0, type: enums_1.DataType.UINT32 },
-            minMeasuredValue: { ID: 1, type: enums_1.DataType.UINT32 },
-            maxMeasuredValue: { ID: 2, type: enums_1.DataType.UINT32 },
+            measuredValue: { ID: 0, type: enums_1.DataType.UINT16 },
+            minMeasuredValue: { ID: 1, type: enums_1.DataType.UINT16 },
+            maxMeasuredValue: { ID: 2, type: enums_1.DataType.UINT16 },
             tolerance: { ID: 3, type: enums_1.DataType.UINT8 },
         },
         commands: {},
         commandsResponse: {},
     },
-};
+...
+```
+
+4. Save the file
+5. Switch to `.../zigbee2mqtt/node_modules/zigbee-herdsman-converters/dist/lib`
+6. Open the file `modernExtend.js` and add the following cluster to the end of the list at the end of the file:
+7. Add
+
+```js
+...
+exports.BeeLight_iaq = BeeLight_iaq;
+exports.BeeLight_co2 = BeeLight_co2;
+exports.BeeLight_voc = BeeLight_voc;
+...
+```
+
+8. Extend the following section
+
+```js
+// #region Measurement and Sensing
+function BeeLight_iaq(args = {}) {
+    return numeric({
+        name: "BeeLight_iaq",
+        cluster: "msBeelightIAQ",
+        attribute: "measuredValue",
+        reporting: { min: "5_MINUTES", max: "1_HOUR", change: 10 },
+        description: "Measured IAQ value",
+        unit: "",
+        scale: 1,
+        access: "STATE_GET",
+        ...args,
+    });
+}
+function BeeLight_co2(args = {}) {
+    return numeric({
+        name: "BeeLight_co2",
+        cluster: "msBeelightCO2",
+        attribute: "measuredValue",
+        reporting: { min: "5_MINUTES", max: "1_HOUR", change: 10 },
+        description: "Measured CO2 value",
+        unit: "ppm",
+        scale: 1,
+        access: "STATE_GET",
+        ...args,
+    });
+}
+function BeeLight_voc(args = {}) {
+    return numeric({
+        name: "BeeLight_voc",
+        cluster: "msBeelightVOC",
+        attribute: "measuredValue",
+        reporting: { min: "5_MINUTES", max: "1_HOUR", change: 10 },
+        description: "Measured VOC value",
+        unit: "ppm",
+        scale: 1,
+        access: "STATE_GET",
+        ...args,
+    });
+}
+...
 ```
 
 9. Save the file
