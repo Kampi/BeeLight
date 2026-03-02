@@ -16,6 +16,7 @@ outputs:
     include_virtual: false
     output: '%f-CPL%I%v.%x'
     separate_files_for_front_and_back: false
+    columns: ['Ref', 'PosX', 'PosY', 'Rot', 'Side']
 
 definitions:
   NAME: csv_position

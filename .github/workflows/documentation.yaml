@@ -1,0 +1,306 @@
+name: Software Documentation
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'docs/**'
+      - '.github/workflows/documentation.yaml'
+  pull_request:
+    paths:
+      - 'docs/**'
+      - '.github/workflows/documentation.yaml'
+  workflow_dispatch:
+
+env:
+  project_name: ${PROJECT_NAME}
+
+  # Input directory for the firmware
+  input_dir: firmware
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  asciidoctor:
+    runs-on: ubuntu-latest
+    name: Build Documentation (AsciiDoc)
+
+    steps:
+    - name: Repository Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Install AsciiDoctor
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y asciidoctor ruby-asciidoctor-pdf
+
+    - name: Build AsciiDoc Documentation
+      run: |
+        cd ${{ env.input_dir }}/docs
+        mkdir -p ${{ env.input_dir }}/public/pdf
+        
+        # Build all .adoc files
+        echo "Processing AsciiDoc files..."
+        for File in *.adoc; do
+          if [ -f "$File" ]; then
+            base_name="${File%.adoc}"
+            echo "  - Building $base_name..."
+            
+            # Generate HTML (index.adoc wird zu overview.html umbenannt)
+            if [ "$base_name" = "index" ]; then
+              asciidoctor "$File" -o "${{ env.input_dir }}/public/overview.html"
+            else
+              asciidoctor "$File" -o "${{ env.input_dir }}/public/${base_name}.html"
+            fi
+            
+            # Generate PDF
+            asciidoctor-pdf "$File" -o "${{ env.input_dir }}/public/pdf/${base_name}.pdf"
+          fi
+        done
+        
+        # Create landing page
+        cat > "${{ env.input_dir }}/public/index.html" << 'EOF'
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>${{ env.project_name }} Component Documentation</title>
+          <style>
+            body {
+              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+              max-width: 1200px;
+              margin: 0 auto;
+              padding: 2rem;
+              line-height: 1.6;
+              background-color: #f5f5f5;
+            }
+            h1 {
+              color: #333;
+              border-bottom: 3px solid #e74c3c;
+              padding-bottom: 0.5rem;
+            }
+            h2 {
+              color: #555;
+              margin-top: 2rem;
+            }
+            .header-info {
+              background: white;
+              padding: 1.5rem;
+              border-radius: 8px;
+              box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+              margin-bottom: 2rem;
+            }
+            .doc-list {
+              background: white;
+              padding: 1.5rem;
+              border-radius: 8px;
+              box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+              margin-bottom: 2rem;
+            }
+            .doc-item {
+              padding: 1rem;
+              margin: 0.5rem 0;
+              background: #f8f9fa;
+              border-left: 4px solid #e74c3c;
+              border-radius: 4px;
+            }
+            .doc-item h3 {
+              margin: 0 0 0.5rem 0;
+              color: #e74c3c;
+            }
+            .doc-item p {
+              margin: 0.5rem 0;
+              color: #666;
+              font-size: 0.9rem;
+            }
+            .doc-links {
+              margin-top: 0.5rem;
+            }
+            .doc-links a {
+              display: inline-block;
+              margin-right: 1rem;
+              padding: 0.3rem 0.8rem;
+              background: #e74c3c;
+              color: white;
+              text-decoration: none;
+              border-radius: 4px;
+              font-size: 0.9rem;
+            }
+            .doc-links a:hover {
+              background: #c0392b;
+            }
+            .footer {
+              margin-top: 3rem;
+              padding-top: 1rem;
+              border-top: 1px solid #ddd;
+              color: #666;
+              font-size: 0.9rem;
+            }
+            .badge {
+              display: inline-block;
+              padding: 0.2rem 0.5rem;
+              background: #3498db;
+              color: white;
+              border-radius: 3px;
+              font-size: 0.8rem;
+              margin-left: 0.5rem;
+            }
+          </style>
+        </head>
+        <body>
+          <h1>🔥 ${{ env.project_name }} Component Documentation</h1>
+          
+          <div class="header-info">
+            <p><strong>FLIR Lepton Thermal Camera Driver for ESP32</strong></p>
+            <p>Complete driver implementation for FLIR Lepton 3.0 and 3.5 thermal imaging sensors on ESP32 platforms.</p>
+            <p>
+              <span class="badge">ESP-IDF</span>
+              <span class="badge">SPI</span>
+              <span class="badge">I2C</span>
+              <span class="badge">FreeRTOS</span>
+              <span class="badge">Radiometric</span>
+              <span class="badge">FLIR</span>
+            </p>
+          </div>
+          
+          <div class="doc-list">
+            <h2>📖 Documentation Modules</h2>
+        EOF
+        
+        # Add documentation entries
+        cat >> public/index.html << 'EOF'
+            <div class="doc-item">
+              <h3>📋 Component Overview</h3>
+              <p>Introduction to the ${{ env.project_name }} component, architecture, and getting started guide.</p>
+              <div class="doc-links">
+                <a href="overview.html">📄 HTML</a>
+                <a href="pdf/index.pdf">📕 PDF</a>
+              </div>
+            </div>
+            
+            <div class="doc-item">
+              <h3>🎯 Main Driver (lepton)</h3>
+              <p>Core driver API providing initialization, configuration, and high-level control functions.</p>
+              <div class="doc-links">
+                <a href="lepton.html">📄 HTML</a>
+                <a href="pdf/lepton.pdf">📕 PDF</a>
+              </div>
+            </div>
+            
+            <div class="doc-item">
+              <h3>📸 Frame Capture (lepton_capture)</h3>
+              <p>FreeRTOS task implementation for continuous frame acquisition with VSync support.</p>
+              <div class="doc-links">
+                <a href="lepton_capture.html">📄 HTML</a>
+                <a href="pdf/lepton_capture.pdf">📕 PDF</a>
+              </div>
+            </div>
+            
+            <div class="doc-item">
+              <h3>⚙️ CCI Commands (lepton_cci)</h3>
+              <p>High-level command interface for sensor configuration and control via I2C.</p>
+              <div class="doc-links">
+                <a href="lepton_cci.html">📄 HTML</a>
+                <a href="pdf/lepton_cci.pdf">📕 PDF</a>
+              </div>
+            </div>
+            
+            <div class="doc-item">
+              <h3>🔌 CCI Low-Level (cci)</h3>
+              <p>Low-level I2C protocol implementation for Command and Control Interface.</p>
+              <div class="doc-links">
+                <a href="cci.html">📄 HTML</a>
+                <a href="pdf/cci.pdf">📕 PDF</a>
+              </div>
+            </div>
+            
+            <div class="doc-item">
+              <h3>🎥 VoSPI Interface (vospi)</h3>
+              <p>SPI-based video interface for high-speed thermal data acquisition with DMA.</p>
+              <div class="doc-links">
+                <a href="vospi.html">📄 HTML</a>
+                <a href="pdf/vospi.pdf">📕 PDF</a>
+              </div>
+            </div>
+        EOF
+        
+        # Add footer with current timestamp
+        cat >> public/index.html << EOF
+          </div>
+          
+          <div class="footer">
+            <p><strong>${{ env.project_name }} Component</strong> - Hardware Component Description</p>
+            <p>Copyright © Daniel Kampert, 2026 | GNU General Public License v3.0</p>
+            <p>Website: <a href="https://www.kampis-elektroecke.de">www.kampis-elektroecke.de</a></p>
+            <p>Generated: $(date -u +'%Y-%m-%d %H:%M:%S UTC')</p>
+          </div>
+        </body>
+        </html>
+        EOF
+
+    - name: Upload Artifact - Documentation
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.project_name }}-Documentation
+        path: ${{ env.input_dir }}/docs/public
+
+  deploy:
+    if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || contains(github.ref, 'refs/tags/'))
+    needs:
+      - asciidoctor
+    runs-on: ubuntu-latest
+    name: Deploy to Releases
+
+    steps:
+    - name: Repository Checkout
+      uses: actions/checkout@v4
+
+    - name: Download Artifacts
+      uses: actions/download-artifact@v4
+
+    - name: Organize and create tarball
+      run: |
+        mv ./${{ env.project_name }}-Documentation ${{ env.input_dir }}/public
+
+        # Create renamed copies for GitHub Releases (with -nightly suffix)
+        mkdir -p release_pdfs
+        cd ${{ env.input_dir }}/public/pdf
+        for pdf_file in *.pdf; do
+          if [ -f "$pdf_file" ]; then
+            base_name="${pdf_file%.pdf}"
+            cp "$pdf_file" "../../release_pdfs/${base_name}-nightly.pdf"
+          fi
+        done
+        cd ../..
+        
+        # Create tarball
+        tar zvcf ${{ env.project_name }}-Docs-nightly.tar.gz -C ${{ env.input_dir }}/public .
+
+    - name: Deploy to GitHub Releases
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh release view nightly 2>/dev/null || \
+          gh release create nightly \
+            --title "Nightly Documentation Build" \
+            --notes "Automatically generated documentation for ${{ env.project_name }} component" \
+            --prerelease
+
+        gh release upload nightly \
+          ${{ env.project_name }}-Docs-nightly.tar.gz \
+          release_pdfs/*.pdf --clobber
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./${{ env.input_dir }}/public
+        force_orphan: true
