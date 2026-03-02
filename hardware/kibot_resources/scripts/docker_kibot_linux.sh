@@ -6,7 +6,7 @@ export USER_ID=$(id -u)
 export GROUP_ID=$(id -g)
 export USER_NAME=$(whoami)
 
-docker run --rm -it \
+sudo docker run --rm -it \
     --user "$USER_ID:$GROUP_ID" \
     --env NO_AT_BRIDGE=1 \
     --env DISPLAY="$DISPLAY" \
@@ -14,12 +14,13 @@ docker run --rm -it \
     --volume=/tmp/.X11-unix:/tmp/.X11-unix \
     --volume="/etc/group:/etc/group:ro" \
     --volume="/etc/passwd:/etc/passwd:ro" \
+    --volume="/etc/shadow:/etc/shadow:ro" \
     --volume="/home/$USER_NAME:/home/$USER_NAME:rw" \
     --entrypoint /bin/bash \
     "$IMAGE" -c "
-    if ! id '$USER_NAME' >/dev/null 2>&1; then
-        echo \"Creating user '$USER_NAME' ('$USER_ID':'$GROUP_ID')...\"
-        useradd -u '$USER_ID' -g '$GROUP_ID' -d '/home/$USER_NAME' -m '$USER_NAME'
-        chown -R '$USER_ID':'$GROUP_ID' '/home/$USER_NAME'
+    if ! id $USER_NAME &>/dev/null; then
+        echo \"Creating user $USER_NAME ($USER_ID:$GROUP_ID)...\"
+        useradd -u $USER_ID -g $GROUP_ID -d /home/$USER_NAME -m $USER_NAME
+        chown -R $USER_ID:$GROUP_ID /home/$USER_NAME
     fi
-    exec su - '$USER_NAME'"
+    exec su - $USER_NAME"

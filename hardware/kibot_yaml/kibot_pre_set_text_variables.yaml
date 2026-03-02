@@ -6,6 +6,7 @@ kibot:
 
 preflight:
   update_xml: true
+  fill_zones: true
   set_text_variables:
 
     # Git related information
@@ -36,10 +37,10 @@ preflight:
       text: '%V'
 
     # Changelog
-    - variable: '@RELEASE_TITLE_VAR@2.1.0'
-      command: '@GET_TITLE_CMD@ 2.1.0'
-    - variable: '@RELEASE_BODY_VAR@2.1.0'
-      command: '@GET_BODY_CMD@ 2.1.0'
+    - variable: '@RELEASE_TITLE_VAR@2.2.0'
+      command: '@GET_TITLE_CMD@ 2.2.0'
+    - variable: '@RELEASE_BODY_VAR@2.2.0'
+      command: '@GET_BODY_CMD@ 2.2.0'
 
     # - variable: '@RELEASE_TITLE_VAR@x.y.z'
     #   command: '@GET_TITLE_CMD@ x.y.z'

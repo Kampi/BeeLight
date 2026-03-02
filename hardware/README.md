@@ -1,11 +1,11 @@
 <p align="center" width="100%">
-  <img alt="Logo" width="33%" src="Logos/Dummy.png">
+  <img alt="Logo" width="33%" src="Images/Logos/Logo.png">
 </p>
 
 <h1 align="center">Template</h1>
 
 <p align="center" width="100%">
-  <a href="${GIT_URL}/actions/workflows/devkit.yaml">
+  <a href="${GIT_URL}/actions/workflows/pcb.yaml">
     <img alt="CI Badge" src="${GIT_URL}/actions/workflows/devkit.yaml/badge.svg">
   </a>
 </p>

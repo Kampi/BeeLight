@@ -1,5 +1,9 @@
 # BeeLight - Zigbee based light & environment sensor for Home Automation
 
+[![License](https://img.shields.io/badge/License-GPL%203.0-blue.svg)](https://opensource.org/license/gpl-3-0/)
+[![PCB](${GIT_URL}/actions/workflows/pcb.yaml/badge.svg)](https://www.github.com/Kampi/BeeLight/actions/workflows/pcb.yaml)
+[![Documentation](https://img.shields.io/badge/Documentation-HTML-007ec6?longCache=true&style=flat&logo=asciidoctor&colorA=555555)](https://https://www.kampi.github.io/BeeLight/)
+
 ## Table of Contents
 
 - [BeeLight - Zigbee based light \& environment sensor for Home Automation](#beelight---zigbee-based-light--environment-sensor-for-home-automation)

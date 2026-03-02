@@ -1,0 +1,40 @@
+name: Code Style Check
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - main
+      - master
+      - dev
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  astyle-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install AStyle
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lbzip2 build-essential cmake pkg-config
+          wget https://sourceforge.net/projects/astyle/files/astyle/astyle%203.6/astyle-3.6.13.tar.bz2/download -O astyle.tar.bz2
+          tar -xf astyle.tar.bz2
+          cd astyle-3.6.13/
+          mkdir -p build
+          cd build
+          cmake ../
+          make
+          sudo make install
+
+      - name: Check code style
+        run: |
+          chmod +x ./scripts/format.sh
+          ./scripts/format.sh
