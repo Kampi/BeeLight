@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "type_traits": "cpp",
-        "xtr1common": "cpp",
-        "utility": "cpp",
-        "zb_zcl_common.h": "c",
-        "zb_ha_device_config.h": "c"
-    }
-}

@@ -34,12 +34,12 @@ LOG_MODULE_REGISTER(env, LOG_LEVEL_DBG);
 
 static void zbus_5min_callback(const struct zbus_channel *chan)
 {
+    int ret = 0;
+    struct env_event evt;
     struct sensor_value sensor_val;
 
-    if (device_is_ready(bme688)) {
+    if ((bme688 != NULL) && (device_is_ready(bme688))) {
         if ((sensor_sample_fetch(bme688) == 0)) {
-            struct env_event evt;
-
             memset(&evt, 0, sizeof(struct env_event));
 
             if (sensor_channel_get(bme688, SENSOR_CHAN_AMBIENT_TEMP, &sensor_val) == 0) {
@@ -71,10 +71,7 @@ static void zbus_5min_callback(const struct zbus_channel *chan)
             }
 #endif /* CONFIG_BME68X_IAQ */
 
-            int ret = zbus_chan_pub(&env_data_chan, &evt, K_NO_WAIT);
-            if (ret != 0) {
-                LOG_ERR("Failed to publish env data: %d", ret);
-            }
+            ret = zbus_chan_pub(&env_data_chan, &evt, K_NO_WAIT);
 
             LOG_DBG("Publish new data...");
             LOG_DBG("   Temperature: %f", (double)evt.temperature);
@@ -87,34 +84,55 @@ static void zbus_5min_callback(const struct zbus_channel *chan)
 #endif
         }
     } else {
-        LOG_ERR("Device \"%s\" is not ready!", bme688->name);
+        LOG_WRN("Device is not ready!");
+
+#ifdef CONFIG_DEBUG
+        static int i = 0;
+        LOG_INF("Sending fake data...");
+        evt.temperature = i++;
+        evt.pressure = i++;
+        evt.humidity = i++;
+#if CONFIG_BME68X_IAQ
+        evt.co2.value = i++;
+        evt.voc.value = i++;
+        evt.iaq.value = i++;
+#endif
+        ret = zbus_chan_pub(&env_data_chan, &evt, K_NO_WAIT);
+#endif
     }
+
+    if (ret != 0) {
+        LOG_ERR("Failed to publish env data: %d", ret);
+    }
+
 }
 
 static int beelight_env_sensor_init(void)
 {
     int err;
 
+    err = zbus_chan_add_obs(&periodic_5min_chan, &env_periodic_sample_event_lis, K_NO_WAIT);
+    if (err != 0) {
+        return err;
+    }
+
     if (bme688 == NULL) {
         LOG_ERR("BME688 device node not found!");
         return -ENODEV;
     }
 
-    if (!device_is_ready(bme688)) {
+    if (device_is_ready(bme688) == false) {
         LOG_ERR("BME688 device is not ready!");
         return -ENODEV;
     }
 
+#ifdef CONFIG_PM_DEVICE
     err = pm_device_runtime_auto_enable(bme688);
     if (err != 0) {
         LOG_ERR("Failed to enable runtime PM: %d!", err);
         return err;
     }
-
-    err = zbus_chan_add_obs(&periodic_5min_chan, &env_periodic_sample_event_lis, K_NO_WAIT);
-    if (err != 0) {
-        return err;
-    }
+#endif
 
     return 0;
 }
