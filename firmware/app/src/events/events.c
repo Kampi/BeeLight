@@ -93,7 +93,12 @@ static void handle_5min_timeout(struct k_work *item)
 
     zbus_chan_claim(&periodic_5min_chan, K_FOREVER);
     work = (struct k_work_delayable *)zbus_chan_user_data(&periodic_5min_chan);
+
+#ifdef CONFIG_DEBUG
+    k_work_reschedule(work, K_MSEC(10 * 1000UL));
+#else
     k_work_reschedule(work, K_MSEC(5 * 60 * 1000UL));
+#endif
     zbus_chan_finish(&periodic_5min_chan);
 
     zbus_chan_pub(&periodic_5min_chan, &evt, K_NO_WAIT);

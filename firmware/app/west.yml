@@ -8,7 +8,7 @@ manifest:
     - name: bosch
       url-base: https://github.com/boschsensortec
 
-  group-filter: [+bsec2]
+  group-filter: [+bsec, +bsec2]
 
   projects:
     - name: ncs-zigbee

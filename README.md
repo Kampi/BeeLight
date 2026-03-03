@@ -24,6 +24,7 @@
       - [Custom cluster](#custom-cluster)
       - [Zigbee Dongle](#zigbee-dongle)
       - [Install the device to Zigbee2MQTT](#install-the-device-to-zigbee2mqtt)
+      - [Using the NCS Zigbee Shell](#using-the-ncs-zigbee-shell)
   - [Directory structure](#directory-structure)
   - [Resources](#resources)
   - [Maintainer](#maintainer)
@@ -134,7 +135,7 @@ nrfjprog --program zigbee_config.hex --verify
 ```
 
 > **NOTE**
-> The offset `0x17a000` is taken from `build/<app>/zephyr/include/generated/pm_config.h`. Also make sure to change `extended_address` in the Zigbee
+> The offset `0x17a000` is taken from the `PM_ZBOSS_PRODUCT_CONFIG_OFFSET` macro in `build/<app>/zephyr/include/generated/pm_config.h`. Also make sure to change `extended_address` in the Zigbee
 > configuration file if you use more than one device!
 
 ### Housing
@@ -169,7 +170,7 @@ The device uses three custom cluster to report `IAQ`, `VOC` and `CO2` to the net
 | Value | 0x0000 |
 | Min. Value | 0x0001 |
 | Max. Value | 0x0002 |
-| Tolerance  | 0x0003 |
+| Tolerance | 0x0003 |
 
 #### Zigbee Dongle
 
@@ -272,6 +273,29 @@ The device can now be connected to your Zigbee network and with this to your Hom
 ![Zigbee2MQTT](docs/images/Zigbee2MQTT.png)
 ![HomeAssistant](docs/images/HomeAssistant.png)
 
+#### Using the NCS Zigbee Shell
+
+You can test the device by using the NCS Zigbee Shell example and an nRF54DK or an nRF5340DK.
+
+1. Flash the Zigbee Shell example to your board
+2. Execute `nvram disable`
+3. Execute `bdb role zc`
+4. Execute `bdb channel 11`
+5. Execute `bdb start`
+6. Flash the sensor device firmware and the network configuration
+7. Reset the sensor device and start the join procedure
+8. You should get this output from the network coordinator device
+
+```sh
+[00:05:05.648,345] <inf> zigbee_app_utils: Joined network successfully (Extended PAN ID: f4ce36b2d4c06ca0, PAN ID: 0x6057)
+[00:05:24.536,529] <inf> zigbee_app_utils: Device authorization event received (short: 0x02fa, long: 86d79ac5bae41fa3, authorization type: 3, authorization status: 0)
+[00:05:24.536,773] <inf> zigbee_app_utils: Unimplemented signal (signal: 53, status: 0)
+[00:05:24.537,139] <inf> zigbee_app_utils: Device update received (short: 0x02fa, long: 86d79ac5bae41fa3, status: 1)
+```
+
+9. Now you can read the clusters with `zcl attr read <Address> 10 <Cluster> 0x0104 0x0000`
+10. Use `zcl subscribe on <Address> 10 <Cluster> 0x0104 0x00 33 <Min (s)> <Max (s)>` to create a binding for the given cluster
+
 ## Directory structure
 
 - `3d-print`: All 3D print.related files
@@ -292,6 +316,7 @@ The device can now be connected to your Zigbee network and with this to your Hom
 - [Generating HEX files for Zigbee production configuration](https://docs.nordicsemi.com/bundle/nrfutil/page/nrfutil-nrf5sdk-tools/guides/generating_zigbee_hex.html)
 - [Zigbee Converters](https://github.com/Koenkk/zigbee-herdsman-converters)
 - [KiBot Template](https://github.com/nguyen-v/KDT_Hierarchical_KiBot)
+- [Zigbee Shell](https://docs.nordicsemi.com/bundle/addon-zigbee-r23-latest/page/lib/shell.html#zdo_ieeeaddr)
 
 ## Maintainer
 

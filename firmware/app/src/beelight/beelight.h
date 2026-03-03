@@ -229,7 +229,7 @@ typedef struct {
         ZB_ZCL_MANUF_CODE_INVALID \
     ),
 
-#define BEELIGHT_CLUSTER_IDENTIFY_DESC(identify_server_attr_list) \
+#define BEELIGHT_CLUSTER_IDENTIFY_SERVER_DESC(identify_server_attr_list) \
     ZB_ZCL_CLUSTER_DESC( \
         ZB_ZCL_CLUSTER_ID_IDENTIFY, \
         ZB_ZCL_ARRAY_SIZE(identify_server_attr_list, zb_zcl_attr_t), \
@@ -283,9 +283,10 @@ typedef struct {
         ZB_ZCL_MANUF_CODE_INVALID \
     ),
 
+#ifdef CONFIG_BME68X_IAQ
 #define BEELIGHT_CLUSTER_CO2_DESC(co2_attr_list) \
     ZB_ZCL_CLUSTER_DESC( \
-        ZB_ZCL_CLUSTER_ID_CO2_MEASUREMENT, \
+        ZB_BEELIGHT_CLUSTER_ID_CO2_MEASUREMENT, \
         ZB_ZCL_ARRAY_SIZE(co2_attr_list, zb_zcl_attr_t), \
         (co2_attr_list), \
         ZB_ZCL_CLUSTER_SERVER_ROLE, \
@@ -294,7 +295,7 @@ typedef struct {
 
 #define BEELIGHT_CLUSTER_IAQ_DESC(iaq_attr_list) \
     ZB_ZCL_CLUSTER_DESC( \
-        ZB_ZCL_CLUSTER_ID_IAQ_MEASUREMENT, \
+        ZB_BEELIGHT_CLUSTER_ID_IAQ_MEASUREMENT, \
         ZB_ZCL_ARRAY_SIZE(iaq_attr_list, zb_zcl_attr_t), \
         (iaq_attr_list), \
         ZB_ZCL_CLUSTER_SERVER_ROLE, \
@@ -303,12 +304,22 @@ typedef struct {
 
 #define BEELIGHT_CLUSTER_VOC_DESC(voc_attr_list) \
     ZB_ZCL_CLUSTER_DESC( \
-        ZB_ZCL_CLUSTER_ID_VOC_MEASUREMENT, \
+        ZB_BEELIGHT_CLUSTER_ID_VOC_MEASUREMENT, \
         ZB_ZCL_ARRAY_SIZE(voc_attr_list, zb_zcl_attr_t), \
         (voc_attr_list), \
         ZB_ZCL_CLUSTER_SERVER_ROLE, \
         ZB_ZCL_MANUF_CODE_INVALID \
     ),
+#endif /* CONFIG_BME68X_IAQ */
+
+#define BEELIGHT_CLUSTER_IDENTIFY_CLIENT_DESC(identify_client_attr_list) \
+    ZB_ZCL_CLUSTER_DESC( \
+        ZB_ZCL_CLUSTER_ID_IDENTIFY, \
+        ZB_ZCL_ARRAY_SIZE(identify_client_attr_list, zb_zcl_attr_t),    \
+        (identify_client_attr_list),    \
+        ZB_ZCL_CLUSTER_CLIENT_ROLE, \
+        ZB_ZCL_MANUF_CODE_INVALID   \
+    ),  \
 
 /** @brief Basic cluster IDs (for both variants)
  */
@@ -325,9 +336,9 @@ typedef struct {
  */
 #define BEELIGHT_CLUSTER_IDS_EXTENDED \
     BEELIGHT_CLUSTER_IDS_BASIC \
-    ZB_ZCL_CLUSTER_ID_CO2_MEASUREMENT, \
-    ZB_ZCL_CLUSTER_ID_IAQ_MEASUREMENT, \
-    ZB_ZCL_CLUSTER_ID_VOC_MEASUREMENT,
+    ZB_BEELIGHT_CLUSTER_ID_CO2_MEASUREMENT, \
+    ZB_BEELIGHT_CLUSTER_ID_IAQ_MEASUREMENT, \
+    ZB_BEELIGHT_CLUSTER_ID_VOC_MEASUREMENT,
 
 #if CONFIG_BME68X_IAQ
 #include "beelight_bsec2.h"

@@ -39,19 +39,20 @@
 
 /** @brief Number of IN (server) clusters.
 */
-#define BEELIGHT_IN_CLUSTER_NUM            10
+#define BEELIGHT_IN_CLUSTER_NUM             10
 
 /** @brief Number of OUT (client) clusters.
 */
-#define BEELIGHT_OUT_CLUSTER_NUM           0
+#define BEELIGHT_OUT_CLUSTER_NUM            1
 
 /** @brief Number of attributes.
 */
-#define BEELIGHT_REPORT_ATTR_COUNT         10
+#define BEELIGHT_REPORT_ATTR_COUNT          10
 
 /** @brief                              Declare the cluster list for the Environment Sensor device.
  *  @param cluster_list_name            Cluster list variable name
  *  @param basic_attr_list              Attribute list for Basic cluster
+ *  @param identify_client_attr_list    Attribute list for Identify cluster (Client)
  *  @param identify_server_attr_list    Attribute list for Identify cluster (Server)
  *  @param power_attr_list              Attribute list for Power cluster
  *  @param illu_attr_list               Attribute list for Illuminance Measurement cluster
@@ -66,6 +67,7 @@
     cluster_list_name,                                                      \
     basic_attr_list,                                                        \
     identify_server_attr_list,                                              \
+    identify_client_attr_list,                                              \
     power_attr_list,                                                        \
     illu_attr_list,                                                         \
     temp_attr_list,                                                         \
@@ -77,7 +79,7 @@
     static zb_zcl_cluster_desc_t cluster_list_name[] =                      \
     {                                                                       \
         BEELIGHT_CLUSTER_BASIC_DESC(basic_attr_list)                        \
-        BEELIGHT_CLUSTER_IDENTIFY_DESC(identify_server_attr_list)           \
+        BEELIGHT_CLUSTER_IDENTIFY_SERVER_DESC(identify_server_attr_list)    \
         BEELIGHT_CLUSTER_POWER_DESC(power_attr_list)                        \
         BEELIGHT_CLUSTER_ILLUMINANCE_DESC(illu_attr_list)                   \
         BEELIGHT_CLUSTER_TEMP_DESC(temp_attr_list)                          \
@@ -86,6 +88,7 @@
         BEELIGHT_CLUSTER_CO2_DESC(co2_attr_list)                            \
         BEELIGHT_CLUSTER_IAQ_DESC(iaq_attr_list)                            \
         BEELIGHT_CLUSTER_VOC_DESC(voc_attr_list)                            \
+        BEELIGHT_CLUSTER_IDENTIFY_CLIENT_DESC(identify_client_attr_list)    \
     }
 
 /** @brief                  Declare simple descriptor for the Environment Sensor device.
@@ -107,5 +110,6 @@
         out_clust_num, \
         { \
             BEELIGHT_CLUSTER_IDS_EXTENDED \
+            ZB_ZCL_CLUSTER_ID_IDENTIFY, \
         } \
     }

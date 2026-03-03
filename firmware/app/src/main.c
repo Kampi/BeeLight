@@ -54,6 +54,10 @@ static void zbus_on_env_callback(const struct zbus_channel *chan);
  */
 static void zbus_on_battery_callback(const struct zbus_channel *chan);
 
+/* Declare attribute list for Identify cluster (client). */
+ZB_ZCL_DECLARE_IDENTIFY_CLIENT_ATTRIB_LIST(
+	identify_client_attr_list);
+
 /** @brief Declare attribute list for Identify cluster (server).
  */
 ZB_ZCL_DECLARE_IDENTIFY_SERVER_ATTRIB_LIST(
@@ -133,7 +137,7 @@ ZB_ZCL_DECLARE_REL_HUMIDITY_MEASUREMENT_ATTRIB_LIST(
 #if CONFIG_BME68X_IAQ
 /** @brief Carbon Dioxide cluster attributes additions data.
  */
-ZB_ZCL_DECLARE_CO2_MEASUREMENT_ATTRIB_LIST(
+ZB_BEELIGHT_DECLARE_CO2_MEASUREMENT_ATTRIB_LIST(
     co2_sensor_attr_list,
     &dev_ctx.co2_attr.measurement_attr,
     &dev_ctx.co2_attr.min_attr,
@@ -142,7 +146,7 @@ ZB_ZCL_DECLARE_CO2_MEASUREMENT_ATTRIB_LIST(
 
 /** @brief IAQ cluster attributes additions data.
  */
-ZB_ZCL_DECLARE_IAQ_MEASUREMENT_ATTRIB_LIST(
+ZB_BEELIGHT_DECLARE_IAQ_MEASUREMENT_ATTRIB_LIST(
     iaq_sensor_attr_list,
     &dev_ctx.iaq_attr.measurement_attr,
     &dev_ctx.iaq_attr.min_attr,
@@ -151,7 +155,7 @@ ZB_ZCL_DECLARE_IAQ_MEASUREMENT_ATTRIB_LIST(
 
 /** @brief VOC cluster attributes additions data.
  */
-ZB_ZCL_DECLARE_VOC_MEASUREMENT_ATTRIB_LIST(
+ZB_BEELIGHT_DECLARE_VOC_MEASUREMENT_ATTRIB_LIST(
     voc_sensor_attr_list,
     &dev_ctx.voc_attr.measurement_attr,
     &dev_ctx.voc_attr.min_attr,
@@ -162,7 +166,8 @@ ZB_ZCL_DECLARE_VOC_MEASUREMENT_ATTRIB_LIST(
 BEELIGHT_DECLARE_CLUSTER_LIST(
     env_sensor_clusters,
     basic_attr_list,
-    identify_server_attr_list,
+	identify_client_attr_list,
+	identify_server_attr_list,
     power_attr_list,
     light_sensor_attr_list,
     temp_sensor_attr_list,
@@ -197,6 +202,14 @@ ZBUS_LISTENER_DEFINE(battery_data_lis, zbus_on_battery_callback);
 
 LOG_MODULE_REGISTER(app, LOG_LEVEL_DBG);
 
+/** @brief          Function to toggle the identify LED.
+ *  @param bufid    Unused parameter, required by ZBOSS scheduler API
+ */
+static void toggle_identify_led(zb_bufid_t bufid)
+{
+    ZB_SCHEDULE_APP_ALARM(toggle_identify_led, bufid, ZB_MILLISECONDS_TO_BEACON_INTERVAL(100));
+}
+
 /** @brief          Starts identifying the device.
  *  @param bufid    Unused parameter, required by ZBOSS scheduler API
  */
@@ -223,6 +236,31 @@ static void start_identifying(zb_bufid_t bufid)
         }
     } else {
         LOG_WRN("Device not in a network - cannot enter identify mode");
+    }
+}
+
+static void on_Identify_Handler(zb_bufid_t bufid)
+{
+    zb_ret_t err = RET_OK;
+
+    if (bufid) {
+        /* Schedule a self-scheduling function that will toggle the LED */
+        err = ZB_SCHEDULE_APP_CALLBACK(toggle_identify_led, bufid);
+        if (err) {
+            LOG_ERR("Failed to schedule app callback: %d", err);
+        } else {
+            LOG_INF("Enter identify mode");
+        }
+    } else {
+        /* Cancel the toggling function alarm and turn off LED */
+        err = ZB_SCHEDULE_APP_ALARM_CANCEL(toggle_identify_led,
+                            ZB_ALARM_ANY_PARAM);
+        if (err) {
+            LOG_ERR("Failed to schedule app alarm cancel: %d", err);
+        } else {
+            dk_set_led_off(ZIGBEE_NETWORK_STATE_LED);
+            LOG_INF("Cancel identify mode");
+        }
     }
 }
 
@@ -255,31 +293,6 @@ static void on_button_changed_handler(uint32_t button_state, uint32_t has_change
     }
 
     check_factory_reset_button(button_state, has_changed);
-}
-
-/** @brief          Function to toggle the identify LED.
- *  @param bufid    Unused parameter, required by ZBOSS scheduler API
- */
-static void toggle_identify_led(zb_bufid_t bufid)
-{
-    ZB_SCHEDULE_APP_ALARM(toggle_identify_led, bufid, ZB_MILLISECONDS_TO_BEACON_INTERVAL(100));
-}
-
-/** @brief          Function to handle identify notification events.
- *  @param bufid    Unused parameter, required by ZBOSS scheduler API
- */
-static void on_identify_cb_handler(zb_bufid_t bufid)
-{
-    if (bufid) {
-        /* Schedule a self-scheduling function that will toggle the LED. */
-        ZB_SCHEDULE_APP_CALLBACK(toggle_identify_led, bufid);
-    } else {
-        zb_ret_t zb_err_code;
-
-        /* Cancel the toggling function alarm and restore current Zigbee LED state. */
-        zb_err_code = ZB_SCHEDULE_APP_ALARM_CANCEL(toggle_identify_led, ZB_ALARM_ANY_PARAM);
-        ZVUNUSED(zb_err_code);
-    }
 }
 
 /** @brief Function for initializing all clusters attributes.
@@ -331,6 +344,13 @@ static void app_clusters_attr_init(void)
 
     /* Identify cluster attributes data. */
     dev_ctx.identify_attr.identify_time = ZB_ZCL_IDENTIFY_IDENTIFY_TIME_DEFAULT_VALUE;
+
+#if CONFIG_BME68X_IAQ
+    /* Initialize IAQ/VOC/CO2 min and max with their INVALID sentinels so that
+     * check_value_iaq_measurement_server does not reject measured values > 0. */
+    dev_ctx.iaq_attr.min_attr = ZB_BEELIGHT_ATTR_IAQ_MEASUREMENT_MIN_VALUE_INVALID;
+    dev_ctx.iaq_attr.max_attr = ZB_BEELIGHT_ATTR_IAQ_MEASUREMENT_MAX_VALUE_INVALID;
+#endif /* CONFIG_BME68X_IAQ */
 
     /* Initialize the values for the Battery cluster attributes */
     dev_ctx.power_attr.size = ZB_ZCL_POWER_CONFIG_BATTERY_SIZE_CR2;
@@ -405,6 +425,12 @@ void zboss_signal_handler(zb_bufid_t bufid)
             }
 
             break;
+        }
+        case ZB_ZDO_SIGNAL_SKIP_STARTUP: {
+            LOG_DBG("Add observers for sensors");
+            zbus_chan_add_obs(&battery_data_chan, &battery_data_lis, K_MSEC(100));
+            zbus_chan_add_obs(&light_data_chan, &light_data_lis, K_MSEC(100));
+            zbus_chan_add_obs(&env_data_chan, &env_data_lis, K_MSEC(100));
         }
         default: {
             break;
@@ -543,9 +569,9 @@ static void zbus_on_env_callback(const struct zbus_channel *chan)
 
         ZB_ZCL_SET_ATTRIBUTE(
             BEELIGHT_ENDPOINT,
-            ZB_ZCL_CLUSTER_ID_CO2_MEASUREMENT,
+            ZB_BEELIGHT_CLUSTER_ID_CO2_MEASUREMENT,
             ZB_ZCL_CLUSTER_SERVER_ROLE,
-            ZB_ZCL_ATTR_CO2_MEASUREMENT_VALUE_ID,
+            ZB_BEELIGHT_ATTR_CO2_MEASUREMENT_VALUE_ID,
             (zb_uint8_t *)&dev_ctx.co2_attr.measurement_attr,
             ZB_FALSE
         );
@@ -560,9 +586,9 @@ static void zbus_on_env_callback(const struct zbus_channel *chan)
 
         ZB_ZCL_SET_ATTRIBUTE(
             BEELIGHT_ENDPOINT,
-            ZB_ZCL_CLUSTER_ID_IAQ_MEASUREMENT,
+            ZB_BEELIGHT_CLUSTER_ID_IAQ_MEASUREMENT,
             ZB_ZCL_CLUSTER_SERVER_ROLE,
-            ZB_ZCL_ATTR_IAQ_MEASUREMENT_VALUE_ID,
+            ZB_BEELIGHT_ATTR_IAQ_MEASUREMENT_VALUE_ID,
             (zb_uint8_t *)&dev_ctx.iaq_attr.measurement_attr,
             ZB_FALSE
         );
@@ -577,9 +603,9 @@ static void zbus_on_env_callback(const struct zbus_channel *chan)
 
         ZB_ZCL_SET_ATTRIBUTE(
             BEELIGHT_ENDPOINT,
-            ZB_ZCL_CLUSTER_ID_VOC_MEASUREMENT,
+            ZB_BEELIGHT_CLUSTER_ID_VOC_MEASUREMENT,
             ZB_ZCL_CLUSTER_SERVER_ROLE,
-            ZB_ZCL_ATTR_VOC_MEASUREMENT_VALUE_ID,
+            ZB_BEELIGHT_ATTR_VOC_MEASUREMENT_VALUE_ID,
             (zb_uint8_t *)&dev_ctx.voc_attr.measurement_attr,
             ZB_FALSE
         );
@@ -602,7 +628,7 @@ static void zbus_on_battery_callback(const struct zbus_channel *chan)
     dev_ctx.power_attr.voltage = evt->voltage / 100;
 
     /* We need the difference between empty and full for the remaining percent */
-    /* A CR2032 counts as empty when a voltage of 2.7 V is reached. */
+    /* A CR2032 counts as empty when a voltage of 2.7 V is reached */
     /* Formula: (Voltage - Min. Voltage) [V] / (Rated voltage - Min. Voltage) [V] * 100 */
     remaining = (evt->voltage - BEELIGHT_EMPTY_VOLTAGE_MV);
 
@@ -650,44 +676,46 @@ int main(void)
     zb_set_keepalive_timeout(ZB_MILLISECONDS_TO_BEACON_INTERVAL(1 * 60 * 1000));
     zb_zdo_pim_set_long_poll_interval(ZB_MILLISECONDS_TO_BEACON_INTERVAL(10 * 60 * 1000));
 
-    zigbee_configure_sleepy_behavior(true);
-
-    /* Power off unused sections of RAM to lower device power consumption. */
-    if (IS_ENABLED(CONFIG_RAM_POWER_DOWN_LIBRARY)) {
-        power_down_unused_ram();
-    }
-
 #ifdef CONFIG_ZIGBEE_FOTA
 #error "Not supported yet!"
-    /* Initialize Zigbee FOTA download service. */
+    /* Initialize Zigbee FOTA download service */
     zigbee_fota_init(on_zcl_ota_evt_handler);
 
-    /* Mark the current firmware as valid. */
+    /* Mark the current firmware as valid */
     confirm_image();
 
-    /* Register callback for handling ZCL commands. */
+    /* Register callback for handling ZCL commands */
     ZB_ZCL_REGISTER_DEVICE_CB(on_zcl_cb_handler);
 #endif /* CONFIG_ZIGBEE_FOTA */
 
-    /* Register device context (endpoints). */
+    /* Register device context (endpoints) */
     ZB_AF_REGISTER_DEVICE_CTX(&env_sensor_ctx);
 
     app_clusters_attr_init();
 
-    /* Register handler to identify notifications. */
-    ZB_AF_SET_IDENTIFY_NOTIFICATION_HANDLER(BEELIGHT_ENDPOINT, on_identify_cb_handler);
+    /* Register handler to identify notifications */
+    ZB_AF_SET_IDENTIFY_NOTIFICATION_HANDLER(BEELIGHT_ENDPOINT, on_Identify_Handler);
 
-    /* Start Zigbee default thread. */
+    /* Power off unused sections of RAM to lower device power consumption */
+    zb_set_rx_on_when_idle(ZB_FALSE);
+    if (IS_ENABLED(CONFIG_RAM_POWER_DOWN_LIBRARY)) {
+        power_down_unused_ram();
+    }
+
+    /* Start Zigbee default thread */
     zigbee_enable();
-
-    /* Add the observer for the sensors .*/
-    zbus_chan_add_obs(&battery_data_chan, &battery_data_lis, K_MSEC(100));
-    zbus_chan_add_obs(&light_data_chan, &light_data_lis, K_MSEC(100));
-    zbus_chan_add_obs(&env_data_chan, &env_data_lis, K_MSEC(100));
 
     LOG_INF("BeeLight application started");
 
-    /* Put the MCU into power down mode. */
+#if CONFIG_BME68X_IAQ
+    LOG_INF("BME68X IAQ support enabled - ensure that the sensor is connected and configured correctly");
+#endif
+
+#if CONFIG_APDS9306
+    LOG_INF("APDS9306 support enabled - ensure that the sensor is connected and configured correctly");
+#endif
+
+    /* Put the MCU into power down mode */
     while (1) {
         k_sleep(K_FOREVER);
     }
