@@ -117,6 +117,7 @@ jobs:
       - name: Initialize
         run: |
           mkdir -p log
+          echo "DATE=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
 
       # Run these changelog update steps only on tag pushes
       - name: Pull latest changes for changelog update
@@ -316,7 +317,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: ${{ github.ref_name }}
-          commit_message: Push outputs from CI/CD ($(date +'%Y-%m-%d'))
+          commit_message: Push outputs from CI/CD (${{ env.DATE }})
 
   deploy:
     needs: generate_outputs
