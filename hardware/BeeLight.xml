@@ -2,22 +2,24 @@
 <export version="E">
   <design>
     <source>/__w/BeeLight/BeeLight/hardware/BeeLight.kicad_sch</source>
-    <date>2025-06-29T08:57:49+0000</date>
-    <tool>Eeschema 9.0.1+1</tool>
+    <date>2026-03-17T20:29:14+0000</date>
+    <tool>Eeschema 9.0.7+1</tool>
     <textvar name="ASSEMBLY_NOTES"/>
     <textvar name="BOARD_NAME">BeeLight</textvar>
-    <textvar name="COMPANY">null</textvar>
+    <textvar name="COMPANY">Kampis-Elektroecke</textvar>
     <textvar name="DESIGNER">Daniel Kampert</textvar>
     <textvar name="FABRICATION_NOTES"/>
-    <textvar name="GIT_HASH_PCB">42474b5</textvar>
-    <textvar name="GIT_HASH_SCH">1260bd1</textvar>
+    <textvar name="GIT_HASH_PCB">753f6cf</textvar>
+    <textvar name="GIT_HASH_SCH">43ccbb0</textvar>
     <textvar name="GIT_URL">https://github.com/Kampi/BeeLight</textvar>
     <textvar name="PROJECT_NAME">BeeLight</textvar>
+    <textvar name="RELEASE_BODY_2.2.0">Version 2.2.0 not found.</textvar>
     <textvar name="RELEASE_BODY_UNRELEASED">Version Unreleased not found.</textvar>
-    <textvar name="RELEASE_DATE">28-Jun-2025</textvar>
-    <textvar name="RELEASE_DATE_NUM">2025-06-28</textvar>
+    <textvar name="RELEASE_DATE">03-Mar-2026</textvar>
+    <textvar name="RELEASE_DATE_NUM">2026-03-03</textvar>
+    <textvar name="RELEASE_TITLE_2.2.0">Version 2.2.0 not found.</textvar>
     <textvar name="RELEASE_TITLE_UNRELEASED">Version Unreleased not found.</textvar>
-    <textvar name="REVISION">$revision</textvar>
+    <textvar name="REVISION"/>
     <textvar name="SHEET_NAME_1">Cover Page</textvar>
     <textvar name="SHEET_NAME_10">......................................</textvar>
     <textvar name="SHEET_NAME_11">......................................</textvar>
@@ -53,8 +55,8 @@
     <textvar name="SHEET_NAME_39">......................................</textvar>
     <textvar name="SHEET_NAME_4">Main</textvar>
     <textvar name="SHEET_NAME_40">......................................</textvar>
-    <textvar name="SHEET_NAME_5">Revision History</textvar>
-    <textvar name="SHEET_NAME_6">Power Consumption</textvar>
+    <textvar name="SHEET_NAME_5">Power Consumption</textvar>
+    <textvar name="SHEET_NAME_6">Revision History</textvar>
     <textvar name="SHEET_NAME_7">......................................</textvar>
     <textvar name="SHEET_NAME_8">......................................</textvar>
     <textvar name="SHEET_NAME_9">......................................</textvar>
@@ -62,8 +64,8 @@
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>Cover Page</title>
-        <company>null</company>
-        <rev>$revision</rev>
+        <company>Kampis-Elektroecke</company>
+        <rev/>
         <date>2025-06-05</date>
         <source>BeeLight.kicad_sch</source>
         <comment number="1" value=""/>
@@ -80,8 +82,8 @@
     <sheet number="2" name="/Block Diagram/" tstamps="/82da9dbf-ba38-4d08-ba35-a220fa2963b1/">
       <title_block>
         <title>Block Diagram</title>
-        <company>null</company>
-        <rev>$revision</rev>
+        <company>Kampis-Elektroecke</company>
+        <rev/>
         <date>2025-06-05</date>
         <source>Block Diagram.kicad_sch</source>
         <comment number="1" value=""/>
@@ -98,8 +100,8 @@
     <sheet number="3" name="/Project Architecture/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/">
       <title_block>
         <title>Project Architecture</title>
-        <company>null</company>
-        <rev>$revision</rev>
+        <company>Kampis-Elektroecke</company>
+        <rev/>
         <date>2025-06-05</date>
         <source>Project Architecture.kicad_sch</source>
         <comment number="1" value=""/>
@@ -116,8 +118,8 @@
     <sheet number="4" name="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/">
       <title_block>
         <title>Main</title>
-        <company>null</company>
-        <rev>$revision</rev>
+        <company>Kampis-Elektroecke</company>
+        <rev/>
         <date>2025-06-05</date>
         <source>Main.kicad_sch</source>
         <comment number="1" value=""/>
@@ -131,13 +133,13 @@
         <comment number="9" value=""/>
       </title_block>
     </sheet>
-    <sheet number="5" name="/Revision History/" tstamps="/6e125bd6-2f99-4e5d-b3ea-4899f4540739/">
+    <sheet number="5" name="/Power Consumption/" tstamps="/9bb2279e-ee74-4135-a186-0cf4fda25e03/">
       <title_block>
-        <title>Revision History</title>
-        <company>null</company>
-        <rev>$revision</rev>
+        <title>Power Consumption</title>
+        <company>Kampis-Elektroecke</company>
+        <rev/>
         <date>2025-06-05</date>
-        <source>Revision History.kicad_sch</source>
+        <source>Power Consumption.kicad_sch</source>
         <comment number="1" value=""/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
@@ -149,13 +151,13 @@
         <comment number="9" value=""/>
       </title_block>
     </sheet>
-    <sheet number="6" name="/Power Consumption/" tstamps="/9bb2279e-ee74-4135-a186-0cf4fda25e03/">
+    <sheet number="6" name="/Revision History/" tstamps="/6e125bd6-2f99-4e5d-b3ea-4899f4540739/">
       <title_block>
-        <title>Power Consumption</title>
-        <company>null</company>
-        <rev>$revision</rev>
+        <title>Revision History</title>
+        <company>Kampis-Elektroecke</company>
+        <rev/>
         <date>2025-06-05</date>
-        <source>Power Consumption.kicad_sch</source>
+        <source>Revision History.kicad_sch</source>
         <comment number="1" value=""/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
@@ -171,22 +173,22 @@
   <components>
     <comp ref="BT101">
       <value>Battery_Cell</value>
-      <footprint>Keystone:3002</footprint>
-      <datasheet>https://eu.mouser.com/datasheet/2/215/002-745381.pdf</datasheet>
+      <footprint>Keystone:3039</footprint>
+      <datasheet>https://www.mouser.de/datasheet/3/201/1/3039.pdf</datasheet>
       <description>Single-cell battery</description>
       <fields>
         <field name="manf">Keystone</field>
-        <field name="manf#">3002</field>
-        <field name="mouser#">534-3002</field>
+        <field name="manf#">3039</field>
+        <field name="mouser#">534-3039</field>
         <field name="CONFIG"/>
-        <field name="Footprint">Keystone:3002</field>
-        <field name="Datasheet">https://eu.mouser.com/datasheet/2/215/002-745381.pdf</field>
+        <field name="Footprint">Keystone:3039</field>
+        <field name="Datasheet">https://www.mouser.de/datasheet/3/201/1/3039.pdf</field>
         <field name="Description">Single-cell battery</field>
       </fields>
       <libsource lib="Device" part="Battery_Cell" description="Single-cell battery"/>
       <property name="manf" value="Keystone"/>
-      <property name="manf#" value="3002"/>
-      <property name="mouser#" value="534-3002"/>
+      <property name="manf#" value="3039"/>
+      <property name="mouser#" value="534-3039"/>
       <property name="CONFIG" value=""/>
       <property name="Sheetname" value="Main"/>
       <property name="Sheetfile" value="Main.kicad_sch"/>
@@ -622,6 +624,8 @@
       <property name="CONFIG" value=""/>
       <property name="Sheetname" value="Main"/>
       <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="dnp"/>
       <property name="ki_keywords" value="R res resistor"/>
       <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>

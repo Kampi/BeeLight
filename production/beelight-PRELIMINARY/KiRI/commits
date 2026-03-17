@@ -1,0 +1,4 @@
+_local_|2026-03-17|root|Local changes not committed|False|True
+753f6cf|2026-03-02|Daniel Kampert|Update KiBot configuration to the latest version|False|True
+b75fc61|2025-10-19|Daniel Kampert|Feature: Issue #28|True|True
+6adcd90|2025-10-14|Daniel Kampert|- Fix wrong KiBot version variables - CI/CD: Add CodeRabbit configuration file - CI/CD: Fix issues reported by CodeRabbit|True|False
