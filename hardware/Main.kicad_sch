@@ -1104,6 +1104,15 @@
 					(hide yes)
 				)
 			)
+			(property "Sim.Pins" "1=K 2=A"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
 			(property "ki_keywords" "LED diode"
 				(at 0 0 0)
 				(effects
@@ -3135,6 +3144,107 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "power:PWR_FLAG"
+			(power)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#FLG"
+				(at 0 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "PWR_FLAG"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Special symbol for telling ERC where power comes from"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "flag power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "PWR_FLAG_0_0"
+				(pin power_out line
+					(at 0 0 90)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(rectangle
 		(start 300.99 165.1)
@@ -3214,6 +3324,29 @@
 		)
 		(uuid ed78b7e7-9d87-4eba-bb13-ab88d26954ef)
 	)
+	(text_box "DESIGN NOTE:\nYou can use CR2477 batteries."
+		(exclude_from_sim no)
+		(at 264.16 226.06 0)
+		(size 30.48 13.97)
+		(margins 2 2 2 2)
+		(stroke
+			(width 1)
+			(type solid)
+			(color 200 200 200 1)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(face "Arial")
+				(size 2 2)
+				(color 0 0 0 1)
+			)
+			(justify left top)
+		)
+		(uuid "0ab400f8-8a97-4a7d-a101-b919404167a5")
+	)
 	(text_box "[${#}] ${TITLE}"
 		(exclude_from_sim no)
 		(at 161.29 20.32 0)
@@ -3260,29 +3393,6 @@
 			(justify bottom)
 		)
 		(uuid "67a85d80-fe45-4492-a23f-f4ed25b939a9")
-	)
-	(text_box "You can use CR2477 batteries."
-		(exclude_from_sim no)
-		(at 264.16 229.87 0)
-		(size 30.48 10.16)
-		(margins 2 2 2 2)
-		(stroke
-			(width 1)
-			(type solid)
-			(color 200 200 200 1)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(face "Arial")
-				(size 2 2)
-				(color 0 0 0 1)
-			)
-			(justify left top)
-		)
-		(uuid "726c96aa-1503-4c75-b164-8e104ec5f55f")
 	)
 	(text_box "Battery measurement\n"
 		(exclude_from_sim no)
@@ -3382,7 +3492,7 @@
 	)
 	(text_box "DESIGN NOTE:\nThe nRF54 uses an\ninternal reference of ±0.6 V."
 		(exclude_from_sim no)
-		(at 36.83 115.57 0)
+		(at 52.07 91.44 0)
 		(size 21.59 15.24)
 		(margins 1.3525 1.3525 1.3525 1.3525)
 		(stroke
@@ -3474,6 +3584,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a68834ec-9dea-485d-ae02-7a66a0bbac79")
+	)
+	(junction
+		(at 273.05 204.47)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a9cc53bc-05bb-4a29-b552-7bb27f4527fc")
 	)
 	(junction
 		(at 93.98 86.36)
@@ -3684,6 +3800,16 @@
 			(type default)
 		)
 		(uuid "0e91782e-8013-4ab0-888e-5c024dbb2163")
+	)
+	(wire
+		(pts
+			(xy 240.03 218.44) (xy 240.03 219.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "111863b0-06dd-4778-bcfd-de4332563439")
 	)
 	(wire
 		(pts
@@ -3937,7 +4063,7 @@
 	)
 	(wire
 		(pts
-			(xy 264.16 204.47) (xy 267.97 204.47)
+			(xy 264.16 204.47) (xy 273.05 204.47)
 		)
 		(stroke
 			(width 0)
@@ -3994,6 +4120,16 @@
 			(type default)
 		)
 		(uuid "5ea70710-71fc-4a5f-bd15-84ef538e1aca")
+	)
+	(wire
+		(pts
+			(xy 273.05 201.93) (xy 273.05 204.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5eb15392-6efe-4c56-9482-d14609307881")
 	)
 	(wire
 		(pts
@@ -4054,6 +4190,16 @@
 			(type default)
 		)
 		(uuid "767bb7a4-3722-4448-935c-6d73ee410d28")
+	)
+	(wire
+		(pts
+			(xy 273.05 204.47) (xy 279.4 204.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "77bf1f33-2cf7-4b9b-b395-d0b5df7131a8")
 	)
 	(wire
 		(pts
@@ -5793,7 +5939,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/678/hsmq_c170_t0000_ds100-2498198.pdf"
+		(property "Datasheet" "~"
 			(at 250.19 82.55 0)
 			(effects
 				(font
@@ -5839,6 +5985,15 @@
 			)
 		)
 		(property "CONFIG" ""
+			(at 250.19 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=K 2=A"
 			(at 250.19 82.55 0)
 			(effects
 				(font
@@ -6485,6 +6640,72 @@
 			(project "BeeLight"
 				(path "/d5742f03-3b1a-42e5-a384-018bd4b919aa/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a"
 					(reference "C103")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 273.05 201.93 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4552db91-5472-45ef-97c7-8fc052f6d825")
+		(property "Reference" "#FLG0401"
+			(at 273.05 200.025 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 273.05 196.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 273.05 201.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 273.05 201.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 273.05 201.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a1025198-5eda-4adf-a6ac-d5a8e5d50d77")
+		)
+		(instances
+			(project ""
+				(path "/d5742f03-3b1a-42e5-a384-018bd4b919aa/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a"
+					(reference "#FLG0401")
 					(unit 1)
 				)
 			)
@@ -7461,7 +7682,7 @@
 	)
 	(symbol
 		(lib_id "power:+BATT")
-		(at 267.97 204.47 270)
+		(at 279.4 204.47 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7470,7 +7691,7 @@
 		(fields_autoplaced yes)
 		(uuid "9138bdab-9cd2-44cf-9e43-20eabe59234c")
 		(property "Reference" "#PWR0105"
-			(at 264.16 204.47 0)
+			(at 275.59 204.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7479,7 +7700,7 @@
 			)
 		)
 		(property "Value" "+BATT"
-			(at 271.78 204.4699 90)
+			(at 283.21 204.4699 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7488,7 +7709,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 267.97 204.47 0)
+			(at 279.4 204.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7497,7 +7718,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 267.97 204.47 0)
+			(at 279.4 204.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7506,7 +7727,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+BATT\""
-			(at 267.97 204.47 0)
+			(at 279.4 204.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8749,6 +8970,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 240.03 218.44 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ddddc4bf-01e8-4b82-89d2-5322aa8d1edf")
+		(property "Reference" "#FLG0402"
+			(at 240.03 216.535 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 240.03 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 240.03 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 240.03 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 240.03 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "318b0bf4-5583-4b93-b7e7-48d38eba712d")
+		)
+		(instances
+			(project "BeeLight"
+				(path "/d5742f03-3b1a-42e5-a384-018bd4b919aa/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a"
+					(reference "#FLG0402")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 219.71 168.91 0)
 		(unit 1)
@@ -8912,6 +9199,71 @@
 			(project "BeeLight"
 				(path "/d5742f03-3b1a-42e5-a384-018bd4b919aa/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a"
 					(reference "R102")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 240.03 219.71 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ec2d8ae1-362e-4315-8b8f-de7c23dc9ea4")
+		(property "Reference" "#PWR0401"
+			(at 240.03 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 240.157 224.1042 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 240.03 219.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 240.03 219.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 240.03 219.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ff0aaced-cd3d-434d-bab0-0afa102a306c")
+		)
+		(instances
+			(project "BeeLight"
+				(path "/d5742f03-3b1a-42e5-a384-018bd4b919aa/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a"
+					(reference "#PWR0401")
 					(unit 1)
 				)
 			)

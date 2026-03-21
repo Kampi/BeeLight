@@ -37,7 +37,7 @@ Open-Source Zigbee-based light and environmental sensor with [Zigbee2MQTT](https
 
 ### Technical features
 
-- Cutting-edge MCU with an nRF54L, running Zephyr
+- Cutting-edge MCU module with an nRF54L, running Zephyr
 - Powered by a single coin cell
 - Can measure
   - Temperature
@@ -315,7 +315,7 @@ You can test the device by using the NCS Zigbee Shell example and an nRF54DK or 
 
 ## Directory structure
 
-- `3d-print`: All 3D print.related files
+- `3d-print`: All 3D print-related files
 - `cad`: All relevant 3D models
 - `docs`: All kinds of project documentation like schematics, BOM, etc.
   - `drawings`: 2D drawings for subcomponents, etc.
@@ -323,7 +323,6 @@ You can test the device by using the NCS Zigbee Shell example and an nRF54DK or 
 - `hardware`: KiCad project for the PCB
 - `firmware`: Zephyr project for the device firmware
 - `prebuilt`: Prebuilt binaries
-- `production`: Production files from the latest CI/CD run
 - `z2m`: Zigbee2MQTT-related files
 
 ## Resources

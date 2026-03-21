@@ -20,6 +20,8 @@
 #include <zephyr/drivers/sensor.h>
 #include <zephyr/pm/device_runtime.h>
 
+#include <string.h>
+
 #include "events.h"
 
 static void zbus_5min_callback(const struct zbus_channel *chan);

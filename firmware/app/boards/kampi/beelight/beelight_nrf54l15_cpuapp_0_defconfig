@@ -1,8 +1,5 @@
-CONFIG_SENSOR=y
-
-CONFIG_ADC=y
-
-CONFIG_I2C=y
+# Use bitbanging I2C because the hardware I2C pins doesn´t work in this version
+CONFIG_I2C_GPIO=y
 
 # Light sensor configuration
 CONFIG_APDS9306=y
