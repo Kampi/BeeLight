@@ -1,0 +1,191 @@
+= Build & Configuration
+Daniel Kampert <DanielKampert@kampis-elektroecke.de>
+:description: BeeLight Firmware – Build & Configuration
+:doctype: book
+:toc: left
+:toclevels: 3
+:icons: font
+:source-highlighter: rouge
+
+== Prerequisites
+
+=== Toolchain
+
+[cols="2,3", options="header"]
+|===
+| Tool | Version / Source
+| nRF Connect SDK    | 2.9.2
+| Zephyr SDK         | 0.17.0
+| west               | >= 1.2.0
+| CMake              | >= 3.20.0
+| Python             | >= 3.8
+|===
+
+=== west Initialization
+
+[source,bash]
+----
+# Create workspace directory
+mkdir beelight_workspace && cd beelight_workspace
+
+# Clone repository
+git clone https://github.com/Kampi/BeeLight BeeLight
+
+# Initialize west
+cd BeeLight/firmware/app
+west init -l .
+
+# Enable BSEC2 module (for IAQ support)
+west config manifest.group-filter +bsec2
+
+# Download dependencies
+west update
+----
+
+NOTE: Without `+bsec2` in the group-filter configuration, `CONFIG_BME68X_IAQ` is not available.
+
+== Board Support
+
+The BeeLight board is defined as a custom board under `boards/kampi/beelight/`.
+The build must specify `--board-root .` (relative to the `app/` directory).
+
+=== Supported Boards
+
+[cols="2,2,4", options="header"]
+|===
+| Board qualifier | Revision | Description
+| `beelight/nrf54l15/cpuapp` | 0 | Hardware revision 0 (`beelight@0`)
+| `beelight/nrf54l15/cpuapp` | 1 | Hardware revision 1 (`beelight@1`)
+|===
+
+=== Board Files
+
+[source]
+----
+boards/kampi/beelight/
++-- beelight_nrf54l15_cpuapp.dts
++-- beelight_nrf54l15_cpuapp_defconfig
++-- beelight_nrf54l15_cpuapp_0.overlay
++-- beelight_nrf54l15_cpuapp_0_defconfig
++-- beelight_nrf54l15_cpuapp_1.overlay
++-- beelight_nrf54l15_cpuapp_1_defconfig
+----
+
+== Build Commands
+
+=== Debug Build
+
+[source,bash]
+----
+cd BeeLight/firmware/app
+west build \
+    --build-dir beelight@0_nrf54l15_cpuapp_debug \
+    --pristine \
+    --board beelight@0/nrf54l15/cpuapp \
+    -- \
+    -DNCS_TOOLCHAIN_VERSION=NONE \
+    -DCONF_FILE="config/debug.conf" \
+    -DBOARD_ROOT=.
+----
+
+=== Release Build
+
+[source,bash]
+----
+cd BeeLight/firmware/app
+west build \
+    --build-dir beelight@0_nrf54l15_cpuapp_release \
+    --pristine \
+    --board beelight@0/nrf54l15/cpuapp \
+    -- \
+    -DNCS_TOOLCHAIN_VERSION=NONE \
+    -DCONF_FILE="config/release.conf" \
+    -DBOARD_ROOT=.
+----
+
+=== Flashing
+
+[source,bash]
+----
+west flash --build-dir beelight@0_nrf54l15_cpuapp_debug
+----
+
+== Configuration Variants
+
+=== config/debug.conf
+
+[source,kconfig]
+----
+CONFIG_DEBUG=y
+CONFIG_LOG=y
+CONFIG_LOG_PRINTK=y
+CONFIG_DEBUG_INFO=y
+CONFIG_DEBUG_OPTIMIZATIONS=y
+CONFIG_USE_SEGGER_RTT=y
+CONFIG_LOG_BACKEND_RTT=y
+CONFIG_LOG_BACKEND_RTT_MODE_BLOCK=y
+CONFIG_LOG_BUFFER_SIZE=4096
+----
+
+* Logging via Segger RTT enabled
+* Debug optimizations (-Og) and debug information
+* In debug mode, synthetic test data is generated when no sensor is present
+
+=== config/release.conf
+
+[source,kconfig]
+----
+CONFIG_DEBUG=n
+CONFIG_LOG=y
+CONFIG_LOG_PRINTK=y
+----
+
+* Debug symbol disabled – no synthetic sensor fallback
+
+== Important Kconfig Options
+
+[cols="3,1,4", options="header"]
+|===
+| Option | Default | Description
+| `CONFIG_BME68X_IAQ`             | n | Enables BSEC2 integration (CO2, VOC, IAQ). Requires +bsec2 west group.
+| `CONFIG_APDS9306`               | y | Enables the APDS-9306 light sensor driver (via Zephyr patch)
+| `CONFIG_DEBUG`                  | n | Debug mode (synthetic sensor data, debug logging)
+| `CONFIG_RAM_POWER_DOWN_LIBRARY` | y | Power down unused RAM banks at startup
+| `CONFIG_ZIGBEE_FOTA`            | n | OTA firmware update (not yet supported)
+|===
+
+== Patch System
+
+The firmware uses a two-stage patch mechanism that is executed during the CMake configuration step.
+
+=== Zephyr Patches (`patches/zephyr/`)
+
+[cols="3,4", options="header"]
+|===
+| Patch | Description
+| `0001-...APDS-9306.patch`       | APDS-9306 driver implementation
+| `0003-...return-value.patch`    | Bugfix: unchecked return values
+| `0004-...reset.patch`           | Removes reset sequence from driver
+| `0005-...lux-conversion.patch`  | Lux conversion in driver
+|===
+
+=== ncs-zigbee Patches (`patches/ncs-zigbee/`)
+
+[cols="3,4", options="header"]
+|===
+| Patch | Description
+| `0001-Add-BeeLight-specific-clusters.patch` | Adds CO₂, IAQ, and VOC clusters (0x1A0A–0x1A0C) to ZBOSS
+|===
+
+IMPORTANT: In the CI/CD pipeline, the ncs-zigbee patch is applied explicitly as a separate pipeline step
+before the build, since it cannot be reliably found in the CMake context.
+
+== Build Artifacts
+
+After a successful build, the firmware image is located at:
+
+[source]
+----
+<build-dir>/merged.hex          # Complete hex image (app + bootloader)
+<build-dir>/zephyr/merged.hex   # Alternative path (depending on bootloader configuration)
+----

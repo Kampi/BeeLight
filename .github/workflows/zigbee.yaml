@@ -2,6 +2,17 @@ name: Zigbee-Config
 
 on:
   workflow_dispatch:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+' # Match semantic versioning tags
+    branches:
+      - main
+      - master
+      - dev
+      - '[0-9]*.[0-9]*.[0-9]*_Dev'
+      - '[0-9]*.[0-9]*_Dev'
+    paths-ignore:
+      - '*.md'
 
 env:
   root_dir: BeeLight
