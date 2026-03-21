@@ -38,7 +38,7 @@ env:
   kibot_variant: PRELIMINARY
 
   # Master branch. Can be changed for testing
-  master_branch: ${MASTER_BRANCH}
+  master_branch: master
 
   # API keys used by KiCost
   MOUSER_KEY: ${{ secrets.MOUSER_KEY }}
@@ -117,7 +117,7 @@ jobs:
       - name: Initialize
         run: |
           mkdir -p log
-          echo "DATE=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
+          echo "DATE=$(date +'%Y-%m-%d %H:%M:%S')" >> ${GITHUB_ENV}
 
       # Run these changelog update steps only on tag pushes
       - name: Pull latest changes for changelog update

@@ -1,6 +1,6 @@
 /*
  * This file is part of the BeeLight project <https://github.com/Kampi/BeeLight>.
- * Copyright (c) 2025 Daniel Kampert.
+ * Copyright (c) 2026 Daniel Kampert.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

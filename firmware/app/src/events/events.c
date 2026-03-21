@@ -1,6 +1,6 @@
 /*
  * This file is part of the BeeLight project <https://github.com/Kampi/BeeLight>.
- * Copyright (c) 2025 Daniel Kampert.
+ * Copyright (c) 2026 Daniel Kampert.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -77,7 +77,11 @@ static void handle_24h_timeout(struct k_work *item)
 
     zbus_chan_claim(&periodic_24h_chan, K_FOREVER);
     work = (struct k_work_delayable *)zbus_chan_user_data(&periodic_24h_chan);
+#ifdef CONFIG_DEBUG
+    k_work_reschedule(work, K_MSEC(10 * 1000UL));
+#else
     k_work_reschedule(work, K_MSEC(24 * 60 * 60 * 1000UL));
+#endif
     zbus_chan_finish(&periodic_24h_chan);
 
     zbus_chan_pub(&periodic_24h_chan, &evt, K_NO_WAIT);

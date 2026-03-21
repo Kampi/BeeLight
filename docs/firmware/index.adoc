@@ -1,0 +1,65 @@
+= BeeLight Firmware
+Daniel Kampert <DanielKampert@kampis-elektroecke.de>
+:description: BeeLight Firmware – Project Overview
+:doctype: book
+:toc: left
+:toclevels: 3
+:icons: font
+:source-highlighter: rouge
+:imagesdir: ../images
+
+== Overview
+
+BeeLight is a battery-powered Zigbee environmental sensor based on the Nordic Semiconductor nRF54L15 SoC.
+The device measures illuminance, temperature, air pressure, humidity, and battery voltage, and transmits all readings over a Zigbee network to a coordinator (e.g. Home Assistant via Zigbee2MQTT).
+
+image::Rendering.png[BeeLight 3D Rendering, 600, align="center"]
+
+=== Features
+
+* *MCU*: Nordic Semiconductor nRF54L15 (ARM Cortex-M33, 128 MHz)
+* *RTOS*: Zephyr RTOS with nRF Connect SDK 2.9.2
+* *Protocol*: Zigbee 3.0 – Home Automation Profile (ZBOSS Stack via ncs-zigbee)
+* *Sensors*:
+** Broadcom APDS-9306 – Illuminance measurement
+** Bosch BME688 – Temperature, air pressure, humidity
+** Bosch BME688 (BSEC2, optional) – CO₂ equivalent, VOC, IAQ
+* *Power supply*: CR2 battery (~3.3 V), voltage monitoring via ADC
+* *Firmware version*: 2.0.0
+
+=== Hardware Revisions
+
+[cols="1,5", options="header"]
+|===
+| Revision | Description
+| 0        | First BeeLight hardware revision
+| 1        | Revised hardware revision
+|===
+
+== Integration
+
+=== Home Assistant
+
+The device registers itself automatically with Home Assistant as a sensor device after joining the Zigbee network.
+All measured values are available as entities.
+
+image::HomeAssistant.png[Home Assistant Integration, 600, align="center"]
+
+=== Zigbee2MQTT
+
+The Zigbee2MQTT configuration is located in the `z2m/` directory of the repository.
+
+image::Zigbee2MQTT.png[Zigbee2MQTT Integration, 600, align="center"]
+
+== License
+
+Copyright © 2025 Daniel Kampert. +
+This project is licensed under the GNU General Public License v3.0.
+For more information see https://www.gnu.org/licenses/.
+
+== Further Documentation
+
+* xref:architecture.adoc[Software Architecture]
+* xref:sensors.adoc[Sensor Modules]
+* xref:zigbee.adoc[Zigbee Integration]
+* xref:build.adoc[Build & Configuration]

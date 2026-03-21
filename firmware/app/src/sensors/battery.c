@@ -1,6 +1,6 @@
 /*
  * This file is part of the BeeLight project <https://github.com/Kampi/BeeLight>.
- * Copyright (c) 2025 Daniel Kampert.
+ * Copyright (c) 2026 Daniel Kampert.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ LOG_MODULE_REGISTER(battery, LOG_LEVEL_DBG);
 
 static void zbus_24h_callback(const struct zbus_channel *chan)
 {
-    int ret;
+    int ret = 0;
     struct battery_event evt;
     struct sensor_value sensor_val;
 

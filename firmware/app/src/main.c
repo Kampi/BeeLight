@@ -1,6 +1,6 @@
 /*
  * This file is part of the BeeLight project <https://github.com/Kampi/BeeLight>.
- * Copyright (c) 2025 Daniel Kampert.
+ * Copyright (c) 2026 Daniel Kampert.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -56,7 +56,7 @@ static void zbus_on_battery_callback(const struct zbus_channel *chan);
 
 /* Declare attribute list for Identify cluster (client). */
 ZB_ZCL_DECLARE_IDENTIFY_CLIENT_ATTRIB_LIST(
-	identify_client_attr_list);
+    identify_client_attr_list);
 
 /** @brief Declare attribute list for Identify cluster (server).
  */
@@ -166,8 +166,8 @@ ZB_BEELIGHT_DECLARE_VOC_MEASUREMENT_ATTRIB_LIST(
 BEELIGHT_DECLARE_CLUSTER_LIST(
     env_sensor_clusters,
     basic_attr_list,
-	identify_client_attr_list,
-	identify_server_attr_list,
+    identify_client_attr_list,
+    identify_server_attr_list,
     power_attr_list,
     light_sensor_attr_list,
     temp_sensor_attr_list,
@@ -254,7 +254,7 @@ static void on_Identify_Handler(zb_bufid_t bufid)
     } else {
         /* Cancel the toggling function alarm and turn off LED */
         err = ZB_SCHEDULE_APP_ALARM_CANCEL(toggle_identify_led,
-                            ZB_ALARM_ANY_PARAM);
+                                           ZB_ALARM_ANY_PARAM);
         if (err) {
             LOG_ERR("Failed to schedule app alarm cancel: %d", err);
         } else {

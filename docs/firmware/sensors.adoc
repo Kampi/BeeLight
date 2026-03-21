@@ -1,0 +1,168 @@
+= Sensor Modules
+Daniel Kampert <DanielKampert@kampis-elektroecke.de>
+:description: BeeLight Firmware – Sensor Modules
+:doctype: book
+:toc: left
+:toclevels: 3
+:icons: font
+:source-highlighter: rouge
+:imagesdir: ../images
+
+== Overview
+
+The BeeLight firmware implements three sensor modules, each registered as standalone initialization modules via Zephyr SYS_INIT.
+Each module subscribes to a periodic ZBus channel and publishes its measurement data on a dedicated data channel.
+
+[cols="3,2,2,4", options="header"]
+|===
+| Module | Sensor | Measurement interval | Zigbee cluster
+| `src/sensors/light.c`       | APDS-9306 | 5 minutes  | Illuminance Measurement
+| `src/sensors/environment.c` | BME688    | 5 minutes  | Temperature, Pressure, Humidity (+ CO₂/VOC/IAQ optional)
+| `src/sensors/battery.c`     | VBATT ADC | 24 hours   | Power Configuration
+|===
+
+== Light Sensor – APDS-9306
+
+=== Hardware
+
+The Broadcom APDS-9306 is a digital ambient light sensor (ALS) with I²C interface.
+It measures illuminance in lux and is referenced in the device tree under the label `apds9306`.
+
+NOTE: The APDS-9306 driver is integrated into the build via Zephyr patches from `patches/zephyr/`.
+
+=== Operation
+
+The module subscribes to `periodic_5min_chan` and performs a measurement on each tick:
+
+[source,c]
+----
+sensor_sample_fetch(apds9306);
+sensor_channel_get(apds9306, SENSOR_CHAN_LIGHT, &sensor_val);
+evt.light = sensor_val.val1;
+zbus_chan_pub(&light_data_chan, &evt, K_NO_WAIT);
+----
+
+The raw sensor output (lux) is converted to the logarithmic Zigbee Illuminance value in `main.c`:
+
+[source,c]
+----
+zb_uint16_t measured = (evt->light == 0)
+    ? 0
+    : (zb_uint16_t)(10000 * log10((double)evt->light) + 1);
+----
+
+=== Debug-Modus
+
+Bei aktiviertem `CONFIG_DEBUG` und nicht vorhandenem Sensor werden synthetische Testdaten
+(inkrementierender Zähler) auf `light_data_chan` veröffentlicht.
+
+=== Konfiguration
+
+[cols="2,4", options="header"]
+|===
+| Kconfig option | Description
+| `CONFIG_APDS9306` | Enables the APDS-9306 driver (provided via Zephyr patch)
+|===
+
+== Environmental Sensor – BME688
+
+=== Hardware
+
+The Bosch BME688 is an integrated gas sensor with I²C interface, measuring temperature, air pressure,
+relative humidity, and gas resistance (for VOC/IAQ/CO₂ equivalent).
+The sensor is referenced in the device tree under the label `bme688`.
+
+=== Operating Modes
+
+==== Basic Mode (without BSEC2)
+
+Temperature, air pressure, and humidity are measured:
+
+[cols="2,3", options="header"]
+|===
+| Zephyr channel | Measurement
+| `SENSOR_CHAN_AMBIENT_TEMP` | Temperature in °C
+| `SENSOR_CHAN_PRESS`        | Air pressure in Pa
+| `SENSOR_CHAN_HUMIDITY`     | Relative humidity in %
+|===
+
+==== IAQ Mode (with BSEC2)
+
+When `CONFIG_BME68X_IAQ` is enabled, the following channels are additionally evaluated:
+
+[cols="2,3", options="header"]
+|===
+| Zephyr channel | Measurement
+| `SENSOR_CHAN_CO2`  | CO₂ equivalent in ppm
+| `SENSOR_CHAN_VOC`  | VOC in ppm equivalent
+| `SENSOR_CHAN_IAQ`  | IAQ index (0–500)
+|===
+
+Each BSEC2 value also includes a `tolerance` value indicating the measurement accuracy/reliability.
+
+=== Measurement Sequence
+
+[source,c]
+----
+sensor_sample_fetch(bme688);
+sensor_channel_get(bme688, SENSOR_CHAN_AMBIENT_TEMP, &sensor_val);
+evt.temperature = sensor_val.val1;
+// ... further channels
+zbus_chan_pub(&env_data_chan, &evt, K_NO_WAIT);
+----
+
+=== Konfiguration
+
+[cols="2,4", options="header"]
+|===
+| Kconfig option | Description
+| `CONFIG_BME68X_IAQ` | Enables BSEC2 integration for CO₂, VOC, and IAQ measurement
+|===
+
+== Battery Monitoring – VBATT
+
+=== Hardware
+
+The battery voltage is measured via an ADC voltage divider.
+The Zephyr device is defined in the device tree under the label `vbatt` as a `voltage-divider` sensor.
+
+=== Measurement Chain
+
+The measurement is taken every 24 hours:
+
+[source,c]
+----
+pm_device_runtime_get(vbatt);
+sensor_sample_fetch(vbatt);
+sensor_channel_get(vbatt, SENSOR_CHAN_VOLTAGE, &sensor_val);
+evt.voltage = (sensor_val.val1 * 1000) + (sensor_val.val2 / 1000);  /* in mV */
+pm_device_runtime_put(vbatt);
+----
+
+=== State of Charge Calculation
+
+The percentage charge level is linearly interpolated between the configured voltage limits:
+
+[source,c]
+----
+#define BEELIGHT_RATED_VOLTAGE_MV   3300UL   /* 100 % */
+#define BEELIGHT_EMPTY_VOLTAGE_MV   2700UL   /*   0 % */
+----
+
+[source,c]
+----
+int32_t remaining = (evt->voltage - BEELIGHT_EMPTY_VOLTAGE_MV);
+remaining = (remaining * 100) / (BEELIGHT_RATED_VOLTAGE_MV - BEELIGHT_EMPTY_VOLTAGE_MV);
+dev_ctx.power_attr.percent_remaining = remaining * 2;  /* Zigbee: 200 = 100 % */
+----
+
+NOTE: In the Zigbee Power Configuration Cluster, a `BatteryPercentageRemaining` value of 200 represents full charge (100 %).
+
+=== Voltage-to-ZCL Conversion
+
+The battery voltage is scaled to the ZCL unit (100 mV per unit) by integer division by 100:
+
+[source,c]
+----
+dev_ctx.power_attr.voltage = evt->voltage / 100;
+----

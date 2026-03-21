@@ -1,0 +1,199 @@
+= Zigbee Integration
+Daniel Kampert <DanielKampert@kampis-elektroecke.de>
+:description: BeeLight Firmware – Zigbee Integration
+:doctype: book
+:toc: left
+:toclevels: 3
+:icons: font
+:source-highlighter: rouge
+:imagesdir: ../images
+
+== Overview
+
+BeeLight implements a Zigbee 3.0 End Device in the Home Automation Profile.
+The ZBOSS stack is integrated via the ncs-zigbee module.
+All measurement values are provided as ZCL attributes on Endpoint 10 and can be queried by the Zigbee coordinator or received as reports.
+
+== Device Profile
+
+[cols="2,3", options="header"]
+|===
+| Parameter | Value
+| Zigbee profile     | Home Automation (`ZB_AF_HA_PROFILE_ID`)
+| Device ID          | `0x0106`
+| Endpoint           | 10
+| Firmware version   | 2.0.0
+| Manufacturer name  | `Kampi`
+| Model ID           | `BeeLight_v2`
+|===
+
+== Endpoint Configuration
+
+=== Server Clusters (IN)
+
+[cols="2,3,3", options="header"]
+|===
+| Cluster ID | Name | Description
+| `0x0000` | Basic                    | Device information (version, manufacturer, model)
+| `0x0003` | Identify                 | Identify mode (LED blinking via button)
+| `0x0001` | Power Configuration      | Battery voltage and state of charge
+| `0x0400` | Illuminance Measurement  | Illuminance in lux (logarithmic)
+| `0x0402` | Temperature Measurement  | Temperature in 0.01 °C
+| `0x0403` | Pressure Measurement     | Air pressure in 0.1 hPa
+| `0x0405` | Relative Humidity Measurement | Relative humidity in 0.01 %
+| `0x1A0C` | CO₂ Measurement (BeeLight) | CO₂ equivalent in ppm (optional, BSEC2)
+| `0x1A0A` | IAQ Measurement (BeeLight) | IAQ index 0–500 (optional, BSEC2)
+| `0x1A0B` | VOC Measurement (BeeLight) | VOC in ppm equivalent (optional, BSEC2)
+|===
+
+=== Client Clusters (OUT)
+
+[cols="2,3,3", options="header"]
+|===
+| Cluster ID | Name | Description
+| `0x0003` | Identify (Client) | Binding support for Identify responses
+|===
+
+== ZCL Attributes
+
+=== Basic Cluster (0x0000)
+
+[cols="2,2,3", options="header"]
+|===
+| Attribute | Type | Value
+| `ZCLVersion`           | uint8  | `ZB_ZCL_VERSION`
+| `ApplicationVersion`   | uint8  | 1
+| `StackVersion`         | uint8  | 10
+| `HWVersion`            | uint8  | Board revision (from `CONFIG_BOARD_REVISION`)
+| `ManufacturerName`     | string | `"Kampi"`
+| `ModelIdentifier`      | string | `"BeeLight_v2"`
+| `DateCode`             | string | `"20251019_Debug"` / `"20251019_Release"`
+| `PowerSource`          | enum8  | Battery (`0x03`)
+| `LocationDescription`  | string | `"Office desk"`
+| `PhysicalEnvironment`  | enum8  | Unspecified
+| `SWBuildID`            | string | Git commit hash (generated automatically)
+|===
+
+=== Power Configuration Cluster (0x0001)
+
+[cols="2,2,3", options="header"]
+|===
+| Attribute | Type | Description
+| `BatteryVoltage`              | uint8 | Battery voltage in 100 mV units
+| `BatteryPercentageRemaining`  | uint8 | State of charge (200 = 100 %)
+| `BatterySize`                 | enum8 | CR2 (`0x06`)
+| `BatteryQuantity`             | uint8 | 1
+| `BatteryRatedVoltage`         | uint8 | 33 (3300 mV / 100)
+|===
+
+=== Illuminance Measurement Cluster (0x0400)
+
+[cols="2,2,3", options="header"]
+|===
+| Attribute | Type | Description
+| `MeasuredValue`    | uint16 | Illuminance: `10000 × log10(Lux) + 1`
+| `MinMeasuredValue` | uint16 | Minimum of measured values
+| `MaxMeasuredValue` | uint16 | Maximum of measured values
+|===
+
+=== Temperature Measurement Cluster (0x0402)
+
+[cols="2,2,3", options="header"]
+|===
+| Attribute | Type | Description
+| `MeasuredValue`    | int16  | Temperature × 100 (e.g. 2150 = 21.5 °C)
+| `MinMeasuredValue` | int16  | Minimum of measured values
+| `MaxMeasuredValue` | int16  | Maximum of measured values
+| `Tolerance`        | uint16 | Measurement uncertainty
+|===
+
+=== Pressure Measurement Cluster (0x0403)
+
+[cols="2,2,3", options="header"]
+|===
+| Attribute | Type | Description
+| `MeasuredValue`    | int16  | Air pressure in 0.1 hPa (e.g. 10132 = 1013.2 hPa)
+| `MinMeasuredValue` | int16  | Minimum of measured values
+| `MaxMeasuredValue` | int16  | Maximum of measured values
+| `Tolerance`        | uint16 | Measurement uncertainty
+|===
+
+=== Relative Humidity Measurement Cluster (0x0405)
+
+[cols="2,2,3", options="header"]
+|===
+| Attribute | Type | Description
+| `MeasuredValue`    | uint16 | Humidity × 100 (e.g. 5500 = 55.00 %)
+| `MinMeasuredValue` | uint16 | Minimum of measured values
+| `MaxMeasuredValue` | uint16 | Maximum of measured values
+|===
+
+== BeeLight Custom Clusters
+
+The following three clusters are BeeLight-specific extensions.
+They are integrated into the ZBOSS stack via the patch `patches/ncs-zigbee/0001-Add-BeeLight-specific-clusters.patch`.
+
+NOTE: The custom clusters are only available when `CONFIG_BME68X_IAQ=y` is set.
+
+=== CO₂ Measurement (0x1A0C)
+
+[cols="2,2,3", options="header"]
+|===
+| Attribute ID | Type | Description
+| `0x0000` (`VALUE_ID`)     | uint16 | CO₂ equivalent in ppm
+| `0x0001` (`MIN_VALUE_ID`) | uint16 | MinMeasuredValue (0x8000 = invalid)
+| `0x0002` (`MAX_VALUE_ID`) | uint16 | MaxMeasuredValue (0x8000 = invalid)
+| `0x0003` (`TOLERANCE_ID`) | uint8  | BSEC2 algorithm accuracy level
+|===
+
+Value range `MeasuredValue`: 0–400 ppm (max `0x0190`). +
+Unknown value: `0x8000`.
+
+=== IAQ Measurement (0x1A0A)
+
+[cols="2,2,3", options="header"]
+|===
+| Attribute ID | Type | Description
+| `0x0000` (`VALUE_ID`)     | uint16 | IAQ index (0 = very good, 500 = extremely poor)
+| `0x0001` (`MIN_VALUE_ID`) | uint16 | MinMeasuredValue (0x8000 = invalid)
+| `0x0002` (`MAX_VALUE_ID`) | uint16 | MaxMeasuredValue (0x8000 = invalid)
+| `0x0003` (`TOLERANCE_ID`) | uint8  | BSEC2 algorithm accuracy level
+|===
+
+Initialization: Min and Max are set to `0x8000` (invalid). +
+Value range `MeasuredValue`: 0–500 (max `0x01F4`).
+
+=== VOC Measurement (0x1A0B)
+
+[cols="2,2,3", options="header"]
+|===
+| Attribute ID | Type | Description
+| `0x0000` (`VALUE_ID`)     | uint16 | VOC in ppm equivalent
+| `0x0001` (`MIN_VALUE_ID`) | uint16 | MinMeasuredValue (0x8000 = invalid)
+| `0x0002` (`MAX_VALUE_ID`) | uint16 | MaxMeasuredValue (0x8000 = invalid)
+| `0x0003` (`TOLERANCE_ID`) | uint8  | BSEC2 algorithm accuracy level
+|===
+
+Value range `MeasuredValue`: 0–10000 (max `0x2710`).
+
+== Identify Mode
+
+The Identify mode is controlled via Button 1 (DK_BTN1):
+
+* Short press → Start Identify mode (binding target)
+* Long press → Factory reset
+
+In Identify mode, LED 1 (`ZIGBEE_NETWORK_STATE_LED`) blinks at 100 ms intervals.
+
+== Zigbee Network Behavior
+
+[cols="2,4", options="header"]
+|===
+| Parameter | Value / Behavior
+| Device role               | End Device (no router, no coordinator)
+| ED aging timeout          | 64 minutes
+| Keepalive interval        | 1 minute
+| Long poll interval        | 10 minutes
+| Network LED (join)        | 4× blink on successful join
+| Network LED (leave)       | 2× blink on leaving the network
+|===
