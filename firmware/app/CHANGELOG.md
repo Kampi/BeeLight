@@ -1,11 +1,12 @@
 # CHANGELOG
 
-## [2.0] -
+## [2.1] -
 
 **Changed:**
 
 - Switch to nRF SDK Connect SDK (NCS) v3
 - Switch to ZBOSS R23
+- Switch to Z2M 2.6.3
 
 **Added:**
 

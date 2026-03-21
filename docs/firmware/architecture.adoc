@@ -1,0 +1,121 @@
+= Software-Architektur
+Daniel Kampert <DanielKampert@kampis-elektroecke.de>
+:description: BeeLight Firmware – Software-Architektur
+:doctype: book
+:toc: left
+:toclevels: 3
+:icons: font
+:source-highlighter: rouge
+:imagesdir: ../images
+
+== Überblick
+
+Die BeeLight-Firmware basiert auf Zephyr RTOS und verwendet ein ereignisgesteuertes Design.
+Alle Kommunikation zwischen den Modulen (Sensoren, Zigbee-Stack) erfolgt über das Zephyr ZBus-Nachrichtensystem.
+
+image::Block diagram.png[Software-Blockdiagramm, 600, align="center"]
+
+== ZBus-Ereignissystem
+
+=== Konzept
+
+Zephyr ZBus ist ein nachrichtenbasierter Publish/Subscribe-Bus, der Module entkoppelt.
+In BeeLight werden alle Sensordaten und Timer-Ereignisse über ZBus-Kanäle übertragen.
+Ein Modul veröffentlicht Daten auf einem Kanal; alle registrierten Listener werden automatisch benachrichtigt.
+
+=== Kanäle
+
+[cols="2,2,4", options="header"]
+|===
+| Kanal | Nachrichtentyp | Beschreibung
+| `periodic_5min_chan`  | `struct periodic_event`  | Timer-Tick alle 5 Minuten – löst Sensormessungen aus
+| `periodic_24h_chan`   | `struct periodic_event`  | Timer-Tick alle 24 Stunden – löst Batteriemessung aus
+| `light_data_chan`     | `struct light_event`      | Aktuelle Beleuchtungsstärke in Lux
+| `env_data_chan`       | `struct env_event`        | Umgebungsdaten (Temperatur, Druck, Feuchte, optional CO₂/VOC/IAQ)
+| `battery_data_chan`   | `struct battery_event`    | Batteriespannung in Millivolt
+|===
+
+=== Nachrichtenstrukturen
+
+.`struct light_event`
+[source,c]
+----
+struct light_event {
+    uint16_t light;   /* Beleuchtungsstärke in Lux */
+};
+----
+
+.`struct env_event`
+[source,c]
+----
+struct env_event {
+    float temperature;   /* Temperatur in °C */
+    float pressure;      /* Luftdruck in Pa */
+    float humidity;      /* Relative Luftfeuchtigkeit in % */
+#if CONFIG_BME68X_IAQ
+    struct { float value; uint32_t tolerance; } iaq;  /* IAQ-Index */
+    struct { float value; uint32_t tolerance; } voc;  /* VOC in ppm-Äquivalent */
+    struct { float value; uint32_t tolerance; } co2;  /* CO₂-Äquivalent in ppm */
+#endif
+};
+----
+
+.`struct battery_event`
+[source,c]
+----
+struct battery_event {
+    uint32_t voltage;   /* Spannung in Millivolt */
+    uint8_t  percent;   /* Ladezustand in Prozent */
+};
+----
+
+== Periodisches Timer-System
+
+Die Sensormessungen werden nicht kontinuierlich, sondern in festen Intervallen ausgeführt, um den Stromverbrauch zu minimieren.
+
+Das Timer-System implementiert zwei Intervalle als `k_work_delayable`-Objekte:
+
+[cols="1,2,4", options="header"]
+|===
+| Intervall | Kanal | Genutzt von
+| 5 Minuten | `periodic_5min_chan` | Lichtsensor (APDS-9306), Umgebungssensor (BME688)
+| 24 Stunden | `periodic_24h_chan` | Batteriespannungsmessung (VBATT)
+|===
+
+Nach dem Zigbee-Start (`ZB_ZDO_SIGNAL_SKIP_STARTUP`) werden die Zbus-Observer der Sensormodule registriert und das Timer-System startet.
+
+== Modul-Übersicht
+
+[cols="2,4", options="header"]
+|===
+| Modul | Beschreibung
+| `src/main.c`              | Applikationseinstieg, Zigbee-Initialisierung, ZBus-Callbacks für Sensorkanäle
+| `src/events/events.c`     | Definition aller ZBus-Kanäle und Timer-Workqueues
+| `src/sensors/light.c`     | APDS-9306 Lichtsensor – Abtastung alle 5 Minuten
+| `src/sensors/environment.c` | BME688 Umgebungssensor – Abtastung alle 5 Minuten
+| `src/sensors/battery.c`   | VBATT ADC-Messung – Abtastung alle 24 Stunden
+| `src/beelight/beelight.h` | Zigbee-Cluster-Definitionen, Gerätekontext, Makros
+|===
+
+== Zigbee ZBus-Datenfluss
+
+----
+periodic_5min_chan  ──►  light_periodic_sample_event_lis  ──►  APDS-9306  ──►  light_data_chan
+                    ──►  env_periodic_sample_event_lis   ──►  BME688     ──►  env_data_chan
+
+periodic_24h_chan   ──►  batt_periodic_sample_event_lis  ──►  VBATT ADC  ──►  battery_data_chan
+
+light_data_chan     ──►  zbus_on_light_callback (main.c)   ──►  ZB_ZCL_SET_ATTRIBUTE (Illuminance)
+env_data_chan       ──►  zbus_on_env_callback (main.c)     ──►  ZB_ZCL_SET_ATTRIBUTE (Temp/Press/Hum/CO2/IAQ/VOC)
+battery_data_chan   ──►  zbus_on_battery_callback (main.c) ──►  ZB_ZCL_SET_ATTRIBUTE (Power Config)
+----
+
+== Stromverbrauch
+
+Das Design ist auf minimalen Stromverbrauch optimiert:
+
+* Zigbee End Device mit konfigurierbarem Long-Poll-Intervall (Standard: 10 Minuten)
+* Sensormessungen nur alle 5 Minuten bzw. 24 Stunden
+* Unbenutzter RAM wird via `power_down_unused_ram()` (RAM Power Down Library) abgeschaltet
+* Sensor-Geräte nutzen `pm_device_runtime_get/put` für Power-Management
+* Zigbee-Aging-Timeout: 64 Minuten (`ED_AGING_TIMEOUT_64MIN`)
