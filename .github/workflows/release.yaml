@@ -1,0 +1,326 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+*' # Trigger release on version tags (e.g. 1.0, 1.0.0)
+  workflow_run:
+    workflows:
+      - "PCB Data"
+      - "Software Documentation"
+    types:
+      - completed               # Used only by the deploy-* jobs below
+
+permissions:
+  contents: write   # Create GitHub Releases
+  actions: read     # Query workflow runs via API
+  pages: write      # Deploy to GitHub Pages
+  id-token: write   # OIDC for pages deployment
+
+env:
+  kicad_board: BeeLight
+  kibot_output_dir: beelight
+  kibot_variant: RELEASED
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    if: github.event_name == 'push'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Wait for all required workflows to complete
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          TAG="${{ github.ref_name }}"
+          SHA="${{ github.sha }}"
+          echo "Tag: $TAG  SHA: $SHA"
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+
+          FIRMWARE_DONE=0; FIRMWARE_RUN=""
+          PCB_DONE=0;      PCB_RUN=""
+          ZIGBEE_DONE=0;   ZIGBEE_RUN=""
+
+          for i in $(seq 1 270); do
+            for WF_NAME in "Firmware" "PCB Data" "Zigbee-Config"; do
+              case "$WF_NAME" in
+                "Firmware")      [ $FIRMWARE_DONE -eq 1 ] && continue ;;
+                "PCB Data")      [ $PCB_DONE      -eq 1 ] && continue ;;
+                "Zigbee-Config") [ $ZIGBEE_DONE   -eq 1 ] && continue ;;
+              esac
+              RESULT=$(gh api \
+                "repos/${{ github.repository }}/actions/runs?event=push&head_sha=${SHA}&per_page=50" \
+                --jq ".workflow_runs[] | select(.name == \"$WF_NAME\") | \"\(.status)/\(.conclusion)\"" \
+                2>/dev/null | head -1)
+              if [ "$RESULT" = "completed/success" ]; then
+                echo "  [$WF_NAME] OK"
+                RUN_ID=$(gh api \
+                  "repos/${{ github.repository }}/actions/runs?event=push&head_sha=${SHA}&per_page=50" \
+                  --jq ".workflow_runs[] | select(.name == \"$WF_NAME\") | .id" | head -1)
+                case "$WF_NAME" in
+                  "Firmware")      FIRMWARE_DONE=1; FIRMWARE_RUN="$RUN_ID" ;;
+                  "PCB Data")      PCB_DONE=1;      PCB_RUN="$RUN_ID" ;;
+                  "Zigbee-Config") ZIGBEE_DONE=1;   ZIGBEE_RUN="$RUN_ID" ;;
+                esac
+              elif echo "$RESULT" | grep -q "completed/"; then
+                echo "Workflow '$WF_NAME' failed: $RESULT"
+                exit 1
+              else
+                echo "  [$WF_NAME] waiting ($RESULT)..."
+              fi
+            done
+            [ $FIRMWARE_DONE -eq 1 ] && [ $PCB_DONE -eq 1 ] && [ $ZIGBEE_DONE -eq 1 ] && break
+            [ $i -lt 270 ] && sleep 20
+          done
+
+          if [ $FIRMWARE_DONE -eq 0 ] || [ $PCB_DONE -eq 0 ] || [ $ZIGBEE_DONE -eq 0 ]; then
+            echo "Timeout: workflows not done after 90 min"
+            exit 1
+          fi
+
+          echo "firmware_run_id=$FIRMWARE_RUN" >> $GITHUB_OUTPUT
+          echo "pcb_run_id=$PCB_RUN"           >> $GITHUB_OUTPUT
+          echo "zigbee_run_id=$ZIGBEE_RUN"     >> $GITHUB_OUTPUT
+
+      - name: Download Firmware artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: 'beelight@*'
+          run-id: ${{ steps.check.outputs.firmware_run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: downloads/firmware
+
+      - name: Download PCB artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.kibot_variant }}.zip
+          run-id: ${{ steps.check.outputs.pcb_run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: downloads/hardware
+
+      - name: Download CHANGELOG
+        uses: actions/download-artifact@v4
+        with:
+          name: CHANGELOG.md
+          run-id: ${{ steps.check.outputs.pcb_run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: .
+
+      - name: Download Zigbee artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: zigbee-config
+          run-id: ${{ steps.check.outputs.zigbee_run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: downloads/zigbee
+
+      # Assemble structured release package
+      #
+      # Final layout inside the ZIP:
+      #   firmware/  – compiled .hex files, one per board revision × build type
+      #   hardware/  – KiBot RELEASED outputs (schematics, BoM, Gerbers, …)
+      #   zigbee/    – Zigbee production config hex
+      - name: Assemble release package
+        run: |
+          set -e
+          apt-get update -qq && apt-get install -y -qq zip
+
+          mkdir -p release/firmware
+          mkdir -p release/hardware
+          mkdir -p release/zigbee
+
+          # Each downloaded artifact dir contains <build_type>.hex
+          for dir in downloads/firmware/*/; do
+            [ -d "$dir" ] || continue
+            artifact_name="$(basename "$dir")"
+            hex="$(find "$dir" -name '*.hex' | head -1)"
+            if [ -n "$hex" ]; then
+              cp "$hex" "release/firmware/${artifact_name}.hex"
+              echo "  Added firmware: ${artifact_name}.hex"
+            fi
+          done
+
+          # Artifact contains production/<kibot_output_dir>-RELEASED/
+          HW_SRC="downloads/hardware/${{ env.kibot_output_dir }}-${{ env.kibot_variant }}"
+          if [ -d "$HW_SRC" ]; then
+            cp -r "$HW_SRC/." release/hardware/
+          else
+            # Fallback: copy everything from the download root
+            cp -r downloads/hardware/. release/hardware/
+          fi
+          echo "  Added hardware artifacts"
+
+          find downloads/zigbee -name '*.hex' -exec cp {} release/zigbee/ \;
+          echo "  Added Zigbee artifacts"
+
+          zip -r ${{ env.kicad_board }}.zip release/
+          echo ""
+          echo "Release package contents:"
+          unzip -l ${{ env.kicad_board }}.zip
+
+      - name: Extract release notes
+        id: release_notes
+        env:
+          TAG: ${{ steps.check.outputs.tag }}
+        run: |
+          python3 - <<'PYEOF'
+          import re, os, sys
+
+          tag = os.environ["TAG"]
+          try:
+              changelog = open("CHANGELOG.md").read()
+          except FileNotFoundError:
+              open("release_notes.md", "w").write(f"Release {tag}")
+              sys.exit(0)
+
+          # Match the section starting with ## [<tag>] down to the next ## section
+          pattern = rf"## \[{re.escape(tag)}\][^\n]*\n(.*?)(?=\n## |\Z)"
+          match = re.search(pattern, changelog, re.DOTALL)
+          notes = match.group(1).strip() if match else f"Release {tag}"
+          open("release_notes.md", "w").write(notes)
+          print(f"Extracted {len(notes)} chars of release notes for tag {tag}")
+          PYEOF
+
+      - name: Create GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.check.outputs.tag }}
+        run: |
+          if gh release view "$TAG" 2>/dev/null; then
+            echo "Release $TAG already exists — uploading/replacing assets"
+            gh release upload "$TAG" ${{ env.kicad_board }}.zip --clobber
+          else
+            gh release create "$TAG" \
+              --title "Release $TAG" \
+              --notes-file release_notes.md \
+              ${{ env.kicad_board }}.zip
+          fi
+
+  deploy-pcb-pages:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    if: github.event_name == 'workflow_run' &&
+        github.event.workflow_run.name == 'PCB Data' &&
+        github.event.workflow_run.conclusion == 'success'
+    steps:
+      - name: Check branch and determine variant
+        id: guard
+        run: |
+          BRANCH="${{ github.event.workflow_run.head_branch }}"
+          if [[ "$BRANCH" == "main" || "$BRANCH" == "master" ]] || echo "$BRANCH" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "proceed=true" >> $GITHUB_OUTPUT
+          else
+            echo "proceed=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          if echo "$BRANCH" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "kibot_variant=RELEASED" >> "${GITHUB_ENV}"
+          else
+            echo "kibot_variant=${{ env.kibot_variant }}" >> "${GITHUB_ENV}"
+          fi
+
+      - name: Download PCB artifacts
+        if: steps.guard.outputs.proceed == 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: "${{ env.kibot_variant }}.zip"
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: production
+
+      - name: Upload pages artifact
+        if: steps.guard.outputs.proceed == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: production/${{ env.kibot_output_dir }}-${{ env.kibot_variant }}
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        if: steps.guard.outputs.proceed == 'true'
+        uses: actions/deploy-pages@v4
+
+  deploy-docs-pages:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    if: github.event_name == 'workflow_run' &&
+        github.event.workflow_run.name == 'Software Documentation' &&
+        github.event.workflow_run.conclusion == 'success' &&
+        github.event.workflow_run.event != 'pull_request' &&
+        (github.event.workflow_run.head_branch == 'main' ||
+         github.event.workflow_run.head_branch == 'master')
+    steps:
+      - name: Download documentation artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: docs-pages
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: docs_out
+
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs_out
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  deploy-docs-nightly:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_run' &&
+        github.event.workflow_run.name == 'Software Documentation' &&
+        github.event.workflow_run.conclusion == 'success' &&
+        github.event.workflow_run.event != 'pull_request' &&
+        (github.event.workflow_run.head_branch == 'main' ||
+         github.event.workflow_run.head_branch == 'master')
+    steps:
+      - name: Download documentation artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: docs-pages
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: docs_out
+
+      - name: Create nightly docs tarball
+        run: |
+          mkdir -p release_pdfs
+          for pdf in docs_out/pdf/*.pdf; do
+            [ -f "$pdf" ] || continue
+            base="$(basename "${pdf%.pdf}")"
+            cp "$pdf" "release_pdfs/${base}-nightly.pdf"
+          done
+          tar zcf ${{ env.kicad_board }}-Docs-nightly.tar.gz -C docs_out .
+
+      - name: Deploy to GitHub Releases (nightly)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view nightly 2>/dev/null || \
+            gh release create nightly \
+              --title "Nightly Documentation Build" \
+              --notes "Automatically generated documentation for ${{ env.kicad_board }}" \
+              --prerelease
+          # Collect PDF files without failing when none exist
+          mapfile -t pdf_files < <(find release_pdfs -name '*.pdf' 2>/dev/null)
+          gh release upload nightly \
+            "${{ env.kicad_board }}-Docs-nightly.tar.gz" \
+            "${pdf_files[@]}" --clobber

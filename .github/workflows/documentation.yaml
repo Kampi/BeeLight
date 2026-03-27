@@ -25,12 +25,6 @@ env:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
 
 jobs:
   asciidoctor:
@@ -201,64 +195,8 @@ jobs:
         </html>
         EOF
 
-    - name: Upload Pages Artifact
-      uses: actions/upload-pages-artifact@v3
+    - name: Upload documentation artifact
+      uses: actions/upload-artifact@v4
       with:
+        name: docs-pages
         path: ${{ env.docs_out_dir }}
-
-  deploy-pages:
-    if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
-    needs:
-      - asciidoctor
-    runs-on: ubuntu-latest
-    name: Deploy to GitHub Pages
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
-
-  deploy:
-    if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || contains(github.ref, 'refs/tags/'))
-    needs:
-      - asciidoctor
-    runs-on: ubuntu-latest
-    name: Deploy to Releases
-
-    steps:
-    - name: Repository Checkout
-      uses: actions/checkout@v4
-
-    - name: Download Artifacts
-      uses: actions/download-artifact@v4
-
-    - name: Create release tarball
-      run: |
-        # Create renamed PDF copies for GitHub Releases (with -nightly suffix)
-        mkdir -p release_pdfs
-        for pdf_file in ${{ env.project_name }}-Documentation/pdf/*.pdf; do
-          if [ -f "$pdf_file" ]; then
-            base_name="$(basename ${pdf_file%.pdf})"
-            cp "$pdf_file" "release_pdfs/${base_name}-nightly.pdf"
-          fi
-        done
-
-        # Create tarball of all generated docs
-        tar zcf ${{ env.project_name }}-Docs-nightly.tar.gz \
-          -C ${{ env.project_name }}-Documentation .
-
-    - name: Deploy to GitHub Releases
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        gh release view nightly 2>/dev/null || \
-          gh release create nightly \
-            --title "Nightly Documentation Build" \
-            --notes "Automatically generated documentation for ${{ env.project_name }}" \
-            --prerelease
-
-        gh release upload nightly \
-          ${{ env.project_name }}-Docs-nightly.tar.gz \
-          release_pdfs/*.pdf --clobber

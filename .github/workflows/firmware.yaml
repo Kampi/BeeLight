@@ -24,7 +24,7 @@ jobs:
     strategy:
       matrix:
         built_type: [debug, release]
-        board: [beelight@0/nrf54l15/cpuapp, beelight@1/nrf54l15/cpuapp]
+        board: [beelight@1/nrf54l15/cpuapp]
 
     steps:
       - name: Checkout
