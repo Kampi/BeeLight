@@ -1,0 +1,1229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>/__w/BeeLight/BeeLight/hardware/BeeLight.kicad_sch</source>
+    <date>2026-03-27T07:27:39+0000</date>
+    <tool>Eeschema 9.0.7+1</tool>
+    <textvar name="ASSEMBLY_NOTES"/>
+    <textvar name="BOARD_NAME">BeeLight</textvar>
+    <textvar name="COMPANY">Kampis-Elektroecke</textvar>
+    <textvar name="DESIGNER">Daniel Kampert</textvar>
+    <textvar name="FABRICATION_NOTES"/>
+    <textvar name="GIT_HASH_PCB">c643d05</textvar>
+    <textvar name="GIT_HASH_SCH">43ccbb0</textvar>
+    <textvar name="GIT_URL">https://github.com/Kampi/BeeLight</textvar>
+    <textvar name="PROJECT_NAME">BeeLight</textvar>
+    <textvar name="RELEASE_BODY_2.1.0">Version 2.1.0 not found.</textvar>
+    <textvar name="RELEASE_BODY_2.2.0">Version 2.2.0 not found.</textvar>
+    <textvar name="RELEASE_BODY_UNRELEASED">Version Unreleased not found.</textvar>
+    <textvar name="RELEASE_DATE">21-Mar-2026</textvar>
+    <textvar name="RELEASE_DATE_NUM">2026-03-21</textvar>
+    <textvar name="RELEASE_TITLE_2.1.0">Version 2.1.0 not found.</textvar>
+    <textvar name="RELEASE_TITLE_2.2.0">Version 2.2.0 not found.</textvar>
+    <textvar name="RELEASE_TITLE_UNRELEASED">Version Unreleased not found.</textvar>
+    <textvar name="REVISION"/>
+    <textvar name="SHEET_NAME_1">Cover Page</textvar>
+    <textvar name="SHEET_NAME_10">......................................</textvar>
+    <textvar name="SHEET_NAME_11">......................................</textvar>
+    <textvar name="SHEET_NAME_12">......................................</textvar>
+    <textvar name="SHEET_NAME_13">......................................</textvar>
+    <textvar name="SHEET_NAME_14">......................................</textvar>
+    <textvar name="SHEET_NAME_15">......................................</textvar>
+    <textvar name="SHEET_NAME_16">......................................</textvar>
+    <textvar name="SHEET_NAME_17">......................................</textvar>
+    <textvar name="SHEET_NAME_18">......................................</textvar>
+    <textvar name="SHEET_NAME_19">......................................</textvar>
+    <textvar name="SHEET_NAME_2">Block Diagram</textvar>
+    <textvar name="SHEET_NAME_20">......................................</textvar>
+    <textvar name="SHEET_NAME_21">......................................</textvar>
+    <textvar name="SHEET_NAME_22">......................................</textvar>
+    <textvar name="SHEET_NAME_23">......................................</textvar>
+    <textvar name="SHEET_NAME_24">......................................</textvar>
+    <textvar name="SHEET_NAME_25">......................................</textvar>
+    <textvar name="SHEET_NAME_26">......................................</textvar>
+    <textvar name="SHEET_NAME_27">......................................</textvar>
+    <textvar name="SHEET_NAME_28">......................................</textvar>
+    <textvar name="SHEET_NAME_29">......................................</textvar>
+    <textvar name="SHEET_NAME_3">Project Architecture</textvar>
+    <textvar name="SHEET_NAME_30">......................................</textvar>
+    <textvar name="SHEET_NAME_31">......................................</textvar>
+    <textvar name="SHEET_NAME_32">......................................</textvar>
+    <textvar name="SHEET_NAME_33">......................................</textvar>
+    <textvar name="SHEET_NAME_34">......................................</textvar>
+    <textvar name="SHEET_NAME_35">......................................</textvar>
+    <textvar name="SHEET_NAME_36">......................................</textvar>
+    <textvar name="SHEET_NAME_37">......................................</textvar>
+    <textvar name="SHEET_NAME_38">......................................</textvar>
+    <textvar name="SHEET_NAME_39">......................................</textvar>
+    <textvar name="SHEET_NAME_4">Main</textvar>
+    <textvar name="SHEET_NAME_40">......................................</textvar>
+    <textvar name="SHEET_NAME_5">Power Consumption</textvar>
+    <textvar name="SHEET_NAME_6">Revision History</textvar>
+    <textvar name="SHEET_NAME_7">......................................</textvar>
+    <textvar name="SHEET_NAME_8">......................................</textvar>
+    <textvar name="SHEET_NAME_9">......................................</textvar>
+    <textvar name="VARIANT">PRELIMINARY</textvar>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Cover Page</title>
+        <company>Kampis-Elektroecke</company>
+        <rev/>
+        <date>2025-06-05</date>
+        <source>BeeLight.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="2" name="/Block Diagram/" tstamps="/82da9dbf-ba38-4d08-ba35-a220fa2963b1/">
+      <title_block>
+        <title>Block Diagram</title>
+        <company>Kampis-Elektroecke</company>
+        <rev/>
+        <date>2025-06-05</date>
+        <source>Block Diagram.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="3" name="/Project Architecture/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/">
+      <title_block>
+        <title>Project Architecture</title>
+        <company>Kampis-Elektroecke</company>
+        <rev/>
+        <date>2025-06-05</date>
+        <source>Project Architecture.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="4" name="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/">
+      <title_block>
+        <title>Main</title>
+        <company>Kampis-Elektroecke</company>
+        <rev/>
+        <date>2025-06-05</date>
+        <source>Main.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="5" name="/Power Consumption/" tstamps="/9bb2279e-ee74-4135-a186-0cf4fda25e03/">
+      <title_block>
+        <title>Power Consumption</title>
+        <company>Kampis-Elektroecke</company>
+        <rev/>
+        <date>2025-06-05</date>
+        <source>Power Consumption.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="6" name="/Revision History/" tstamps="/6e125bd6-2f99-4e5d-b3ea-4899f4540739/">
+      <title_block>
+        <title>Revision History</title>
+        <company>Kampis-Elektroecke</company>
+        <rev/>
+        <date>2025-06-05</date>
+        <source>Revision History.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="BT101">
+      <value>Battery_Cell</value>
+      <footprint>Keystone:3039</footprint>
+      <datasheet>https://www.mouser.de/datasheet/3/201/1/3039.pdf</datasheet>
+      <description>Single-cell battery</description>
+      <fields>
+        <field name="manf">Keystone</field>
+        <field name="manf#">3039</field>
+        <field name="mouser#">534-3039</field>
+        <field name="CONFIG"/>
+        <field name="Footprint">Keystone:3039</field>
+        <field name="Datasheet">https://www.mouser.de/datasheet/3/201/1/3039.pdf</field>
+        <field name="Description">Single-cell battery</field>
+      </fields>
+      <libsource lib="Device" part="Battery_Cell" description="Single-cell battery"/>
+      <property name="manf" value="Keystone"/>
+      <property name="manf#" value="3039"/>
+      <property name="mouser#" value="534-3039"/>
+      <property name="CONFIG" value=""/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="battery cell"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>0fa47198-895b-4f49-90ff-4c8d2a3be361</tstamps>
+    </comp>
+    <comp ref="C101">
+      <value>100n</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</footprint>
+      <datasheet>https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf</datasheet>
+      <fields>
+        <field name="manf">KYOCERA AVX</field>
+        <field name="manf#">04025C104KAT4A</field>
+        <field name="CONFIG"/>
+        <field name="mouser#">581-04025C104KAT4A</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</field>
+        <field name="Datasheet">https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf</field>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="manf" value="KYOCERA AVX"/>
+      <property name="manf#" value="04025C104KAT4A"/>
+      <property name="CONFIG" value=""/>
+      <property name="mouser#" value="581-04025C104KAT4A"/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>7c1ed346-c167-425d-9c7f-fb235804163d</tstamps>
+    </comp>
+    <comp ref="C102">
+      <value>100n</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</footprint>
+      <datasheet>https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf</datasheet>
+      <fields>
+        <field name="manf">KYOCERA AVX</field>
+        <field name="manf#">04025C104KAT4A</field>
+        <field name="CONFIG"/>
+        <field name="mouser#">581-04025C104KAT4A</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</field>
+        <field name="Datasheet">https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf</field>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="manf" value="KYOCERA AVX"/>
+      <property name="manf#" value="04025C104KAT4A"/>
+      <property name="CONFIG" value=""/>
+      <property name="mouser#" value="581-04025C104KAT4A"/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>c33e6b8d-f974-4922-b489-6f653951c6ba</tstamps>
+    </comp>
+    <comp ref="C103">
+      <value>1n</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</footprint>
+      <datasheet>https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GCM1555C2A102JE02-01A.pdf</datasheet>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="manf">Murata Electronics</field>
+        <field name="manf#">GCM1555C2A102JE02D</field>
+        <field name="mouser#">81-GCM1555C2A102JE02D</field>
+        <field name="CONFIG"/>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</field>
+        <field name="Datasheet">https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GCM1555C2A102JE02-01A.pdf</field>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="manf" value="Murata Electronics"/>
+      <property name="manf#" value="GCM1555C2A102JE02D"/>
+      <property name="mouser#" value="81-GCM1555C2A102JE02D"/>
+      <property name="CONFIG" value=""/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>441bcb3c-4743-45ff-a9f1-40f02893a2b3</tstamps>
+    </comp>
+    <comp ref="C104">
+      <value>100n</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</footprint>
+      <datasheet>https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf</datasheet>
+      <fields>
+        <field name="manf">KYOCERA AVX</field>
+        <field name="manf#">04025C104KAT4A</field>
+        <field name="CONFIG"/>
+        <field name="mouser#">581-04025C104KAT4A</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</field>
+        <field name="Datasheet">https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf</field>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="manf" value="KYOCERA AVX"/>
+      <property name="manf#" value="04025C104KAT4A"/>
+      <property name="CONFIG" value=""/>
+      <property name="mouser#" value="581-04025C104KAT4A"/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>0411bb3a-f133-4375-b279-e5406a025c5e</tstamps>
+    </comp>
+    <comp ref="C105">
+      <value>100n</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</footprint>
+      <datasheet>https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf</datasheet>
+      <fields>
+        <field name="manf">KYOCERA AVX</field>
+        <field name="manf#">04025C104KAT4A</field>
+        <field name="CONFIG"/>
+        <field name="mouser#">581-04025C104KAT4A</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</field>
+        <field name="Datasheet">https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf</field>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="manf" value="KYOCERA AVX"/>
+      <property name="manf#" value="04025C104KAT4A"/>
+      <property name="CONFIG" value=""/>
+      <property name="mouser#" value="581-04025C104KAT4A"/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>fb5a56f7-647d-4b64-9880-5dd36bbcdab4</tstamps>
+    </comp>
+    <comp ref="C106">
+      <value>100n</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</footprint>
+      <datasheet>https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf</datasheet>
+      <fields>
+        <field name="manf">KYOCERA AVX</field>
+        <field name="manf#">04025C104KAT4A</field>
+        <field name="CONFIG"/>
+        <field name="mouser#">581-04025C104KAT4A</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</field>
+        <field name="Datasheet">https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf</field>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="manf" value="KYOCERA AVX"/>
+      <property name="manf#" value="04025C104KAT4A"/>
+      <property name="CONFIG" value=""/>
+      <property name="mouser#" value="581-04025C104KAT4A"/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>b7b0e032-ccd8-42f5-ba49-1f6c576c3e94</tstamps>
+    </comp>
+    <comp ref="D101">
+      <value>IDENTIFY</value>
+      <footprint>LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <datasheet>~</datasheet>
+      <description>Light emitting diode</description>
+      <fields>
+        <field name="manf">Broadcom / Avago</field>
+        <field name="manf#">HSMQ-C170-T0000</field>
+        <field name="mouser#">630-HSMQ-C170-T0000</field>
+        <field name="CONFIG"/>
+        <field name="Sim.Pins">1=K 2=A</field>
+        <field name="Footprint">LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder</field>
+        <field name="Datasheet">~</field>
+        <field name="Description">Light emitting diode</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <property name="manf" value="Broadcom / Avago"/>
+      <property name="manf#" value="HSMQ-C170-T0000"/>
+      <property name="mouser#" value="630-HSMQ-C170-T0000"/>
+      <property name="CONFIG" value=""/>
+      <property name="Sim.Pins" value="1=K 2=A"/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="LED diode"/>
+      <property name="ki_fp_filters" value="LED* LED_SMD:* LED_THT:*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>19c4c7ce-a20e-44e3-81c6-757853e55654</tstamps>
+    </comp>
+    <comp ref="IC102">
+      <value>APDS-9306-065</value>
+      <footprint>Broadcom:Broadcom_DFN-6_2x2mm_P0.65mm</footprint>
+      <datasheet>https://docs.broadcom.com/docs/AV02-4755EN</datasheet>
+      <fields>
+        <field name="manf">Broadcom / Avago</field>
+        <field name="manf#">APDS-9306-065</field>
+        <field name="CONFIG"/>
+        <field name="mouser#">630-APDS-9306-065</field>
+        <field name="Footprint">Broadcom:Broadcom_DFN-6_2x2mm_P0.65mm</field>
+        <field name="Datasheet">https://docs.broadcom.com/docs/AV02-4755EN</field>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Sensor_Optical" part="APDS-9306-065" description="Ambient Light Sensor, I2C interface, 1.7-3.6V, DFN-6"/>
+      <property name="manf" value="Broadcom / Avago"/>
+      <property name="manf#" value="APDS-9306-065"/>
+      <property name="CONFIG" value=""/>
+      <property name="mouser#" value="630-APDS-9306-065"/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="opto ambient light sensor"/>
+      <property name="ki_fp_filters" value="Broadcom*DFN*2x2mm*P0.65mm*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>031d95cc-1826-41f0-a335-1068ac800fd9</tstamps>
+    </comp>
+    <comp ref="IC103">
+      <value>BME688</value>
+      <footprint>Package_LGA_Kampi:Bosch_LGA-8_3x3mm_P0.8mm_ClockwisePinNumbering</footprint>
+      <datasheet>https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme688-ds000.pdf</datasheet>
+      <description>4-in-1 sensor, gas, humidity, pressure, temperature, I2C and SPI interface, 1.71-3.6V, LGA-8</description>
+      <fields>
+        <field name="manf">Bosch</field>
+        <field name="manf#">BME688</field>
+        <field name="CONFIG"/>
+        <field name="mouser#">262-BME688</field>
+        <field name="Footprint">Package_LGA_Kampi:Bosch_LGA-8_3x3mm_P0.8mm_ClockwisePinNumbering</field>
+        <field name="Datasheet">https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme688-ds000.pdf</field>
+        <field name="Description">4-in-1 sensor, gas, humidity, pressure, temperature, I2C and SPI interface, 1.71-3.6V, LGA-8</field>
+      </fields>
+      <libsource lib="Bosch" part="BME688" description="4-in-1 sensor, gas, humidity, pressure, temperature, I2C and SPI interface, 1.71-3.6V, LGA-8"/>
+      <property name="manf" value="Bosch"/>
+      <property name="manf#" value="BME688"/>
+      <property name="CONFIG" value=""/>
+      <property name="mouser#" value="262-BME688"/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="Bosch gas pressure humidity temperature environment environmental measurement digital"/>
+      <property name="ki_fp_filters" value="*LGA*3x3mm*P0.8mm*Clockwise*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>93f509d8-3fc5-4a2e-a144-f8858ed8e145</tstamps>
+    </comp>
+    <comp ref="M101">
+      <value>BL54L15</value>
+      <footprint>Ezurio:BL54L15</footprint>
+      <datasheet>https://www.ezurio.com/documentation/datasheet-bl54l15-series</datasheet>
+      <description>nRFL15 module</description>
+      <fields>
+        <field name="manf">Ezurio</field>
+        <field name="manf#">453-00001C</field>
+        <field name="mouser#">239-453-00001C</field>
+        <field name="CONFIG"/>
+        <field name="Footprint">Ezurio:BL54L15</field>
+        <field name="Datasheet">https://www.ezurio.com/documentation/datasheet-bl54l15-series</field>
+        <field name="Description">nRFL15 module</field>
+      </fields>
+      <libsource lib="Ezurio" part="BL54L15" description="nRFL15 module"/>
+      <property name="manf" value="Ezurio"/>
+      <property name="manf#" value="453-00001C"/>
+      <property name="mouser#" value="239-453-00001C"/>
+      <property name="CONFIG" value=""/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="nRFL15"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>70e605a1-accd-484b-a374-688c2195912c</tstamps>
+    </comp>
+    <comp ref="Q101">
+      <value>BSS84</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-3</footprint>
+      <datasheet>https://www.mouser.de/datasheet/2/308/1/BSS84_D-2310226.pdf</datasheet>
+      <description>-0.13A Id, -50V Vds, P-Channel MOSFET, SOT-23</description>
+      <fields>
+        <field name="manf">onsemi / Fairchild</field>
+        <field name="manf#">BSS84</field>
+        <field name="mouser#">512-BSS84</field>
+        <field name="CONFIG"/>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23-3</field>
+        <field name="Datasheet">https://www.mouser.de/datasheet/2/308/1/BSS84_D-2310226.pdf</field>
+        <field name="Description">-0.13A Id, -50V Vds, P-Channel MOSFET, SOT-23</field>
+      </fields>
+      <libsource lib="Transistor_FET" part="BSS84" description="-0.13A Id, -50V Vds, P-Channel MOSFET, SOT-23"/>
+      <property name="manf" value="onsemi / Fairchild"/>
+      <property name="manf#" value="BSS84"/>
+      <property name="mouser#" value="512-BSS84"/>
+      <property name="CONFIG" value=""/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="P-Channel MOSFET"/>
+      <property name="ki_fp_filters" value="SOT?23*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>42d0b01b-8176-4263-be8f-c28b2c774a8c</tstamps>
+    </comp>
+    <comp ref="R101">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder</footprint>
+      <datasheet>https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf</datasheet>
+      <description>Resistor</description>
+      <fields>
+        <field name="manf">YAGEO</field>
+        <field name="manf#">RC0402FR-07100KL</field>
+        <field name="mouser#">603-RC0402FR-07100KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder</field>
+        <field name="Datasheet">https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf</field>
+        <field name="Description">Resistor</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="manf" value="YAGEO"/>
+      <property name="manf#" value="RC0402FR-07100KL"/>
+      <property name="mouser#" value="603-RC0402FR-07100KL"/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>b03fc7cd-30db-4308-ac05-84412a5c499f</tstamps>
+    </comp>
+    <comp ref="R102">
+      <value>0R</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder</footprint>
+      <datasheet>https://www.mouser.de/datasheet/2/54/cr_a_as-1858644.pdf</datasheet>
+      <description>Resistor</description>
+      <fields>
+        <field name="manf">Bourns</field>
+        <field name="manf#">CR0805AJ/-000EAS</field>
+        <field name="mouser#">652-CR0805AJ/-000EAS</field>
+        <field name="CONFIG"/>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder</field>
+        <field name="Datasheet">https://www.mouser.de/datasheet/2/54/cr_a_as-1858644.pdf</field>
+        <field name="Description">Resistor</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="manf" value="Bourns"/>
+      <property name="manf#" value="CR0805AJ/-000EAS"/>
+      <property name="mouser#" value="652-CR0805AJ/-000EAS"/>
+      <property name="CONFIG" value=""/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>eb2abf88-1f4b-4e76-a932-51cf723a4228</tstamps>
+    </comp>
+    <comp ref="R103">
+      <value>220R</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder</footprint>
+      <datasheet>https://www.mouser.de/datasheet/2/54/cr-1858361.pdf</datasheet>
+      <description>Resistor</description>
+      <fields>
+        <field name="manf">Bourns</field>
+        <field name="manf#">CR0402-JW-221GLF</field>
+        <field name="mouser#">652-CR0402-JW-221GLF</field>
+        <field name="CONFIG"/>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder</field>
+        <field name="Datasheet">https://www.mouser.de/datasheet/2/54/cr-1858361.pdf</field>
+        <field name="Description">Resistor</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="manf" value="Bourns"/>
+      <property name="manf#" value="CR0402-JW-221GLF"/>
+      <property name="mouser#" value="652-CR0402-JW-221GLF"/>
+      <property name="CONFIG" value=""/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>8d10dc5f-c0c0-4b71-ba85-2b964d217e9b</tstamps>
+    </comp>
+    <comp ref="R104">
+      <value>1k8</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder</footprint>
+      <datasheet>https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf</datasheet>
+      <description>Resistor</description>
+      <fields>
+        <field name="manf">YAGEO</field>
+        <field name="manf#">RC0402FR-071K8L</field>
+        <field name="mouser#">603-RC0402FR-071K8L</field>
+        <field name="CONFIG"/>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder</field>
+        <field name="Datasheet">https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf</field>
+        <field name="Description">Resistor</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="manf" value="YAGEO"/>
+      <property name="manf#" value="RC0402FR-071K8L"/>
+      <property name="mouser#" value="603-RC0402FR-071K8L"/>
+      <property name="CONFIG" value=""/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>6a7732e2-9d09-46c7-bad7-bba3a645dd0f</tstamps>
+    </comp>
+    <comp ref="R105">
+      <value>1k8</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder</footprint>
+      <datasheet>https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf</datasheet>
+      <description>Resistor</description>
+      <fields>
+        <field name="manf">YAGEO</field>
+        <field name="manf#">RC0402FR-071K8L</field>
+        <field name="mouser#">603-RC0402FR-071K8L</field>
+        <field name="CONFIG"/>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder</field>
+        <field name="Datasheet">https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf</field>
+        <field name="Description">Resistor</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="manf" value="YAGEO"/>
+      <property name="manf#" value="RC0402FR-071K8L"/>
+      <property name="mouser#" value="603-RC0402FR-071K8L"/>
+      <property name="CONFIG" value=""/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>b4dc9b8d-a991-4135-8ae4-e70cebb2d227</tstamps>
+    </comp>
+    <comp ref="R106">
+      <value>1k8</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder</footprint>
+      <datasheet>https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf</datasheet>
+      <description>Resistor</description>
+      <fields>
+        <field name="manf">YAGEO</field>
+        <field name="manf#">RC0402FR-071K8L</field>
+        <field name="mouser#">603-RC0402FR-071K8L</field>
+        <field name="CONFIG"/>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder</field>
+        <field name="Datasheet">https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf</field>
+        <field name="Description">Resistor</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="manf" value="YAGEO"/>
+      <property name="manf#" value="RC0402FR-071K8L"/>
+      <property name="mouser#" value="603-RC0402FR-071K8L"/>
+      <property name="CONFIG" value=""/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="dnp"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>0d786898-d32d-49fc-ab3a-d694c7bebe9a</tstamps>
+    </comp>
+    <comp ref="R107">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder</footprint>
+      <datasheet>https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf</datasheet>
+      <description>Resistor</description>
+      <fields>
+        <field name="manf">YAGEO</field>
+        <field name="manf#">RC0402FR-07100KL</field>
+        <field name="mouser#">603-RC0402FR-07100KL</field>
+        <field name="CONFIG"/>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder</field>
+        <field name="Datasheet">https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf</field>
+        <field name="Description">Resistor</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="manf" value="YAGEO"/>
+      <property name="manf#" value="RC0402FR-07100KL"/>
+      <property name="mouser#" value="603-RC0402FR-07100KL"/>
+      <property name="CONFIG" value=""/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="dnp"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>26e26747-0926-4a88-be3e-3cccf912fe95</tstamps>
+    </comp>
+    <comp ref="R108">
+      <value>8k2</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder</footprint>
+      <datasheet>https://www.mouser.de/datasheet/2/447/PYu_RT_1_to_0_01_RoHS_L_15-3461507.pdf</datasheet>
+      <description>Resistor 62.5 mW 0.1%</description>
+      <fields>
+        <field name="manf">Yageo</field>
+        <field name="manf#">RT0402BRD078K2L</field>
+        <field name="mouser#">603-RT0402BRD078K2L</field>
+        <field name="CONFIG"/>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder</field>
+        <field name="Datasheet">https://www.mouser.de/datasheet/2/447/PYu_RT_1_to_0_01_RoHS_L_15-3461507.pdf</field>
+        <field name="Description">Resistor 62.5 mW 0.1%</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="manf" value="Yageo"/>
+      <property name="manf#" value="RT0402BRD078K2L"/>
+      <property name="mouser#" value="603-RT0402BRD078K2L"/>
+      <property name="CONFIG" value=""/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>4adf7266-b730-41f7-87eb-6d4889836a1a</tstamps>
+    </comp>
+    <comp ref="R109">
+      <value>2k2</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder</footprint>
+      <datasheet>https://www.mouser.de/datasheet/2/447/PYu_RT_1_to_0_01_RoHS_L_15-3461507.pdf</datasheet>
+      <description>Resistor 62.5 mW 0.1</description>
+      <fields>
+        <field name="manf">YAGEO</field>
+        <field name="manf#">RT0402BRD072K2L</field>
+        <field name="mouser#">603-RT0402BRD072K2L</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder</field>
+        <field name="Datasheet">https://www.mouser.de/datasheet/2/447/PYu_RT_1_to_0_01_RoHS_L_15-3461507.pdf</field>
+        <field name="Description">Resistor 62.5 mW 0.1</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="manf" value="YAGEO"/>
+      <property name="manf#" value="RT0402BRD072K2L"/>
+      <property name="mouser#" value="603-RT0402BRD072K2L"/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>a560d111-6c6a-45fc-9cc5-4451c7568eda</tstamps>
+    </comp>
+    <comp ref="SW101">
+      <value>JOIN</value>
+      <footprint>Wuerth:WS-TASV-6x6</footprint>
+      <datasheet>https://www.we-online.com/components/products/datasheet/430182130816.pdf</datasheet>
+      <description>Push button switch, generic, two pins</description>
+      <fields>
+        <field name="manf">Wurth Elektronik</field>
+        <field name="manf#">430182095816</field>
+        <field name="mouser#">710-430182095816</field>
+        <field name="CONFIG"/>
+        <field name="Footprint">Wuerth:WS-TASV-6x6</field>
+        <field name="Datasheet">https://www.we-online.com/components/products/datasheet/430182130816.pdf</field>
+        <field name="Description">Push button switch, generic, two pins</field>
+      </fields>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="manf" value="Wurth Elektronik"/>
+      <property name="manf#" value="430182095816"/>
+      <property name="mouser#" value="710-430182095816"/>
+      <property name="CONFIG" value=""/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>1ed9c399-5dd6-4937-abe0-de952879e8d8</tstamps>
+    </comp>
+    <comp ref="X102">
+      <value>DEBUG</value>
+      <footprint>Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical</footprint>
+      <datasheet>http://infocenter.arm.com/help/topic/com.arm.doc.ddi0314h/DDI0314H_coresight_components_trm.pdf</datasheet>
+      <description>Cortex Debug Connector, standard ARM Cortex-M SWD and JTAG interface</description>
+      <fields>
+        <field name="manf">Samtec</field>
+        <field name="manf#">SHF-105-01-L-D-TH-TR</field>
+        <field name="CONFIG"/>
+        <field name="mouser#">200-SHF-105-01-L-D-TH-TR</field>
+        <field name="Footprint">Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical</field>
+        <field name="Datasheet">http://infocenter.arm.com/help/topic/com.arm.doc.ddi0314h/DDI0314H_coresight_components_trm.pdf</field>
+        <field name="Description">Cortex Debug Connector, standard ARM Cortex-M SWD and JTAG interface</field>
+      </fields>
+      <libsource lib="Connector" part="Conn_ARM_JTAG_SWD_10" description="Cortex Debug Connector, standard ARM Cortex-M SWD and JTAG interface"/>
+      <property name="manf" value="Samtec"/>
+      <property name="manf#" value="SHF-105-01-L-D-TH-TR"/>
+      <property name="CONFIG" value=""/>
+      <property name="mouser#" value="200-SHF-105-01-L-D-TH-TR"/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="dnp"/>
+      <property name="ki_keywords" value="Cortex Debug Connector ARM SWD JTAG"/>
+      <property name="ki_fp_filters" value="PinHeader?2x05?P1.27mm*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>a8cb2674-9abe-44cd-8bda-fe16562033ba</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Bosch" part="BME688">
+      <description>4-in-1 sensor, gas, humidity, pressure, temperature, I2C and SPI interface, 1.71-3.6V, LGA-8</description>
+      <docs>https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme688-ds000.pdf</docs>
+      <footprints>
+        <fp>*LGA*3x3mm*P0.8mm*Clockwise*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">IC</field>
+        <field name="Value">BME688</field>
+        <field name="Footprint">Package_LGA_Kampi:Bosch_LGA-8_3x3mm_P0.8mm_ClockwisePinNumbering</field>
+        <field name="Datasheet">https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme688-ds000.pdf</field>
+        <field name="Description">4-in-1 sensor, gas, humidity, pressure, temperature, I2C and SPI interface, 1.71-3.6V, LGA-8</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="power_in"/>
+        <pin num="2" name="CSB" type="input"/>
+        <pin num="3" name="SDI" type="bidirectional"/>
+        <pin num="4" name="SCK" type="input"/>
+        <pin num="5" name="SDO" type="bidirectional"/>
+        <pin num="6" name="VDDIO" type="power_in"/>
+        <pin num="7" name="GND" type="power_in"/>
+        <pin num="8" name="VDD" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="Conn_ARM_JTAG_SWD_10">
+      <description>Cortex Debug Connector, standard ARM Cortex-M SWD and JTAG interface</description>
+      <docs>http://infocenter.arm.com/help/topic/com.arm.doc.ddi0314h/DDI0314H_coresight_components_trm.pdf</docs>
+      <footprints>
+        <fp>PinHeader?2x05?P1.27mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_ARM_JTAG_SWD_10</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">http://infocenter.arm.com/help/topic/com.arm.doc.ddi0314h/DDI0314H_coresight_components_trm.pdf</field>
+        <field name="Description">Cortex Debug Connector, standard ARM Cortex-M SWD and JTAG interface</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VTref" type="power_in"/>
+        <pin num="2" name="SWDIO/TMS" type="bidirectional"/>
+        <pin num="3" name="GND" type="power_in"/>
+        <pin num="4" name="SWCLK/TCK" type="output"/>
+        <pin num="5" name="GND" type="passive"/>
+        <pin num="6" name="SWO/TDO" type="input"/>
+        <pin num="7" name="KEY" type="no_connect"/>
+        <pin num="8" name="NC/TDI" type="output"/>
+        <pin num="9" name="GNDDetect" type="passive"/>
+        <pin num="10" name="~{RESET}" type="open_collector"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="Battery_Cell">
+      <description>Single-cell battery</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">BT</field>
+        <field name="Value">Battery_Cell</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Single-cell battery</field>
+      </fields>
+      <pins>
+        <pin num="1" name="+" type="passive"/>
+        <pin num="2" name="-" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C">
+      <description>Unpolarized capacitor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C_Small">
+      <description>Unpolarized capacitor, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_Small</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Unpolarized capacitor, small symbol</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="LED">
+      <description>Light emitting diode</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>LED*</fp>
+        <fp>LED_SMD:*</fp>
+        <fp>LED_THT:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Light emitting diode</field>
+        <field name="Sim.Pins">1=K 2=A</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R">
+      <description>Resistor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Resistor</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Ezurio" part="BL54L15">
+      <description>nRFL15 module</description>
+      <docs>https://www.ezurio.com/documentation/datasheet-bl54l15-series</docs>
+      <fields>
+        <field name="Reference">M</field>
+        <field name="Value">BL54L15</field>
+        <field name="Footprint">Ezurio:BL54L15</field>
+        <field name="Datasheet">https://www.ezurio.com/documentation/datasheet-bl54l15-series</field>
+        <field name="Description">nRFL15 module</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="passive"/>
+        <pin num="2" name="P2.09" type="bidirectional"/>
+        <pin num="3" name="P2.08" type="bidirectional"/>
+        <pin num="4" name="P2.07" type="bidirectional"/>
+        <pin num="5" name="SWDIO" type="bidirectional"/>
+        <pin num="6" name="SWDCLK" type="input"/>
+        <pin num="7" name="~{RESET}" type="input"/>
+        <pin num="8" name="P2.02" type="bidirectional"/>
+        <pin num="9" name="P2.00" type="bidirectional"/>
+        <pin num="10" name="P2.01" type="bidirectional"/>
+        <pin num="11" name="P2.04" type="bidirectional"/>
+        <pin num="12" name="P2.05" type="bidirectional"/>
+        <pin num="13" name="P2.03" type="bidirectional"/>
+        <pin num="14" name="P1.03/NFC2" type="bidirectional"/>
+        <pin num="15" name="P1.02/NFC1" type="bidirectional"/>
+        <pin num="16" name="GND" type="passive"/>
+        <pin num="17" name="P0.00" type="bidirectional"/>
+        <pin num="18" name="P0.01" type="bidirectional"/>
+        <pin num="19" name="P0.02" type="bidirectional"/>
+        <pin num="20" name="P1.07/AIN3" type="bidirectional"/>
+        <pin num="21" name="O1.06/AIN2" type="bidirectional"/>
+        <pin num="22" name="P1.05/AIN1" type="bidirectional"/>
+        <pin num="23" name="P1.04/AIN0" type="bidirectional"/>
+        <pin num="24" name="P1.01/32K" type="bidirectional"/>
+        <pin num="25" name="P1.00/32K" type="bidirectional"/>
+        <pin num="26" name="VDD" type="passive"/>
+        <pin num="27" name="GND" type="passive"/>
+        <pin num="28" name="P1.10" type="bidirectional"/>
+        <pin num="29" name="P1.09" type="bidirectional"/>
+        <pin num="30" name="P1.08" type="bidirectional"/>
+        <pin num="31" name="P0.04" type="bidirectional"/>
+        <pin num="32" name="P1.14/AIN7" type="bidirectional"/>
+        <pin num="33" name="P1.13/AIN6" type="bidirectional"/>
+        <pin num="34" name="P1.12/AIN5" type="bidirectional"/>
+        <pin num="35" name="P1.11/AIN4" type="bidirectional"/>
+        <pin num="36" name="P0.03" type="bidirectional"/>
+        <pin num="37" name="P2.10" type="bidirectional"/>
+        <pin num="38" name="P2.06" type="bidirectional"/>
+        <pin num="39" name="GND" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Sensor_Optical" part="APDS-9306-065">
+      <description>Ambient Light Sensor, I2C interface, 1.7-3.6V, DFN-6</description>
+      <docs>https://docs.broadcom.com/docs/AV02-4755EN</docs>
+      <footprints>
+        <fp>Broadcom*DFN*2x2mm*P0.65mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">APDS-9306-065</field>
+        <field name="Footprint">OptoDevice:Broadcom_DFN-6_2x2mm_P0.65mm</field>
+        <field name="Datasheet">https://docs.broadcom.com/docs/AV02-4755EN</field>
+        <field name="Description">Ambient Light Sensor, I2C interface, 1.7-3.6V, DFN-6</field>
+      </fields>
+      <pins>
+        <pin num="1" name="SCL" type="input"/>
+        <pin num="2" name="SDA" type="bidirectional"/>
+        <pin num="3" name="VDD" type="power_in"/>
+        <pin num="4" name="INT" type="open_collector"/>
+        <pin num="5" name="NC" type="no_connect"/>
+        <pin num="6" name="GND" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Switch" part="SW_Push">
+      <description>Push button switch, generic, two pins</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">SW_Push</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Push button switch, generic, two pins</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Transistor_FET" part="BSS84">
+      <description>-0.13A Id, -50V Vds, P-Channel MOSFET, SOT-23</description>
+      <docs>http://assets.nexperia.com/documents/data-sheet/BSS84.pdf</docs>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">BSS84</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">http://assets.nexperia.com/documents/data-sheet/BSS84.pdf</field>
+        <field name="Description">-0.13A Id, -50V Vds, P-Channel MOSFET, SOT-23</field>
+      </fields>
+      <pins>
+        <pin num="1" name="G" type="input"/>
+        <pin num="2" name="S" type="passive"/>
+        <pin num="3" name="D" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Connector">
+      <uri>/usr/share/kicad/symbols//Connector.kicad_sym</uri>
+    </library>
+    <library logical="Device">
+      <uri>/usr/share/kicad/symbols//Device.kicad_sym</uri>
+    </library>
+    <library logical="Sensor_Optical">
+      <uri>/usr/share/kicad/symbols//Sensor_Optical.kicad_sym</uri>
+    </library>
+    <library logical="Switch">
+      <uri>/usr/share/kicad/symbols//Switch.kicad_sym</uri>
+    </library>
+    <library logical="Transistor_FET">
+      <uri>/usr/share/kicad/symbols//Transistor_FET.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="+BATT" class="Default">
+      <node ref="C102" pin="1" pintype="passive"/>
+      <node ref="C104" pin="1" pintype="passive"/>
+      <node ref="C105" pin="1" pintype="passive"/>
+      <node ref="C106" pin="1" pintype="passive"/>
+      <node ref="IC102" pin="3" pinfunction="VDD" pintype="power_in"/>
+      <node ref="IC103" pin="2" pinfunction="CSB" pintype="input"/>
+      <node ref="IC103" pin="6" pinfunction="VDDIO" pintype="power_in"/>
+      <node ref="IC103" pin="8" pinfunction="VDD" pintype="power_in"/>
+      <node ref="M101" pin="26" pinfunction="VDD" pintype="passive"/>
+      <node ref="Q101" pin="2" pinfunction="S" pintype="passive"/>
+      <node ref="R101" pin="1" pintype="passive"/>
+      <node ref="R102" pin="2" pintype="passive"/>
+      <node ref="R103" pin="1" pintype="passive"/>
+      <node ref="R104" pin="1" pintype="passive"/>
+      <node ref="R105" pin="1" pintype="passive"/>
+      <node ref="R106" pin="1" pintype="passive"/>
+      <node ref="R107" pin="1" pintype="passive"/>
+      <node ref="X102" pin="1" pinfunction="VTref" pintype="power_in"/>
+    </net>
+    <net code="2" name="Enable-Battery" class="Default">
+      <node ref="M101" pin="11" pinfunction="P2.04" pintype="bidirectional"/>
+      <node ref="Q101" pin="1" pinfunction="G" pintype="input"/>
+      <node ref="R107" pin="2" pintype="passive"/>
+    </net>
+    <net code="3" name="GND" class="Default">
+      <node ref="BT101" pin="2" pinfunction="-" pintype="passive"/>
+      <node ref="C101" pin="2" pintype="passive"/>
+      <node ref="C102" pin="2" pintype="passive"/>
+      <node ref="C103" pin="2" pintype="passive"/>
+      <node ref="C104" pin="2" pintype="passive"/>
+      <node ref="C105" pin="2" pintype="passive"/>
+      <node ref="C106" pin="2" pintype="passive"/>
+      <node ref="IC102" pin="6" pinfunction="GND" pintype="power_in"/>
+      <node ref="IC103" pin="1" pinfunction="GND" pintype="power_in"/>
+      <node ref="IC103" pin="5" pinfunction="SDO" pintype="bidirectional"/>
+      <node ref="IC103" pin="7" pinfunction="GND" pintype="power_in"/>
+      <node ref="M101" pin="1" pinfunction="GND" pintype="passive"/>
+      <node ref="M101" pin="16" pinfunction="GND" pintype="passive"/>
+      <node ref="M101" pin="27" pinfunction="GND" pintype="passive"/>
+      <node ref="M101" pin="39" pinfunction="GND" pintype="passive"/>
+      <node ref="R109" pin="2" pintype="passive"/>
+      <node ref="SW101" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="X102" pin="3" pinfunction="GND" pintype="power_in"/>
+      <node ref="X102" pin="5" pinfunction="GND" pintype="passive"/>
+    </net>
+    <net code="4" name="INT" class="Default">
+      <node ref="IC102" pin="4" pinfunction="INT" pintype="open_collector"/>
+      <node ref="M101" pin="32" pinfunction="P1.14/AIN7" pintype="bidirectional"/>
+      <node ref="R106" pin="2" pintype="passive"/>
+    </net>
+    <net code="5" name="Net-(BT101-+)" class="Default">
+      <node ref="BT101" pin="1" pinfunction="+" pintype="passive"/>
+      <node ref="R102" pin="1" pintype="passive"/>
+    </net>
+    <net code="6" name="Net-(D101-A)" class="Default">
+      <node ref="D101" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R103" pin="2" pintype="passive"/>
+    </net>
+    <net code="7" name="Net-(D101-K)" class="Default">
+      <node ref="D101" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="M101" pin="24" pinfunction="P1.01/32K" pintype="bidirectional"/>
+    </net>
+    <net code="8" name="Net-(M101-P1.00/32K)" class="Default">
+      <node ref="M101" pin="25" pinfunction="P1.00/32K" pintype="bidirectional"/>
+      <node ref="SW101" pin="2" pinfunction="2" pintype="passive"/>
+    </net>
+    <net code="9" name="Net-(Q101-D)" class="Default">
+      <node ref="Q101" pin="3" pinfunction="D" pintype="passive"/>
+      <node ref="R108" pin="1" pintype="passive"/>
+    </net>
+    <net code="10" name="SCL" class="Default">
+      <node ref="IC102" pin="1" pinfunction="SCL" pintype="input"/>
+      <node ref="IC103" pin="4" pinfunction="SCK" pintype="input"/>
+      <node ref="M101" pin="36" pinfunction="P0.03" pintype="bidirectional"/>
+      <node ref="R105" pin="2" pintype="passive"/>
+    </net>
+    <net code="11" name="SDA" class="Default">
+      <node ref="IC102" pin="2" pinfunction="SDA" pintype="bidirectional"/>
+      <node ref="IC103" pin="3" pinfunction="SDI" pintype="bidirectional"/>
+      <node ref="M101" pin="31" pinfunction="P0.04" pintype="bidirectional"/>
+      <node ref="R104" pin="2" pintype="passive"/>
+    </net>
+    <net code="12" name="SWDCLK" class="Default">
+      <node ref="M101" pin="6" pinfunction="SWDCLK" pintype="input"/>
+      <node ref="X102" pin="4" pinfunction="SWCLK/TCK" pintype="output"/>
+    </net>
+    <net code="13" name="SWDIO" class="Default">
+      <node ref="M101" pin="5" pinfunction="SWDIO" pintype="bidirectional"/>
+      <node ref="X102" pin="2" pinfunction="SWDIO/TMS" pintype="bidirectional"/>
+    </net>
+    <net code="14" name="V_{BAT}" class="Default">
+      <node ref="C103" pin="1" pintype="passive"/>
+      <node ref="M101" pin="23" pinfunction="P1.04/AIN0" pintype="bidirectional"/>
+      <node ref="R108" pin="2" pintype="passive"/>
+      <node ref="R109" pin="1" pintype="passive"/>
+    </net>
+    <net code="15" name="unconnected-(IC102-NC-Pad5)" class="Default">
+      <node ref="IC102" pin="5" pinfunction="NC" pintype="no_connect"/>
+    </net>
+    <net code="16" name="unconnected-(M101-O1.06/AIN2-Pad21)" class="Default">
+      <node ref="M101" pin="21" pinfunction="O1.06/AIN2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="17" name="unconnected-(M101-P0.00-Pad17)" class="Default">
+      <node ref="M101" pin="17" pinfunction="P0.00" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="18" name="unconnected-(M101-P0.01-Pad18)" class="Default">
+      <node ref="M101" pin="18" pinfunction="P0.01" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="19" name="unconnected-(M101-P0.02-Pad19)" class="Default">
+      <node ref="M101" pin="19" pinfunction="P0.02" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="20" name="unconnected-(M101-P1.02/NFC1-Pad15)" class="Default">
+      <node ref="M101" pin="15" pinfunction="P1.02/NFC1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="21" name="unconnected-(M101-P1.03/NFC2-Pad14)" class="Default">
+      <node ref="M101" pin="14" pinfunction="P1.03/NFC2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="22" name="unconnected-(M101-P1.05/AIN1-Pad22)" class="Default">
+      <node ref="M101" pin="22" pinfunction="P1.05/AIN1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="23" name="unconnected-(M101-P1.07/AIN3-Pad20)" class="Default">
+      <node ref="M101" pin="20" pinfunction="P1.07/AIN3" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="24" name="unconnected-(M101-P1.08-Pad30)" class="Default">
+      <node ref="M101" pin="30" pinfunction="P1.08" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="25" name="unconnected-(M101-P1.09-Pad29)" class="Default">
+      <node ref="M101" pin="29" pinfunction="P1.09" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="26" name="unconnected-(M101-P1.10-Pad28)" class="Default">
+      <node ref="M101" pin="28" pinfunction="P1.10" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="27" name="unconnected-(M101-P1.11/AIN4-Pad35)" class="Default">
+      <node ref="M101" pin="35" pinfunction="P1.11/AIN4" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="28" name="unconnected-(M101-P1.12/AIN5-Pad34)" class="Default">
+      <node ref="M101" pin="34" pinfunction="P1.12/AIN5" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="29" name="unconnected-(M101-P1.13/AIN6-Pad33)" class="Default">
+      <node ref="M101" pin="33" pinfunction="P1.13/AIN6" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="30" name="unconnected-(M101-P2.00-Pad9)" class="Default">
+      <node ref="M101" pin="9" pinfunction="P2.00" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="31" name="unconnected-(M101-P2.01-Pad10)" class="Default">
+      <node ref="M101" pin="10" pinfunction="P2.01" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="32" name="unconnected-(M101-P2.02-Pad8)" class="Default">
+      <node ref="M101" pin="8" pinfunction="P2.02" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="33" name="unconnected-(M101-P2.03-Pad13)" class="Default">
+      <node ref="M101" pin="13" pinfunction="P2.03" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="34" name="unconnected-(M101-P2.05-Pad12)" class="Default">
+      <node ref="M101" pin="12" pinfunction="P2.05" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="35" name="unconnected-(M101-P2.06-Pad38)" class="Default">
+      <node ref="M101" pin="38" pinfunction="P2.06" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="36" name="unconnected-(M101-P2.07-Pad4)" class="Default">
+      <node ref="M101" pin="4" pinfunction="P2.07" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="37" name="unconnected-(M101-P2.08-Pad3)" class="Default">
+      <node ref="M101" pin="3" pinfunction="P2.08" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="38" name="unconnected-(M101-P2.09-Pad2)" class="Default">
+      <node ref="M101" pin="2" pinfunction="P2.09" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="39" name="unconnected-(M101-P2.10-Pad37)" class="Default">
+      <node ref="M101" pin="37" pinfunction="P2.10" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="40" name="unconnected-(X102-GNDDetect-Pad9)" class="Default">
+      <node ref="X102" pin="9" pinfunction="GNDDetect" pintype="passive+no_connect"/>
+    </net>
+    <net code="41" name="unconnected-(X102-KEY-Pad7)" class="Default">
+      <node ref="X102" pin="7" pinfunction="KEY" pintype="no_connect"/>
+    </net>
+    <net code="42" name="unconnected-(X102-NC/TDI-Pad8)" class="Default">
+      <node ref="X102" pin="8" pinfunction="NC/TDI" pintype="output+no_connect"/>
+    </net>
+    <net code="43" name="unconnected-(X102-SWO/TDO-Pad6)" class="Default">
+      <node ref="X102" pin="6" pinfunction="SWO/TDO" pintype="input+no_connect"/>
+    </net>
+    <net code="44" name="~{RESET}" class="Default">
+      <node ref="C101" pin="1" pintype="passive"/>
+      <node ref="M101" pin="7" pinfunction="~{RESET}" pintype="input"/>
+      <node ref="R101" pin="2" pintype="passive"/>
+      <node ref="X102" pin="10" pinfunction="~{RESET}" pintype="open_collector"/>
+    </net>
+  </nets>
+</export>
