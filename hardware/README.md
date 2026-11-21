@@ -5,7 +5,7 @@
 <h1 align="center">Template</h1>
 
 <p align="center" width="100%">
-  <a href="${GIT_URL}/actions/workflows/pcb.yaml">
+  <a href="${GIT_URL}/actions/workflows/hw-pcb.yaml">
     <img alt="CI Badge" src="${GIT_URL}/actions/workflows/devkit.yaml/badge.svg">
   </a>
 </p>

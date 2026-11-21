@@ -1,3 +1,37 @@
+"""
+update-changelog-links.py - Manage the 'Full Changelog' comparison link block
+in CHANGELOG.md.
+
+Usage:
+    python update-changelog-links.py -f CHANGELOG.md -t <tag> [-p <prev-tag>] -r <repo-url>
+
+Arguments:
+    -f, --file      Path to the CHANGELOG.md file.
+    -t, --tag       Current release tag (e.g. v2.0.0).
+    -p, --prev-tag  Previous release tag (e.g. v1.0.0). Omit for the first release.
+    -r, --repo-url  Base URL of the GitHub repository without trailing slash
+                    (e.g. https://github.com/owner/repo).
+
+Description:
+    Appends or updates the '**Full Changelog**:' block at the end of the
+    CHANGELOG.md file with a GitHub compare URL between the previous and the
+    current release tag.
+
+    Behaviour per release:
+    - First release (no prev-tag): no link is added.
+    - Second release: appends the block with one compare URL.
+    - Subsequent releases: prepends the new compare URL and keeps all
+      previous URLs below it in chronological-descending order.
+
+    This script is typically called from the GitHub Actions release workflow
+    (hw-pcb.yaml) after a version tag is pushed.
+
+Example output block in CHANGELOG.md:
+    **Full Changelog**:
+    https://github.com/owner/repo/compare/v1.0.0...v2.0.0
+    https://github.com/owner/repo/compare/v0.1.0...v1.0.0
+"""
+
 import re
 import sys
 import argparse

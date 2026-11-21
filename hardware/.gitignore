@@ -45,3 +45,6 @@ fp-info-cache
 *.log
 *.raw
 .svg2shenzhen-cache
+*.kicad_prl-bak
+*#auto_saved_files#*
+.history/

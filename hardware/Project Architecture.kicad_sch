@@ -1,7 +1,7 @@
 (kicad_sch
-	(version 20250114)
+	(version 20260306)
 	(generator "eeschema")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(uuid "07236397-3ba4-47af-9809-3faac3a2aa49")
 	(paper "A3")
 	(title_block
@@ -22,7 +22,7 @@
 		(fill
 			(type none)
 		)
-		(uuid 19c30b2f-1391-4be0-8a5f-17a3226c0876)
+		(uuid "19c30b2f-1391-4be0-8a5f-17a3226c0876")
 	)
 	(arc
 		(start 233.7 118.09)
@@ -35,7 +35,7 @@
 		(fill
 			(type none)
 		)
-		(uuid 5b059745-d833-4f9d-9745-ec7a90904541)
+		(uuid "5b059745-d833-4f9d-9745-ec7a90904541")
 	)
 	(arc
 		(start 233.7 132.06)
@@ -48,7 +48,7 @@
 		(fill
 			(type none)
 		)
-		(uuid 62bb3cd5-23b6-4c8e-a8f2-a293aca5d83b)
+		(uuid "62bb3cd5-23b6-4c8e-a8f2-a293aca5d83b")
 	)
 	(arc
 		(start 231.16 99.04)
@@ -61,7 +61,7 @@
 		(fill
 			(type none)
 		)
-		(uuid 94ad6bc3-4505-4c4a-89fc-83d0c51dd562)
+		(uuid "94ad6bc3-4505-4c4a-89fc-83d0c51dd562")
 	)
 	(text "Page 4"
 		(exclude_from_sim no)
@@ -176,11 +176,13 @@
 			(type solid)
 		)
 		(fill
-			(color 255 200 0 0.5020)
+			(color 255 200 0 0.502)
 		)
 		(uuid "e744f3ce-03a6-44a6-8792-1447ef232b9a")
 		(property "Sheetname" "Main"
 			(at 181.61 98.0309 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.905 1.905)
@@ -191,6 +193,8 @@
 		)
 		(property "Sheetfile" "Main.kicad_sch"
 			(at 181.61 135.2046 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(face "Arial")

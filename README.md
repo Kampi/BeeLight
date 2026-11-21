@@ -1,7 +1,7 @@
 # BeeLight - Zigbee based light & environment sensor for Home Automation
 
 [![License](https://img.shields.io/badge/License-GPL%203.0-blue.svg)](https://opensource.org/license/gpl-3-0/)
-[![PCB](https://github.com/Kampi/BeeLight/actions/workflows/pcb.yaml/badge.svg)](https://www.github.com/Kampi/BeeLight/actions/workflows/pcb.yaml)
+[![PCB](https://github.com/Kampi/BeeLight/actions/workflows/hw-pcb.yaml/badge.svg)](https://www.github.com/Kampi/BeeLight/actions/workflows/hw-pcb.yaml)
 [![Documentation](https://img.shields.io/badge/Documentation-HTML-007ec6?longCache=true&style=flat&logo=asciidoctor&colorA=555555)](https://https://www.kampi.github.io/BeeLight/)
 
 ## Table of Contents
@@ -56,7 +56,7 @@ Open-Source Zigbee-based light and environmental sensor with [Zigbee2MQTT](https
 
 ## Before you start
 
-The project directory contains the hardware as a [KiCad 9](https://www.kicad.org/download/) project, the firmware and the Zigbee2MQTT configuration. You can check it out with Git:
+The project directory contains the hardware as a [KiCad 10](https://www.kicad.org/download/) project, the firmware and the Zigbee2MQTT configuration. You can check it out with Git:
 
 ```sh
 git clone https://github.com/Kampi/BeeLight
