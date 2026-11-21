@@ -2,14 +2,14 @@
 <export version="E">
   <design>
     <source>/__w/BeeLight/BeeLight/hardware/BeeLight.kicad_sch</source>
-    <date>2026-11-21T15:58:04</date>
+    <date>2026-11-21T23:09:45</date>
     <tool>Eeschema 10.0.5-unknown-202607221313~667fa36054~ubuntu25.10.1</tool>
     <textvar name="ASSEMBLY_NOTES"/>
     <textvar name="BOARD_NAME">BeeLight</textvar>
     <textvar name="COMPANY">Kampis-Elektroecke</textvar>
     <textvar name="DESIGNER">Daniel Kampert</textvar>
     <textvar name="FABRICATION_NOTES"/>
-    <textvar name="GIT_HASH_PCB">d1ef16e</textvar>
+    <textvar name="GIT_HASH_PCB">3c6284d</textvar>
     <textvar name="GIT_HASH_SCH">d1ef16e</textvar>
     <textvar name="GIT_URL">https://github.com/Kampi/BeeLight</textvar>
     <textvar name="PCB_VARIANT">PRELIMINARY</textvar>
@@ -380,6 +380,72 @@
       <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
       <tstamps>b7b0e032-ccd8-42f5-ba49-1f6c576c3e94</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C107">
+      <value>47u</value>
+      <footprint>Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder</footprint>
+      <datasheet>https://www.mouser.de/datasheet/3/940/1/c_mlcc_A_e.pdf</datasheet>
+      <fields>
+        <field name="manf">TAIYO YUDEN</field>
+        <field name="manf#">MAASL32MSB7476MPNA01</field>
+        <field name="mouser#">963-MAASL32MSB7476MP</field>
+        <field name="Config"/>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder</field>
+        <field name="Datasheet">https://www.mouser.de/datasheet/3/940/1/c_mlcc_A_e.pdf</field>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="manf" value="TAIYO YUDEN"/>
+      <property name="manf#" value="MAASL32MSB7476MPNA01"/>
+      <property name="mouser#" value="963-MAASL32MSB7476MP"/>
+      <property name="Config" value=""/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>8d4627d6-3c2e-4265-97f9-a77e5086bc11</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C108">
+      <value>47u</value>
+      <footprint>Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder</footprint>
+      <datasheet>https://www.mouser.de/datasheet/3/940/1/c_mlcc_A_e.pdf</datasheet>
+      <fields>
+        <field name="manf">TAIYO YUDEN</field>
+        <field name="manf#">MAASL32MSB7476MPNA01</field>
+        <field name="mouser#">963-MAASL32MSB7476MP</field>
+        <field name="Config"/>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder</field>
+        <field name="Datasheet">https://www.mouser.de/datasheet/3/940/1/c_mlcc_A_e.pdf</field>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="manf" value="TAIYO YUDEN"/>
+      <property name="manf#" value="MAASL32MSB7476MPNA01"/>
+      <property name="mouser#" value="963-MAASL32MSB7476MP"/>
+      <property name="Config" value=""/>
+      <property name="Sheetname" value="Main"/>
+      <property name="Sheetfile" value="Main.kicad_sch"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
+      <tstamps>92ee3488-4142-4ed5-870c-78ab553776cc</tstamps>
       <units>
         <unit name="A">
           <pins>
@@ -1227,6 +1293,8 @@
       <node ref="C104" pin="1" pintype="passive"/>
       <node ref="C105" pin="1" pintype="passive"/>
       <node ref="C106" pin="1" pintype="passive"/>
+      <node ref="C107" pin="1" pintype="passive"/>
+      <node ref="C108" pin="1" pintype="passive"/>
       <node ref="IC102" pin="3" pinfunction="VDD_3" pintype="power_in"/>
       <node ref="IC103" pin="2" pinfunction="CSB_2" pintype="input"/>
       <node ref="IC103" pin="6" pinfunction="VDDIO_6" pintype="power_in"/>
@@ -1255,6 +1323,8 @@
       <node ref="C104" pin="2" pintype="passive"/>
       <node ref="C105" pin="2" pintype="passive"/>
       <node ref="C106" pin="2" pintype="passive"/>
+      <node ref="C107" pin="2" pintype="passive"/>
+      <node ref="C108" pin="2" pintype="passive"/>
       <node ref="IC102" pin="6" pinfunction="GND_6" pintype="power_in"/>
       <node ref="IC103" pin="1" pinfunction="GND_1" pintype="power_in"/>
       <node ref="IC103" pin="5" pinfunction="SDO_5" pintype="bidirectional"/>
