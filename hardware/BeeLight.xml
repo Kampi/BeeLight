@@ -2,24 +2,28 @@
 <export version="E">
   <design>
     <source>/__w/BeeLight/BeeLight/hardware/BeeLight.kicad_sch</source>
-    <date>2026-11-21T23:09:45</date>
+    <date>2026-11-22T13:04:54</date>
     <tool>Eeschema 10.0.5-unknown-202607221313~667fa36054~ubuntu25.10.1</tool>
     <textvar name="ASSEMBLY_NOTES"/>
     <textvar name="BOARD_NAME">BeeLight</textvar>
     <textvar name="COMPANY">Kampis-Elektroecke</textvar>
     <textvar name="DESIGNER">Daniel Kampert</textvar>
     <textvar name="FABRICATION_NOTES"/>
-    <textvar name="GIT_HASH_PCB">3c6284d</textvar>
-    <textvar name="GIT_HASH_SCH">d1ef16e</textvar>
+    <textvar name="GIT_HASH_PCB">5301c7d</textvar>
+    <textvar name="GIT_HASH_SCH">16804de</textvar>
     <textvar name="GIT_URL">https://github.com/Kampi/BeeLight</textvar>
     <textvar name="PCB_VARIANT">PRELIMINARY</textvar>
     <textvar name="PROJECT_NAME">BeeLight</textvar>
+    <textvar name="RELEASE_BODY_..."> </textvar>
     <textvar name="RELEASE_BODY_2.2.0">Version 2.2.0 not found.</textvar>
     <textvar name="RELEASE_BODY_UNRELEASED">Version Unreleased not found.</textvar>
-    <textvar name="RELEASE_DATE">2026-11-21</textvar>
-    <textvar name="RELEASE_DATE_NUM">2026-11-21</textvar>
+    <textvar name="RELEASE_BODY_x.y.z">Version x.y.z not found.</textvar>
+    <textvar name="RELEASE_DATE">2026-11-22</textvar>
+    <textvar name="RELEASE_DATE_NUM">2026-11-22</textvar>
+    <textvar name="RELEASE_TITLE_..."> </textvar>
     <textvar name="RELEASE_TITLE_2.2.0">Version 2.2.0 not found.</textvar>
     <textvar name="RELEASE_TITLE_UNRELEASED">Version Unreleased not found.</textvar>
+    <textvar name="RELEASE_TITLE_x.y.z">Version x.y.z not found.</textvar>
     <textvar name="REVISION"/>
     <textvar name="SHEET_NAME_1">Cover Page</textvar>
     <textvar name="SHEET_NAME_10">......................................</textvar>
@@ -63,7 +67,7 @@
     <textvar name="SHEET_NAME_9">......................................</textvar>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
-        <title>Cover Page</title>
+        <title>BeeLight</title>
         <company>Kampis-Elektroecke</company>
         <rev/>
         <date>2025-06-05</date>
@@ -206,21 +210,22 @@
       <value>100n</value>
       <footprint>Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</footprint>
       <datasheet>https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf</datasheet>
+      <description>Unpolarized capacitor</description>
       <fields>
         <field name="manf">KYOCERA AVX</field>
         <field name="manf#">04025C104KAT4A</field>
         <field name="mouser#">581-04025C104KAT4A</field>
         <field name="Footprint">Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</field>
         <field name="Datasheet">https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf</field>
-        <field name="Description"/>
+        <field name="Description">Unpolarized capacitor</field>
       </fields>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
       <property name="manf" value="KYOCERA AVX"/>
       <property name="manf#" value="04025C104KAT4A"/>
       <property name="mouser#" value="581-04025C104KAT4A"/>
       <property name="Sheetname" value="Main"/>
       <property name="Sheetfile" value="Main.kicad_sch"/>
-      <property name="ki_keywords" value="capacitor cap"/>
+      <property name="ki_keywords" value="cap capacitor"/>
       <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
       <tstamps>7c1ed346-c167-425d-9c7f-fb235804163d</tstamps>
@@ -237,21 +242,22 @@
       <value>100n</value>
       <footprint>Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</footprint>
       <datasheet>https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf</datasheet>
+      <description>Unpolarized capacitor</description>
       <fields>
         <field name="manf">KYOCERA AVX</field>
         <field name="manf#">04025C104KAT4A</field>
         <field name="mouser#">581-04025C104KAT4A</field>
         <field name="Footprint">Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</field>
         <field name="Datasheet">https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf</field>
-        <field name="Description"/>
+        <field name="Description">Unpolarized capacitor</field>
       </fields>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
       <property name="manf" value="KYOCERA AVX"/>
       <property name="manf#" value="04025C104KAT4A"/>
       <property name="mouser#" value="581-04025C104KAT4A"/>
       <property name="Sheetname" value="Main"/>
       <property name="Sheetfile" value="Main.kicad_sch"/>
-      <property name="ki_keywords" value="capacitor cap"/>
+      <property name="ki_keywords" value="cap capacitor"/>
       <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
       <tstamps>c33e6b8d-f974-4922-b489-6f653951c6ba</tstamps>
@@ -300,21 +306,22 @@
       <value>100n</value>
       <footprint>Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</footprint>
       <datasheet>https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf</datasheet>
+      <description>Unpolarized capacitor</description>
       <fields>
         <field name="manf">KYOCERA AVX</field>
         <field name="manf#">04025C104KAT4A</field>
         <field name="mouser#">581-04025C104KAT4A</field>
         <field name="Footprint">Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</field>
         <field name="Datasheet">https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf</field>
-        <field name="Description"/>
+        <field name="Description">Unpolarized capacitor</field>
       </fields>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
       <property name="manf" value="KYOCERA AVX"/>
       <property name="manf#" value="04025C104KAT4A"/>
       <property name="mouser#" value="581-04025C104KAT4A"/>
       <property name="Sheetname" value="Main"/>
       <property name="Sheetfile" value="Main.kicad_sch"/>
-      <property name="ki_keywords" value="capacitor cap"/>
+      <property name="ki_keywords" value="cap capacitor"/>
       <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
       <tstamps>0411bb3a-f133-4375-b279-e5406a025c5e</tstamps>
@@ -331,21 +338,22 @@
       <value>100n</value>
       <footprint>Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</footprint>
       <datasheet>https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf</datasheet>
+      <description>Unpolarized capacitor</description>
       <fields>
         <field name="manf">KYOCERA AVX</field>
         <field name="manf#">04025C104KAT4A</field>
         <field name="mouser#">581-04025C104KAT4A</field>
         <field name="Footprint">Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</field>
         <field name="Datasheet">https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf</field>
-        <field name="Description"/>
+        <field name="Description">Unpolarized capacitor</field>
       </fields>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
       <property name="manf" value="KYOCERA AVX"/>
       <property name="manf#" value="04025C104KAT4A"/>
       <property name="mouser#" value="581-04025C104KAT4A"/>
       <property name="Sheetname" value="Main"/>
       <property name="Sheetfile" value="Main.kicad_sch"/>
-      <property name="ki_keywords" value="capacitor cap"/>
+      <property name="ki_keywords" value="cap capacitor"/>
       <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
       <tstamps>fb5a56f7-647d-4b64-9880-5dd36bbcdab4</tstamps>
@@ -362,21 +370,24 @@
       <value>100n</value>
       <footprint>Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</footprint>
       <datasheet>https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf</datasheet>
+      <description>Unpolarized capacitor</description>
       <fields>
         <field name="manf">KYOCERA AVX</field>
         <field name="manf#">04025C104KAT4A</field>
         <field name="mouser#">581-04025C104KAT4A</field>
+        <field name="Config"/>
         <field name="Footprint">Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder</field>
         <field name="Datasheet">https://www.mouser.de/datasheet/2/40/KGM_X7R-3223212.pdf</field>
-        <field name="Description"/>
+        <field name="Description">Unpolarized capacitor</field>
       </fields>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
       <property name="manf" value="KYOCERA AVX"/>
       <property name="manf#" value="04025C104KAT4A"/>
       <property name="mouser#" value="581-04025C104KAT4A"/>
+      <property name="Config" value=""/>
       <property name="Sheetname" value="Main"/>
       <property name="Sheetfile" value="Main.kicad_sch"/>
-      <property name="ki_keywords" value="capacitor cap"/>
+      <property name="ki_keywords" value="cap capacitor"/>
       <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
       <tstamps>b7b0e032-ccd8-42f5-ba49-1f6c576c3e94</tstamps>
@@ -391,26 +402,46 @@
     </comp>
     <comp ref="C107">
       <value>47u</value>
-      <footprint>Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder</footprint>
-      <datasheet>https://www.mouser.de/datasheet/3/940/1/c_mlcc_A_e.pdf</datasheet>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>https://www.mouser.com/datasheet/3/5926/1/KGM_Series_e.pdf</datasheet>
+      <description>47u 6.3V 20% X5R</description>
       <fields>
-        <field name="manf">TAIYO YUDEN</field>
-        <field name="manf#">MAASL32MSB7476MPNA01</field>
-        <field name="mouser#">963-MAASL32MSB7476MP</field>
+        <field name="manf">KYOCERA AVX</field>
+        <field name="manf#">KGM21AR50J476MU</field>
+        <field name="mouser#">581-KGM21AR51A476MU</field>
         <field name="Config"/>
-        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder</field>
-        <field name="Datasheet">https://www.mouser.de/datasheet/3/940/1/c_mlcc_A_e.pdf</field>
-        <field name="Description"/>
+        <field name="Part-DB URL">https://inventory.lan/de/part/332/info</field>
+        <field name="Category">Kondensator/MLCC</field>
+        <field name="Manufacturer">KYOCERA AVX</field>
+        <field name="MPN">KGM21AR50J476MU</field>
+        <field name="Manufacturing Status">Active</field>
+        <field name="Part-DB Footprint">0805</field>
+        <field name="Part-DB ID">332</field>
+        <field name="Mouser SPN">581-KGM21AR50J476MU</field>
+        <field name="Mouser SPN 2">581-KGM21AR51A476MU</field>
+        <field name="Stock">0</field>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet">https://www.mouser.com/datasheet/3/5926/1/KGM_Series_e.pdf</field>
+        <field name="Description">47u 6.3V 20% X5R</field>
       </fields>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
-      <property name="manf" value="TAIYO YUDEN"/>
-      <property name="manf#" value="MAASL32MSB7476MPNA01"/>
-      <property name="mouser#" value="963-MAASL32MSB7476MP"/>
+      <libsource lib="partdb" part="KGM21AR50J476MU" description="47u 6.3V 20% X5R"/>
+      <property name="manf" value="KYOCERA AVX"/>
+      <property name="manf#" value="KGM21AR50J476MU"/>
+      <property name="mouser#" value="581-KGM21AR51A476MU"/>
       <property name="Config" value=""/>
+      <property name="Part-DB URL" value="https://inventory.lan/de/part/332/info"/>
+      <property name="Category" value="Kondensator/MLCC"/>
+      <property name="Manufacturer" value="KYOCERA AVX"/>
+      <property name="MPN" value="KGM21AR50J476MU"/>
+      <property name="Manufacturing Status" value="Active"/>
+      <property name="Part-DB Footprint" value="0805"/>
+      <property name="Part-DB ID" value="332"/>
+      <property name="Mouser SPN" value="581-KGM21AR50J476MU"/>
+      <property name="Mouser SPN 2" value="581-KGM21AR51A476MU"/>
+      <property name="Stock" value="0"/>
       <property name="Sheetname" value="Main"/>
       <property name="Sheetfile" value="Main.kicad_sch"/>
-      <property name="ki_keywords" value="capacitor cap"/>
-      <property name="ki_fp_filters" value="C_*"/>
+      <property name="ki_fp_filters" value="Capacitor_SMD:C_0805_2012Metric"/>
       <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
       <tstamps>8d4627d6-3c2e-4265-97f9-a77e5086bc11</tstamps>
       <units>
@@ -424,28 +455,48 @@
     </comp>
     <comp ref="C108">
       <value>47u</value>
-      <footprint>Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder</footprint>
-      <datasheet>https://www.mouser.de/datasheet/3/940/1/c_mlcc_A_e.pdf</datasheet>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>https://www.mouser.com/datasheet/3/5926/1/KGM_Series_e.pdf</datasheet>
+      <description>47u 6.3V 20% X5R</description>
       <fields>
-        <field name="manf">TAIYO YUDEN</field>
-        <field name="manf#">MAASL32MSB7476MPNA01</field>
-        <field name="mouser#">963-MAASL32MSB7476MP</field>
+        <field name="manf">KYOCERA AVX</field>
+        <field name="manf#">KGM21AR50J476MU</field>
+        <field name="mouser#">581-KGM21AR51A476MU</field>
         <field name="Config"/>
-        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder</field>
-        <field name="Datasheet">https://www.mouser.de/datasheet/3/940/1/c_mlcc_A_e.pdf</field>
-        <field name="Description"/>
+        <field name="Part-DB URL">https://inventory.lan/de/part/332/info</field>
+        <field name="Category">Kondensator/MLCC</field>
+        <field name="Manufacturer">KYOCERA AVX</field>
+        <field name="MPN">KGM21AR50J476MU</field>
+        <field name="Manufacturing Status">Active</field>
+        <field name="Part-DB Footprint">0805</field>
+        <field name="Part-DB ID">332</field>
+        <field name="Mouser SPN">581-KGM21AR50J476MU</field>
+        <field name="Mouser SPN 2">581-KGM21AR51A476MU</field>
+        <field name="Stock">0</field>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet">https://www.mouser.com/datasheet/3/5926/1/KGM_Series_e.pdf</field>
+        <field name="Description">47u 6.3V 20% X5R</field>
       </fields>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
-      <property name="manf" value="TAIYO YUDEN"/>
-      <property name="manf#" value="MAASL32MSB7476MPNA01"/>
-      <property name="mouser#" value="963-MAASL32MSB7476MP"/>
+      <libsource lib="partdb" part="KGM21AR50J476MU" description="47u 6.3V 20% X5R"/>
+      <property name="manf" value="KYOCERA AVX"/>
+      <property name="manf#" value="KGM21AR50J476MU"/>
+      <property name="mouser#" value="581-KGM21AR51A476MU"/>
       <property name="Config" value=""/>
+      <property name="Part-DB URL" value="https://inventory.lan/de/part/332/info"/>
+      <property name="Category" value="Kondensator/MLCC"/>
+      <property name="Manufacturer" value="KYOCERA AVX"/>
+      <property name="MPN" value="KGM21AR50J476MU"/>
+      <property name="Manufacturing Status" value="Active"/>
+      <property name="Part-DB Footprint" value="0805"/>
+      <property name="Part-DB ID" value="332"/>
+      <property name="Mouser SPN" value="581-KGM21AR50J476MU"/>
+      <property name="Mouser SPN 2" value="581-KGM21AR51A476MU"/>
+      <property name="Stock" value="0"/>
       <property name="Sheetname" value="Main"/>
       <property name="Sheetfile" value="Main.kicad_sch"/>
-      <property name="ki_keywords" value="capacitor cap"/>
-      <property name="ki_fp_filters" value="C_*"/>
+      <property name="ki_fp_filters" value="Capacitor_SMD:C_0805_2012Metric"/>
       <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
-      <tstamps>92ee3488-4142-4ed5-870c-78ab553776cc</tstamps>
+      <tstamps>8a3ff926-77df-41de-9c17-55c1bd0cb25d</tstamps>
       <units>
         <unit name="A">
           <pins>
@@ -955,30 +1006,54 @@
     <comp ref="SW101">
       <value>JOIN</value>
       <footprint>Wuerth:WS-TASV-6x6</footprint>
-      <datasheet>https://www.we-online.com/components/products/datasheet/430182130816.pdf</datasheet>
-      <description>Push button switch, generic, two pins</description>
+      <datasheet>https://www.we-online.com/components/products/datasheet/430182095816.pdf</datasheet>
+      <description>Taster 6x6mm 9.5mm 160gf SMD</description>
       <fields>
         <field name="manf">Wurth Elektronik</field>
         <field name="manf#">430182095816</field>
         <field name="mouser#">710-430182095816</field>
+        <field name="Config"/>
+        <field name="Part-DB URL">https://inventory.lan/de/part/24/info</field>
+        <field name="Category">Bedienelement/Taster</field>
+        <field name="Manufacturer">Wurth Elektronik</field>
+        <field name="MPN">430182095816</field>
+        <field name="Manufacturing Status">Active</field>
+        <field name="Part-DB Footprint">WS-TASV 6x6</field>
+        <field name="Mass">0.26 g</field>
+        <field name="Part-DB ID">24</field>
+        <field name="Mouser SPN">710-430182095816</field>
+        <field name="Stock">0</field>
         <field name="Footprint">Wuerth:WS-TASV-6x6</field>
-        <field name="Datasheet">https://www.we-online.com/components/products/datasheet/430182130816.pdf</field>
-        <field name="Description">Push button switch, generic, two pins</field>
+        <field name="Datasheet">https://www.we-online.com/components/products/datasheet/430182095816.pdf</field>
+        <field name="Description">Taster 6x6mm 9.5mm 160gf SMD</field>
       </fields>
-      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <libsource lib="partdb" part="430182095816" description="Taster 6x6mm 9.5mm 160gf SMD"/>
       <property name="manf" value="Wurth Elektronik"/>
       <property name="manf#" value="430182095816"/>
       <property name="mouser#" value="710-430182095816"/>
+      <property name="Config" value=""/>
+      <property name="Part-DB URL" value="https://inventory.lan/de/part/24/info"/>
+      <property name="Category" value="Bedienelement/Taster"/>
+      <property name="Manufacturer" value="Wurth Elektronik"/>
+      <property name="MPN" value="430182095816"/>
+      <property name="Manufacturing Status" value="Active"/>
+      <property name="Part-DB Footprint" value="WS-TASV 6x6"/>
+      <property name="Mass" value="0.26 g"/>
+      <property name="Part-DB ID" value="24"/>
+      <property name="Mouser SPN" value="710-430182095816"/>
+      <property name="Stock" value="0"/>
       <property name="Sheetname" value="Main"/>
       <property name="Sheetfile" value="Main.kicad_sch"/>
-      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <property name="ki_fp_filters" value="Wuerth:WS-TASV-6x6"/>
       <sheetpath names="/Project Architecture/Main/" tstamps="/c5103ceb-5325-4a84-a025-9638a412984e/e744f3ce-03a6-44a6-8792-1447ef232b9a/"/>
       <tstamps>1ed9c399-5dd6-4937-abe0-de952879e8d8</tstamps>
       <units>
         <unit name="A">
           <pins>
             <pin num="1"/>
+            <pin num="3"/>
             <pin num="2"/>
+            <pin num="4"/>
           </pins>
         </unit>
       </units>
@@ -1108,23 +1183,6 @@
         <pin num="2" name="" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="Device" part="C_Small">
-      <description>Unpolarized capacitor, small symbol</description>
-      <footprints>
-        <fp>C_*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">C</field>
-        <field name="Value">C_Small</field>
-        <field name="Footprint"/>
-        <field name="Datasheet"/>
-        <field name="Description">Unpolarized capacitor, small symbol</field>
-      </fields>
-      <pins>
-        <pin num="1" name="" type="passive"/>
-        <pin num="2" name="" type="passive"/>
-      </pins>
-    </libpart>
     <libpart lib="Device" part="LED">
       <description>Light emitting diode</description>
       <footprints>
@@ -1236,20 +1294,6 @@
         <pin num="6" name="GND" type="power_in"/>
       </pins>
     </libpart>
-    <libpart lib="Switch" part="SW_Push">
-      <description>Push button switch, generic, two pins</description>
-      <fields>
-        <field name="Reference">SW</field>
-        <field name="Value">SW_Push</field>
-        <field name="Footprint"/>
-        <field name="Datasheet"/>
-        <field name="Description">Push button switch, generic, two pins</field>
-      </fields>
-      <pins>
-        <pin num="1" name="1" type="passive"/>
-        <pin num="2" name="2" type="passive"/>
-      </pins>
-    </libpart>
     <libpart lib="Transistor_FET" part="BSS84">
       <description>-0.13A Id, -50V Vds, P-Channel MOSFET, SOT-23</description>
       <docs>http://assets.nexperia.com/documents/data-sheet/BSS84.pdf</docs>
@@ -1269,6 +1313,70 @@
         <pin num="3" name="D" type="passive"/>
       </pins>
     </libpart>
+    <libpart lib="partdb" part="430182095816">
+      <description>Taster 6x6mm 9.5mm 160gf SMD</description>
+      <docs>https://www.we-online.com/components/products/datasheet/430182095816.pdf</docs>
+      <footprints>
+        <fp>Wuerth:WS-TASV-6x6</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">Taster</field>
+        <field name="Footprint">Wuerth:WS-TASV-6x6</field>
+        <field name="Datasheet">https://www.we-online.com/components/products/datasheet/430182095816.pdf</field>
+        <field name="Description">Taster 6x6mm 9.5mm 160gf SMD</field>
+        <field name="Part-DB URL">https://inventory.lan/de/part/24/info</field>
+        <field name="Category">Bedienelement/Taster</field>
+        <field name="Manufacturer">Wurth Elektronik</field>
+        <field name="MPN">430182095816</field>
+        <field name="Manufacturing Status">Active</field>
+        <field name="Part-DB Footprint">WS-TASV 6x6</field>
+        <field name="Mass">0.26 g</field>
+        <field name="Part-DB ID">24</field>
+        <field name="manf">Wurth Elektronik</field>
+        <field name="manf#">430182095816</field>
+        <field name="Mouser SPN">710-430182095816</field>
+        <field name="mouser#">710-430182095816</field>
+        <field name="Stock">0</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="partdb" part="KGM21AR50J476MU">
+      <description>47u 6.3V 20% X5R</description>
+      <docs>https://www.mouser.com/datasheet/3/5926/1/KGM_Series_e.pdf</docs>
+      <footprints>
+        <fp>Capacitor_SMD:C_0805_2012Metric</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">47u</field>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet">https://www.mouser.com/datasheet/3/5926/1/KGM_Series_e.pdf</field>
+        <field name="Description">47u 6.3V 20% X5R</field>
+        <field name="Part-DB URL">https://inventory.lan/de/part/332/info</field>
+        <field name="Category">Kondensator/MLCC</field>
+        <field name="Manufacturer">KYOCERA AVX</field>
+        <field name="MPN">KGM21AR50J476MU</field>
+        <field name="Manufacturing Status">Active</field>
+        <field name="Part-DB Footprint">0805</field>
+        <field name="Part-DB ID">332</field>
+        <field name="manf">KYOCERA AVX</field>
+        <field name="manf#">KGM21AR50J476MU</field>
+        <field name="Mouser SPN">581-KGM21AR50J476MU</field>
+        <field name="mouser#">581-KGM21AR51A476MU</field>
+        <field name="Mouser SPN 2">581-KGM21AR51A476MU</field>
+        <field name="Stock">0</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
   </libparts>
   <libraries>
     <library logical="Connector">
@@ -1279,9 +1387,6 @@
     </library>
     <library logical="Sensor_Optical">
       <uri>${KICAD10_SYMBOL_DIR}/Sensor_Optical.kicad_sym</uri>
-    </library>
-    <library logical="Switch">
-      <uri>${KICAD10_SYMBOL_DIR}/Switch.kicad_sym</uri>
     </library>
     <library logical="Transistor_FET">
       <uri>${KICAD10_SYMBOL_DIR}/Transistor_FET.kicad_sym</uri>
@@ -1335,6 +1440,7 @@
       <node ref="M101" pin="39" pinfunction="GND_39" pintype="passive"/>
       <node ref="R109" pin="2" pintype="passive"/>
       <node ref="SW101" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="SW101" pin="3" pinfunction="3_3" pintype="passive"/>
       <node ref="X102" pin="3" pinfunction="GND_3" pintype="power_in"/>
       <node ref="X102" pin="5" pinfunction="GND_5" pintype="passive"/>
     </net>
@@ -1358,6 +1464,7 @@
     <net code="8" name="Net-(M101-P1.00/32K)" class="Default">
       <node ref="M101" pin="25" pinfunction="P1.00/32K_25" pintype="bidirectional"/>
       <node ref="SW101" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="SW101" pin="4" pinfunction="4_4" pintype="passive"/>
     </net>
     <net code="9" name="Net-(Q101-D)" class="Default">
       <node ref="Q101" pin="3" pinfunction="D_3" pintype="passive"/>
