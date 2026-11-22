@@ -52,6 +52,12 @@ preflight:
     - variable: '@RELEASE_BODY_VAR@UNRELEASED'
       command: '@GET_BODY_CMD@ Unreleased'
 
+    # Unused columns of the revision history table
+    - variable: '@RELEASE_TITLE_VAR@...'
+      text: ' '
+    - variable: '@RELEASE_BODY_VAR@...'
+      text: ' '
+
     # Fabrication notes
     - variable: 'FABRICATION_NOTES'
       expand_in_command: true

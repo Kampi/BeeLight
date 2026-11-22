@@ -23,6 +23,7 @@
 #       is missing in the BoM) is reported as error, but does not stop the job or
 #       the release.
 #       The result is stored as checklist '<board>-bom_check.md' next to the BoM.
+#       Readable titles are set for the PDF and HTML results (set_output_titles.py).
 #     - release: Creates a GitHub Release with the generated ZIP artifact.
 #       Only runs on tag pushes.
 #     - deploy: Publishes the generated outputs to GitHub Pages.
@@ -378,6 +379,16 @@ jobs:
           find . -type f -iname \*.kicad_pro-bak -delete
           rm -f ${{ env.kibot_input_dir }}/kibot_*.kicad_pro
           rm -f ${{ env.kibot_input_dir }}/kibot_*.kicad_pcb
+
+      # A failed title update does not stop the job or the release.
+      - name: Set document titles
+        continue-on-error: true
+        shell: bash
+        run: |
+          pip3 install --break-system-packages pypdf || pip3 install pypdf
+          python3 "${{ env.kibot_input_dir }}/kibot_resources/scripts/set_output_titles.py" \
+            --output-dir "${{ env.kibot_input_dir }}/${{ env.kibot_output_path }}/${{ env.kibot_output_dir }}-${{ env.kibot_variant }}" \
+            --project-file "${{ env.kibot_input_dir }}/${{ env.kicad_board }}.kicad_pro"
 
       # A failed check is reported as error, but does not stop the job or the release.
       # The checklist is stored next to the BoM, so it is part of the artifact and the release.
