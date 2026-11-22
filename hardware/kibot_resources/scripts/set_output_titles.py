@@ -2,12 +2,16 @@
 
 KiBot leaves the title of several PDF and HTML files empty, generic or set to a temporary file name.
 Browsers show this title in the tab. All titles start with the project name of the KiCad project.
+
+KiRI renders older commits without the KiBot text variables, so the revision history shows the raw
+${RELEASE_...} variables. They are replaced with the text from the changelog or removed if unused.
 """
 import argparse
 import html
 import json
 import os
 import re
+import textwrap
 from pathlib import Path
 
 from pypdf import PdfReader, PdfWriter
@@ -20,6 +24,13 @@ PDF_TITLES = (
     ("-PTH_drill_map", "PTH Drill Map"),
 )
 TITLE_TAG = re.compile(r"<title[^>]*>(.*?)</title>", re.IGNORECASE | re.DOTALL)
+# Hidden search text of KiCad, followed by the visible strokes of the same text
+RELEASE_TEXT = re.compile(
+    r'<text ([^>]*)>\$\{RELEASE_(TITLE|BODY)_([^}]+)\}</text>\s*'
+    r'<g class="stroked-text"><desc>\$\{RELEASE_(?:TITLE|BODY)_[^}]+\}</desc>.*?</g>',
+    re.DOTALL,
+)
+RELEASE_LINE_WIDTH = 42
 
 
 def set_pdf_title(path, project):
@@ -75,6 +86,48 @@ def set_html_title(path, project, root):
     return True
 
 
+def release_lines(changelog, kind, version):
+    match = re.search(
+        rf"^## \[{re.escape(version)}\] - (\d{{4}}-\d{{2}}-\d{{2}})\n(.*?)(?=^## \[|^\[[^\]\n]+\]:|\Z)",
+        changelog, re.DOTALL | re.MULTILINE)
+    if not match:
+        return []
+    if kind == "TITLE":
+        return [f"Version {version} - {match.group(1)}"]
+    lines = []
+    for line in match.group(2).splitlines():
+        if line.strip():
+            lines += textwrap.wrap(line.strip(), RELEASE_LINE_WIDTH, subsequent_indent="  ")
+    return lines
+
+
+def fix_kiri_variables(root, changelog):
+    def replace(match):
+        attributes, kind, version = match.groups()
+        lines = release_lines(changelog, kind, version)
+        if not lines:
+            return ""
+        x = re.search(r'\bx="([^"]+)"', attributes).group(1)
+        y = re.search(r'\by="([^"]+)"', attributes).group(1)
+        size = float(re.search(r'font-size="([^"]+)"', attributes).group(1))
+        spans = "".join(
+            f'<tspan x="{x}" dy="{0 if index == 0 else size * 1.4:.4f}">{html.escape(line)}</tspan>'
+            for index, line in enumerate(lines))
+        return (f'<text x="{x}" y="{y}" font-size="{size:.4f}" font-family="sans-serif" '
+                f'style="fill:#000000; fill-opacity:1; stroke:none;">{spans}</text>')
+
+    count = 0
+    for path in root.glob("**/_KIRI_/sch/*.svg"):
+        text = path.read_bytes().decode("utf-8", "surrogateescape")
+        if "${RELEASE_" not in text:
+            continue
+        new_text = RELEASE_TEXT.sub(replace, text)
+        if new_text != text:
+            path.write_bytes(new_text.encode("utf-8", "surrogateescape"))
+            count += 1
+    return count
+
+
 def main():
     parser = argparse.ArgumentParser(description="Set the document titles of the KiBot results")
     parser.add_argument("-o", "--output-dir", type=Path, required=True, help="Directory with the KiBot results")
@@ -92,6 +145,11 @@ def main():
         elif suffix in (".html", ".htm"):
             html_count += set_html_title(path, project, args.output_dir)
     print(f"Updated titles: {pdf_count} PDF, {html_count} HTML")
+
+    changelog_path = args.project_file.parent / "CHANGELOG.md"
+    if changelog_path.is_file():
+        with open(changelog_path, encoding="utf-8") as f:
+            print(f"Updated KiRI revision pages: {fix_kiri_variables(args.output_dir, f.read())}")
 
 
 if __name__ == "__main__":
