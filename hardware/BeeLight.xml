@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>/__w/BeeLight/BeeLight/hardware/BeeLight.kicad_sch</source>
-    <date>2026-11-22T13:04:54</date>
+    <date>2026-11-23T05:21:01</date>
     <tool>Eeschema 10.0.5-unknown-202607221313~667fa36054~ubuntu25.10.1</tool>
     <textvar name="ASSEMBLY_NOTES"/>
     <textvar name="BOARD_NAME">BeeLight</textvar>
@@ -18,8 +18,8 @@
     <textvar name="RELEASE_BODY_2.2.0">Version 2.2.0 not found.</textvar>
     <textvar name="RELEASE_BODY_UNRELEASED">Version Unreleased not found.</textvar>
     <textvar name="RELEASE_BODY_x.y.z">Version x.y.z not found.</textvar>
-    <textvar name="RELEASE_DATE">2026-11-22</textvar>
-    <textvar name="RELEASE_DATE_NUM">2026-11-22</textvar>
+    <textvar name="RELEASE_DATE">2026-11-23</textvar>
+    <textvar name="RELEASE_DATE_NUM">2026-11-23</textvar>
     <textvar name="RELEASE_TITLE_..."> </textvar>
     <textvar name="RELEASE_TITLE_2.2.0">Version 2.2.0 not found.</textvar>
     <textvar name="RELEASE_TITLE_UNRELEASED">Version Unreleased not found.</textvar>
