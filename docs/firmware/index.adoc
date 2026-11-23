@@ -24,7 +24,7 @@ image::Rendering.png[BeeLight 3D-Rendering, 600, align="center"]
 ** Broadcom APDS-9306 – Beleuchtungsstärkemessung
 ** Bosch BME688 – Temperatur, Luftdruck, Luftfeuchtigkeit
 ** Bosch BME688 (BSEC2, optional) – CO₂-Äquivalent, VOC, IAQ
-* *Energieversorgung*: CR2-Batterie (~3,3 V), Spannungsüberwachung via ADC
+* *Energieversorgung*: CR2477-Knopfzelle (3 V), Spannungsüberwachung via ADC
 * *Firmware-Version*: 2.0.0
 
 === Hardware-Revisionen

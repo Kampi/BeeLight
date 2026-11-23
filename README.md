@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-GPL%203.0-blue.svg)](https://opensource.org/license/gpl-3-0/)
 [![PCB](https://github.com/Kampi/BeeLight/actions/workflows/hw-pcb.yaml/badge.svg)](https://www.github.com/Kampi/BeeLight/actions/workflows/hw-pcb.yaml)
-[![Documentation](https://img.shields.io/badge/Documentation-HTML-007ec6?longCache=true&style=flat&logo=asciidoctor&colorA=555555)](https://https://www.kampi.github.io/BeeLight/)
+[![Documentation](https://img.shields.io/badge/Documentation-HTML-007ec6?longCache=true&style=flat&logo=asciidoctor&colorA=555555)](https://kampi.github.io/BeeLight/)
 
 ## Table of Contents
 
@@ -38,7 +38,7 @@ Open-Source Zigbee-based light and environmental sensor with [Zigbee2MQTT](https
 ### Technical features
 
 - Cutting-edge MCU with an nRF54L, running Zephyr
-- Powered by a single coin cell
+- Powered by a single CR2477 coin cell
 - Can measure
   - Temperature
   - Humidity
@@ -48,7 +48,7 @@ Open-Source Zigbee-based light and environmental sensor with [Zigbee2MQTT](https
   - VOC equivalent
   - Light intensity
   - Battery voltage
-- Small housing (40x42x20 mm)
+- Small housing (40x42x20 mm) with a 32x29 mm PCB
 - Very basic electronic → Can be assembled by hand very easily
 - Zigbee2MQTT compatibility
 
@@ -140,7 +140,7 @@ nrfjprog --program zigbee_config.hex --verify
 
 ### Housing
 
-The housing is optimized for 3D printing and needs ~12 g of filament (PLA). You can find all the needed files in the `3d-printing` directory of this project.
+The housing is optimized for 3D printing and needs ~12 g of filament (PLA). You can find all the needed files in the `cad` directory of this project.
 
 ### Zigbee
 
@@ -157,7 +157,7 @@ The device uses different standard and custom cluster to report the data to the 
 
 #### Custom cluster
 
-The device uses three custom cluster to report `IAQ`, `VOC` and `CO2` to the network. Both clusters have three attributes for `value`, `min_value`, `max_value` and `tolerance`.
+The device uses three custom cluster to report `IAQ`, `VOC` and `CO2` to the network. All three clusters have four attributes for `value`, `min_value`, `max_value` and `tolerance`.
 
 | Cluster | ID |
 | ------- | -- |
@@ -315,15 +315,14 @@ You can test the device by using the NCS Zigbee Shell example and an nRF54DK or 
 
 ## Directory structure
 
-- `3d-print`: All 3D print.related files
-- `cad`: All relevant 3D models
-- `docs`: All kinds of project documentation like schematics, BOM, etc.
-  - `drawings`: 2D drawings for subcomponents, etc.
-  - `images`: All documentation-relateBd images
+- `cad`: Housing (Fusion 360) and 3D models of the subcomponents
+- `docs`: Project documentation
+  - `firmware`: Firmware documentation
+  - `images`: All documentation-related images
 - `hardware`: KiCad project for the PCB
 - `firmware`: Zephyr project for the device firmware
 - `prebuilt`: Prebuilt binaries
-- `production`: Production files from the latest CI/CD run
+- `scripts`: Helper scripts
 - `z2m`: Zigbee2MQTT-related files
 
 ## Resources
